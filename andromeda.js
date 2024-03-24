@@ -88,7 +88,7 @@ function toggleHamburger() {
         linkButton4.innerHTML = 'Календарь'; // Текст кнопки
         linkButton4.addEventListener('click', function() {
             // Открываем ссылку в новой вкладке
-            window.open('https://dmitrynest2012.github.io/message-of-love/calendar.html', '_blank');
+            window.open('https://cosm-future.github.io/a-message-of-light/calendar.html', '_blank');
         });
         newMenuContainer.appendChild(linkButton4);
 
@@ -99,7 +99,7 @@ function toggleHamburger() {
         linkButton5.innerHTML = 'Посылы'; // Текст кнопки
         linkButton5.addEventListener('click', function() {
             // Открываем ссылку в новой вкладке
-            window.open('https://dmitrynest2012.github.io/message-of-love/', '_blank');
+            window.open('https://cosm-future.github.io/a-message-of-light/', '_blank');
         });
         newMenuContainer.appendChild(linkButton5);
 
@@ -210,7 +210,7 @@ function setFirstLaunch() {
 // Функция для обновления состояния кнопки изображения и сохранения состояния в локальное хранилище
 function toggleAndromeda() {
     if (isFirstLaunch()) {
-        const audio = new Audio("https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/andromeda_first_message.mp3");
+        const audio = new Audio("https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/andromeda_first_message.mp3");
             audio.play();
 
 
@@ -222,7 +222,7 @@ function toggleAndromeda() {
     startListening();
 }
 
-  
+
   
   // Функция для обновления внешнего вида кнопки изображения в соответствии с состоянием
   function updateAndromedaButtonState() {
@@ -277,30 +277,32 @@ const qaPairs = [
         "Открой Академию", "Аткрой Академию", "Открой Академи", "Аткрой Академи",
         "Открой сайт Академии", "Аткрой сайт Академии",
         "Открой сайт Академи", "Аткрой сайт Академи"], 
-        answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open_academy.mp3", 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/open_academy.mp3", 
         type: "переход по ссылке на Академию" 
     },
     { 
         questions: ["Открой сайт Катрен", "Открой сайт Катренов", "Аткрой сайт Катренов", "Открой сайт Катренов",
         "Аткрой сайт Катрен", "Открой сайт Катрен", "Открой Катрен", "Актрой Катрен", "Открой Катрены", "Аткрой Катрены",
         "Покажи Катрены", "Покажи Катрен"], 
-        answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/katrens_opens.mp3", 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/katrens_opens.mp3", 
         type: "переход по ссылке на Катрены" 
     },
     { 
         questions: ["Открой сайт Доктрин", "Открой сайт Доктрины", "Аткрой сайт Доктрин", "Аткрой сайт Доктрины",
         "Покажи Доктрину", "Покажи Доктрин"], 
-        answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open_doctrina.mp3", 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/open_doctrina.mp3", 
         type: "переход по ссылке на Доктрину" 
     },
     { 
         questions: ["Открой сайт Посыла", "Открой сайт Посыло", "Аткрой сайт Посыла", "Аткрой сайт Посыло",
         "Покажи Посыл", "Покажи Посылы"], 
-        answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open_suit.mp3", 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/open_suit.mp3", 
         type: "переход по ссылке на Посыл" 
     }
     // Другие вопросы и ответы
 ];
+
+
 
 
 
@@ -330,7 +332,7 @@ function formatDate(date) {
 // Добавляем ссылку на сегодняшний катрен в массив qaPairs
 qaPairs.push({ 
     questions: ["Покажи сегодняшний катрен"], 
-    answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open_suit.mp3", 
+    answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/open_suit.mp3", 
     type: "переход по ссылке на сегодняшний катрен",
     link: todayCatrenLink
 });
@@ -338,7 +340,7 @@ qaPairs.push({
 // Добавляем ссылку на вчерашний катрен в массив qaPairs
 qaPairs.push({ 
     questions: ["Покажи вчерашний катрен"], 
-    answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open_suit.mp3", 
+    answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/open_suit.mp3", 
     type: "переход по ссылке на вчерашний катрен",
     link: yesterdayCatrenLink
 });
@@ -346,10 +348,12 @@ qaPairs.push({
 // Добавляем ссылку на инструкцию в массив qaPairs
 qaPairs.push({ 
     questions: ["Покажи инструкцию", "Покажи инструкци", "Открой сайт инструкци", "Открой сайт инструкции"], 
-    answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open_suit.mp3", 
+    answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/open_suit.mp3", 
     type: "переход по ссылке на инструкцию",
-    link: "https://dmitrynest2012.github.io/message-of-love/andromeda.html"
+    link: "https://cosm-future.github.io/a-message-of-light/andromeda.html"
 });
+
+
 
 
 
@@ -357,7 +361,7 @@ qaPairs.push({
 // Добавляем команды "Покажи катрен за (дата)" в массив qaPairs
 qaPairs.push({ 
     questions: ["Катрен за"], 
-    answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open_suit.mp3", 
+    answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/open_suit.mp3", 
     type: "переход по ссылке на катрен за конкретную дату",
     link: function(userInput) {
         const datePattern = /\b(\d{1,2})[.\/-](\d{1,2})[.\/-](\d{2,4})\b/g;
@@ -416,9 +420,11 @@ function startListening() {
             } else if (qa.type === "переход по ссылке на инструкцию") {
                 window.open(qa.link, "_blank"); // Замените на фактическую ссылку
             } else if (qa.type === "переход по ссылке на Посыл") {
-                window.open("https://dmitrynest2012.github.io/message-of-love/", "_blank"); // Замените на фактическую ссылку
+                window.open("https://cosm-future.github.io/a-message-of-light/", "_blank"); // Замените на фактическую ссылку
             }
         }
+        
+
         
 
         recognition.stop();
@@ -452,3 +458,4 @@ function getQaByQuestion(question) {
     }
     return { questions: [], answer: "Извините, я не поняла вас.", type: "стандартный" };
 }
+       
