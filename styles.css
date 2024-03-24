@@ -1,0 +1,1920 @@
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: 'Play', sans-serif;
+    overflow-x: hidden;
+    overflow-y: hidden; /* Запрещаем вертикальную прокрутку */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    opacity: 1;
+    z-index: 1;
+    transition: opacity 0.3s, background 0.3s linear; /* Длительность и тип анимации */
+}
+
+
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+    body {
+
+        overflow-y: auto; /* Разрешаем вертикальную прокрутку */
+        background-color: black;
+        
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .body{
+        
+        overflow-y: auto; /* Разрешаем вертикальную прокрутку */
+        background-color: black;
+        background: linear-gradient(to right, rgba(53, 0, 168, 0.541), rgba(53, 0, 168, 0)); /* Линейный градиент */
+    }
+  }
+
+  @media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    body::before {
+        opacity: 0;
+    }
+  }
+
+.buttonBuild {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 2px 10px 2px 10px;
+    font-family: 'Play';
+    font-size: 12px;
+    color: rgb(194, 177, 255);
+    background-color: rgba(53, 0, 168, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    cursor: pointer; /* Изменяем курсор при наведении */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s;
+    z-index: 100; 
+    display: none;
+}
+
+.buttonBuild:hover {
+    color: rgb(235, 230, 255);
+    background-color: rgba(81, 0, 255, 0.856);
+    border: 1px solid rgba(223, 93, 255, 0.514);
+
+}
+
+.buttonBuild:after {
+    content: ''; /* Обязательно для псевдоэлементов */
+      position: absolute;
+      top: 0%; /* Расположить подложку под элементом .quatrain */
+      left: 0;
+      width: 100%;
+      height: 100%; /* Высота подложки может быть на ваш выбор */
+      background: rgba(255, 255, 255, 0.1); /* Прозрачный фон */
+      border-radius: 15px;
+      backdrop-filter: blur(3px); /* Размытие подложки */
+      z-index: -1; /* Поместить подложку под элемент .quatrain */
+}
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+    .buttonBuild {
+
+        left: 10px;
+
+        
+    }
+}
+
+.history-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    width: 400px; /* Ширина контейнера */
+    height: 500px; /* Высота контейнера */
+    background-color: rgba(42, 0, 134, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px; /* Радиус скругления углов */
+    overflow-y: auto; /* Включаем вертикальную прокрутку при необходимости */
+    overflow-x: hidden;
+    font-family: 'Play';
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Горизонтальное смещение, вертикальное смещение, размытие, цвет */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.75); /* Тень */
+    transition: all 0.5s;
+    z-index: 300;
+}
+
+.history-container:after {
+    content: ''; /* Обязательно для псевдоэлементов */
+      position: fixed;
+      top: 0%; /* Расположить подложку под элементом .quatrain */
+      left: 0%;
+      width: calc(100% + 12px);
+      height: 520%; /* Высота подложки может быть на ваш выбор */
+      background: rgba(255, 255, 255, 0.1); /* Прозрачный фон */
+      border-radius: 15px;
+      backdrop-filter: blur(9px); /* Размытие подложки */
+      z-index: -1; /* Поместить подложку под элемент .quatrain */
+      transition: all 0.5s;
+}
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+    .history-container {
+
+    width: 80%; /* Ширина контейнера */
+    height: 70%; /* Высота контейнера */
+        
+    }
+}
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+    .history-container:after {
+
+    height: 590%; /* Высота подложки может быть на ваш выбор */
+        
+    }
+}
+
+
+
+    .history-container::-webkit-scrollbar {
+        width: 12px; /* Ширина полосы прокрутки */
+        border: 1px solid rgba(174, 0, 255, 0);
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+        z-index: 299; /* Индекс слоя */
+    }
+
+
+
+    .history-container::-webkit-scrollbar-track {
+
+        
+        background: rgba(39, 0, 29, 0.068); /* Цвет фона трека */
+        border-top-right-radius: 15px; /* Закругление нижнего правого угла */
+        border-bottom-right-radius: 15px; /* Закругление нижнего правого угла */
+        background-clip: padding-box; /* Область отображения фона */
+        backdrop-filter: blur(9px); /* Размытие подложки */
+        
+    }
+
+
+
+    .history-container::-webkit-scrollbar-thumb {
+
+        background: rgba(21, 0, 70, 0.904); /* Цвет полосы прокрутки */
+        border-radius: 15px 70px 70px 15px; /* Радиус скругления углов полосы */
+        
+    }
+
+
+
+    
+    
+    
+    
+    
+
+
+
+.history-header {
+    padding-bottom: 15px;
+    font-size: 18px;
+}
+
+
+
+
+/* Стили для содержимого истории изменений */
+.history-content {
+    font-weight: bold;
+    
+}
+
+/* Стили для даты */
+.date {
+    font-weight: bold;
+    color: #d5a8ff; /* Светло-фиолетовый цвет */
+    text-decoration: underline; /* Подчеркивание */
+    background-color: #190046a1;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+    border-radius: 15px;
+}
+
+
+/* Стили для описания изменения */
+.change {
+     
+    color: white; /* Белый цвет */
+    font-weight:300;
+    z-index: 301;
+}
+
+
+
+.usersOnline {
+    position: fixed;
+    font-family: 'Play';
+    font-size: 14px;
+    top: 25px;
+    left: 50%; /* Появление линии с середины контейнера */
+    transform: translateX(-50%); /* Центрирование линии */
+    z-index: 100;
+}
+
+
+
+
+.ym-counter-image {
+    position: fixed;
+    font-family: 'Play';
+    font-size: 14px;
+    top: 230px;
+    right: 51.5%;
+    width: 90px;
+    height: 15px;
+    padding: 4px;
+    color: azure;
+    background-color: rgba(53, 0, 168, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    opacity: 0.75;
+    z-index: 120;
+}
+
+.ym-counter-image::after {
+    content: ''; /* Обязательно для псевдоэлементов */
+      position: absolute;
+      top: 0%; /* Расположить подложку под элементом .quatrain */
+      left: 0;
+      width: 100%;
+      height: 100%; /* Высота подложки может быть на ваш выбор */
+      background: rgba(255, 255, 255, 0.1); /* Прозрачный фон */
+      border-radius: 15px;
+      backdrop-filter: blur(3px); /* Размытие подложки */
+      z-index: -1; /* Поместить подложку под элемент .quatrain */
+}
+
+
+
+.titleVisitors {
+    position: fixed;
+        top: 40px;
+        left: 0px;
+        
+        width: 90px;
+        margin-top: 20px;
+
+  padding: 5px;
+  padding-left: 17px;
+  padding-right: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.219);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.219);
+  border-right: 1px solid rgba(255, 255, 255, 0.219);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background: linear-gradient(to right, rgba(53, 0, 168, 0.541), rgba(53, 0, 168, 0)); /* Линейный градиент */
+  font-size: 9px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  opacity: 1;
+  z-index: 99;
+}
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+    .titleVisitors {
+        position: fixed;
+        top: 40px;
+        left: 0px;
+        
+        width: 90px;
+        margin-top: 20px;
+
+  padding: 5px;
+  padding-left: 17px;
+  padding-right: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.219);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.219);
+  border-right: 1px solid rgba(255, 255, 255, 0.219);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background: linear-gradient(to right, rgba(53, 0, 168, 0.541), rgba(53, 0, 168, 0)); /* Линейный градиент */
+  font-size: 9px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  opacity: 1;
+    }
+}
+
+.titleVisitors::after {
+content: ''; /* Обязательно для псевдоэлементов */
+    position: absolute;
+    top: 0%; /* Расположить подложку под элементом .quatrain */
+    left: 0;
+    width: 100%;
+    height: 100%; /* Высота подложки может быть на ваш выбор */
+    background: linear-gradient(to right, rgba(134, 134, 134, 0.295), rgba(53, 0, 168, 0)); /* Линейный градиент */
+
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    backdrop-filter: blur(3px); /* Размытие подложки */
+    z-index: -1; /* Поместить подложку под элемент .quatrain */
+
+}
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+.titleVisitors::after {
+    content: ''; /* Обязательно для псевдоэлементов */
+    position: absolute;
+    top: 0%; /* Расположить подложку под элементом .quatrain */
+    left: 0;
+    width: 100%;
+    height: 100%; /* Высота подложки может быть на ваш выбор */
+    background: linear-gradient(to right, rgba(134, 134, 134, 0.295), rgba(53, 0, 168, 0)); /* Линейный градиент */
+
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    backdrop-filter: blur(3px); /* Размытие подложки */
+    z-index: -1; /* Поместить подложку под элемент .quatrain */
+  }
+}
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .titleVisitors{
+        position: fixed;
+        top: 30px;
+        left: 0px;
+        
+        width: 90px;
+        margin-top: 20px;
+
+  padding: 5px;
+  padding-left: 17px;
+  padding-right: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.219);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.219);
+  border-right: 1px solid rgba(255, 255, 255, 0.219);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background: linear-gradient(to right, rgba(53, 0, 168, 0.541), rgba(53, 0, 168, 0)); /* Линейный градиент */
+  font-size: 9px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  opacity: 1;
+    }
+  }
+
+
+
+/* Стили для счетчика */
+.visitor-counter {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-family: 'Play', sans-serif;
+    font-size: 14px;
+    opacity: 0.8;
+    z-index: 99;
+  }
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+    .ym-counter-image {
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        opacity: 0.9;
+
+
+    }
+}
+
+.ym-counter-image {
+    position: fixed;
+    top: 25px;
+    left: 15px;
+    opacity: 0.9;
+}
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .ym-counter-image{
+        position: fixed;
+        top: 20px;
+        left: 15px;
+        opacity: 0.9;
+    }
+  }
+
+
+
+
+
+
+
+.ym-counter-link {
+    background-color: rgba(55, 0, 255, 0.774);
+    z-index: 121;
+}
+  
+  
+  
+
+
+.uPmH {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    margin-top: 60px;
+    margin-left: 20px;
+    font-family: 'Play', sans-serif;
+    background-color: rgba(53, 0, 168, 0.25);
+    color: gold; /* Золотой цвет текста */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s; /* Плавный переход цвета фона и текста при наведении */
+    z-index: 99;
+}
+
+  .uPmH::after {
+      content: ''; /* Обязательно для псевдоэлементов */
+      position: absolute;
+      top: 0%; /* Расположить подложку под элементом .quatrain */
+      left: 0;
+      width: 100%;
+      height: 100%; /* Высота подложки может быть на ваш выбор */
+      background: rgba(255, 255, 255, 0.1); /* Прозрачный фон */
+      border-radius: 15px;
+      backdrop-filter: blur(3px); /* Размытие подложки */
+      z-index: -1; /* Поместить подложку под элемент .quatrain */
+    }
+
+    @media only screen and (max-width: 600px) and (orientation: portrait) {
+        .uPmH {
+        left: -10px; /* Расположить блок справа */
+        font-size: 10px;      
+        }
+    }
+
+
+    .ExitRNT {
+        position: fixed;
+        top: 60px;
+        left: 205px;
+        background-color: rgba(0, 0, 0, 0.5); /* Черный цвет фона */
+        color: white; /* Белый цвет текста */
+        border: 1px solid rgba(134, 134, 134, 0.521); /* Убираем границу */
+        border-radius: 15px; /* Закругленные углы */
+        padding: 10px 20px; /* Внутренний отступ */
+        font-size: 16px; /* Размер шрифта */
+        cursor: pointer; /* Изменяем курсор при наведении */
+        transition: background-color 0.2s, color 0.3s, padding 0.2s; /* Плавные переходы */
+        z-index: 99;
+    }
+
+    .ExitRNT:hover {
+        border: 1px solid rgba(76, 0, 255, 0.63); /* Убираем границу */
+        background-color: rgb(62, 0, 179); /* Белый цвет фона при наведении */
+        color: rgb(255, 255, 255); /* Черный цвет текста при наведении */
+    }
+    
+    .ExitRNT:active {
+        color: rgb(195, 0, 255); /* Белый цвет текста */
+        background-color: rgb(97, 55, 177); /* Белый цвет фона при наведении */
+    }
+
+
+
+
+
+    h1 {
+        font-family: "Play";
+        font-size: 20px;
+        color: white;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+
+    .popup {
+        position: fixed;
+        top: 145px; /* Отступ сверху */
+        left: 20px; /* Отступ слева */
+        padding: 15px;
+        background-color: rgba(53, 0, 168, 0.25);
+        color: black; /* Цвет текста черный */
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, color 0.3s; /* Плавный переход цвета фона и текста при наведении */
+        z-index: 99;
+        display: none;
+    }
+
+    .popup::after {
+        content: ''; /* Обязательно для псевдоэлементов */
+        position: absolute;
+        top: 0%; /* Расположить подложку под элементом .quatrain */
+        left: 0;
+        width: 100%;
+        height: 100%; /* Высота подложки может быть на ваш выбор */
+        background: rgba(255, 255, 255, 0.1); /* Прозрачный фон */
+        border-radius: 15px;
+        backdrop-filter: blur(3px); /* Размытие подложки */
+        z-index: -1; /* Поместить подложку под элемент .quatrain */
+      }
+    
+    
+    /* Медиа-запрос для портретного режима */
+    @media (orientation: portrait) {
+        .popup {
+            display: none;
+        }
+    }
+    
+    .inputText {
+        width: calc(100% - 25px); /* Учитываем отступы по 20px с каждой стороны */
+        padding: 10px;
+        margin-top: 10px;
+        font-family: "Play";
+        color: rgb(255, 255, 255);
+        border: 2px solid rgb(134, 134, 134); /* Лавандовая рамка */
+        border-radius: 8px; /* Закругленные углы */
+        background-color: rgba(22, 22, 22, 0.8); /* Лавандовый цвет с полупрозрачностью */
+        z-index: 171; /* Индекс слоя */
+        transition: border-color 0.5s;
+    }
+    
+    /* Стиль при наведении */
+    .inputText:hover {
+        border-color: rgb(149, 0, 255); /* Фиолетовый цвет */
+    }
+    
+    /* Стиль при фокусе */
+    .inputText:focus {
+        border-color: rgb(255, 0, 255); /* Темно-фиолетовый цвет */
+    }
+
+
+
+
+
+
+    .encryptedText {
+        width: calc(100% - 25px); /* Учитываем отступы по 20px с каждой стороны */
+        padding: 10px;
+        color: rgb(234, 0, 255);
+        margin-top: 10px;
+        font-family: "Play";
+        border: 2px solid rgb(134, 134, 134); /* Лавандовая рамка */
+        border-radius: 8px; /* Закругленные углы */
+        background-color: rgba(22, 22, 22, 0.8); /* Лавандовый цвет с полупрозрачностью */
+        z-index: 171; /* Индекс слоя */
+        transition: border-color 0.5s;
+    }
+    
+    /* Стиль при наведении */
+    .encryptedText:hover {
+        border-color: rgb(149, 0, 255); /* Фиолетовый цвет */
+    }
+    
+    /* Стиль при фокусе */
+    .encryptedText:focus {
+        border-color: rgb(255, 0, 255); /* Темно-фиолетовый цвет */
+    }
+    
+    
+    
+    .encryptText {
+
+        background-color: rgba(0, 0, 0, 0.5); /* Черный цвет фона */
+        color: white; /* Белый цвет текста */
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        border: 1px solid rgba(134, 134, 134, 0.521); /* Убираем границу */
+        border-radius: 15px; /* Закругленные углы */
+        padding: 10px 20px; /* Внутренний отступ */
+        font-family: 'Play';
+        font-size: 16px; /* Размер шрифта */
+        cursor: pointer; /* Изменяем курсор при наведении */
+        transition: background-color 0.2s, color 0.3s, padding 0.2s; /* Плавные переходы */
+        z-index: 400;
+    }
+    
+    .encryptText:hover {
+        border: 1px solid rgba(76, 0, 255, 0.63); /* Убираем границу */
+        background-color: rgb(62, 0, 179); /* Белый цвет фона при наведении */
+        color: rgb(255, 255, 255); /* Черный цвет текста при наведении */
+    }
+    
+    .encryptText:active {
+        color: rgb(195, 0, 255); /* Белый цвет текста */
+        background-color: rgb(97, 55, 177); /* Белый цвет фона при наведении */
+    }
+
+
+
+
+
+
+    .contentContainer {
+        position: fixed;
+        top: 145px; /* Отступ сверху */
+        left: 435px; /* Отступ слева */
+        width: 610px;
+        padding: 15px;
+        font-family: 'Play';
+        font-size: 16px;
+        background-color: rgba(53, 0, 168, 0.25);
+        color: rgb(255, 255, 255); /* Цвет текста черный */
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, color 0.3s; /* Плавный переход цвета фона и текста при наведении */
+        z-index: 99;
+
+    }
+
+    .contentContainer::after {
+        content: ''; /* Обязательно для псевдоэлементов */
+        position: absolute;
+        top: 0%; /* Расположить подложку под элементом .quatrain */
+        left: 0;
+        width: 100%;
+        height: 100%; /* Высота подложки может быть на ваш выбор */
+        background: rgba(255, 255, 255, 0.1); /* Прозрачный фон */
+        border-radius: 15px;
+        backdrop-filter: blur(3px); /* Размытие подложки */
+        z-index: -1; /* Поместить подложку под элемент .quatrain */
+      }
+    
+    
+    /* Медиа-запрос для портретного режима */
+    @media (orientation: portrait) {
+        .contentContainer {
+            display: none;
+        }
+    }
+
+
+/* Стили для ненажатой ссылки */
+.directoryLink {
+    font-family: 'Play';
+    color: white; /* Белый цвет текста */
+    text-decoration: underline; /* Подчеркивание */
+}
+
+/* Стили для нажатой ссылки */
+.directoryLink:active {
+    color: rgb(172, 137, 255); /* Бледно-синий цвет текста */
+    text-decoration: underline; /* Подчеркивание */
+}
+
+
+
+
+
+
+
+    
+    
+
+
+.container {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+
+    width: 46%;
+    max-width: 46%;
+    height: 92.5%;
+    text-align: center;
+    padding: 20px;
+    color: white;
+    overflow: hidden; /* Скрытие содержимого, выходящего за пределы контейнера */
+    overflow-y: auto; /* Включаем вертикальную прокрутку при необходимости */
+    /* Градиентный фон */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px 0px 0px 15px;
+    z-index: 3;
+    transition: background 0.5s linear, height 0.5s ease, width 0.5s ease; /* Длительность и тип анимации для изменения цвета фона, высоты и ширины */
+}
+
+.container::after {
+    content: ''; /* Обязательно для псевдоэлементов */
+    position: absolute;
+    top: 0%; /* Расположить подложку под элементом .container */
+    left: 0;
+    width: 100%;
+    height: 120%; /* Высота подложки может быть на ваш выбор */
+    background: rgba(255, 255, 255, 0.1); /* Прозрачный фон */
+    border-radius: 15px 0px 0px 15px;
+    backdrop-filter: blur(3px); /* Размытие подложки */
+    z-index: -1; /* Поместить подложку под элемент .quatrain */
+  }
+
+  
+
+
+.line {
+    position: fixed;
+    bottom: 0;
+    left: 50%; /* Появление линии с середины контейнера */
+    transform: translateX(-50%); /* Центрирование линии */
+    width: 0; /* Начальная ширина линии */
+    height: 4px; /* Высота линии */
+    background: linear-gradient(to left, rgba(95, 0, 163, 0.8) 0%, rgba(148, 0, 211, 0.8) 50%, rgba(95, 0, 163, 0.8) 100%); /* Градиент цвета линии */
+    z-index: 4;    
+    transition: width 1s linear; /* Длительность и тип анимации */
+}
+
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+    .line {
+
+        display: none;
+        
+        
+        
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .line {
+        display: none;
+    }
+  }
+
+
+@keyframes growShrink {
+    0% {
+        width: 0; /* Начальная ширина линии (нулевая) */
+    }
+    50% {
+        width: 100%; /* Линия достигает максимальной ширины */
+    }
+    100% {
+        width: 0; /* Линия снова уменьшается до нуля */
+    }
+}
+
+
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+    .container {
+        position: fixed;
+        top: 49.75vh;
+        left: 0;
+        transform: translateX(-5%);
+        width: calc(100% - 12px);
+        height: 50%;
+        max-width: none;
+        text-align: center;
+        padding: 20px;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1), #3e2723);
+        color: white;
+        overflow-y: auto; /* Включаем вертикальную прокрутку при необходимости */
+        border: 1px solid rgba(0, 0, 0, 0);
+        border-radius: 0px;
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .container{
+        bottom: auto;
+        top: 5px;
+        left: 51.5%;
+        transform: translateX(-0%);
+        position: fixed;
+        width: 46.5%; /* Занимаем всю доступную ширину */
+        height: 96%;
+        
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        overflow-y: auto; /* Включаем вертикальную прокрутку при необходимости */
+        padding: 5px;
+    }
+  }
+
+  @media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .container:after{
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        height: 200%;
+    }
+  }
+
+
+  .container::-webkit-scrollbar {
+    width: 12px; /* Ширина полосы прокрутки */
+    border: 1px solid rgba(174, 0, 255, 0);
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    z-index: 80;
+}
+
+  @media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .container::-webkit-scrollbar {
+        width: 12px; /* Ширина полосы прокрутки */
+        border: 1px solid rgba(174, 0, 255, 0);
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        z-index: 80;
+    }
+  }
+
+  .container::-webkit-scrollbar-track {
+
+        
+    background: rgba(173, 173, 173, 0.315); /* Цвет фона трека */
+    border-top-right-radius: 0px; /* Закругление нижнего правого угла */
+    border-bottom-right-radius: 0px; /* Закругление нижнего правого угла */
+}
+
+  @media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .container::-webkit-scrollbar-track {
+
+        
+        background: rgba(173, 173, 173, 0.315); /* Цвет фона трека */
+        border-top-right-radius: 0px; /* Закругление нижнего правого угла */
+        border-bottom-right-radius: 0px; /* Закругление нижнего правого угла */
+    }
+  }
+
+  .container::-webkit-scrollbar-thumb {
+
+    background: rgba(0, 0, 0, 0.534); /* Цвет полосы прокрутки */
+    
+}
+
+  @media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .container::-webkit-scrollbar-thumb {
+
+        background: rgba(0, 0, 0, 0.534); /* Цвет полосы прокрутки */
+        
+    }
+  }
+
+
+
+
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+.container::after {
+    content: ''; /* Обязательно для псевдоэлементов */
+    position: fixed;
+    top: 0%; /* Расположить подложку под элементом .container */
+    left: 0;
+    width: 100%;
+    height: 80vh; /* Высота подложки может быть на ваш выбор */
+    background: rgba(255, 255, 255, 0.1); /* Прозрачный фон */
+    border-radius: 0px;
+    backdrop-filter: blur(3px); /* Размытие подложки */
+    z-index: -1; /* Поместить подложку под элемент .quatrain */
+    
+  }
+}
+
+@media only screen and (max-width: 800px) and (orientation: portrait) {
+    .container::-webkit-scrollbar {
+        width: 17px; /* Ширина полосы прокрутки */
+        border: 1px solid rgba(174, 0, 255, 0);
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        z-index: 80;
+    }
+}
+
+@media only screen and (max-width: 800px) and (orientation: portrait) {
+    .container::-webkit-scrollbar-track {
+
+        
+        background: rgba(173, 173, 173, 0.315); /* Цвет фона трека */
+        border-top-right-radius: 0px; /* Закругление нижнего правого угла */
+        border-bottom-right-radius: 0px; /* Закругление нижнего правого угла */
+    }
+}
+
+@media only screen and (max-width: 800px) and (orientation: portrait) {
+    .container::-webkit-scrollbar-thumb {
+
+        background: rgba(0, 0, 0, 0.534); /* Цвет полосы прокрутки */
+        
+    }
+}
+
+
+
+.video-player {
+    position: fixed;
+    top: 5%;
+    left: 50%;
+    width: 50%;
+    height: 50%;
+    object-fit: cover; /* Заполняем видео в контейнере, сохраняя пропорции */
+    box-shadow: 0 0 180px 180px rgba(0, 0, 0, 0.9); /* Тень */
+    opacity: 0.25; /* Прозрачность в 50% */
+    z-index: -1;
+  }
+
+
+
+
+  @media only screen and  (max-width: 600px) and (orientation: portrait) {
+    .video-player {
+        position: fixed;
+        width: 100%;
+    height: 42.5%;
+    object-fit: cover; /* Заполняем видео в контейнере, сохраняя пропорции */
+        top: 57%;
+
+
+        left: 0px;
+        opacity: 1; /* Прозрачность в 50% */
+        z-index: -1;
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .video-player {
+        position: fixed;
+        top: 80px;
+        left: 100px;
+        box-shadow: 0 0 80px 80px rgba(0, 0, 0, 0.9); /* Тень */
+    }
+}
+
+
+.message-content {
+    position: fixed;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 110px;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0));
+    color: white;
+    padding: 0px;
+     display: none;
+    z-index: -1;
+  }
+
+
+.image {
+    margin-top: 1vh;
+    margin-bottom: auto;
+    border: 1px transparent;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    
+    z-index: 2;
+    transition: all 0.5s;
+
+}
+
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+    .image {
+        position: fixed; /* Фиксируем положение картинки */
+        top: 0.5vh; /* Размещаем картинку вверху экрана */
+        left: 0; /* Размещаем картинку в самом левом положении */
+        width: 100%; /* Занимаем всю доступную ширину */
+        height: auto; /* Автоматически подстраиваем высоту */
+        max-height: none; /* Отменяем ограничение на максимальную высоту */
+        max-width: none; /* Отменяем ограничение на максимальную ширину */
+        transform: none; /* Отменяем transform для мобильных устройств */
+    }
+}
+
+
+
+
+
+
+
+.time {
+
+    font-size: 2rem;
+    font-family: 'Orbitron', sans-serif; /* Используем шрифт Orbitron для времени */
+    background-color: #00000000;
+    margin: 0 auto; /* Центрируем текст по горизонтали */
+    text-shadow: 
+        2px 2px 5px rgba(48, 48, 48, 0.5), /* Тень вправо-вниз */
+        -2px -2px 5px rgba(48, 48, 48, 0.5), /* Тень влево-вверх */
+        2px -2px 5px rgba(48, 48, 48, 0.5), /* Тень вправо-вверх */
+        -2px 2px 5px rgba(48, 48, 48, 0.5); /* Тень влево-вниз */
+}
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+    .time {
+        position: relative;
+        left: 12px;
+        
+    }
+}
+
+
+
+.moscow-time {
+
+    background-color: #00000000;
+    font-size: 0.75rem;
+    font-family: 'Play', sans-serif; /* Используем шрифт Orbitron для времени */
+    color: rgb(195, 195, 195);
+    text-shadow: 
+        2px 2px 5px rgba(48, 48, 48, 0.5), /* Тень вправо-вниз */
+        -2px -2px 5px rgba(48, 48, 48, 0.5), /* Тень влево-вверх */
+        2px -2px 5px rgba(48, 48, 48, 0.5), /* Тень вправо-вверх */
+        -2px 2px 5px rgba(48, 48, 48, 0.5); /* Тень влево-вниз */
+}
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+    .moscow-time {
+        position: relative;
+        left: 12px;
+        
+    }
+}
+
+
+
+.text {
+
+    font-size: 1.1rem;
+    margin-top: 20px;
+    width: 80%;
+    height: 100%;
+    max-width: 1100px; /* Ограничиваем максимальную ширину текста */
+    margin: 0 auto; /* Центрируем текст по горизонтали */
+    text-align: center; /* Выравниваем текст по центру */
+    line-height: 1.5; /* Добавляем расстояние между строками */
+    animation: slideGradient 10s infinite cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'Play', sans-serif;
+    /* Добавляем более равномерные и менее сильные тени во все стороны */
+    text-shadow: 
+        2px 2px 3px rgba(48, 48, 48, 0.1), /* Тень вправо-вниз */
+        -2px -2px 3px rgba(48, 48, 48, 0.1), /* Тень влево-вверх */
+        2px -2px 3px rgba(48, 48, 48, 0.1), /* Тень вправо-вверх */
+        -2px 2px 3px rgba(48, 48, 48, 0.1); /* Тень влево-вниз */
+}
+
+
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+    .text {
+        position: relative;
+        left: 12px;
+        font-family: 'Play', sans-serif; /* Используем шрифт Play для остального текста */
+        font-size: 0.8rem;
+        width: 85vw;
+        text-shadow: 
+        1px 1px 1px rgba(48, 48, 48, 0.1), /* Тень вправо-вниз */
+        -1px -1px 1px rgba(48, 48, 48, 0.1), /* Тень влево-вверх */
+        1px -1px 1px rgba(48, 48, 48, 0.1), /* Тень вправо-вверх */
+        -1px 1px 1px rgba(48, 48, 48, 0.1); /* Тень влево-вниз */
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .text {
+        font-size: 0.9rem;
+
+    }
+  }
+
+
+
+
+.text .animated {
+    background: radial-gradient(circle, rgb(255, 131, 255), rgb(255, 131, 255));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: block;
+    animation: slideGradient 10s infinite cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'Play', sans-serif; /* Используем шрифт Play для остального текста */
+    text-transform: uppercase; /* Преобразуем весь текст в заглавные буквы */
+    font-weight: bold; /* Делаем текст жирным */
+}
+
+@keyframes slideGradient {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+
+
+
+#audioPlayer {
+  position: fixed;
+  top: 20px; /* Регулируйте отступ от верхнего края страницы */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10; /* Убедитесь, что плеер находится поверх других элементов */
+}
+
+#audioPlayer audio {
+  width: 100%; /* Позволяет аудиоплееру занимать всю доступную ширину контейнера */
+}
+
+#audioPlayer controls {
+  width: 100%; /* Позволяет кнопкам управления занимать всю доступную ширину контейнера */
+}
+
+
+
+
+
+
+/* Основной стиль кнопки */
+    #audioButton {
+        position: fixed; /* Фиксированное позиционирование */
+        bottom: 25px;  /* Отступ от нижней границы вьюпорта */
+        left: calc(50% + 15px); /* Отступ от левой границы вьюпорта */
+        width: 50px; /* Ширина кнопки */
+        height: 50px; /* Высота кнопки */
+        border-radius: 50%; /* Круглая форма */
+        background-color: rgba(128, 0, 128, 0.1); /* Фиолетовый цвет с полупрозрачностью */
+        color: rgba(255, 255, 255, 0.5); /* Цвет иконки с альфа-каналом 0.7 */
+        font-size: 24px; /* Размер иконки */
+        border: 1px solid rgba(128, 0, 128, 0.8); /* Тонкий бордер с альфа-каналом 0.5 */
+        cursor: pointer; /* Устанавливаем курсор в виде указателя */
+        backdrop-filter: blur(5px); /* Применяем размытие к контейнеру */
+        transition: all 0.3s; /* Плавный переход  */
+        z-index: 750;
+    }
+
+
+
+
+/* Стиль для включенной кнопки */
+#audioButton.enabled {
+    background-color: rgba(128, 0, 128, 0.5); /* Цвет заднего фона при включенной кнопке */
+}
+
+/* Медиа-запрос для портретного режима */
+@media (orientation: portrait) {
+    #audioButton {
+        bottom: 20px;
+        left: 15px; 
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    #audioButton {
+        bottom: 15px;
+        left: calc(51% + 15px); /* Отступ от левой границы вьюпорта */
+    }
+}
+
+
+
+.image-button {
+    position: fixed; /* Фиксированное позиционирование */
+    bottom: 25px;  /* Отступ от нижней границы вьюпорта */
+    left: calc(50% + 75px);
+    width: 50px; /* Ширина кнопки */
+    height: 50px; /* Высота кнопки */
+    border-radius: 50%; /* Круглая форма */
+    background-color: rgba(128, 0, 128, 0.1); /* Фиолетовый цвет с полупрозрачностью */
+    color: rgba(255, 255, 255, 0.5); /* Цвет иконки с альфа-каналом 0.7 */
+    font-size: 24px; /* Размер иконки */
+    border: 1px solid rgba(128, 0, 128, 0.8); /* Тонкий бордер с альфа-каналом 0.5 */
+    cursor: pointer; /* Устанавливаем курсор в виде указателя */
+    transition: all 0.3s; /* Плавный переход  */
+    z-index: 750;
+    display: flex; /* Используем flexbox для центрирования */
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: center; /* Центрирование по вертикали */
+    backdrop-filter: blur(5px); /* Применяем размытие к контейнеру */
+}
+
+
+/* Стиль для включенной кнопки */
+#imageButton.enabled {
+    background-color: rgba(128, 0, 128, 0.5); /* Цвет заднего фона при включенной кнопке */
+}
+
+/* Стиль для кнопки, когда она в состоянии disabled */
+.image-button:disabled {
+    background-color: rgba(48, 48, 48, 0.1); /* Фоновый цвет кнопки при disabled */
+    color: rgba(255, 255, 255, 0.3); /* Цвет иконки при disabled */
+    border: 1px solid rgba(173, 173, 173, 0.185); /* Бордер при disabled */
+    cursor: not-allowed; /* Курсор в режиме not-allowed при disabled */
+    pointer-events: none; /* Отключаем события мыши при disabled */
+    opacity: 0.9; /* Прозрачность при disabled */
+}
+
+/* Медиа-запрос для портретного режима */
+@media (orientation: portrait) {
+    #imageButton {
+        bottom: 20px;
+        left: 75px; /* Отступ от правой границы в портретном режиме */
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    #imageButton {
+        bottom: 15px;
+        left: calc(51% + 75px);
+    }
+}
+
+
+
+
+
+
+
+.hamburger-button {
+    position: fixed;
+    bottom: 25px;
+    left: calc(100% - 177px);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(128, 0, 128, 0.1);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 24px;
+    border: 1px solid rgba(128, 0, 128, 0.8);
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 750;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px); /* Применяем размытие к контейнеру */
+}
+
+/* Стиль для включенной кнопки */
+.hamburger-button.enabled {
+    background-color: rgba(128, 0, 128, 0.5);
+}
+
+/* Стиль для кнопки, когда она в состоянии disabled */
+.hamburger-button:disabled {
+    background-color: rgba(48, 48, 48, 0.1);
+    color: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(173, 173, 173, 0.185);
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.9;
+}
+
+/* Медиа-запрос для портретного режима */
+@media (orientation: portrait) {
+    .hamburger-button {
+        bottom: 20px;
+        left: calc(100% - 137px);
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    .hamburger-button {
+        bottom: 15px;
+        left: calc(100% - 150px);
+    }
+}
+
+.menu-container {
+    position: fixed;
+    display: flex; /* Размещаем элементы в контейнере в одну колонку */
+        flex-direction: column; /* Отображаем элементы вертикально по очереди */
+        justify-content: top; /* Выравниваем элементы по вертикали по центру */
+        align-items: center; /* Выравниваем элементы по горизонтали по центру */
+    top: 50%; /* Располагаем контейнер по вертикали посередине */
+    left: 50%; /* Располагаем контейнер по горизонтали посередине */
+    transform: translate(-50%, -50%); /* Центрируем контейнер */
+    width: 25%; /* Ширина контейнера 80% экрана */
+    height: 50%; /* Высота контейнера 75% экрана */
+    background-color: rgba(45, 0, 128, 0.7); /* Полупрозрачное темно-лавандовое окно */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px; /* Закругляем углы контейнера */
+    font-family: 'Play';
+    padding: 20px; /* Внутренний отступ контейнера */
+    backdrop-filter: blur(12px); /* Применяем размытие к контейнеру */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Тень для контейнера */
+    overflow-y: auto; /* Разрешаем вертикальную прокрутку */
+    z-index: 100; /* Устанавливаем контейнер поверх остального контента */
+}
+
+@media (orientation: portrait) {
+    .menu-container {
+        position: fixed;
+        width: 80%; /* Ширина контейнера 80% экрана */
+        height: 70%; /* Высота контейнера 75% экрана */
+        backdrop-filter: blur(5px); /* Применяем размытие к контейнеру */
+        
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    .menu-container {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        transform: translate(-0%, -0%); /* Центрируем контейнер */
+        width: 30%; /* Ширина контейнера 80% экрана */
+        height: 56%; /* Высота контейнера 75% экрана */
+        backdrop-filter: blur(5px); /* Применяем размытие к контейнеру */
+        z-index: 500;
+        
+    }
+}
+
+
+
+.menu-container::-webkit-scrollbar {
+    width: 12px; /* Ширина полосы прокрутки */
+    border: 1px solid rgba(174, 0, 255, 0);
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    z-index: 299; /* Индекс слоя */
+}
+
+
+
+.menu-container::-webkit-scrollbar-track {
+
+    
+    background: rgba(39, 0, 29, 0.068); /* Цвет фона трека */
+    border-top-right-radius: 15px; /* Закругление нижнего правого угла */
+    border-bottom-right-radius: 15px; /* Закругление нижнего правого угла */
+    background-clip: padding-box; /* Область отображения фона */
+    backdrop-filter: blur(9px); /* Размытие подложки */
+    
+}
+
+
+
+.menu-container::-webkit-scrollbar-thumb {
+
+    background: rgba(21, 0, 70, 0.904); /* Цвет полосы прокрутки */
+    border-radius: 15px 70px 70px 15px; /* Радиус скругления углов полосы */
+    
+}
+
+
+
+
+
+
+
+
+
+
+#table-container {
+    width: 0; /* Ширина */
+    height: 70vh; /* Высота */
+    position: fixed; /* Фиксированное позиционирование */
+    max-height: 70vh; /* Максимальная высота */
+    top: 25%; /* Положение сверху */
+    left: 50%; /* Положение слева */
+    transform: translate(-50%, -25%); /* Позиционирование по центру */
+    /* Добавляем прокрутку, если содержимое выходит за пределы контейнера */
+    overflow: auto;
+    /* Обрезаем содержимое, если оно выходит за пределы контейнера */
+    overflow-x: hidden; /* Обрезаем содержимое по горизонтали */
+    overflow-y: auto; /* Разрешаем вертикальную прокрутку */
+    /* Добавляем стили для обрезки содержимого, если оно выходит за пределы */
+    border: 2px solid rgba(128, 0, 128, 0.8); /* Темно-фиолетовая рамка */
+    border-radius: 20px; /* Более сильное закругление */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* Тень */
+    background-color: rgba(128, 0, 128, 0.2); /* Фоновый цвет */
+    background-clip: padding-box; /* Область отображения фона */
+    backdrop-filter: blur(5px); /* Эффект размытия заднего плана */
+    z-index: 99; /* Индекс слоя */
+    opacity: 0; /* Начальное значение прозрачности */
+    transition: width 0.5s, opacity 0.5s; /* Добавляем CSS-транзицию для ширины и прозрачности */
+}
+
+/* Применяем стили после создания элемента */
+#table-container.show {
+    width: 65%; /* Ширина */
+    height: 70vh; /* Высота */
+    opacity: 1; /* Устанавливаем полную прозрачность при отображении */
+}
+
+/* Дополнительные стили для портретного режима */
+@media screen and (orientation: portrait) {
+    #table-container.show {
+        width: 95%; /* Увеличиваем ширину в портретном режиме */
+        height: 80vh; /* Высота */
+    }
+}
+
+
+#my-table.unique-table {
+    position: fixed; /* Фиксированное позиционирование */
+    max-height: 70vh; /* Максимальная высота */
+    top: 0%; /* Положение сверху */
+    left: 50%; /* Положение слева */
+    transform: translate(-50%, -0%); /* Позиционирование по центру */
+    width: calc(100% - 12px); /* Ширина */
+    height: 100%; /* Высота */
+    padding: 10px; /* Отступы */
+    z-index: 100; /* Индекс слоя */
+}
+
+
+#table-container::-webkit-scrollbar {
+    width: 12px; /* Ширина полосы прокрутки */
+    border: 1px solid rgba(174, 0, 255, 0);
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    
+}
+
+#table-container::-webkit-scrollbar-track {
+    background: rgba(39, 0, 29, 0.226); /* Цвет фона трека */
+    border-top-right-radius: 15px; /* Закругление нижнего правого угла */
+    border-bottom-right-radius: 15px; /* Закругление нижнего правого угла */
+    background-clip: padding-box; /* Область отображения фона */
+    z-index: 95; /* Индекс слоя */
+}
+
+#table-container::-webkit-scrollbar-thumb {
+    background: rgba(128, 0, 128, 0.8); /* Цвет полосы прокрутки */
+    border-radius: 15px 70px 70px 15px; /* Радиус скругления углов полосы */
+}
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+    #table-container {
+        width: 0%; /* Ширина */
+        height: 85%; /* Высота */
+        position: fixed; /* Фиксированное позиционирование */
+        max-height: 85%; /* Максимальная высота */
+        top: 10%; /* Положение сверху */
+        left: 50%; /* Положение слева */
+        transform: translate(-50%, -10%); /* Позиционирование по центру */
+        /* Добавляем прокрутку, если содержимое выходит за пределы контейнера */
+        overflow: auto;
+        /* Обрезаем содержимое, если оно выходит за пределы контейнера */
+        overflow-x: hidden; /* Обрезаем содержимое по горизонтали */
+        overflow-y: auto; /* Разрешаем вертикальную прокрутку */
+        /* Добавляем стили для обрезки содержимого, если оно выходит за пределы */
+        border: 2px solid rgba(128, 0, 128, 0.8); /* Темно-фиолетовая рамка */
+        border-radius: 20px; /* Более сильное закругление */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* Тень */
+        background-color: rgba(128, 0, 128, 0.2); /* Фоновый цвет */
+        background-clip: padding-box; /* Область отображения фона */
+        backdrop-filter: blur(5px); /* Эффект размытия заднего плана */
+        z-index: 99; /* Индекс слоя */
+        font-size: 0.8rem; /* Уменьшенный размер текста */
+    }
+}
+
+
+
+.special-button {
+    position: fixed; /* Фиксированное позиционирование */
+    bottom: 25px;  /* Отступ от нижней границы вьюпорта */
+    left: calc(50% + 135px);
+    width: 50px; /* Ширина кнопки */
+    height: 50px; /* Высота кнопки */
+    border-radius: 50%; /* Круглая форма */
+    background-color: rgba(128, 0, 128, 0.1); /* Фиолетовый цвет с полупрозрачностью */
+    color: rgba(255, 255, 255, 0.5); /* Цвет иконки с альфа-каналом 0.7 */
+    font-size: 24px; /* Размер иконки */
+    border: 1px solid rgba(128, 0, 128, 0.8); /* Тонкий бордер с альфа-каналом 0.5 */
+    cursor: pointer; /* Устанавливаем курсор в виде указателя */
+    transition: all 0.3s; /* Плавный переход  */
+    z-index: 750;
+    display: flex; /* Используем flexbox для центрирования */
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: center; /* Центрирование по вертикали */
+    backdrop-filter: blur(5px); /* Применяем размытие к контейнеру */
+}
+
+.special-button:hover {
+    width: 260px; /* Увеличиваем ширину кнопки при наведении */
+    border-radius: 15px; /* Увеличиваем радиус скругления углов при наведении */
+    background-color: rgba(138, 43, 226, 0.8); /* Полупрозрачный темно-фиолетовый фон */
+}
+
+.special-button:hover::after {
+    content: "Версия для печати"; /* Текст, который будет отображаться при наведении */
+    color: rgba(255, 255, 255, 1); /* Цвет иконки с альфа-каналом 0.7 */
+    white-space: nowrap; /* Предотвращаем перенос текста на новую строку */
+}
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+.special-button {
+    bottom: 20px;  /* Отступ от нижней границы вьюпорта */
+    left: 135px; /* Отступ от правой границы вьюпорта */
+
+}
+}
+
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .special-button {
+        bottom: 15px;
+        left: calc(51% + 135px);
+    }
+}
+
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+.special-button:hover {
+    width: 200px; /* Увеличиваем ширину кнопки при наведении */
+    font-size: 19px; /* Размер иконки */
+}
+}
+
+
+
+
+
+.andromeda-button {
+    position: fixed; /* Фиксированное позиционирование */
+    bottom: 25px;  /* Отступ от нижней границы вьюпорта */
+    right: 65px; /* Отступ от правой границы вьюпорта */
+    width: 50px; /* Ширина кнопки */
+    height: 50px; /* Высота кнопки */
+    border-radius: 50%; /* Круглая форма */
+    background-color: rgba(128, 0, 128, 0.1); /* Фиолетовый цвет с полупрозрачностью */
+    color: rgba(255, 255, 255, 0.5); /* Цвет иконки с альфа-каналом 0.7 */
+    font-size: 24px; /* Размер иконки */
+    border: 1px solid rgba(128, 0, 128, 0.8); /* Тонкий бордер с альфа-каналом 0.5 */
+    cursor: pointer; /* Устанавливаем курсор в виде указателя */
+    transition: all 0.3s; /* Плавный переход  */
+    z-index: 750;
+    display: flex; /* Используем flexbox для центрирования */
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: center; /* Центрирование по вертикали */
+    backdrop-filter: blur(5px); /* Применяем размытие к контейнеру */
+}
+
+/* Стиль для включенной кнопки */
+#andromeda-button.enabled {
+    background-color: rgba(128, 0, 128, 0.5); /* Цвет заднего фона при включенной кнопке */
+}
+
+/* Стиль для кнопки, когда она в состоянии disabled */
+.andromeda-button:disabled {
+    background-color: rgba(48, 48, 48, 0.1); /* Фоновый цвет кнопки при disabled */
+    color: rgba(255, 255, 255, 0.3); /* Цвет иконки при disabled */
+    border: 1px solid rgba(173, 173, 173, 0.185); /* Бордер при disabled */
+    cursor: not-allowed; /* Курсор в режиме not-allowed при disabled */
+    pointer-events: none; /* Отключаем события мыши при disabled */
+    opacity: 0.9; /* Прозрачность при disabled */
+}
+
+@media screen and (orientation: portrait) and (max-width: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .andromeda-button {
+        bottom: 20px;
+        right: 25px; 
+    }
+}
+
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .andromeda-button {
+        bottom: 15px;
+        right: 40px; 
+    }
+}
+
+
+
+.quatrain {
+  font-family: Play, sans-serif;
+  font-size: 14px;
+  line-height: 0.2;
+  margin-top: 20px;
+  margin-right: 20px;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  background-color: rgba(53, 0, 168, 0.25);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed; /* Зафиксировать блок */
+  right: 50.5%;
+  top: 1%;
+  transition: background-color 0.3s, color 0.3s; /* Плавный переход цвета фона и текста при наведении */
+  z-index: 99;
+}
+
+.quatrain::after {
+    content: ''; /* Обязательно для псевдоэлементов */
+    position: absolute;
+    top: 0%; /* Расположить подложку под элементом .quatrain */
+    left: 0;
+    width: 100%;
+    height: 100%; /* Высота подложки может быть на ваш выбор */
+    background: rgba(255, 255, 255, 0.1); /* Прозрачный фон */
+    border-radius: 15px;
+    backdrop-filter: blur(3px); /* Размытие подложки */
+    z-index: -1; /* Поместить подложку под элемент .quatrain */
+  }
+  
+  
+
+/* Медиа-запрос для портретного режима */
+@media (orientation: portrait) {
+    #quatrain {
+  right: -10px; /* Расположить блок справа */
+  font-size: 10px; 
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .quatrain {
+        right: 50%;
+        top: 1%;
+        font-size: 9px; 
+        padding: 10px;
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+  }
+
+
+  
+
+
+.quatrain:hover {
+  background-color: rgba(53, 0, 168, 0.51); /* Изменяем цвет фона при наведении */
+}
+
+.quatrain-link {
+  text-decoration: none; /* Убираем подчеркивание ссылки */
+  color: white; /* Цвет текста ссылки */
+  cursor: pointer; /* Изменяем курсор при наведении */
+}
+
+.quatrain-link:hover {
+  text-decoration: none; /* Убираем подчеркивание ссылки при наведении */
+  color: gold; /* Изменяем цвет текста на золотой при наведении */
+}
+
+
+.scrollbar {
+    width: 10px;
+    background-color: rgba(128, 0, 128, 0.5);
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 110; /* Поднимаем скроллбар выше текста */
+  }
+  
+  /* При наведении курсора показываем полоску прокрутки */
+  .parent:hover .scrollbar {
+    opacity: 1;
+  }
+  
+
+  .image-container {
+    left: 5px;
+    top: 5px;
+    position: fixed;
+    overflow: hidden; /* Обрезает все, что выходит за пределы контейнера */
+    /* Другие параметры изображения */
+    box-shadow: 5px 0 10px rgba(0, 0, 0, 0.5), -5px 0 10px rgba(0, 0, 0, 0.5); /* Тень от левой и правой стороны */
+    height: 98%;
+    width: 49%;
+    max-width: 49%;
+    border-radius: 15px;
+}
+
+
+
+
+.image-container img {
+    display: block;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Чтобы изображение занимало всю область */
+}
+
+/* Медиа-запрос для портретного режима */
+@media (orientation: portrait) {
+    .image-container img {
+        height: 50%;
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .image-container{
+        position: fixed;
+        top: 5px;
+        left: 5px;
+        border-radius: 15px;
+        width: 49%;
+        height: 98%;
+
+    }
+  }
+
+  @media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .image-container img {
+        position: fixed;
+        top: 0;
+        display: block;
+        width: 50%;
+        height: 98%;
+        border-radius: 15px;
+        object-fit: cover; /* Чтобы изображение занимало всю область */
+    }
+  }
+
+
+
+
+
+  
+
+.song-info {
+    position: absolute;
+    bottom: 20px;
+    right: -100%; /* Добавляем отрицательный отступ справа */
+    padding-right: 20px; /* Дополнительный отступ для текста */
+    display: inline-block;
+    animation: slideText 40s linear infinite;
+    opacity: 0.7; /* Прозрачность текста */
+    z-index: 90;
+    white-space: nowrap; /* Текст всегда остается на одной строке */
+    visibility: hidden; /* По умолчанию скрываем элемент */
+    text-shadow: 
+        2px 2px 5px rgba(128, 0, 128, 0.5), /* Тень вправо-вниз */
+        -2px -2px 5px rgba(128, 0, 128, 0.5), /* Тень влево-вверх */
+        2px -2px 5px rgba(128, 0, 128, 0.5), /* Тень вправо-вверх */
+        -2px 2px 5px rgba(128, 0, 128, 0.5); /* Тень влево-вниз */
+}
+
+
+@keyframes slideText {
+    0% { right: -50%; } /* Начальное положение справа */
+    100% { right: 100%; } /* Конечное положение справа */
+}
+
+
+/* Стили для заголовка песни */
+#songTitle {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* Стили для имени исполнителя */
+#artistName {
+    margin-right: 10px;
+}
+
+
+
+
+
+
+.admin-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: rgba(230, 230, 250, 0.555); /* Лавандовый цвет с полупрозрачностью */
+    color: black; /* Цвет текста черный */
+    border-radius: 10px; /* Закругленные углы */
+    border: 2px solid rgb(250, 230, 247); /* Лавандовая рамка */
+    backdrop-filter: blur(5px); /* Эффект размытия заднего плана */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Бокс-тень со всех сторон */
+    z-index: 170; /* Индекс слоя */
+    transition: all 0.5s;
+}
+
+/* Медиа-запрос для портретного режима */
+@media (orientation: portrait) {
+
+    .admin-container {
+        display: none;
+    }
+}
+
+.admin-input {
+    width: calc(100% - 25px); /* Учитываем отступы по 20px с каждой стороны */
+    padding: 10px;
+    margin-top: 10px;
+    border: 2px solid rgb(134, 134, 134); /* Лавандовая рамка */
+    border-radius: 8px; /* Закругленные углы */
+    background-color: rgba(230, 230, 250, 0.8); /* Лавандовый цвет с полупрозрачностью */
+    z-index: 171; /* Индекс слоя */
+    transition: border-color 0.5s;
+}
+
+/* Стиль при наведении */
+.admin-input:hover {
+    border-color: rgba(75, 0, 130, 0.8); /* Фиолетовый цвет */
+}
+
+/* Стиль при фокусе */
+.admin-input:focus {
+    border-color: rgba(128, 0, 128, 0.8); /* Темно-фиолетовый цвет */
+}
+
+
+.admin-message {
+    margin-top: 10px; /* Отступ сверху */
+    padding: 10px; /* Внутренний отступ */
+    border: 1px solid rgb(134, 134, 134); /* Лавандовая рамка */
+    border-radius: 8px; /* Закругленные углы */
+    background-color: rgba(230, 230, 250, 0.8); /* Белый цвет с полупрозрачностью */
+    font-size: 13px;
+    font-weight: bold;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Бокс-тень */
+    transition: all 0.3s; /* Плавные переходы */
+}
+
+
+.admin-message.success {
+    color: #119b4b; /* Салатовый цвет текста при успешном совпадении */
+}
+
+.admin-message.error {
+    color: #c0392b; /* Темно-красный цвет текста при ошибке ввода */
+}
+
+.admin-message.waiting {
+    color: #555; /* Темно-серый цвет текста при ожидании данных */
+}
+
+
+
+.get-access-button {
+    position: fixed; /* Позиционирование абсолютно относительно родителя */
+    top: 66.4%; /* Положение сверху на 50% высоты родительского элемента */
+    right: 23px; /* Отступ от правого края */
+
+    background-color: rgba(0, 0, 0, 0.774); /* Черный цвет заднего фона */
+    color: white; /* Белый цвет текста */
+    border: 1px solid rgba(255, 255, 255, 0); /* Белый бордер */
+    border-radius: 10px; /* Закругленные углы */
+    padding: 5px 10px; /* Внутренние отступы */
+    font-family: 'Play', sans-serif; /* Используем шрифт Orbitron для времени */
+    font-size: 15px; /* Размер шрифта */
+    font-weight: bold;
+    cursor: pointer; /* Курсор при наведении */
+
+
+    /* Эффект размытия заднего плана */
+    backdrop-filter: blur(5px);
+    z-index: 190;
+}
+
+.get-access-button:hover {
+    background-color: rgba(83, 45, 187, 0.9); /* Используем rgba() с непрозрачным значением */
+
+}
+
+.get-access-button:active {
+    transform: scale(0.95); /* Уменьшение размера при нажатии */
+}
+
+
+

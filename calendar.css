@@ -1,0 +1,375 @@
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+body {
+    font-family: 'Play', sans-serif;
+    color: white;
+    background: linear-gradient(to bottom, black, #340f57); /* Вертикальный градиент от черного к темно-фиолетовому */
+    background-repeat: no-repeat; /* Отключаем повторение фона */
+    background-attachment: fixed; /* Фиксируем фон, чтобы он не прокручивался с содержимым страницы */
+}
+
+
+
+h2 {
+    font-family: 'Play', sans-serif;
+    color: #ffa600;
+}
+
+
+/* Styles for month and year selects */
+.month, .year {
+    color: white;
+    background-color: black;
+    border: 1px solid gray;
+    border-radius: 10px; /* Закругление углов бордеров */
+    padding: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 16px;
+    margin-right: 10px; /* Добавим немного отступа справа */
+}
+
+.month:focus,
+.year:focus {
+    background-color: rgb(255, 174, 0); /* Цвет фона при нажатии */
+    color: #333;
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.month:active,
+.year:active {
+    background-color: rgb(255, 174, 0); /* Цвет фона при нажатии */
+    color: #333;
+    border: 2px solid rgb(0, 0, 0);
+}
+
+
+
+.month option, .year option {
+    font-family: 'Play', sans-serif;
+    color: rgb(255, 255, 255); /* Цвет текста в выпадающем списке */
+    background-color: rgb(0, 0, 0); /* Цвет фона в выпадающем списке */
+    font-size: 16px; /* Размер текста в выпадающем списке */
+}
+
+#calendar-wrapper {
+    background-color: #ffa60000;
+}
+
+
+
+/* Styles for the calendar */
+#calendar {
+    border-collapse: collapse;
+    width: 50%;
+    
+}
+
+@media (orientation: portrait) {
+    #calendar {
+        width: 100%;
+    
+    }
+}
+
+
+#calendar th, #calendar td {
+    border: 1px solid #dddddd6b;
+    padding: 8px;
+    text-align: center;
+    transition: width 0.3s, height 0.3s; /* Плавное изменение ширины и высоты ячеек */
+}
+
+#calendar th {
+    background-color: #333; /* Цвет фона для заголовка календаря */
+    color: white; /* Цвет текста для заголовка календаря */
+}
+
+
+
+
+#calendar td:hover {
+    background-color: #4c00828a;
+    border-bottom: 1px solid rgb(195, 0, 255);
+    cursor: pointer;
+
+}
+
+
+
+
+/* Styles for events */
+.event {
+    position: relative;
+    background-color: #892be2b7; /* Фиолетовый цвет для ячеек с событиями */
+}
+
+.event .event-text {
+    display: none;
+    position: fixed; /* Используем фиксированное позиционирование */
+    background-color: #8a2be2;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    white-space: wrap;
+    overflow-wrap: break-word;
+    top: 50%; /* Начало подсказки относительно верхней границы страницы */
+    left: 10px; /* Начало подсказки относительно левой границы страницы */
+
+    text-align: left; /* Выравниваем текст по левому краю */
+}
+
+.event:hover .event-text {
+    display: block;
+    background-color: #4b0082;
+    z-index: 1;
+}
+
+.event-text {
+    border: 1px solid rgba(253, 0, 211, 0.404);
+    font-size: 16px;
+    width: 50%; /* Ширина подсказки по умолчанию */
+}
+
+@media (orientation: portrait) {
+    .event-text {
+        font-size: 13px; /* Увеличенный размер текста для портретной ориентации */
+        width: 90%; /* Ширина подсказки в портретном режиме */
+    }
+}
+
+.today {
+    background-color: rgb(74, 34, 219); /* Желтый цвет для сегодняшней ячейки */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.encryptText {
+
+    background-color: rgba(0, 0, 0, 0.5); /* Черный цвет фона */
+    color: white; /* Белый цвет текста */
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid rgba(134, 134, 134, 0.521); /* Убираем границу */
+    border-radius: 15px; /* Закругленные углы */
+    padding: 10px 20px; /* Внутренний отступ */
+    font-family: 'Play';
+    font-size: 16px; /* Размер шрифта */
+    cursor: pointer; /* Изменяем курсор при наведении */
+    transition: background-color 0.2s, color 0.3s, padding 0.2s; /* Плавные переходы */
+    z-index: 400;
+}
+
+.encryptText:hover {
+    border: 1px solid rgba(76, 0, 255, 0.63); /* Убираем границу */
+    background-color: rgb(62, 0, 179); /* Белый цвет фона при наведении */
+    color: rgb(255, 255, 255); /* Черный цвет текста при наведении */
+}
+
+.encryptText:active {
+    color: rgb(195, 0, 255); /* Белый цвет текста */
+    background-color: rgb(97, 55, 177); /* Белый цвет фона при наведении */
+}
+
+
+
+.hamburger-button {
+    position: fixed;
+    bottom: 25px;
+    left: calc(100% - 177px);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(128, 0, 128, 0.1);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 24px;
+    border: 1px solid rgba(128, 0, 128, 0.8);
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 750;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px); /* Применяем размытие к контейнеру */
+}
+
+/* Стиль для включенной кнопки */
+.hamburger-button.enabled {
+    background-color: rgba(128, 0, 128, 0.5);
+}
+
+/* Стиль для кнопки, когда она в состоянии disabled */
+.hamburger-button:disabled {
+    background-color: rgba(48, 48, 48, 0.1);
+    color: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(173, 173, 173, 0.185);
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.9;
+}
+
+/* Медиа-запрос для портретного режима */
+@media (orientation: portrait) {
+    .hamburger-button {
+        bottom: 20px;
+        left: calc(100% - 137px);
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    .hamburger-button {
+        bottom: 15px;
+        left: calc(100% - 150px);
+    }
+}
+
+.menu-container {
+    position: fixed;
+    display: flex; /* Размещаем элементы в контейнере в одну колонку */
+        flex-direction: column; /* Отображаем элементы вертикально по очереди */
+        justify-content: top; /* Выравниваем элементы по вертикали по центру */
+        align-items: center; /* Выравниваем элементы по горизонтали по центру */
+    top: 50%; /* Располагаем контейнер по вертикали посередине */
+    left: 50%; /* Располагаем контейнер по горизонтали посередине */
+    transform: translate(-50%, -50%); /* Центрируем контейнер */
+    width: 25%; /* Ширина контейнера 80% экрана */
+    height: 50%; /* Высота контейнера 75% экрана */
+    background-color: rgba(45, 0, 128, 0.7); /* Полупрозрачное темно-лавандовое окно */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px; /* Закругляем углы контейнера */
+    font-family: 'Play';
+    padding: 20px; /* Внутренний отступ контейнера */
+    backdrop-filter: blur(12px); /* Применяем размытие к контейнеру */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Тень для контейнера */
+    overflow-y: auto; /* Разрешаем вертикальную прокрутку */
+    z-index: 100; /* Устанавливаем контейнер поверх остального контента */
+}
+
+@media (orientation: portrait) {
+    .menu-container {
+        position: fixed;
+        width: 80%; /* Ширина контейнера 80% экрана */
+        height: 70%; /* Высота контейнера 75% экрана */
+        backdrop-filter: blur(5px); /* Применяем размытие к контейнеру */
+        
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    .menu-container {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        transform: translate(-0%, -0%); /* Центрируем контейнер */
+        width: 30%; /* Ширина контейнера 80% экрана */
+        height: 56%; /* Высота контейнера 75% экрана */
+        backdrop-filter: blur(5px); /* Применяем размытие к контейнеру */
+        z-index: 500;
+        
+    }
+}
+
+
+
+.menu-container::-webkit-scrollbar {
+    width: 12px; /* Ширина полосы прокрутки */
+    border: 1px solid rgba(174, 0, 255, 0);
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    z-index: 299; /* Индекс слоя */
+}
+
+
+
+.menu-container::-webkit-scrollbar-track {
+
+    
+    background: rgba(39, 0, 29, 0.068); /* Цвет фона трека */
+    border-top-right-radius: 15px; /* Закругление нижнего правого угла */
+    border-bottom-right-radius: 15px; /* Закругление нижнего правого угла */
+    background-clip: padding-box; /* Область отображения фона */
+    backdrop-filter: blur(9px); /* Размытие подложки */
+    
+}
+
+
+
+.menu-container::-webkit-scrollbar-thumb {
+
+    background: rgba(21, 0, 70, 0.904); /* Цвет полосы прокрутки */
+    border-radius: 15px 70px 70px 15px; /* Радиус скругления углов полосы */
+    
+}
+
+
+
+
+.andromeda-button {
+    position: fixed; /* Фиксированное позиционирование */
+    bottom: 25px;  /* Отступ от нижней границы вьюпорта */
+    right: 65px; /* Отступ от правой границы вьюпорта */
+    width: 50px; /* Ширина кнопки */
+    height: 50px; /* Высота кнопки */
+    border-radius: 50%; /* Круглая форма */
+    background-color: rgba(128, 0, 128, 0.1); /* Фиолетовый цвет с полупрозрачностью */
+    color: rgba(255, 255, 255, 0.5); /* Цвет иконки с альфа-каналом 0.7 */
+    font-size: 24px; /* Размер иконки */
+    border: 1px solid rgba(128, 0, 128, 0.8); /* Тонкий бордер с альфа-каналом 0.5 */
+    cursor: pointer; /* Устанавливаем курсор в виде указателя */
+    transition: all 0.3s; /* Плавный переход  */
+    z-index: 750;
+    display: flex; /* Используем flexbox для центрирования */
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: center; /* Центрирование по вертикали */
+    backdrop-filter: blur(5px); /* Применяем размытие к контейнеру */
+}
+
+/* Стиль для включенной кнопки */
+#andromeda-button.enabled {
+    background-color: rgba(128, 0, 128, 0.5); /* Цвет заднего фона при включенной кнопке */
+}
+
+/* Стиль для кнопки, когда она в состоянии disabled */
+.andromeda-button:disabled {
+    background-color: rgba(48, 48, 48, 0.1); /* Фоновый цвет кнопки при disabled */
+    color: rgba(255, 255, 255, 0.3); /* Цвет иконки при disabled */
+    border: 1px solid rgba(173, 173, 173, 0.185); /* Бордер при disabled */
+    cursor: not-allowed; /* Курсор в режиме not-allowed при disabled */
+    pointer-events: none; /* Отключаем события мыши при disabled */
+    opacity: 0.9; /* Прозрачность при disabled */
+}
+
+@media screen and (orientation: portrait) and (max-width: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .andromeda-button {
+        bottom: 20px;
+        right: 25px; 
+    }
+}
+
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .andromeda-button {
+        bottom: 15px;
+        right: 40px; 
+    }
+}
+
+.h2White {
+    color: white;
+    font-size: 16px;
+    text-align: center;
+}

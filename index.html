@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <!-- Мета-теги Open Graph для представления вашего сайта в социальных сетях -->
+    <meta property="og:title" content="Посылы">
+    <meta property="og:description" content="Сайт в помощь для проведения Посылов.">
+    <meta property="og:image" content="https://cdn.glitch.global/af9f7b9b-e7a6-44b6-8629-5c3b55fa7e18/Default_space_stars_0.jpg?v=1708360387249">
+    
+    <meta property="og:type" content="website">
+
+    <!-- Мета-теги для SEO -->
+    <meta name="description" content="Сайт в помощь для проведения Посылов.">
+    <meta name="keywords" content="посылы, сайт, медитация, любовь, добро, мир, справедливость">
+    <meta name="author" content="Воин Света">
+    <!--<meta name="robots" content="index, follow">  Позволяет поисковым роботам индексировать страницу и следовать по ссылкам -->
+
+    <title>Посылы</title>
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, screenOrientation=portrait">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <script type="text/javascript" >
+      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();
+      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+  
+      ym(96635649, "init", {
+           clickmap:true,
+           trackLinks:true,
+           accurateTrackBounce:true,
+           webvisor:true
+      });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/96635649" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vibrant/2.0.0/vibrant.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
+
+
+
+
+
+</head>
+
+<body>
+
+  <!-- Yandex.Metrika informer -->
+<a target="_blank" rel="nofollow"><img src="https://informer.yandex.ru/informer/96635649/1_1_202020FF_000000FF_1_visits"
+id="watch" class="ym-counter-image" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (визиты)" class="ym-advanced-informer" data-cid="96635649" data-lang="ru" /></a>
+<!-- /Yandex.Metrika informer -->
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(96635649, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/96635649" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<p id="titleVisitors" class="titleVisitors">Посетителей сегодня</p>
+<div id="buttonBuild" class="buttonBuild">v. 0.8.0</div>
+
+
+
+
+
+
+
+
+  <div id="imageContainer" class="image-container">
+    <img id="dynamic-image" class="image" alt="Описание изображения.">
+    <div id="songInfo" class="song-info">
+        <span id="songTitle"></span>
+        <span id="artistName"></span>
+    </div>
+</div>
+
+  <button id="audioButton" class="audio-button" onclick="toggleAudio()">
+    <span id="audioIcon">&#128263;</span> <!-- Unicode для значка колонки звука -->
+  </button>
+  
+  <button id="imageButton" class="image-button" onclick="toggleImage()">
+    <span id="imageIcon">&#x1F4CB;</span> <!-- Unicode для значка таблицы -->
+</button>
+
+
+
+
+
+  
+  <div class="quatrain" id="quatrain">
+        <!-- Здесь будет отображаться случайное четверостишие -->
+    </div>
+  
+  
+  
+    <div id="container" class="container">
+
+        <div class="date"></div>
+        <div class="time"></div>
+        <div class="moscow-time">ТОЧНОЕ МОСКОВСКОЕ ВРЕМЯ</div>
+        <div class="text"></div>
+
+        
+    </div>
+  
+    
+
+  <audio id="audioPlayer">
+    <source id="audioSource" type="audio/mp3" src="">
+  </audio>
+
+
+<div id="popup" class="popup">
+  <h1>КОСМ Шифрование</h1><button class="encryptText" onclick="encryptText()">Зашифровать</button><br>
+  <textarea id="inputText" class="inputText" rows="5" cols="50" placeholder="Введите текст для шифрования..."></textarea><br>
+  
+  <textarea id="encryptedText" class="encryptedText" rows="5" cols="50" placeholder="Зашифрованный текст будет отображен здесь..."
+      readonly></textarea>
+      
+</div>
+  
+
+
+<div id="chat-container">
+  <div id="chat-box"></div>
+  <button id="andromeda-button" class="andromeda-button" onclick="toggleAndromeda()">&#10022;</button>
+
+</div>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>

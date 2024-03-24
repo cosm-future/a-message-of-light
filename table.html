@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таблица Посыла</title>
+
+    <script src="canvas.js"></script>
+    
+    <style>
+        /* Ваши стили здесь */
+        /* Например: */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white; /* Белый цвет фона */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white; /* Белый цвет фона таблицы */
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+            background-color: white; /* Белый цвет фона ячеек */
+        }
+        th {
+            background-color: gold; /* Золотой цвет фона заголовка таблицы */
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        @media print {
+    /* Скрываем ссылку на документ */
+    a[href]:after {
+        display: none !important;
+    }
+    
+    /* Скрываем дату печати */
+    .date, .date::after {
+        display: none !important;
+    }
+    
+    /* Скрываем название документа */
+    .document-title {
+        display: none !important;
+    }
+}
+
+
+
+    </style>
+</head>
+<body>
+    
+    <!-- Вызываем буферный скрипт -->
+    <script src="buffer.js"></script>
+    <!-- Вызываем скрипт для проверки доступности кнопки скриншота -->
+    
+    <script src="table.js"></script>
+</body>
+</html>
