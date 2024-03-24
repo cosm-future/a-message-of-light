@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 
+
+/* Ваш CSS-код здесь */
+
+
 body {
     font-family: 'Play', sans-serif;
     color: white;
@@ -89,6 +93,8 @@ h2 {
 
 
 
+
+
 #calendar td:hover {
     background-color: #4c00828a;
     border-bottom: 1px solid rgb(195, 0, 255);
@@ -108,7 +114,7 @@ h2 {
 .event .event-text {
     display: none;
     position: fixed; /* Используем фиксированное позиционирование */
-    background-color: #8a2be2;
+    background-color: #892be2a8;
     color: white;
     padding: 5px;
     border-radius: 5px;
@@ -372,4 +378,11 @@ h2 {
     color: white;
     font-size: 16px;
     text-align: center;
+}
+
+
+
+.voidCell {
+    background-color: rgba(179, 179, 179, 0.068); /* Фоновый цвет кнопки при disabled */
+    z-index: 90;
 }

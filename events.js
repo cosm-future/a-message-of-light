@@ -159,12 +159,14 @@ function generateCalendar() {
 
     // Применяем стиль для сегодняшних ячеек
     applyTodayCellStyle(year, month, calendarContainer);
+    
+    // Применяем класс voidCell для пустых ячеек
+    applyVoidCellClass(calendarContainer);
 
     // Загрузка данных из файла JSON и добавление событий
     loadJSON(function(events) {
         addEventsToCalendar(events, calendarContainer);
     });
-
     // Добавляем общий контейнер в календарный элемент
     calendarWrapper.appendChild(calendarContainer);
 }
@@ -183,8 +185,19 @@ function applyTodayCellStyle(year, month, calendarContainer) {
     });
 }
 
+// Применяем класс voidCell для пустых ячеек
+function applyVoidCellClass(calendarContainer) {
+    const calendarCells = calendarContainer.querySelectorAll('#calendar tbody td');
+    calendarCells.forEach(cell => {
+        if (!cell.textContent.trim()) {
+            cell.classList.add('voidCell');
+        }
+    });
+}
+
 // Вызываем функцию для генерации календаря сразу после загрузки страницы
 generateCalendar();
+
 
 
 
