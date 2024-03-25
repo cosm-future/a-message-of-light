@@ -783,7 +783,7 @@ content: ''; /* Обязательно для псевдоэлементов */
 @media only screen and (max-width: 600px) and (orientation: portrait) {
     .container {
         position: fixed;
-        top: 49.75vh;
+        top: 49.65vh;
         left: 0;
         transform: translateX(-5%);
         width: calc(100% - 12px);
@@ -1736,7 +1736,7 @@ content: ''; /* Обязательно для псевдоэлементов */
 /* Медиа-запрос для портретного режима */
 @media (orientation: portrait) {
     .image-container img {
-        height: 50%;
+        height: 50.1%;
     }
 }
 
