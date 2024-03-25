@@ -727,18 +727,20 @@ setTimeout(function() {
 
 // Массив ссылок на картинки
 const imageLinks = [
-  'https://github.com/Dmitrynest2012/message-of-love/raw/main/img/message-random-1.jpg',
-  'https://github.com/Dmitrynest2012/message-of-love/raw/main/img/message-random-2.jpg',
-  'https://github.com/Dmitrynest2012/message-of-love/raw/main/img/message-random-3.jpg',
-  'https://github.com/Dmitrynest2012/message-of-love/raw/main/img/message-random-4.jpg',
-  'https://github.com/Dmitrynest2012/message-of-love/raw/main/img/message-random-5.jpg',
-  'https://github.com/Dmitrynest2012/message-of-love/raw/main/img/message-random-6.jpg',
-  'https://github.com/Dmitrynest2012/message-of-love/raw/main/img/message-random-7.jpg',
-  'https://github.com/Dmitrynest2012/message-of-love/raw/main/img/message-random-8.jpg',
-  'https://github.com/Dmitrynest2012/message-of-love/raw/main/img/message-random-9.jpg',
-  'https://github.com/Dmitrynest2012/message-of-love/raw/main/img/message-random-10.jpg',
+  'https://github.com/cosm-future/a-message-of-light/raw/main/img/message-random-1.jpg',
+  'https://github.com/cosm-future/a-message-of-light/raw/main/img/message-random-2.jpg',
+  'https://github.com/cosm-future/a-message-of-light/raw/main/img/message-random-3.jpg',
+  'https://github.com/cosm-future/a-message-of-light/raw/main/img/message-random-4.jpg',
+  'https://github.com/cosm-future/a-message-of-light/raw/main/img/message-random-5.jpg',
+  'https://github.com/cosm-future/a-message-of-light/raw/main/img/message-random-6.jpg',
+  'https://github.com/cosm-future/a-message-of-light/raw/main/img/message-random-7.jpg',
+  'https://github.com/cosm-future/a-message-of-light/raw/main/img/message-random-8.jpg',
+  'https://github.com/cosm-future/a-message-of-light/raw/main/img/message-random-9.jpg',
+  'https://github.com/cosm-future/a-message-of-light/raw/main/img/message-random-10.jpg',
   // Добавьте здесь остальные ссылки на картинки
 ];
+
+
 
 
 
