@@ -1668,6 +1668,24 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
                 } 
                 
                 enableButtonAndromeda();
+
+
+
+                // Удаляем контейнер с таблицей, если он существует и необходимо его скрыть
+    const existingContainer = document.getElementById('table-container');
+    if (existingContainer) {
+        // Удаляем класс 'show', чтобы запустить анимацию скрытия
+        existingContainer.classList.remove('show');
+        // Ждем завершения анимации, прежде чем удалять контейнер
+        setTimeout(function() {
+            existingContainer.remove();
+            container.style.overflowY = 'auto'; // Разрешаем скроллбар
+            // Сбрасываем флаг
+            tableCreated = false;
+            // Удаляем кнопку
+            openTableButton.remove();
+        }, 500); // Подождите 500 миллисекунд, чтобы анимация завершилась
+    }
         }
 
 
