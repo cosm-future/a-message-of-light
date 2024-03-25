@@ -2648,10 +2648,12 @@ if (isPortrait) {
     // Ориентация экрана портретная
     document.body.appendChild(videoPlayer);
     videoPlayer.classList.add('video-player');
+    videoPlayer.play();
 
 } else {
     // Ориентация экрана не портретная
     containerMessage.appendChild(videoPlayer);
+    videoPlayer.play();
 }
           
         
