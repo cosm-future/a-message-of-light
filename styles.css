@@ -1332,6 +1332,7 @@ content: ''; /* Обязательно для псевдоэлементов */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Тень для контейнера */
     overflow-y: auto; /* Разрешаем вертикальную прокрутку */
     z-index: 100; /* Устанавливаем контейнер поверх остального контента */
+    transition: background-color 0.3s;
 }
 
 @media (orientation: portrait) {

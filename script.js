@@ -1311,6 +1311,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             const watchElement = document.getElementById('watch');
             const titleVisitorsElement = document.getElementById('titleVisitors');
             const buttonBuild = document.getElementById('buttonBuild');
+            
             // Скрываем элемент
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
@@ -1442,6 +1443,11 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
  // Применение стилей из медиа-запроса
     if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
         container.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #3e2723, #3e2723)';
+        setTimeout(function() {
+        // Получаем ссылку на контейнер "меню на ресурсы"
+        const menuContainer = document.getElementById('menu-container');
+        menuContainer.style.backgroundColor = 'rgba(92, 59, 35, 0.7)';
+    }, 300); // Подождите 500 миллисекунд, чтобы анимация завершилась
         
     } else {
             // Ждем завершения анимации, прежде чем обновлять переливающийся фон.
@@ -1449,8 +1455,11 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             document.body.style.backgroundColor = "black";
             document.body.style.background = "linear-gradient(to bottom, black 50%, #3e2723 100%)";
             container.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #3e2723, #3e2723)';
+            // Получаем ссылку на контейнер "меню на ресурсы"
+        const menuContainer = document.getElementById('menu-container');
+        menuContainer.style.backgroundColor = 'rgba(92, 59, 35, 0.7)';
         }, 300); // Подождите 500 миллисекунд, чтобы анимация завершилась
- 
+        
     }
       
 
@@ -1460,7 +1469,11 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
         setTimeout(function() {
         document.body.style.backgroundColor = "black";
         container.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #3e2723, #3e2723)';
+        // Получаем ссылку на контейнер "меню на ресурсы"
+        const menuContainer = document.getElementById('menu-container');
+        menuContainer.style.backgroundColor = 'rgba(92, 59, 35, 0.7)';
     }, 300); 
+        
     }
 
 
@@ -1665,14 +1678,28 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
     // Применение стилей из медиа-запроса
     if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
         container.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #3500a8df, #3500a8df)'; 
+
+        setTimeout(function() {
+// Получаем ссылку на контейнер "меню на ресурсы"
+const menuContainer = document.getElementById('menu-container');
+menuContainer.style.backgroundColor = 'rgba(45, 0, 128, 0.7)';
+        }, 300); // Подождите 500 миллисекунд, чтобы анимация завершилась
+
+
+
+        
     } else {
         // Ждем завершения анимации, прежде чем обновлять переливающийся фон.
         setTimeout(function() {
             document.body.style.backgroundColor = "black";
             document.body.style.background = "linear-gradient(to bottom, black 50%, rgba(0, 2, 141, 0.815) 100%)";
         container.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #3500a8df, #3500a8df)'; 
+        // Получаем ссылку на контейнер "меню на ресурсы"
+        const menuContainer = document.getElementById('menu-container');
+        menuContainer.style.backgroundColor = 'rgba(45, 0, 128, 0.7)';
             
         }, 300); // Подождите 500 миллисекунд, чтобы анимация завершилась
+        
  
     }
       
@@ -1681,8 +1708,12 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
         // Устанавливаем фоновый цвет body в черный
         setTimeout(function() {
         document.body.style.backgroundColor = "black";
-        container.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #3500a8df, #3500a8df)'; 
+        container.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #3500a8df, #3500a8df)';
+        // Получаем ссылку на контейнер "меню на ресурсы"
+        const menuContainer = document.getElementById('menu-container');
+        menuContainer.style.backgroundColor = 'rgba(45, 0, 128, 0.7)'; 
     }, 300); 
+        
     }
     
 
