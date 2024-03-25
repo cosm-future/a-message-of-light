@@ -1736,7 +1736,7 @@ content: ''; /* Обязательно для псевдоэлементов */
 /* Медиа-запрос для портретного режима */
 @media (orientation: portrait) {
     .image-container img {
-        height: 50.1%;
+        height: 50.5%;
     }
 }
 
