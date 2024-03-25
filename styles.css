@@ -1312,28 +1312,38 @@ content: ''; /* Обязательно для псевдоэлементов */
     }
 }
 
+
+
 .menu-container {
     position: fixed;
-    display: flex; /* Размещаем элементы в контейнере в одну колонку */
-        flex-direction: column; /* Отображаем элементы вертикально по очереди */
-        justify-content: top; /* Выравниваем элементы по вертикали по центру */
-        align-items: center; /* Выравниваем элементы по горизонтали по центру */
-    top: 50%; /* Располагаем контейнер по вертикали посередине */
-    left: 50%; /* Располагаем контейнер по горизонтали посередине */
-    transform: translate(-50%, -50%); /* Центрируем контейнер */
-    width: 25%; /* Ширина контейнера 80% экрана */
-    height: 50%; /* Высота контейнера 75% экрана */
-    background-color: rgba(45, 0, 128, 0.7); /* Полупрозрачное темно-лавандовое окно */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25%;
+    height: 50%;
+    background-color: rgba(45, 0, 128, 0.7);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 15px; /* Закругляем углы контейнера */
+    border-radius: 15px;
     font-family: 'Play';
-    padding: 20px; /* Внутренний отступ контейнера */
-    backdrop-filter: blur(12px); /* Применяем размытие к контейнеру */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Тень для контейнера */
-    overflow-y: auto; /* Разрешаем вертикальную прокрутку */
-    z-index: 100; /* Устанавливаем контейнер поверх остального контента */
-    transition: background-color 0.3s;
+    padding: 20px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+    z-index: 100;
+    opacity: 0; /* Начальная прозрачность */
+    transition: opacity 0.3s; /* Анимация перехода */
 }
+
+.menu-container:before {
+    content: '';
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
 
 @media (orientation: portrait) {
     .menu-container {

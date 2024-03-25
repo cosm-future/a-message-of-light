@@ -620,10 +620,17 @@ for (let i = 0; i < json.length; i++) {
     for (let j = 0; j < 3; j++) {
         const cell = row.insertCell();
         if (j === 0) {
-            if (i < 6) {
-                // Если это первый столбец и номер строки < 6, вставляем номер строки с учетом смещения
+            if(eventType == 'обычное') {
+            if (i < 30) {
+                // Если это первый столбец и номер строки > 0, вставляем номер строки с учетом смещения
                 cell.textContent = i + 1;
             }
+        } else if(eventType == 'часовое') {
+            if (i < 30) {
+                // Если это первый столбец и номер строки > 3, вставляем номер строки с учетом смещения
+                cell.textContent = i + 1;
+            }
+        }
             cell.style.width = '5%'; // Устанавливаем очень маленькую ширину для первого столбца
         } else if (j === 1) {
             const text = rowData.text.replace(/\*([^*]+)\*/g, '<br><span style="color: #fd7dff;">$1</span><br>');
@@ -1259,7 +1266,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
 
     json = (dayOfMonth === 8 || dayOfMonth === 17 || dayOfMonth === 26) && (
-        (hours === 10 && minutes >= 55) || (hours === 11) || (hours === 12 && minutes < 5)
+        (hours === 10 && minutes >= 50) || (hours === 11) || (hours === 12 && minutes < 5)
     ) ? json_max : json_min;
 
     if (json === json_min) {
@@ -1447,6 +1454,8 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
         // Получаем ссылку на контейнер "меню на ресурсы"
         const menuContainer = document.getElementById('menu-container');
         menuContainer.style.backgroundColor = 'rgba(92, 59, 35, 0.7)';
+        document.querySelector('.menu-container').style.opacity = '1';
+
     }, 300); // Подождите 500 миллисекунд, чтобы анимация завершилась
         
     } else {
@@ -1458,6 +1467,8 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             // Получаем ссылку на контейнер "меню на ресурсы"
         const menuContainer = document.getElementById('menu-container');
         menuContainer.style.backgroundColor = 'rgba(92, 59, 35, 0.7)';
+        document.querySelector('.menu-container').style.opacity = '1';
+
         }, 300); // Подождите 500 миллисекунд, чтобы анимация завершилась
         
     }
@@ -1472,6 +1483,8 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
         // Получаем ссылку на контейнер "меню на ресурсы"
         const menuContainer = document.getElementById('menu-container');
         menuContainer.style.backgroundColor = 'rgba(92, 59, 35, 0.7)';
+        document.querySelector('.menu-container').style.opacity = '1';
+
     }, 300); 
         
     }
@@ -1701,6 +1714,8 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 // Получаем ссылку на контейнер "меню на ресурсы"
 const menuContainer = document.getElementById('menu-container');
 menuContainer.style.backgroundColor = 'rgba(45, 0, 128, 0.7)';
+document.querySelector('.menu-container').style.opacity = '1';
+
         }, 300); // Подождите 500 миллисекунд, чтобы анимация завершилась
 
 
@@ -1715,7 +1730,8 @@ menuContainer.style.backgroundColor = 'rgba(45, 0, 128, 0.7)';
         // Получаем ссылку на контейнер "меню на ресурсы"
         const menuContainer = document.getElementById('menu-container');
         menuContainer.style.backgroundColor = 'rgba(45, 0, 128, 0.7)';
-            
+        document.querySelector('.menu-container').style.opacity = '1';
+
         }, 300); // Подождите 500 миллисекунд, чтобы анимация завершилась
         
  
@@ -1730,6 +1746,8 @@ menuContainer.style.backgroundColor = 'rgba(45, 0, 128, 0.7)';
         // Получаем ссылку на контейнер "меню на ресурсы"
         const menuContainer = document.getElementById('menu-container');
         menuContainer.style.backgroundColor = 'rgba(45, 0, 128, 0.7)'; 
+        document.querySelector('.menu-container').style.opacity = '1';
+
     }, 300); 
         
     }
