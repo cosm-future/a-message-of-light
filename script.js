@@ -1266,7 +1266,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
 
     json = (dayOfMonth === 8 || dayOfMonth === 17 || dayOfMonth === 26) && (
-        (hours === 10 && minutes >= 50) || (hours === 11) || (hours === 12 && minutes < 5)
+        (hours === 10 && minutes >= 55) || (hours === 11) || (hours === 12 && minutes < 5)
     ) ? json_max : json_min;
 
     if (json === json_min) {
