@@ -1800,7 +1800,7 @@ document.querySelector('.menu-container').style.opacity = '1';
         minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
         secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
-        newText = `До начала подготовки к следующему Посылу: ${hoursLeft} ч. ${minutesLeft} мин. ${secondsLeft} сек.`;
+        newText = `До начала подготовки к следующему Посылу: ${hoursLeft} ч. ${minutesLeft} мин.`;
 
 
         
@@ -1835,7 +1835,7 @@ document.querySelector('.menu-container').style.opacity = '1';
         minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
         secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
-        newText = `До начала подготовки к следующему Посылу: ${hoursLeft} ч. ${minutesLeft} мин. ${secondsLeft} сек.`;
+        newText = `До начала подготовки к следующему Посылу: ${hoursLeft} ч. ${minutesLeft} мин.`;
 
         
             if (hoursLeft === 0 && minutesLeft <= 5) {
