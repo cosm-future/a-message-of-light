@@ -1773,21 +1773,23 @@ document.querySelector('.menu-container').style.opacity = '1';
     if (!nextSending) {
         
         // Определяем первый посыл на следующий день
-        const firstSending = new Date();
-        firstSending.setDate(firstSending.getDate() + 1);
-        firstSending.setHours(json[0].from.hour, json[0].from.minute, json[0].from.second || 0);
+const firstSending = new Date();
+firstSending.setDate(firstSending.getDate() + 1);
+firstSending.setHours(json[0].from.hour, json[0].from.minute, json[0].from.second || 0);
 
-        
+// Устанавливаем временную зону Москвы (UTC+3)
+firstSending.setTime(firstSending.getTime() + (3 * 60 * 60 * 1000));
 
-        // Вычисляем время до первого посыл на следующий день
-        const timeDiff = Math.max(firstSending - now, 0);
-        nextSendingDate = firstSending;
+// Вычисляем время до первого посыл на следующий день
+const timeDiff = Math.max(firstSending - now, 0);
+nextSendingDate = firstSending;
 
-        hoursLeft = Math.floor(timeDiff / (1000 * 60 * 60));
-        minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-        secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
+hoursLeft = Math.floor(timeDiff / (1000 * 60 * 60));
+minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
-        newText = `До начала подготовки к следующему Посылу: ${hoursLeft} ч. ${minutesLeft} мин.`;
+newText = `До начала подготовки к следующему Посылу: ${hoursLeft} ч. ${minutesLeft} мин.`;
+
 
 
         
@@ -1816,13 +1818,17 @@ document.querySelector('.menu-container').style.opacity = '1';
         
     } else {
         // Вычисляем время до ближайшего посыл в текущем дне
-        const timeDiff = Math.max(nextSending - now, 0);
+const timeDiff = Math.max(nextSending - now, 0);
 
-        hoursLeft = Math.floor(timeDiff / (1000 * 60 * 60));
-        minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-        secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
+// Устанавливаем временную зону Москвы (UTC+3)
+nextSending.setTime(nextSending.getTime() + (3 * 60 * 60 * 1000));
 
-        newText = `До начала подготовки к следующему Посылу: ${hoursLeft} ч. ${minutesLeft} мин.`;
+hoursLeft = Math.floor(timeDiff / (1000 * 60 * 60));
+minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+newText = `До начала подготовки к следующему Посылу: ${hoursLeft} ч. ${minutesLeft} мин.`;
+
 
         
             if (hoursLeft === 0 && minutesLeft <= 5) {
