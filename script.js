@@ -1769,95 +1769,67 @@ document.querySelector('.menu-container').style.opacity = '1';
     
  
 
-    // Если не был найден посыл в текущем дне
-    if (!nextSending) {
-        
-        // Определяем первый посыл на следующий день
-const firstSending = new Date();
-firstSending.setDate(firstSending.getDate() + 1);
-firstSending.setHours(json[0].from.hour, json[0].from.minute, json[0].from.second || 0);
-
-// Устанавливаем временную зону Москвы (UTC+3)
-firstSending.setTime(firstSending.getTime() + (3 * 60 * 60 * 1000));
-
-// Вычисляем время до первого посыл на следующий день
-const timeDiff = Math.max(firstSending - now, 0);
-nextSendingDate = firstSending;
-
-hoursLeft = Math.floor(timeDiff / (1000 * 60 * 60));
-minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
-
-newText = `До начала подготовки к следующему Посылу: ${hoursLeft} ч. ${minutesLeft} мин.`;
+    // Определяем время следующего посылa в Московском часовом поясе (UTC+3)
 
 
 
-        
 
+// Если не был найден посыл в текущем дне
+if (!nextSending) {
+    // Определяем первый посыл на следующий день
+    const firstSending = new Date();
+    firstSending.setDate(firstSending.getDate() + 1);
+    firstSending.setUTCHours(json[0].from.hour + 3, json[0].from.minute, json[0].from.second || 0);
 
-        if (hoursLeft === 0 && minutesLeft <= 5) {
-            const buttonT = document.getElementById('imageButton');
-            if (buttonT) {
-                buttonT.disabled = false;
-            }
-        } else {
-            const buttonT = document.getElementById('imageButton');
-            if (buttonT) {
-                buttonT.disabled = true;
-            }
+    // Вычисляем время до первого посыл на следующий день
+    const timeDiff = Math.max(firstSending - now, 0);
+    nextSendingDate = firstSending;
+
+    hoursLeft = Math.floor(timeDiff / (1000 * 60 * 60));
+    minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+    secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+    newText = `До начала подготовки к следующему Посылу: ${hoursLeft} ч. ${minutesLeft} мин.`;
+
+    if (hoursLeft === 0 && minutesLeft <= 5) {
+        const buttonT = document.getElementById('imageButton');
+        if (buttonT) {
+            buttonT.disabled = false;
         }
-            
-         
-    
-       
-     
-
-    
-
-
-        
     } else {
-        // Вычисляем время до ближайшего посыл в текущем дне
-const timeDiff = Math.max(nextSending - now, 0);
+        const buttonT = document.getElementById('imageButton');
+        if (buttonT) {
+            buttonT.disabled = true;
+        }
+    }
+} else {
+    // Определяем текущее время в Московском часовом поясе (UTC+3)
+    const nowMoscow = new Date(now.getTime() + (3 * 60 * 60 * 1000));
 
-// Устанавливаем временную зону Москвы (UTC+3)
-nextSending.setTime(nextSending.getTime() + (3 * 60 * 60 * 1000));
+    // Определяем время следующего посыл в Московском часовом поясе (UTC+3)
+    const nextSendingMoscow = new Date(nextSending.getTime() + (3 * 60 * 60 * 1000));
 
-hoursLeft = Math.floor(timeDiff / (1000 * 60 * 60));
-minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
+    // Вычисляем время до ближайшего посыл в текущем дне (в Московском часовом поясе)
+    const timeDiff = Math.max(nextSendingMoscow - nowMoscow, 0);
+    const moscowHoursLeft = Math.floor(timeDiff / (1000 * 60 * 60));
+    const moscowMinutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
 
-newText = `До начала подготовки к следующему Посылу: ${hoursLeft} ч. ${minutesLeft} мин.`;
+    newText = `До начала подготовки к следующему Посылу: ${moscowHoursLeft} ч. ${moscowMinutesLeft} мин.`;
 
-
-        
-            if (hoursLeft === 0 && minutesLeft <= 5) {
-                const buttonT = document.getElementById('imageButton');
-                if (buttonT) {
-                    buttonT.disabled = false;
-                }
-            } else {
-                const buttonT = document.getElementById('imageButton');
-                if (buttonT) {
-                    buttonT.disabled = true;
-                }
-            }
-        
-
-       
-        
-    
-
-
-        
-            
-        
+    if (moscowHoursLeft === 0 && moscowMinutesLeft <= 5) {
+        const buttonT = document.getElementById('imageButton');
+        if (buttonT) {
+            buttonT.disabled = false;
+        }
+    } else {
+        const buttonT = document.getElementById('imageButton');
+        if (buttonT) {
+            buttonT.disabled = true;
+        }
+    }
+}
 
 
-
-
-
-    } 
         if (lineElement) {
             lineElement.remove();
             lineElement = null;
