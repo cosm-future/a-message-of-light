@@ -972,37 +972,58 @@ function clearLocalStorage() {
 const RandomBlock = ['33426E235E6B503921487635406D5A73463226'];
 
 
-let displayTime = new Date(); // Изначально устанавливаем текущее локальное время
+// Получение значения коррекции времени из локального хранилища при загрузке страницы
+const storedCorrection = localStorage.getItem('moscowTimeCorrection');
+let moscowTimeDifference = storedCorrection ? parseInt(storedCorrection) : 0;
 
 async function fetchMoscowTime() {
     try {
         const response = await fetch('https://worldtimeapi.org/api/timezone/Europe/Moscow');
         const data = await response.json();
-        return new Date(data.utc_datetime);
+        const moscowTime = new Date(data.utc_datetime);
+        const localTime = new Date();
+
+        // Вычисляем разницу между московским временем и локальным временем пользователя
+        moscowTimeDifference = moscowTime - localTime;
+
+        // Сохраняем значение коррекции времени в локальное хранилище
+        localStorage.setItem('moscowTimeCorrection', moscowTimeDifference.toString());
+
+        return moscowTime;
     } catch (error) {
         console.error('Ошибка при получении времени по Москве:', error);
         return null;
     }
 }
 
+function getAdjustedLocalTime() {
+    const localTime = new Date();
+    const adjustedLocalTime = new Date(localTime.getTime() + moscowTimeDifference); // Корректируем локальное время с учетом разницы
+
+    return adjustedLocalTime;
+}
+
 async function updateTime() {
     try {
-        const moscowTime = await fetchMoscowTime();
+        let moscowTime = await fetchMoscowTime();
 
-        if (moscowTime) {
-            displayTime = moscowTime;
+        if (!moscowTime) {
+            // Если нет доступа к интернету, используем корректированное локальное время
+            moscowTime = getAdjustedLocalTime();
         }
 
         const timeElement = document.querySelector(".time");
-        const hours = displayTime.getHours();
-        const minutes = displayTime.getMinutes();
-        const seconds = displayTime.getSeconds();
+        const hours = moscowTime.getUTCHours() + 3; // Добавляем 3 часа к UTC времени, чтобы получить московское время
+        const minutes = moscowTime.getUTCMinutes();
+        const seconds = moscowTime.getUTCSeconds();
         timeElement.textContent = `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+        return timeElement;
     } catch (error) {
-        console.error('Error fetching Moscow time:', error);
-        // Если возникла ошибка при получении времени из API, продолжаем использовать локальное время
+        console.error('Ошибка при обновлении времени:', error);
     }
 }
+
+
 
 
 
@@ -1774,15 +1795,22 @@ document.querySelector('.menu-container').style.opacity = '1';
 
 
 
+// Функция для получения текущей даты и времени по часовому поясу Москвы
+function getMoscowTime() {
+    const now = new Date();
+    const moscowTime = new Date(now.toLocaleString("en-US", { timeZone: "Europe/Moscow" }));
+    return moscowTime;
+}
+
 // Если не был найден посыл в текущем дне
 if (!nextSending) {
     // Определяем первый посыл на следующий день
-    const firstSending = new Date();
+    const firstSending = getMoscowTime();
     firstSending.setDate(firstSending.getDate() + 1);
     firstSending.setUTCHours(json[0].from.hour + 3, json[0].from.minute, json[0].from.second || 0);
 
     // Вычисляем время до первого посыл на следующий день
-    const timeDiff = Math.max(firstSending - now, 0);
+    const timeDiff = Math.max(firstSending - getMoscowTime(), 0);
     nextSendingDate = firstSending;
 
     hoursLeft = Math.floor(timeDiff / (1000 * 60 * 60));
@@ -1803,20 +1831,16 @@ if (!nextSending) {
         }
     }
 } else {
-    // Определяем текущее время в Московском часовом поясе (UTC+3)
-    const nowMoscow = new Date(now.getTime() + (3 * 60 * 60 * 1000));
+    // Вычисляем время до ближайшего посыл в текущем дне
+    const timeDiff = Math.max(nextSending - getMoscowTime(), 0);
 
-    // Определяем время следующего посыл в Московском часовом поясе (UTC+3)
-    const nextSendingMoscow = new Date(nextSending.getTime() + (3 * 60 * 60 * 1000));
+    hoursLeft = Math.floor(timeDiff / (1000 * 60 * 60));
+    minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+    secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
-    // Вычисляем время до ближайшего посыл в текущем дне (в Московском часовом поясе)
-    const timeDiff = Math.max(nextSendingMoscow - nowMoscow, 0);
-    const moscowHoursLeft = Math.floor(timeDiff / (1000 * 60 * 60));
-    const moscowMinutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+    newText = `До начала подготовки к следующему Посылу: ${hoursLeft} ч. ${minutesLeft} мин.`;
 
-    newText = `До начала подготовки к следующему Посылу: ${moscowHoursLeft} ч. ${moscowMinutesLeft} мин.`;
-
-    if (moscowHoursLeft === 0 && moscowMinutesLeft <= 5) {
+    if (hoursLeft === 0 && minutesLeft <= 5) {
         const buttonT = document.getElementById('imageButton');
         if (buttonT) {
             buttonT.disabled = false;

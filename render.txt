@@ -1415,3 +1415,199 @@ onlineUsersRef.on('value', (snapshot) => {
         }, 500); // Подождите 500 миллисекунд, чтобы анимация завершилась
     }
         }
+
+
+
+        Мне нужна твоя помощь. Смотри. Здесь мы получаем локальное (системное время) устройства. Мне нужно,
+        чтобы время мы получали московское (по московскому поясу), независимо от того, какое время и Часовой
+        пояс на устройстве. Получаем через апи.
+
+        // Если не был найден посыл в текущем дне
+if (!nextSending) {
+    // Определяем первый посыл на следующий день
+    const firstSending = new Date();
+    firstSending.setDate(firstSending.getDate() + 1);
+    firstSending.setUTCHours(json[0].from.hour + 3, json[0].from.minute, json[0].from.second || 0);
+
+    // Вычисляем время до первого посыл на следующий день
+    const timeDiff = Math.max(firstSending - now, 0);
+    nextSendingDate = firstSending;
+
+    hoursLeft = Math.floor(timeDiff / (1000 * 60 * 60));
+    minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+    secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+    newText = `До начала подготовки к следующему Посылу: ${hoursLeft} ч. ${minutesLeft} мин.`;
+
+    if (hoursLeft === 0 && minutesLeft <= 5) {
+        const buttonT = document.getElementById('imageButton');
+        if (buttonT) {
+            buttonT.disabled = false;
+        }
+    } else {
+        const buttonT = document.getElementById('imageButton');
+        if (buttonT) {
+            buttonT.disabled = true;
+        }
+    }
+} else {
+    // Вычисляем время до ближайшего посыл в текущем дне
+    const timeDiff = Math.max(nextSending - now, 0);
+
+    hoursLeft = Math.floor(timeDiff / (1000 * 60 * 60));
+    minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+    secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+    newText = `До начала подготовки к следующему Посылу: ${hoursLeft} ч. ${minutesLeft} мин.`;
+
+    if (hoursLeft === 0 && minutesLeft <= 5) {
+        const buttonT = document.getElementById('imageButton');
+        if (buttonT) {
+            buttonT.disabled = false;
+        }
+    } else {
+        const buttonT = document.getElementById('imageButton');
+        if (buttonT) {
+            buttonT.disabled = true;
+        }
+    }
+}
+
+
+
+Смотри, мне нужно, чтобы московские часы, минуты и секунды использовались в коде ниже где мы получаем время
+а затем на его основе и данных из джейсона вычисляем время до следующего посыла.
+
+
+
+
+
+смотри, как now ниже присвоить время из timeElement.textContent? Как для этого переписать код, и чтобы
+работал now.getDate();? В гет дате мы получаем сегодняшний день.
+
+const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const textElement = document.querySelector(".text");
+    const dayOfMonth = now.getDate();
+
+
+
+
+как мне модифицировать функцию апдейт тайм, чтобы у нее сохранилась так же логика и возможности, но
+при этом мы условиях nextSending мы получали текущее время из этих функций, вместо того, чтобы
+использовать now?
+
+
+
+// Получение значения коррекции времени из локального хранилища при загрузке страницы
+const storedCorrection = localStorage.getItem('moscowTimeCorrection');
+let moscowTimeDifference = storedCorrection ? parseInt(storedCorrection) : 0;
+
+async function fetchMoscowTime() {
+    try {
+        const response = await fetch('https://worldtimeapi.org/api/timezone/Europe/Moscow');
+        const data = await response.json();
+        const moscowTime = new Date(data.utc_datetime);
+        const localTime = new Date();
+
+        // Вычисляем разницу между московским временем и локальным временем пользователя
+        moscowTimeDifference = moscowTime - localTime;
+
+        // Сохраняем значение коррекции времени в локальное хранилище
+        localStorage.setItem('moscowTimeCorrection', moscowTimeDifference.toString());
+
+        return moscowTime;
+    } catch (error) {
+        console.error('Ошибка при получении времени по Москве:', error);
+        return null;
+    }
+}
+
+function getAdjustedLocalTime() {
+    const localTime = new Date();
+    const adjustedLocalTime = new Date(localTime.getTime() + moscowTimeDifference); // Корректируем локальное время с учетом разницы
+
+    return adjustedLocalTime;
+}
+
+async function updateTime() {
+    try {
+        let moscowTime = await fetchMoscowTime();
+
+        if (!moscowTime) {
+            // Если нет доступа к интернету, используем корректированное локальное время
+            moscowTime = getAdjustedLocalTime();
+        }
+
+        const timeElement = document.querySelector(".time");
+        const hours = moscowTime.getUTCHours() + 3; // Добавляем 3 часа к UTC времени, чтобы получить московское время
+        const minutes = moscowTime.getUTCMinutes();
+        const seconds = moscowTime.getUTCSeconds();
+        timeElement.textContent = `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+        return timeElement;
+    } catch (error) {
+        console.error('Ошибка при обновлении времени:', error);
+    }
+}
+
+const now = new Date();
+
+Смотри, у нас now определен в другой части проекта. Мне нужно его переопределить внутри условий
+nextSending описанных ниже, чтобы мы получали время по часовому поясу москвы а не текущему локальному
+времени. Сделаем это через апи и чтобы функции за которое это отвечали имели уникальные названия, очень
+уникальные.
+
+
+
+
+    // Если не был найден посыл в текущем дне
+if (!nextSending) {
+    // Определяем первый посыл на следующий день
+    const firstSending = new Date();
+    firstSending.setDate(firstSending.getDate() + 1);
+    firstSending.setUTCHours(json[0].from.hour + 3, json[0].from.minute, json[0].from.second || 0);
+
+    // Вычисляем время до первого посыл на следующий день
+    const timeDiff = Math.max(firstSending - now, 0);
+    nextSendingDate = firstSending;
+
+    hoursLeft = Math.floor(timeDiff / (1000 * 60 * 60));
+    minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+    secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+    newText = `До начала подготовки к следующему Посылу: ${hoursLeft} ч. ${minutesLeft} мин.`;
+
+    if (hoursLeft === 0 && minutesLeft <= 5) {
+        const buttonT = document.getElementById('imageButton');
+        if (buttonT) {
+            buttonT.disabled = false;
+        }
+    } else {
+        const buttonT = document.getElementById('imageButton');
+        if (buttonT) {
+            buttonT.disabled = true;
+        }
+    }
+} else {
+    // Вычисляем время до ближайшего посыл в текущем дне
+    const timeDiff = Math.max(nextSending - now, 0);
+
+    hoursLeft = Math.floor(timeDiff / (1000 * 60 * 60));
+    minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+    secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+    newText = `До начала подготовки к следующему Посылу: ${hoursLeft} ч. ${minutesLeft} мин.`;
+
+    if (hoursLeft === 0 && minutesLeft <= 5) {
+        const buttonT = document.getElementById('imageButton');
+        if (buttonT) {
+            buttonT.disabled = false;
+        }
+    } else {
+        const buttonT = document.getElementById('imageButton');
+        if (buttonT) {
+            buttonT.disabled = true;
+        }
+    }
+}
