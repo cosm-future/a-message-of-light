@@ -1286,7 +1286,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
  
 
 
-    json = (dayOfMonth === 8 || dayOfMonth === 17 || dayOfMonth === 26) && (
+    json = (dayOfMonth === 1 || dayOfMonth === 8 || dayOfMonth === 17 || dayOfMonth === 26) && (
         (hours === 10 && minutes >= 55) || (hours === 11) || (hours === 12 && minutes < 5)
     ) ? json_max : json_min;
 
@@ -1351,13 +1351,7 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
 
     // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
     audioPlayer.addEventListener('loadedmetadata', function() {
-        audioPlayer.play().then(_ => {
-            // Обработчик успешного запуска воспроизведения
-            // console.log('Воспроизведение начато');
-        }).catch(error => {
-            // Обработчик ошибки запуска воспроизведения
-            // console.error('Ошибка запуска воспроизведения:', error);
-        });
+        audioPlayer.play();
     });
 }
 
