@@ -12,7 +12,7 @@ function fetchVisitors() {
         // Обновляем отображение счетчика
         document.getElementById('visitorCounter').textContent = `Current visitors: ${visitors}`;
       })
-      .catch(error => console.error('Error fetching data:', error));
+      // .catch(error => console.error('Error fetching data:', error));
   }
 
   // Вызываем функцию для получения данных о посетителях каждую минуту
@@ -991,7 +991,7 @@ async function fetchMoscowTime() {
 
         return moscowTime;
     } catch (error) {
-        console.error('Ошибка при получении времени по Москве:', error);
+       // console.error('Ошибка при получении времени по Москве:', error);
         return null;
     }
 }
@@ -1019,7 +1019,7 @@ async function updateTime() {
         timeElement.textContent = `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
         return timeElement;
     } catch (error) {
-        console.error('Ошибка при обновлении времени:', error);
+       //  console.error('Ошибка при обновлении времени:', error);
     }
 }
 
@@ -1177,7 +1177,7 @@ updateText(); // После успешной загрузки вызываем �
 
 
 
-
+let messageRecordingPlayed = false;
 
 
 
@@ -1335,6 +1335,35 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             // Вызов функции каждые 1 секунд
           if (isIntervalActive) {
             jsonFileRandomMusic = 'main-music.json';
+
+
+
+
+            // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
+if (!messageRecordingPlayed && isAudioActive) {
+    audioPlayer.pause(); // Останавливаем текущее воспроизведение
+
+    getRandomSong(); // Получаем следующую песню
+
+    audioPlayer.src = song_link; // Устанавливаем новую песню в качестве источника для аудиоплеера
+    audioPlayer.load(); // Загружаем новую песню
+    messageRecordingPlayed = true; // Запрещаем песне проигрываться снова и снова каждую секунду
+
+    // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
+    audioPlayer.addEventListener('loadedmetadata', function() {
+        audioPlayer.play().then(_ => {
+            // Обработчик успешного запуска воспроизведения
+            // console.log('Воспроизведение начато');
+        }).catch(error => {
+            // Обработчик ошибки запуска воспроизведения
+            // console.error('Ошибка запуска воспроизведения:', error);
+        });
+    });
+}
+
+
+
+
             // Получаем ссылку на элемент по его id
             const watchElement = document.getElementById('watch');
             const titleVisitorsElement = document.getElementById('titleVisitors');
@@ -1567,6 +1596,8 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             isIntervalActive = false;
 
             
+
+            
                 if (hoursLeft === 0 && minutesLeft <= 5) {
                     const buttonT = document.getElementById('imageButton');
                     if (buttonT) {
@@ -1650,7 +1681,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
         isIntervalActive = false;
         
-        
+        messageRecordingPlayed = false;
       
 
         
@@ -1946,18 +1977,18 @@ function checkPassword() {
     fetch('key.txt')
         .then(response => response.text())
         .then(encryptedPassword => {
-            console.log(encryptedPassword);
+            // console.log(encryptedPassword);
             
             
 
             // Дешифрование полученного зашифрованного пароля
             const decryptedPassword = CryptoJS.AES.decrypt('U2FsdGVkX1+Q0REYIvTY+t8ml5pFPrTMGieZ7MKGOefqIQiDkN7uSXi2wlPNUU1l', decryptText('U2FsdGVkX1+yXQvK/Dj8nYyfVEuidGrZTyCAkEB2FHR9qFF6qEa1TOfGarhgGG3d')).toString(CryptoJS.enc.Utf8);
 
-            console.log('Дешифрованный пароль:', decryptedPassword);
+            // console.log('Дешифрованный пароль:', decryptedPassword);
 
             // Используем дешифрованный пароль как ожидаемый пароль
             const expectedPassword = decryptedPassword;
-            console.log('Ожидаемый пароль:', expectedPassword);
+            // console.log('Ожидаемый пароль:', expectedPassword);
 
             // Проверяем существование админского контейнера
             const adminContainer = document.querySelector('.admin-container');
@@ -2008,11 +2039,11 @@ function checkPassword() {
                     }
                 }
             } else {
-                console.error('Админский контейнер не найден');
+                // console.error('Админский контейнер не найден');
             }
         })
         .catch(error => {
-            console.error('Произошла ошибка при чтении файла:', error);
+            // console.error('Произошла ошибка при чтении файла:', error);
         });
 }
 
@@ -2169,7 +2200,7 @@ analyticsButton.textContent = 'Аналитика'; // Устанавливае�
 
 // Создаем ссылку
 const linkanalytics = document.createElement('a');
-linkanalytics.href = 'https://metrika.yandex.ru/dashboard?group=day&period=week&id=96635649'; // Устанавливаем адрес сайта
+linkanalytics.href = 'https://metrika.yandex.ru/dashboard?group=day&period=week&id=96836708'; // Устанавливаем адрес сайта
 linkanalytics.target = '_blank'; // Открываем ссылку в новой вкладке
 linkanalytics.textContent = analyticsButton.textContent; // Устанавливаем текст ссылки
 linkanalytics.classList.add('directoryLink'); // Добавляем класс ссылке
@@ -2377,7 +2408,7 @@ function insertDescription(container, description) {
           // Добавляем контейнер в тело документа
           document.body.appendChild(container);
         })
-        .catch(error => console.error('Error loading news.json:', error));
+        // .catch(error => console.error('Error loading news.json:', error));
   
       // Изменяем значение переменной состояния кнопки
       buttonBuildActive = true;
@@ -2747,4 +2778,6 @@ if (isOperaBrowser()) {
 
 
     
+
+
 
