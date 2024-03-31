@@ -1830,9 +1830,10 @@ function getMoscowTime() {
 // Если не был найден посыл в текущем дне
 if (!nextSending) {
     // Определяем первый посыл на следующий день
-    const firstSending = getMoscowTime();
+    const firstSending = new Date();
     firstSending.setDate(firstSending.getDate() + 1);
-    firstSending.setUTCHours(json[0].from.hour + 3, json[0].from.minute, json[0].from.second || 0);
+    firstSending.setHours(json[0].from.hour, json[0].from.minute, json[0].from.second || 0, 0);
+
 
     // Вычисляем время до первого посыл на следующий день
     const timeDiff = Math.max(firstSending - getMoscowTime(), 0);
