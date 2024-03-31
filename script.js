@@ -991,7 +991,7 @@ async function fetchMoscowTime() {
 
         return moscowTime;
     } catch (error) {
-       // console.error('Ошибка при получении времени по Москве:', error);
+        // console.error('Ошибка при получении времени по Москве:', error);
         return null;
     }
 }
@@ -1013,13 +1013,14 @@ async function updateTime() {
         }
 
         const timeElement = document.querySelector(".time");
-        const hours = moscowTime.getUTCHours() + 3; // Добавляем 3 часа к UTC времени, чтобы получить московское время
-        const minutes = moscowTime.getUTCMinutes();
-        const seconds = moscowTime.getUTCSeconds();
+        const adjustedLocalTime = getAdjustedLocalTime();
+        const hours = adjustedLocalTime.getUTCHours() + 3; // Добавляем 3 часа к UTC времени, чтобы получить московское время
+        const minutes = adjustedLocalTime.getUTCMinutes();
+        const seconds = adjustedLocalTime.getUTCSeconds();
         timeElement.textContent = `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
         return timeElement;
     } catch (error) {
-       //  console.error('Ошибка при обновлении времени:', error);
+        //  console.error('Ошибка при обновлении времени:', error);
     }
 }
 
@@ -1193,7 +1194,16 @@ let isSoundAndVibrationPlayed = false; // Добавляем переменну�
 
 
 function updateText() {
+
+
+    // Функция для получения текущей даты и времени по часовому поясу Москвы
+function getMoscowTimeSR() {
     const now = new Date();
+    const moscowTime = new Date(now.toLocaleString("en-US", { timeZone: "Europe/Moscow" }));
+    return moscowTime;
+}
+    
+    const now = getMoscowTimeSR();
     const hours = now.getHours();
     const minutes = now.getMinutes();
     const textElement = document.querySelector(".text");

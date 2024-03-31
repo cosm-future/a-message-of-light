@@ -1611,3 +1611,80 @@ if (!nextSending) {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+смотри, у нас ниже есть набор переменных. А после них идут функции для получения времени.
+Мне нужно создать новые функции, которые будут иметь точно такую же логику, но у них будут
+уже другие названия и они помогут вычислять время для переменной now. Напиши для этого код.
+
+
+const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const textElement = document.querySelector(".text");
+    const dayOfMonth = now.getDate();
+
+
+    // Получение значения коррекции времени из локального хранилища при загрузке страницы
+const storedCorrection = localStorage.getItem('moscowTimeCorrection');
+let moscowTimeDifference = storedCorrection ? parseInt(storedCorrection) : 0;
+
+async function fetchMoscowTime() {
+    try {
+        const response = await fetch('https://worldtimeapi.org/api/timezone/Europe/Moscow');
+        const data = await response.json();
+        const moscowTime = new Date(data.utc_datetime);
+        const localTime = new Date();
+
+        // Вычисляем разницу между московским временем и локальным временем пользователя
+        moscowTimeDifference = moscowTime - localTime;
+
+        // Сохраняем значение коррекции времени в локальное хранилище
+        localStorage.setItem('moscowTimeCorrection', moscowTimeDifference.toString());
+
+        return moscowTime;
+    } catch (error) {
+        // console.error('Ошибка при получении времени по Москве:', error);
+        return null;
+    }
+}
+
+function getAdjustedLocalTime() {
+    const localTime = new Date();
+    const adjustedLocalTime = new Date(localTime.getTime() + moscowTimeDifference); // Корректируем локальное время с учетом разницы
+
+    return adjustedLocalTime;
+}
+
+async function updateTime() {
+    try {
+        let moscowTime = await fetchMoscowTime();
+
+        if (!moscowTime) {
+            // Если нет доступа к интернету, используем корректированное локальное время
+            moscowTime = getAdjustedLocalTime();
+        }
+
+        const timeElement = document.querySelector(".time");
+        const adjustedLocalTime = getAdjustedLocalTime();
+        const hours = adjustedLocalTime.getUTCHours() + 3; // Добавляем 3 часа к UTC времени, чтобы получить московское время
+        const minutes = adjustedLocalTime.getUTCMinutes();
+        const seconds = adjustedLocalTime.getUTCSeconds();
+        timeElement.textContent = `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+        return timeElement;
+    } catch (error) {
+        //  console.error('Ошибка при обновлении времени:', error);
+    }
+}
