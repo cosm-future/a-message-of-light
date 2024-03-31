@@ -1340,7 +1340,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
 
             // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
-if (!messageRecordingPlayed && isAudioActive) {
+if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-music.json') {
     audioPlayer.pause(); // Останавливаем текущее воспроизведение
 
     getRandomSong(); // Получаем следующую песню
