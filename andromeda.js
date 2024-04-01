@@ -409,18 +409,42 @@ function startListening() {
             audio.src = qa.answer; // Устанавливаем ссылку как источник аудиофайла 
             audio.play();
             if (qa.type === "переход по ссылке на Катрены") {
-                window.open("https://blagayavest.info/poems/year.html", "_blank");
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://blagayavest.info/poems/year.html";
+                    });
             } else if (qa.type === "переход по ссылке на Академию") {
-                window.open("https://akegn.ru/", "_blank"); // Замените на фактическую ссылку
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://akegn.ru/";
+                    });
             } else if (qa.type === "переход по ссылке на Доктрину") {
-                window.open("https://doktrina.info/", "_blank"); // Замените на фактическую ссылку
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://doktrina.info/";
+                    });
             } else if (qa.type === "переход по ссылке на сегодняшний катрен" || 
             qa.type === "переход по ссылке на вчерашний катрен" ) {
-                window.open(qa.link, "_blank"); // Замените на фактическую ссылку
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = qa.link;
+                    });
             } else if (qa.type === "переход по ссылке на инструкцию") {
-                window.open(qa.link, "_blank"); // Замените на фактическую ссылку
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = qa.link;
+                    });
             } else if (qa.type === "переход по ссылке на Посыл") {
-                window.open("https://cosm-future.github.io/a-message-of-light/", "_blank"); // Замените на фактическую ссылку
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://cosm-future.github.io/a-message-of-light/";
+                    });
             }
         }
         

@@ -500,7 +500,11 @@ function startListening() {
             audio.src = qa.answer; // Устанавливаем ссылку как источник аудиофайла 
             audio.play();
             if (qa.type === "переход по ссылке на Катрены") {
-                window.open("https://blagayavest.info/poems/year.html", "_blank");
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://blagayavest.info/poems/year.html";
+                    });
             } else if (qa.type === "переход по ссылке на Академию") {
                 // Слушаем событие завершения воспроизведения аудио
                 audio.addEventListener('ended', function() {
