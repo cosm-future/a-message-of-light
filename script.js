@@ -430,8 +430,8 @@ function toggleHamburger() {
         linkButton4.classList.add('encryptText');
         linkButton4.innerHTML = 'Андромеда'; // Текст кнопки
         linkButton4.addEventListener('click', function() {
-            // Открываем ссылку в новой вкладке
-            window.open('https://cosm-future.github.io/a-message-of-light/andromeda.html', '_blank');
+            // Замените на фактическую ссылку
+            window.location.href = "https://cosm-future.github.io/a-message-of-light/andromeda.html";
         });
         newMenuContainer.appendChild(linkButton4);
 
@@ -444,8 +444,8 @@ function toggleHamburger() {
         linkButton5.classList.add('encryptText');
         linkButton5.innerHTML = 'Календарь'; // Текст кнопки
         linkButton5.addEventListener('click', function() {
-            // Открываем ссылку в новой вкладке
-            window.open('https://cosm-future.github.io/a-message-of-light/calendar.html', '_blank');
+            // Замените на фактическую ссылку
+            window.location.href = "https://cosm-future.github.io/a-message-of-light/calendar.html";
         });
         newMenuContainer.appendChild(linkButton5);
 
