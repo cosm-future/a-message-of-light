@@ -981,12 +981,9 @@ async function fetchMoscowTime() {
         const response = await fetch('https://worldtimeapi.org/api/timezone/Europe/Moscow');
         const data = await response.json();
         const moscowTime = new Date(data.utc_datetime);
-        const localTime = new Date();
-
-        // Вычисляем разницу между московским временем и локальным временем пользователя
-        moscowTimeDifference = moscowTime - localTime;
 
         // Сохраняем значение коррекции времени в локальное хранилище
+        moscowTimeDifference = moscowTime.getTime() - Date.now();
         localStorage.setItem('moscowTimeCorrection', moscowTimeDifference.toString());
 
         return moscowTime;
@@ -996,33 +993,25 @@ async function fetchMoscowTime() {
     }
 }
 
-function getAdjustedLocalTime() {
-    const localTime = new Date();
-    const adjustedLocalTime = new Date(localTime.getTime() + moscowTimeDifference); // Корректируем локальное время с учетом разницы
-
-    return adjustedLocalTime;
-}
-
 async function updateTime() {
     try {
         let moscowTime = await fetchMoscowTime();
 
         if (!moscowTime) {
             // Если нет доступа к интернету, используем корректированное локальное время
-            moscowTime = getAdjustedLocalTime();
+            moscowTime = new Date(Date.now() + moscowTimeDifference);
         }
 
         const timeElement = document.querySelector(".time");
-        const adjustedLocalTime = getAdjustedLocalTime();
-        const hours = adjustedLocalTime.getUTCHours() + 3; // Добавляем 3 часа к UTC времени, чтобы получить московское время
-        const minutes = adjustedLocalTime.getUTCMinutes();
-        const seconds = adjustedLocalTime.getUTCSeconds();
-        timeElement.textContent = `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+        const options = { timeZone: 'Europe/Moscow', hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        const moscowTimeString = moscowTime.toLocaleString('en-US', options);
+        timeElement.textContent = moscowTimeString;
         return timeElement;
     } catch (error) {
         //  console.error('Ошибка при обновлении времени:', error);
     }
 }
+
 
 
 
