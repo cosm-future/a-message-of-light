@@ -857,7 +857,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Добавление текста "Посыл" или "Часовой посыл" в зависимости от особого дня
     let prefix = "Сегодня ";
-    if (dayOfMonth === 8 || dayOfMonth === 17 || dayOfMonth === 26) {
+    if (dayOfMonth === 1 || dayOfMonth === 8 || dayOfMonth === 17 || dayOfMonth === 26) {
         prefix += "Часовой + Ежедневные Посылы. ";
         dateElement.style.color = "gold";
     } else {
