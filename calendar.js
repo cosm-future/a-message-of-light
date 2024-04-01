@@ -502,26 +502,36 @@ function startListening() {
             if (qa.type === "переход по ссылке на Катрены") {
                 window.open("https://blagayavest.info/poems/year.html", "_blank");
             } else if (qa.type === "переход по ссылке на Академию") {
-                window.open("https://akegn.ru/", "_blank"); // Замените на фактическую ссылку
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://akegn.ru/";
+                    });
             } else if (qa.type === "переход по ссылке на Доктрину") {
-                window.open("https://doktrina.info/", "_blank"); // Замените на фактическую ссылку
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://doktrina.info/";
+                    });
             } else if (qa.type === "переход по ссылке на сегодняшний катрен" || 
             qa.type === "переход по ссылке на вчерашний катрен" ) {
-                window.open(qa.link, "_blank"); // Замените на фактическую ссылку
-            } else if (qa.type === "переход по ссылке на инструкцию") {
-                window.open(qa.link, "_blank"); // Замените на фактическую ссылку
-            } else if (qa.type === "переход по ссылке на Посыл") {
-                
-
-
-
                 // Слушаем событие завершения воспроизведения аудио
-audio.addEventListener('ended', function() {
-    // Замените на фактическую ссылку
-window.location.href = "https://cosm-future.github.io/a-message-of-light/";
-
-});
-
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = qa.link;
+                    });
+            } else if (qa.type === "переход по ссылке на инструкцию") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = qa.link;
+                    });
+            } else if (qa.type === "переход по ссылке на Посыл") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                // Замените на фактическую ссылку
+                window.location.href = "https://cosm-future.github.io/a-message-of-light/";
+                });
             }
         }
         
