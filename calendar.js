@@ -515,16 +515,24 @@ function startListening() {
 
 
 
-                // Получаем URL предыдущей страницы из истории браузера
-var previousUrl = document.referrer;
+                // Слушаем событие завершения воспроизведения аудио
+audio.addEventListener('ended', function() {
+    // Получаем URL предыдущей страницы из истории браузера
+    var previousUrl = document.referrer;
 
-// Проверяем, была ли предыдущая страница нужной ссылкой
-if (previousUrl === "https://cosm-future.github.io/a-message-of-light/") {
-    // Возвращаем браузер на предыдущую страницу
-    window.history.back();
-} else {
-    window.open("https://cosm-future.github.io/a-message-of-light/", "_blank"); // Замените на фактическую ссылку
-}
+    // Проверяем, была ли предыдущая страница нужной ссылкой
+    if (previousUrl === "https://cosm-future.github.io/a-message-of-light/") {
+        // Возвращаем браузер на предыдущую страницу после завершения аудио
+        setTimeout(function() {
+            window.history.back();
+        }, 1000); // задержка 1000 миллисекунд (1 секунда)
+    } else {
+        // Открываем новую страницу после завершения аудио
+        setTimeout(function() {
+            window.open("https://cosm-future.github.io/a-message-of-light/", "_blank"); // Замените на фактическую ссылку
+        }, 1000); // задержка 1000 миллисекунд (1 секунда)
+    }
+});
 
             }
         }
