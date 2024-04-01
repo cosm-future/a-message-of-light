@@ -511,7 +511,21 @@ function startListening() {
             } else if (qa.type === "переход по ссылке на инструкцию") {
                 window.open(qa.link, "_blank"); // Замените на фактическую ссылку
             } else if (qa.type === "переход по ссылке на Посыл") {
-                window.open("https://cosm-future.github.io/a-message-of-light/", "_blank"); // Замените на фактическую ссылку
+                
+
+
+
+                // Получаем URL предыдущей страницы из истории браузера
+var previousUrl = document.referrer;
+
+// Проверяем, была ли предыдущая страница нужной ссылкой
+if (previousUrl === "https://cosm-future.github.io/a-message-of-light/") {
+    // Возвращаем браузер на предыдущую страницу
+    window.history.back();
+} else {
+    window.open("https://cosm-future.github.io/a-message-of-light/", "_blank"); // Замените на фактическую ссылку
+}
+
             }
         }
         
