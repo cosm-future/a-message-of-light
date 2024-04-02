@@ -895,7 +895,7 @@ if (window.matchMedia("(orientation: portrait)").matches) {
     if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
         dateElement.style.fontSize = "12px";
     } else {
-        dateElement.style.fontSize = "18px";
+        dateElement.style.fontSize = "16px";
     }
 
 
