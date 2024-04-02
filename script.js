@@ -843,6 +843,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     dateElement.style.backgroundColor = '#00000000';
 
+
+
+
+
+
+
+
+
+
+
+
     // Устанавливаем тени для элемента даты
     dateElement.style.textShadow = `
     2px 2px 4px rgba(48, 48, 48, 0.6), /* Тень вправо-вниз */
@@ -882,10 +893,15 @@ if (window.matchMedia("(orientation: portrait)").matches) {
   
     // Применение стилей из медиа-запроса
     if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
-        dateElement.style.fontSize = "11px";
+        dateElement.style.fontSize = "12px";
     } else {
-        dateElement.style.fontSize = "14px";
+        dateElement.style.fontSize = "18px";
     }
+
+
+
+
+
 
 
 // Проверяем, поддерживает ли браузер API запроса на доступ к аудио и локальное хранилище
