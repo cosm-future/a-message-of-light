@@ -1,0 +1,431 @@
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Play', sans-serif;
+    background: linear-gradient(to bottom, black, #340f57); /* Вертикальный градиент от черного к темно-фиолетовому */
+    background-repeat: no-repeat;
+  }
+
+
+  .h2Yellow {
+    position: fixed;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Play', sans-serif;
+    color: rgb(186, 134, 255); /* Белый цвет текста */
+    opacity: 0.9;
+  }
+  
+
+
+
+  .chat-container {
+    position: relative;
+    top: 50px;
+    max-width: 500px;
+    height: 77vh;
+    margin: 0 auto;
+    border: 1px solid #868686;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: rgb(14, 14, 14);
+  }
+
+  /* Стиль для .faq при режиме экрана портрет */
+@media screen and (orientation: portrait) {
+  .chat-container {
+    width: 90%;
+    max-width: 90%;
+
+  }
+}
+
+
+  .chat-box {
+    height: 315px;
+    overflow-y: scroll;
+    padding: 10px;
+    height: 65vh;
+    background-color: #a8a8a80c;
+    border-bottom: 1px solid rgba(162, 147, 190, 0.281);;
+  }
+
+  /* Стиль для .faq при режиме экрана портрет */
+@media screen and (orientation: portrait) {
+  .chat-box {
+    width: calc(100% - 20px);
+
+  }
+}
+
+
+
+
+  .chat-box::-webkit-scrollbar {
+    width: 12px; /* Ширина полосы прокрутки */
+    border: 1px solid rgba(174, 0, 255, 0);
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    z-index: 80;
+}
+
+  .chat-box::-webkit-scrollbar-track {
+
+        
+    background: rgba(173, 173, 173, 0.315); /* Цвет фона трека */
+    border-top-right-radius: 0px; /* Закругление нижнего правого угла */
+    border-bottom-right-radius: 0px; /* Закругление нижнего правого угла */
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+
+  background: rgba(0, 0, 0, 0.534); /* Цвет полосы прокрутки */
+  
+}
+
+
+
+
+.user-input {
+  position: relative;
+  margin-left: 6px;
+  margin-right: 5px;
+  border-radius: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  bottom: -8px;
+  color: rgb(255, 255, 255);
+  width: 250px; /* Учитываем отступы по 20px с каждой стороны */
+  height: 40px;
+  font-family: "Play";
+  border: 2px solid rgb(134, 134, 134); /* Лавандовая рамка */
+  background-color: rgba(22, 22, 22, 0.8); /* Лавандовый цвет с полупрозрачностью */
+  z-index: 171; /* Индекс слоя */
+  transition: border-color 0.5s;
+  resize: none; /* Добавляем возможность изменения размера инпута пользователем */
+}
+
+
+/* Стиль при наведении */
+.user-input:hover {
+    border-color: rgb(149, 0, 255); /* Фиолетовый цвет */
+}
+
+/* Стиль при фокусе */
+.user-input:focus {
+    border-color: rgb(255, 0, 255); /* Темно-фиолетовый цвет */
+}
+
+
+.user-input::-webkit-scrollbar {
+  width: 12px; /* Ширина полосы прокрутки */
+  border: 1px solid rgba(174, 0, 255, 0);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  z-index: 80;
+}
+
+.user-input::-webkit-scrollbar-track {
+
+      
+  background: rgba(173, 173, 173, 0.315); /* Цвет фона трека */
+  border-top-right-radius: 5px; /* Закругление нижнего правого угла */
+  border-bottom-right-radius: 5px; /* Закругление нижнего правого угла */
+}
+
+.user-input::-webkit-scrollbar-thumb {
+
+background: rgba(0, 0, 0, 0.534); /* Цвет полосы прокрутки */
+border-top-right-radius: 5px;
+border-bottom-right-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+  .send-button {
+    position: relative;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    top: -26px;
+    background-color: rgba(0, 0, 0, 0.5); /* Черный цвет фона */
+    color: white; /* Белый цвет текста */
+    border: 1px solid rgba(134, 134, 134, 0.521); /* Убираем границу */
+    border-radius: 10px; /* Закругленные углы */
+    font-size: 16px; /* Размер шрифта */
+    cursor: pointer; /* Изменяем курсор при наведении */
+    transition: background-color 0.2s, color 0.3s, padding 0.2s; /* Плавные переходы */
+    z-index: 99;
+  }
+
+.send-button:hover {
+    border: 1px solid rgba(76, 0, 255, 0.63); /* Убираем границу */
+    background-color: rgb(62, 0, 179); /* Белый цвет фона при наведении */
+    color: rgb(255, 255, 255); /* Черный цвет текста при наведении */
+}
+
+.send-button:active {
+    color: rgb(195, 0, 255); /* Белый цвет текста */
+    background-color: rgb(97, 55, 177); /* Белый цвет фона при наведении */
+}
+
+
+
+
+
+.faq {
+  position: relative;
+  top: -18px;
+  left: 290px;
+  width: 180px;
+  height: 20px;
+  display: flex; /* Устанавливаем flex-контейнер */
+  justify-content: space-between; /* Равномерно распределяем элементы по горизонтали */
+  align-items: center; /* Выравниваем элементы по центру по вертикали */
+  font-size: 11px;
+  color: rgb(156, 156, 156); /* Черный цвет текста при наведении */
+  z-index: 500;
+}
+
+
+
+
+
+
+
+
+
+
+  .user-message, .bot-message {
+    text-align: left;
+    color: rgb(255, 255, 255);
+    background-color: rgba(131, 131, 131, 0.112);
+    padding: 5px;
+    border: 1px solid rgba(138, 138, 138, 0.155);
+    border-radius: 10px;
+    opacity: 0; /* начальное значение непрозрачности */
+    transition: opacity 0.15s ease, background-color 0.3s; /* добавляем плавность для свойства opacity */
+}
+
+.user-message.visible, .bot-message.visible {
+    opacity: 1; /* при добавлении класса visible непрозрачность становится 1 */
+}
+
+  .message {
+    margin: 5px 0;
+  }
+
+  .user-message:hover, .bot-message:hover {
+    background-color: rgba(131, 131, 131, 0.212);
+    border: 1px solid rgba(138, 138, 138, 0.555)
+  }
+
+
+  
+
+
+
+
+
+
+
+
+  .hamburger-button {
+    position: fixed;
+    bottom: 25px;
+    left: calc(100% - 177px);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(128, 0, 128, 0.1);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 24px;
+    border: 1px solid rgba(128, 0, 128, 0.8);
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 750;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px); /* Применяем размытие к контейнеру */
+}
+
+/* Стиль для включенной кнопки */
+.hamburger-button.enabled {
+    background-color: rgba(128, 0, 128, 0.5);
+}
+
+/* Стиль для кнопки, когда она в состоянии disabled */
+.hamburger-button:disabled {
+    background-color: rgba(48, 48, 48, 0.1);
+    color: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(173, 173, 173, 0.185);
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.9;
+}
+
+/* Медиа-запрос для портретного режима */
+@media (orientation: portrait) {
+    .hamburger-button {
+        bottom: 20px;
+        left: calc(100% - 137px);
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    .hamburger-button {
+        bottom: 15px;
+        left: calc(100% - 150px);
+    }
+}
+
+
+
+
+
+.menu-container {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25%;
+    height: 50%;
+    background-color: rgba(45, 0, 128, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    font-family: 'Play';
+    padding: 20px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+    z-index: 700;
+    opacity: 1; /* Начальная прозрачность */
+    transition: opacity 0.3s; /* Анимация перехода */
+}
+
+.menu-container:before {
+    content: '';
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+
+@media (orientation: portrait) {
+    .menu-container {
+        position: fixed;
+        width: 80%; /* Ширина контейнера 80% экрана */
+        height: 70%; /* Высота контейнера 75% экрана */
+        backdrop-filter: blur(5px); /* Применяем размытие к контейнеру */
+        z-index: 900;
+        
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    .menu-container {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        transform: translate(-0%, -0%); /* Центрируем контейнер */
+        width: 30%; /* Ширина контейнера 80% экрана */
+        height: 56%; /* Высота контейнера 75% экрана */
+        backdrop-filter: blur(5px); /* Применяем размытие к контейнеру */
+        z-index: 900;
+        
+    }
+}
+
+
+
+.menu-container::-webkit-scrollbar {
+    width: 12px; /* Ширина полосы прокрутки */
+    border: 1px solid rgba(174, 0, 255, 0);
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    z-index: 299; /* Индекс слоя */
+}
+
+
+
+.menu-container::-webkit-scrollbar-track {
+
+    
+    background: rgba(39, 0, 29, 0.068); /* Цвет фона трека */
+    border-top-right-radius: 15px; /* Закругление нижнего правого угла */
+    border-bottom-right-radius: 15px; /* Закругление нижнего правого угла */
+    background-clip: padding-box; /* Область отображения фона */
+    backdrop-filter: blur(9px); /* Размытие подложки */
+    
+}
+
+
+
+.menu-container::-webkit-scrollbar-thumb {
+
+    background: rgba(21, 0, 70, 0.904); /* Цвет полосы прокрутки */
+    border-radius: 15px 70px 70px 15px; /* Радиус скругления углов полосы */
+    
+}
+
+
+
+.h2White {
+    color: white;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+.encryptText {
+
+    background-color: rgba(0, 0, 0, 0.5); /* Черный цвет фона */
+    color: white; /* Белый цвет текста */
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid rgba(134, 134, 134, 0.521); /* Убираем границу */
+    border-radius: 15px; /* Закругленные углы */
+    padding: 10px 20px; /* Внутренний отступ */
+    font-family: 'Play';
+    font-size: 16px; /* Размер шрифта */
+    cursor: pointer; /* Изменяем курсор при наведении */
+    transition: background-color 0.2s, color 0.3s, padding 0.2s; /* Плавные переходы */
+    z-index: 400;
+}
+
+.encryptText:hover {
+    border: 1px solid rgba(76, 0, 255, 0.63); /* Убираем границу */
+    background-color: rgb(62, 0, 179); /* Белый цвет фона при наведении */
+    color: rgb(255, 255, 255); /* Черный цвет текста при наведении */
+}
+
+.encryptText:active {
+    color: rgb(195, 0, 255); /* Белый цвет текста */
+    background-color: rgb(97, 55, 177); /* Белый цвет фона при наведении */
+}
+
+/* Ваш CSS-код здесь */

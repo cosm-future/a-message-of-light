@@ -424,16 +424,29 @@ function toggleHamburger() {
 
 
 
-        // Создаем кнопку Андромеда с ссылкой
+        // Создаем кнопку Справка с ссылкой
         const linkButton4 = document.createElement('button');
         linkButton4.id = 'resource-link-button4';
         linkButton4.classList.add('encryptText');
-        linkButton4.innerHTML = 'Андромеда'; // Текст кнопки
+        linkButton4.innerHTML = 'Справка'; // Текст кнопки
         linkButton4.addEventListener('click', function() {
             // Замените на фактическую ссылку
             window.location.href = "https://cosm-future.github.io/a-message-of-light/andromeda.html";
         });
         newMenuContainer.appendChild(linkButton4);
+
+
+
+        // Создаем кнопку Справка с ссылкой
+        const linkButton7 = document.createElement('button');
+        linkButton7.id = 'resource-link-button7';
+        linkButton7.classList.add('encryptText');
+        linkButton7.innerHTML = 'Чат Андромеда'; // Текст кнопки
+        linkButton7.addEventListener('click', function() {
+            // Замените на фактическую ссылку
+            window.location.href = "https://cosm-future.github.io/a-message-of-light/andromeda-chat.html";
+        });
+        newMenuContainer.appendChild(linkButton7);
 
 
         
