@@ -23,22 +23,25 @@ body {
     font-family: 'Play', sans-serif;
     color: rgb(186, 134, 255); /* Белый цвет текста */
     opacity: 0.9;
+    z-index: 300;
   }
   
 
 
 
   .chat-container {
-    position: relative;
+    position: fixed;
     top: 50px;
     max-width: 500px;
     height: 77vh;
-    margin: 0 auto;
+    left: 50%; /* Установка левого края контейнера на 50% от ширины родительского блока */
+    transform: translateX(-50%); /* Смещение контейнера влево на половину его ширины */
     border: 1px solid #868686;
     border-radius: 15px;
     overflow: hidden;
     background-color: rgb(14, 14, 14);
-  }
+}
+
 
   /* Стиль для .faq при режиме экрана портрет */
   @media only screen and (max-width: 600px) and (orientation: portrait) {
