@@ -119,7 +119,7 @@ body {
   /* Стиль для .faq при режиме экрана портрет */
   @media only screen and (max-width: 600px) and (orientation: portrait) {
     .user-input {
-      width: 200px; /* Учитываем отступы по 20px с каждой стороны */
+      width: 180px; /* Учитываем отступы по 20px с каждой стороны */
 
     }
   }
@@ -216,7 +216,8 @@ border-bottom-right-radius: 5px;
   /* Стиль для .faq при режиме экрана портрет */
   @media only screen and (max-width: 600px) and (orientation: portrait) {
     .faq {
-      left: 240px;
+      left: auto;
+      right: -220px;
 
     }
   }
