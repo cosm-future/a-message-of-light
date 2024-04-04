@@ -354,6 +354,17 @@ function toggleHamburger() {
         newMenuContainer.appendChild(title2);
 
 
+        // Создаем кнопку Справка с ссылкой
+        const linkButton7 = document.createElement('button');
+        linkButton7.id = 'resource-link-button7';
+        linkButton7.classList.add('encryptText');
+        linkButton7.innerHTML = 'Справка'; // Текст кнопки
+        linkButton7.addEventListener('click', function() {
+            // Замените на фактическую ссылку
+            window.location.href = "https://cosm-future.github.io/a-message-of-light/andromeda.html";
+        });
+        newMenuContainer.appendChild(linkButton7);
+
 
 
         // Создаем кнопку Календарь с ссылкой

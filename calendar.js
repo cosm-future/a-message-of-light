@@ -170,7 +170,7 @@ function toggleHamburger() {
 
 
 
-        // Создаем кнопку Андромеда с ссылкой
+        // Создаем кнопку Справка с ссылкой
         const linkButton4 = document.createElement('button');
         linkButton4.id = 'resource-link-button4';
         linkButton4.classList.add('encryptText');

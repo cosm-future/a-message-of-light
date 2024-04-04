@@ -32,6 +32,7 @@ body {
   .chat-container {
     position: fixed;
     top: 50px;
+    width: 500px;
     max-width: 500px;
     height: 77vh;
     left: 50%; /* Установка левого края контейнера на 50% от ширины родительского блока */
