@@ -198,32 +198,55 @@ if (linkUrl) {
             });
         } else if (message.includes('*')) {
             const parts = message.split('*');
-            const beforeStar = parts[0];
-            const linkText = parts[1]; // Текст ссылки
-            const afterStar = parts[2];
-
-            const link = document.createElement('a');
-            link.href = linkUrl; // Путь ссылки
-            link.target = '_blank'; // Открыть ссылку в новой вкладке
-            link.style.color = 'rgb(255, 0, 255)'; // Фиолетовый цвет
-
-            // Добавляем текст ссылки в сообщение
-            link.appendChild(document.createTextNode(linkText));
-            messageElement.appendChild(document.createTextNode(beforeStar));
-            messageElement.appendChild(link);
-
-            // Нет вызова printMessage(), потому что это не текстовое сообщение от бота
-            messageElement.appendChild(document.createTextNode(afterStar));
+            for (let i = 0; i < parts.length; i++) {
+                const part = parts[i];
+                if (i % 2 === 0) { // Четные части будут обычным текстом
+                    messageElement.appendChild(document.createTextNode(part));
+                } else { // Нечетные части будут закрашены
+                    const span = document.createElement('span');
+                    if (linkUrl) { // Если есть ссылка, то создаем ссылку
+                        const link = document.createElement('a');
+                        link.href = linkUrl;
+                        link.target = '_blank';
+                        link.appendChild(document.createTextNode(part.replace(/\*/g, '')));
+                        span.appendChild(link);
+                    } else { // Если нет ссылки, просто закрашиваем текст
+                        span.style.backgroundColor = 'yellow';
+                        span.textContent = part.replace(/\*/g, '');
+                    }
+                    messageElement.appendChild(span);
+                }
+            }
         } else {
             messageElement.appendChild(document.createTextNode(message));
         }
+    };
+    
+        
+        
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
 }
 
 
     
     
-}
+
 
 
 
