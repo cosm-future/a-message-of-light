@@ -447,4 +447,65 @@ border-bottom-right-radius: 5px;
     background-color: rgb(97, 55, 177); /* Белый цвет фона при наведении */
 }
 
+
+
+
+
+
+
+
+
+
+.andromeda-button {
+  position: fixed; /* Фиксированное позиционирование */
+  bottom: 25px;  /* Отступ от нижней границы вьюпорта */
+  right: 65px; /* Отступ от правой границы вьюпорта */
+  width: 50px; /* Ширина кнопки */
+  height: 50px; /* Высота кнопки */
+  border-radius: 50%; /* Круглая форма */
+  background-color: rgba(128, 0, 128, 0.1); /* Фиолетовый цвет с полупрозрачностью */
+  color: rgba(255, 255, 255, 0.5); /* Цвет иконки с альфа-каналом 0.7 */
+  font-size: 24px; /* Размер иконки */
+  border: 1px solid rgba(128, 0, 128, 0.8); /* Тонкий бордер с альфа-каналом 0.5 */
+  cursor: pointer; /* Устанавливаем курсор в виде указателя */
+  transition: all 0.3s; /* Плавный переход  */
+  z-index: 750;
+  display: flex; /* Используем flexbox для центрирования */
+  justify-content: center; /* Центрирование по горизонтали */
+  align-items: center; /* Центрирование по вертикали */
+  backdrop-filter: blur(5px); /* Применяем размытие к контейнеру */
+  }
+  
+  /* Стиль для включенной кнопки */
+  #andromeda-button.enabled {
+  background-color: rgba(128, 0, 128, 0.5); /* Цвет заднего фона при включенной кнопке */
+  }
+  
+  /* Стиль для кнопки, когда она в состоянии disabled */
+  .andromeda-button:disabled {
+  background-color: rgba(48, 48, 48, 0.1); /* Фоновый цвет кнопки при disabled */
+  color: rgba(255, 255, 255, 0.3); /* Цвет иконки при disabled */
+  border: 1px solid rgba(173, 173, 173, 0.185); /* Бордер при disabled */
+  cursor: not-allowed; /* Курсор в режиме not-allowed при disabled */
+  pointer-events: none; /* Отключаем события мыши при disabled */
+  opacity: 0.9; /* Прозрачность при disabled */
+  }
+  
+  @media screen and (orientation: portrait) and (max-width: 600px) {
+  /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+  .andromeda-button {
+      bottom: 20px;
+      right: 25px; 
+  }
+  }
+  
+  
+  @media screen and (orientation: landscape) and (max-height: 600px) {
+  /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+  .andromeda-button {
+      bottom: 15px;
+      right: 40px; 
+  }
+  }
+
 /* Ваш CSS-код здесь */

@@ -500,3 +500,320 @@ if (hamburgerButton) {
         toggleHamburger();
     });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const buttonAndromeda = document.getElementById('andromeda-button');
+  let buttonAndromedaActive = false;
+
+
+
+ // Функция для проверки состояния первого запуска Андромеды
+function isFirstLaunch() {
+    return localStorage.getItem('firstLaunch') !== 'true'; // Если первый запуск, вернуть true
+}
+
+// Функция для установки состояния первого запуска Андромеды
+function setFirstLaunch() {
+    localStorage.setItem('firstLaunch', 'true');
+}
+
+// Функция для обновления состояния кнопки изображения и сохранения состояния в локальное хранилище
+function toggleAndromeda() {
+    if (isFirstLaunch()) {
+        const audio = new Audio("https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/andromeda_first_message.mp3");
+            audio.play();
+
+
+        setFirstLaunch(); // Устанавливаем состояние первого запуска
+    }
+    
+    buttonAndromedaActive = true; // Инвертируем состояние кнопки Андромеды
+    updateAndromedaButtonState(); // Обновляем состояние кнопки изображения
+    startListening();
+}
+
+
+  
+  // Функция для обновления внешнего вида кнопки изображения в соответствии с состоянием
+  function updateAndromedaButtonState() {
+      if (buttonAndromedaActive) {
+        buttonAndromeda.style.backgroundColor = 'rgba(128, 0, 128, 0.5)';
+
+      } else {
+        buttonAndromeda.style.backgroundColor = 'rgba(128, 0, 128, 0.15)';
+
+      }
+  }
+
+
+
+      
+ // Функция для делания кнопки неактивной
+function disableButtonAndromeda() {
+
+    if (buttonAndromeda) {
+        buttonAndromeda.disabled = true;
+    }
+}
+
+// Функция для делания кнопки активной
+function enableButtonAndromeda() {
+
+    if (buttonAndromeda) {
+        buttonAndromeda.disabled = false;
+    }
+}
+
+
+// Добавляем обработчик события наведения мыши на кнопку изображения
+buttonAndromeda.addEventListener('mouseenter', function() {
+    // Задаем цвет фона кнопке
+    buttonAndromeda.style.backgroundColor = 'rgba(128, 0, 128, 0.75)'; // Новый цвет фона кнопки
+});
+
+// Добавляем обработчик события увода мыши с кнопки изображения
+buttonAndromeda.addEventListener('mouseleave', function() {
+    // Возвращаем исходный цвет фона кнопки
+    buttonAndromeda.style.backgroundColor = buttonAndromedaActive ? 'rgba(128, 0, 128, 0.5)' : 'rgba(128, 0, 128, 0.15)';
+}); 
+      
+    
+
+      
+
+const qaPairs = [
+    { 
+        questions: ["Покажи Академию", "Покажи Академи", "Покажи Акодеми", "Покажи Акадими",
+        "Открой Академию", "Аткрой Академию", "Открой Академи", "Аткрой Академи",
+        "Открой сайт Академии", "Аткрой сайт Академии",
+        "Открой сайт Академи", "Аткрой сайт Академи"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/open_academy.mp3", 
+        type: "переход по ссылке на Академию" 
+    },
+    { 
+        questions: ["Открой сайт Катрен", "Открой сайт Катренов", "Аткрой сайт Катренов", "Открой сайт Катренов",
+        "Аткрой сайт Катрен", "Открой сайт Катрен", "Открой Катрен", "Актрой Катрен", "Открой Катрены", "Аткрой Катрены",
+        "Покажи Катрены", "Покажи Катрен"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/katrens_opens.mp3", 
+        type: "переход по ссылке на Катрены" 
+    },
+    { 
+        questions: ["Открой сайт Доктрин", "Открой сайт Доктрины", "Аткрой сайт Доктрин", "Аткрой сайт Доктрины",
+        "Покажи Доктрину", "Покажи Доктрин"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/open_doctrina.mp3", 
+        type: "переход по ссылке на Доктрину" 
+    },
+    { 
+        questions: ["Открой сайт Посыла", "Открой сайт Посыло", "Аткрой сайт Посыла", "Аткрой сайт Посыло",
+        "Покажи Посыл", "Покажи Посылы"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/open_suit.mp3", 
+        type: "переход по ссылке на Посыл" 
+    },
+    { 
+        questions: ["Открой сайт Календаря", "Открой сайт Календар", "Аткрой сайт Календаря", "Аткрой сайт Календар",
+        "Открой сайт Колендаря", "Открой сайт Колендаря", "Покажи Колендарь", "Покажи Календарь"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/open_suit.mp3", 
+        type: "переход по ссылке на Календарь" 
+    }
+    // Другие вопросы и ответы
+];
+
+
+
+
+
+// Генерируем ссылку на сегодняшний катрен
+const currentDateCatren = new Date();
+const dayCatren = currentDateCatren.getDate().toString().padStart(2, '0');
+const monthCatren = (currentDateCatren.getMonth() + 1).toString().padStart(2, '0');
+const yearCatren = currentDateCatren.getFullYear().toString().slice(-2);
+const todayCatrenLink = `https://blagayavest.info/poems/${dayCatren}.${monthCatren}.${yearCatren}.html`;
+
+// Генерируем ссылку на вчерашний катрен
+const yesterdayDateCatren = new Date(currentDateCatren);
+yesterdayDateCatren.setDate(yesterdayDateCatren.getDate() - 1);
+const dayYesterdayCatren = yesterdayDateCatren.getDate().toString().padStart(2, '0');
+const monthYesterdayCatren = (yesterdayDateCatren.getMonth() + 1).toString().padStart(2, '0');
+const yearYesterdayCatren = yesterdayDateCatren.getFullYear().toString().slice(-2);
+const yesterdayCatrenLink = `https://blagayavest.info/poems/${dayYesterdayCatren}.${monthYesterdayCatren}.${yearYesterdayCatren}.html`;
+
+// Функция для форматирования даты в формат "dd.mm.yy"
+function formatDate(date) {
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear().toString().slice(-2);
+    return `${day}.${month}.${year}`;
+}
+
+// Добавляем ссылку на сегодняшний катрен в массив qaPairs
+qaPairs.push({ 
+    questions: ["Покажи сегодняшний катрен"], 
+    answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/open_suit.mp3", 
+    type: "переход по ссылке на сегодняшний катрен",
+    link: todayCatrenLink
+});
+
+// Добавляем ссылку на вчерашний катрен в массив qaPairs
+qaPairs.push({ 
+    questions: ["Покажи вчерашний катрен"], 
+    answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/open_suit.mp3", 
+    type: "переход по ссылке на вчерашний катрен",
+    link: yesterdayCatrenLink
+});
+
+// Добавляем ссылку на инструкцию в массив qaPairs
+qaPairs.push({ 
+    questions: ["Покажи инструкцию", "Покажи инструкци", "Открой сайт инструкци", "Открой сайт инструкции"], 
+    answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/open_suit.mp3", 
+    type: "переход по ссылке на инструкцию",
+    link: "https://cosm-future.github.io/a-message-of-light/andromeda.html"
+});
+
+
+
+
+
+
+// Добавляем команды "Покажи катрен за (дата)" в массив qaPairs
+qaPairs.push({ 
+    questions: ["Катрен за"], 
+    answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/open_suit.mp3", 
+    type: "переход по ссылке на катрен за конкретную дату",
+    link: function(userInput) {
+        const datePattern = /\b(\d{1,2})[.\/-](\d{1,2})[.\/-](\d{2,4})\b/g;
+        const match = datePattern.exec(userInput);
+        if (!match) return null; // Если дата не распознана, возвращаем null
+        const day = match[1].padStart(2, '0');
+        const month = match[2].padStart(2, '0');
+        const year = match[3].slice(-2);
+        const formattedDate = `${day}.${month}.${year}`;
+        const link = `https://blagayavest.info/poems/${formattedDate}.html`;
+        
+        return link;
+    }
+});
+
+
+
+
+
+
+
+
+let recognition;
+
+function startListening() {
+    
+    recognition = new webkitSpeechRecognition();
+    recognition.lang = 'ru-RU';
+    recognition.continuous = false;
+
+
+
+    recognition.onresult = function(event) {
+        const userInput = event.results[event.results.length - 1][0].transcript;
+        const qa = getQaByQuestion(userInput);
+
+        if (qa.type === "переход по ссылке на Катрены" || 
+        qa.type === "переход по ссылке на Академию" ||
+        qa.type === "переход по ссылке на Доктрину" ||
+        qa.type === "переход по ссылке на сегодняшний катрен" ||
+        qa.type === "переход по ссылке на вчерашний катрен" ||
+        qa.type === "переход по ссылке на инструкцию" ||
+        qa.type === "переход по ссылке на Посыл" ||
+        qa.type === "переход по ссылке на Календарь" ) {
+            const audio = new Audio();
+            audio.src = qa.answer; // Устанавливаем ссылку как источник аудиофайла 
+            audio.play();
+            if (qa.type === "переход по ссылке на Катрены") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://blagayavest.info/poems/year.html";
+                    });
+            } else if (qa.type === "переход по ссылке на Академию") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://akegn.ru/";
+                    });
+            } else if (qa.type === "переход по ссылке на Доктрину") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://doktrina.info/";
+                    });
+            } else if (qa.type === "переход по ссылке на сегодняшний катрен" || 
+            qa.type === "переход по ссылке на вчерашний катрен" ) {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = qa.link;
+                    });
+            } else if (qa.type === "переход по ссылке на инструкцию") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = qa.link;
+                    });
+            } else if (qa.type === "переход по ссылке на Посыл") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://cosm-future.github.io/a-message-of-light/";
+                    });
+            } else if (qa.type === "переход по ссылке на Календарь") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://cosm-future.github.io/a-message-of-light/calendar.html";
+                    });
+            }
+        }
+        
+
+        
+
+        recognition.stop();
+        setTimeout(function() {
+            buttonAndromedaActive = false; // По истечении 3 секунд выключаем кнопку обратно
+            updateAndromedaButtonState();
+        }, 4000);
+    }
+
+    recognition.start();
+    setTimeout(function() {
+        buttonAndromedaActive = false; // По истечении 3 секунд выключаем кнопку обратно
+        updateAndromedaButtonState();
+    }, 4000);
+    
+}
+
+function getQaByQuestion(question) {
+    for (const pair of qaPairs) {
+        for (const q of pair.questions) {
+            if (question.toLowerCase().includes(q.toLowerCase())) {
+                if (pair.getDateLink) {
+                    const link = pair.getDateLink(question);
+                    if (link) {
+                        return { ...pair, link }; // Возвращаем объект с добавленной ссылкой на катрен за указанную дату
+                    }
+                }
+                return pair;
+            }
+        }
+    }
+    return { questions: [], answer: "Извините, я не поняла вас.", type: "стандартный" };
+}
