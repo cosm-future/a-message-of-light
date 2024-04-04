@@ -207,7 +207,10 @@ if (linkUrl) {
                     if (linkUrl) { // Если есть ссылка, то создаем ссылку
                         const link = document.createElement('a');
                         link.href = linkUrl;
-                        link.target = '_blank';
+                        link.onclick = function() {
+                            window.location.href = linkUrl; // Переходим на новую страницу в текущей вкладке
+                            return false; // Предотвращаем переход по ссылке
+                        };
                         link.appendChild(document.createTextNode(part.replace(/\*/g, '')));
                         span.appendChild(link);
                     } else { // Если нет ссылки, просто закрашиваем текст
@@ -220,7 +223,7 @@ if (linkUrl) {
         } else {
             messageElement.appendChild(document.createTextNode(message));
         }
-    };
+    }        
     
         
         
