@@ -41,10 +41,10 @@ body {
   }
 
   /* Стиль для .faq при режиме экрана портрет */
-@media screen and (orientation: portrait) {
+  @media only screen and (max-width: 600px) and (orientation: portrait) {
   .chat-container {
-    width: 90%;
-    max-width: 90%;
+    width: 91%;
+    max-width: 91%;
 
   }
 }
@@ -60,7 +60,7 @@ body {
   }
 
   /* Стиль для .faq при режиме экрана портрет */
-@media screen and (orientation: portrait) {
+  @media only screen and (max-width: 600px) and (orientation: portrait) {
   .chat-box {
     width: calc(100% - 20px);
 
@@ -115,6 +115,14 @@ body {
   transition: border-color 0.5s;
   resize: none; /* Добавляем возможность изменения размера инпута пользователем */
 }
+
+  /* Стиль для .faq при режиме экрана портрет */
+  @media only screen and (max-width: 600px) and (orientation: portrait) {
+    .user-input {
+      width: 200px; /* Учитываем отступы по 20px с каждой стороны */
+
+    }
+  }
 
 
 /* Стиль при наведении */
@@ -205,7 +213,13 @@ border-bottom-right-radius: 5px;
   z-index: 500;
 }
 
+  /* Стиль для .faq при режиме экрана портрет */
+  @media only screen and (max-width: 600px) and (orientation: portrait) {
+    .faq {
+      left: 240px;
 
+    }
+  }
 
 
 
