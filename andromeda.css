@@ -17,7 +17,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     height: 90vh;
-    width: 50vw;
+    width: 55vw;
     background-color: rgba(255, 255, 255, 0.1); /* прозрачность контейнера (можете изменить цвет или прозрачность по своему вкусу) */
     padding: 20px;
     border-radius: 15px;
@@ -36,6 +36,10 @@
 }
 
 
+h1 {
+    color: rgb(156, 81, 255);
+    font-weight: bold;
+}
 
 
 .container::-webkit-scrollbar {
@@ -80,7 +84,13 @@
 
 
         .commands {
+            font-family: 'Play';
             margin-top: 20px;
+            padding: 5px;
+            border: 1px solid rgba(134, 134, 134, 0.521); /* Убираем границу */
+            border-radius: 15px; /* Закругленные углы */
+            background-color: rgba(45, 0, 128, 0.068); /* Полупрозрачное темно-лавандовое окно */
+            transition: all 0.3s;
         }
 
         .commands ul {
@@ -312,3 +322,57 @@ color: white;
 font-size: 16px;
 text-align: center;
 }
+
+.sections {
+    color: rgb(187, 135, 255);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+
+
+/* Скрытие содержания */
+.accordion-content {
+    display: none;
+}
+
+/* Стили для кнопок */
+.accordion-button {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    margin: 5px 0;
+    font-family: "Play";
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+}
+
+/* Стили для активной кнопки */
+.accordion-button.active {
+    color: blue;
+}
+
+/* Стили для активной кнопки */
+.accordion-button:hover {
+    color: rgb(255, 208, 105);
+}
+
+/* Оформление содержания */
+.accordion-content p {
+    margin: 0;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: background-color 0.3s; /* Плавное изменение цвета фона */
+}
+
+/* Эффект плавного изменения цвета фона при наведении */
+.accordion-content p:hover {
+    background-color: rgba(109, 109, 109, 0.404); /* Изменяем цвет фона при наведении */
+}
+

@@ -505,3 +505,39 @@ function getQaByQuestion(question) {
     return { questions: [], answer: "Извините, я не поняла вас.", type: "стандартный" };
 }
        
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const buttons = document.querySelectorAll('.accordion-button');
+
+    buttons.forEach(button => {
+        // Добавляем символ треугольника, смотрящего вверх, в текст кнопки
+        button.textContent += ' ▲'; 
+        button.addEventListener('click', function() {
+            const content = this.nextElementSibling;
+            content.classList.toggle('active');
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+                button.style.color = 'white'; // Устанавливаем белый цвет текста при свернутом состоянии
+                // Удаляем символ треугольника, смотрящего вниз
+                button.textContent = button.textContent.replace(' ▼', '');
+                // Добавляем символ треугольника, смотрящего вверх
+                if (!button.textContent.includes('▲')) {
+                    button.textContent += ' ▲'; 
+                }
+            } else {
+                content.style.display = 'block';
+                button.style.color = 'gold'; // Устанавливаем золотой цвет текста при развернутом состоянии
+                // Удаляем символ треугольника, смотрящего вверх
+                button.textContent = button.textContent.replace(' ▲', '');
+                // Добавляем символ треугольника, смотрящего вниз
+                if (!button.textContent.includes('▼')) {
+                    button.textContent += ' ▼'; 
+                }
+            }
+        });
+    });
+});
+
+
+
