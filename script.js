@@ -2565,6 +2565,12 @@ const qaPairs = [
         "Открой сайт Колендаря", "Открой сайт Колендаря", "Покажи Колендарь", "Покажи Календарь"], 
         answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/open_suit.mp3", 
         type: "переход по ссылке на Календарь" 
+    },
+    { 
+        questions: ["Открой сайт чата", "Открой сайт чат", "Аткрой сайт чата", "Аткрой сайт чат",
+        "Покажи чат"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/open_suit.mp3", 
+        type: "переход по ссылке на Чат" 
     }
     // Другие вопросы и ответы
 ];
@@ -2669,7 +2675,8 @@ function startListening() {
         qa.type === "переход по ссылке на сегодняшний катрен" ||
         qa.type === "переход по ссылке на вчерашний катрен" ||
         qa.type === "переход по ссылке на инструкцию" ||
-        qa.type === "переход по ссылке на Календарь" ) {
+        qa.type === "переход по ссылке на Календарь" || 
+        qa.type === "переход по ссылке на Чат") {
             const audio = new Audio();
             audio.src = qa.answer; // Устанавливаем ссылку как источник аудиофайла 
             audio.play();
@@ -2709,6 +2716,12 @@ function startListening() {
                 audio.addEventListener('ended', function() {
                     // Замените на фактическую ссылку
                     window.location.href = "https://cosm-future.github.io/a-message-of-light/calendar.html";
+                    });
+            } else if (qa.type === "переход по ссылке на Чат") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://cosm-future.github.io/a-message-of-light/andromeda-chat.html";
                     });
             }
         }
