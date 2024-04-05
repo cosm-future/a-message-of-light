@@ -120,75 +120,81 @@ function appendMessage(sender, message, linkUrl = null, animateTyping = true) {
     }, 150);
 
    // Если передан URL ссылки, добавляем ссылку в сообщение
-if (linkUrl) {
-    // Проверяем, содержит ли сообщение символ "^" для разделения на строки
-    if (message.includes('^')) {
-        const lines = message.split('^'); // Разделяем текст на строки по символу "^"
-        lines.forEach(line => {
-            const lineElement = document.createElement('div'); // Создаем элемент для каждой строки
-            const link = document.createElement('a'); // Создаем ссылку
-            link.href = linkUrl; // Устанавливаем URL ссылки
-            link.target = '_blank'; // Устанавливаем атрибут target для открытия в новой вкладке
-            link.style.color = 'rgb(255, 0, 255)'; // Устанавливаем цвет ссылки
+   if (linkUrl) {
+    const createLink = function(linkText) {
+        const link = document.createElement('a');
+        link.href = linkUrl; // Путь ссылки
+        link.target = '_self'; // Открыть ссылку в текущей вкладке
+        link.style.color = 'rgb(255, 0, 255)'; // Фиолетовый цвет
+        link.appendChild(document.createTextNode(linkText));
+        return link;
+    };
 
-            // Добавляем текст ссылки в элемент ссылки
-            link.appendChild(document.createTextNode(line));
-            
-            // Добавляем ссылку в сообщение
+    if (message.includes('^')) {
+        const lines = message.split('^');
+        lines.forEach(line => {
+            const lineElement = document.createElement('div');
+            const link = createLink(line);
             lineElement.appendChild(link);
             messageElement.appendChild(lineElement);
         });
     } else if (message.includes('*')) {
         const parts = message.split('*');
         const beforeStar = parts[0];
-        const linkText = parts[1]; // Текст ссылки
+        const linkText = parts[1];
         const afterStar = parts[2];
 
-        const link = document.createElement('a');
-        link.href = linkUrl; // Путь ссылки
-        link.target = '_blank'; // Открыть ссылку в новой вкладке
-        link.style.color = 'rgb(255, 0, 255)'; // Фиолетовый цвет
-
-        // Добавляем текст ссылки в сообщение
-        link.appendChild(document.createTextNode(linkText));
+        const link = createLink(linkText);
         messageElement.appendChild(document.createTextNode(beforeStar));
         messageElement.appendChild(link);
-
-        // Нет вызова printMessage(), потому что это не текстовое сообщение от бота
         messageElement.appendChild(document.createTextNode(afterStar));
+    } else if (message.includes('$')) { // Добавлено условие для текста, обрамленного символами доллара
+        const parts = message.split('$');
+        for (let i = 0; i < parts.length; i++) {
+            const part = parts[i];
+            if (i % 2 === 0) {
+                messageElement.appendChild(document.createTextNode(part));
+            } else {
+                const span = document.createElement('span');
+                span.style.backgroundColor = 'purple'; // Закрашиваем текст в фиолетовый цвет
+                span.style.textDecoration = 'underline'; // Добавляем подчеркивание
+                span.textContent = part; // Добавляем текст
+                messageElement.appendChild(span);
+            }
+        }
     } else {
-        // Если символы "^" и "*" отсутствуют, просто добавляем текст сообщения как ссылку
-        const link = document.createElement('a'); // Создаем ссылку
-        link.href = linkUrl; // Устанавливаем URL ссылки
-        link.target = '_blank'; // Устанавливаем атрибут target для открытия в новой вкладке
-        link.style.color = 'rgb(255, 0, 255)'; // Устанавливаем цвет ссылки
-
-        // Добавляем текст сообщения в элемент ссылки
-        link.appendChild(document.createTextNode(message));
-        
-        // Добавляем ссылку в сообщение
+        const link = createLink(message);
         messageElement.appendChild(link);
     }
 } else {
-    // Если ссылка не передана, просто добавляем текст сообщения
     if (sender === 'bot') {
-        // Если это сообщение от бота, и у него нет ссылки, вызываем плавное напечатывание
         if (message.includes('^')) {
-            const lines = message.split('^'); // Разделяем текст на строки по символу "^"
+            const lines = message.split('^');
             lines.forEach((line, index) => {
                 setTimeout(() => {
-                    const lineElement = document.createElement('div'); // Создаем элемент для строки
-                    lineElement.textContent = line; // Устанавливаем текст строки
-                    messageElement.appendChild(lineElement); // Добавляем элемент в сообщение
-                }, index * 50); // Задержка для эффекта плавного напечатывания
+                    const lineElement = document.createElement('div');
+                    lineElement.textContent = line;
+                    messageElement.appendChild(lineElement);
+                }, index * 50);
             });
+        } else if (message.includes('$')) { // Добавлено условие для текста, обрамленного символами доллара
+            const parts = message.split('$');
+            for (let i = 0; i < parts.length; i++) {
+                const part = parts[i];
+                if (i % 2 === 0) {
+                    messageElement.appendChild(document.createTextNode(part));
+                } else {
+                    const span = document.createElement('span');
+                    span.style.color = 'rgb(255, 0, 255)'; // Закрашиваем текст в фиолетовый цвет
+                    span.style.textDecoration = 'underline'; // Добавляем подчеркивание
+                    span.textContent = part; // Добавляем текст
+                    messageElement.appendChild(span);
+                }
+            }
         } else {
-            // Если символ "^" отсутствует, вызываем плавное напечатывание для всего текста сообщения
             printMessage(sender, message, messageElement);
         }
     } else {
-        // Добавляем текст сообщения в элемент сообщения
-        // В случае, если символ "^" или "*" используется, разбиваем текст на строки и добавляем их по отдельности
         if (message.includes('^')) {
             const lines = message.split('^');
             lines.forEach(line => {
@@ -200,20 +206,20 @@ if (linkUrl) {
             const parts = message.split('*');
             for (let i = 0; i < parts.length; i++) {
                 const part = parts[i];
-                if (i % 2 === 0) { // Четные части будут обычным текстом
+                if (i % 2 === 0) {
                     messageElement.appendChild(document.createTextNode(part));
-                } else { // Нечетные части будут закрашены
+                } else {
                     const span = document.createElement('span');
-                    if (linkUrl) { // Если есть ссылка, то создаем ссылку
+                    if (linkUrl) {
                         const link = document.createElement('a');
                         link.href = linkUrl;
                         link.onclick = function() {
-                            window.location.href = linkUrl; // Переходим на новую страницу в текущей вкладке
-                            return false; // Предотвращаем переход по ссылке
+                            window.location.href = linkUrl;
+                            return false;
                         };
                         link.appendChild(document.createTextNode(part.replace(/\*/g, '')));
                         span.appendChild(link);
-                    } else { // Если нет ссылки, просто закрашиваем текст
+                    } else {
                         span.style.backgroundColor = 'yellow';
                         span.textContent = part.replace(/\*/g, '');
                     }
@@ -223,27 +229,11 @@ if (linkUrl) {
         } else {
             messageElement.appendChild(document.createTextNode(message));
         }
-    }        
-    
-        
-        
-        
-        
-        
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
     }
+}
+
+
+
 }
 
 
