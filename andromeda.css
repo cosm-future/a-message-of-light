@@ -340,18 +340,23 @@ text-align: center;
 .accordion-button {
     cursor: pointer;
     border: none;
-    background-color: transparent;
+    background-color: rgba(109, 109, 109, 0.336); /* Изменяем цвет фона при наведении */
     padding: 0;
     margin: 5px 0;
     font-family: "Play";
     font-weight: bold;
     font-size: 16px;
     color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding-left: 7px;
+    padding-right: 7px;
+
 }
 
 /* Стили для активной кнопки */
-.accordion-button.active {
-    color: blue;
+.accordion-button:checked {
+    background-color: rgba(109, 109, 109, 0.836); /* Изменяем цвет фона при наведении */
 }
 
 /* Стили для активной кнопки */
