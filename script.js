@@ -1004,6 +1004,7 @@ const RandomBlock = ['33426E235E6B503921487635406D5A73463226'];
 // Получение значения коррекции времени из локального хранилища при загрузке страницы
 const storedCorrection = localStorage.getItem('moscowTimeCorrection');
 let moscowTimeDifference = storedCorrection ? parseInt(storedCorrection) : 0;
+let isTimeFetched = false;
 
 async function fetchMoscowTime() {
     try {
@@ -1014,6 +1015,7 @@ async function fetchMoscowTime() {
         // Сохраняем значение коррекции времени в локальное хранилище
         moscowTimeDifference = moscowTime.getTime() - Date.now();
         localStorage.setItem('moscowTimeCorrection', moscowTimeDifference.toString());
+        isTimeFetched = true;
 
         return moscowTime;
     } catch (error) {
@@ -1024,12 +1026,11 @@ async function fetchMoscowTime() {
 
 async function updateTime() {
     try {
-        let moscowTime = await fetchMoscowTime();
-
-        if (!moscowTime) {
-            // Если нет доступа к интернету, используем корректированное локальное время
-            moscowTime = new Date(Date.now() + moscowTimeDifference);
+        if (!isTimeFetched) {
+            await fetchMoscowTime(); // Вызываем функцию только если время еще не было получено
         }
+
+        let moscowTime = new Date(Date.now() + moscowTimeDifference);
 
         const timeElement = document.querySelector(".time");
         const options = { timeZone: 'Europe/Moscow', hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' };
@@ -1037,9 +1038,10 @@ async function updateTime() {
         timeElement.textContent = moscowTimeString;
         return timeElement;
     } catch (error) {
-        //  console.error('Ошибка при обновлении времени:', error);
+        // console.error('Ошибка при обновлении времени:', error);
     }
 }
+
 
 
 
