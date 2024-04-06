@@ -528,6 +528,8 @@ border-bottom-right-radius: 5px;
   overflow-x: hidden; /* Скрываем горизонтальную прокрутку */
   word-wrap: break-word; /* Автоматический перенос текста на следующую строку */
   backdrop-filter: blur(5px); /* Блюр фона */
+  opacity: 0;
+  display: none;
   z-index: 300;
 }
 
