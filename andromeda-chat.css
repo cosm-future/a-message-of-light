@@ -509,3 +509,76 @@ border-bottom-right-radius: 5px;
   }
 
 /* Ваш CSS-код здесь */
+
+
+.suggestion {
+  position: absolute;
+  left: 5px;
+  bottom: 77px;
+  margin: 0px;
+  padding: 5px;
+  color: darkgrey;
+  background-color: #3c2d7eb4;
+  border: 1px solid rgba(172, 172, 172, 0.425);
+  border-radius: 10px; /* Закругленные углы */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6); /* Тень от контейнера */
+  width: 200px; /* Фиксированная ширина */
+  height: 70%; /* Высота 70% от высоты родителя */
+  overflow-y: auto; /* Включаем вертикальную прокрутку при необходимости */
+  overflow-x: hidden; /* Скрываем горизонтальную прокрутку */
+  word-wrap: break-word; /* Автоматический перенос текста на следующую строку */
+  backdrop-filter: blur(5px); /* Блюр фона */
+  z-index: 300;
+}
+
+
+.suggestion::-webkit-scrollbar {
+  width: 12px; /* Ширина полосы прокрутки */
+  border: 1px solid rgba(174, 0, 255, 0);
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  
+}
+
+.suggestion::-webkit-scrollbar-track {
+  background: rgba(39, 0, 29, 0.226); /* Цвет фона трека */
+  border-top-right-radius: 15px; /* Закругление нижнего правого угла */
+  border-bottom-right-radius: 15px; /* Закругление нижнего правого угла */
+  background-clip: padding-box; /* Область отображения фона */
+  z-index: 95; /* Индекс слоя */
+}
+
+.suggestion::-webkit-scrollbar-thumb {
+  background: rgba(49, 0, 128, 0.8); /* Цвет полосы прокрутки */
+  border-radius: 15px 70px 70px 15px; /* Радиус скругления углов полосы */
+}
+
+
+
+
+
+/* Общий стиль кнопки */
+.suggestion-button {
+  background-color: transparent;
+  border: 1px solid darkgrey;
+  border-radius: 10px;
+  font-family: 'Play', sans-serif;
+  padding: 5px;
+  margin-top: 5px;
+  margin-right: 5px;
+  color: rgb(255, 255, 255);
+  text-align: left; /* Выравнивание текста по левому краю */
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+/* Стиль при наведении на кнопку */
+.suggestion-button:hover {
+  background-color: rgba(211, 211, 211, 0.425);
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1); /* Блюр и размытие фона */
+}
+
+/* Стиль при нажатии на кнопку */
+.suggestion-button:active {
+  transform: translateY(1px); /* Небольшое смещение вниз при нажатии */
+}
+

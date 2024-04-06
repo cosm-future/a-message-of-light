@@ -810,3 +810,134 @@ function getQaByQuestion(question) {
     }
     return { questions: [], answer: "Извините, я не поняла вас.", type: "стандартный" };
 }
+
+
+
+
+
+// Функция для отправки сообщения
+function sendsMessage() {
+    const userInput = document.getElementById('user-input');
+    const message = userInput.value.trim();
+    if (message !== '') {
+        const chatBox = document.getElementById('chat-box');
+        const newMessage = document.createElement('div');
+        newMessage.textContent = message;
+        chatBox.appendChild(newMessage);
+        userInput.value = '';
+    }
+}
+
+// Функция для установки стилей подсказки
+function setSuggestionStyles(opacityValue) {
+    const suggestion = document.getElementById('suggestion');
+    suggestion.style.opacity = opacityValue;
+}
+
+// Загрузка данных из файла questions.json
+fetch('questions.json')
+    .then(response => response.json())
+    .then(data => {
+        // Сохраняем данные из файла в переменную для последующего использования
+        const questions = data;
+
+        // Функция для подстановки подходящих предложений
+function suggestText() {
+    const userInput = document.getElementById('user-input');
+    const userText = userInput.value.toLowerCase();
+    const words = userText.split(' ');
+
+    // Проверяем, является ли последнее слово пустой строкой
+    if (words.length === 0 || words[words.length - 1].trim() === '') {
+        document.getElementById('suggestion').textContent = '';
+        setSuggestionStyles(0); // Устанавливаем прозрачность 0 (скрываем элемент)
+        return; // Выходим из функции, чтобы не продолжать дальше
+    }
+
+    const lastWord = words[words.length - 1];
+
+    // Поиск всех подходящих предложений из questions.json
+    const allSuggestions = questions.flatMap(question => {
+        return question.command.filter(command => command.startsWith(lastWord));
+    });
+
+    // Если есть подходящие предложения, отображаем их как кнопки
+    if (allSuggestions.length > 0) {
+        const suggestionContainer = document.getElementById('suggestion');
+        suggestionContainer.innerHTML = ''; // Очищаем контейнер подсказок перед добавлением новых
+        allSuggestions.forEach(suggestion => {
+            const button = document.createElement('button');
+            button.classList.add('suggestion-button');
+            button.textContent = suggestion;
+            button.addEventListener('click', function() {
+                const newText = userText + suggestion.substring(lastWord.length) + ' ';
+                userInput.value = newText;
+                suggestionContainer.textContent = '';
+                setSuggestionStyles(0); // Устанавливаем прозрачность 0 (скрываем элемент)
+            });
+            suggestionContainer.appendChild(button);
+        });
+        setSuggestionStyles(1); // Устанавливаем прозрачность 1 (показываем элемент)
+    } else {
+        document.getElementById('suggestion').textContent = '';
+        setSuggestionStyles(0); // Устанавливаем прозрачность 0 (скрываем элемент)
+    }
+}
+
+
+        // Функция для формирования предложенного текста
+        function getSuggestedText(userText, suggestion) {
+            const userWords = userText.split(' ');
+            const lastUserWord = userWords[userWords.length - 1];
+            const suggestedText = suggestion.startsWith(lastUserWord) ? suggestion : lastUserWord + suggestion.slice(lastUserWord.length);
+            const remainingChars = suggestedText.substring(lastUserWord.length);
+            const coloredChars = '<span style="color: white;">' + lastUserWord + '</span>' + '<span style="color: darkgrey;">' + remainingChars + '</span>';
+            return coloredChars;
+        }
+
+        // Событие при нажатии на клавишу Tab
+document.getElementById('user-input').addEventListener('keydown', function(event) {
+    if (event.key === 'Tab') {
+        event.preventDefault();
+        const userInput = document.getElementById('user-input');
+        const userText = userInput.value.toLowerCase();
+        const suggestionButtons = document.querySelectorAll('.suggestion-button');
+
+        // Проверяем количество найденных подсказок
+        if (suggestionButtons.length === 1) {
+            // Если найдено только одно совпадение, добавляем его текст
+            const suggestion = suggestionButtons[0].textContent;
+            const newText = userText + suggestion.substring(userText.length) + ' ';
+            userInput.value = newText;
+        }
+
+        // Очищаем подсказки и скрываем контейнер
+        document.getElementById('suggestion').textContent = '';
+        setSuggestionStyles(0); // Устанавливаем прозрачность 0 (скрываем элемент)
+    }
+});
+
+
+
+        // Событие при вводе текста в текстовое поле
+        document.getElementById('user-input').addEventListener('input', function() {
+            suggestText();
+        });
+
+        // Назначение обработчика события клика на кнопку отправки сообщения
+        document.querySelector('.send-button').addEventListener('click', function() {
+            sendsMessage();
+        });
+
+        // Установка стилей подсказки (начальное скрытие)
+        setSuggestionStyles(0);
+    })
+    .catch(error => console.error('Ошибка загрузки файла questions.json:', error));
+
+
+
+
+
+
+  
+  
