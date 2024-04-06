@@ -874,13 +874,18 @@ function suggestText() {
                 userInput.value = newText;
                 suggestionContainer.textContent = '';
                 setSuggestionStyles(0); // Устанавливаем прозрачность 0 (скрываем элемент)
+                suggestionContainer.style.display = 'none';
+
             });
             suggestionContainer.appendChild(button);
         });
         setSuggestionStyles(1); // Устанавливаем прозрачность 1 (показываем элемент)
+        suggestionContainer.style.display = 'block';
     } else {
+        const suggestionContainer = document.getElementById('suggestion');
         document.getElementById('suggestion').textContent = '';
         setSuggestionStyles(0); // Устанавливаем прозрачность 0 (скрываем элемент)
+        suggestionContainer.style.display = 'none';
     }
 }
 
