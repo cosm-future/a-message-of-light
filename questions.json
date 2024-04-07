@@ -182,6 +182,12 @@
       "link": "https://github.com/cosm-future/a-message-of-light/raw/main/catrens-download/KATRENY--2023.pdf"
     },
 
+    {
+      "command": ["скачать доктрину", "скачай доктрину", "нужно скачать доктрину"],
+      "answers": ["Вот ссылка на загрузку *Доктрины*.", "Ссылка на *Доктрину*."],
+      "link": "https://github.com/cosm-future/a-message-of-light/raw/main/catrens-download/doktrina-sozdatelya.pdf"
+    },
+
 
 
 
