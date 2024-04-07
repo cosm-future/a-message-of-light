@@ -146,6 +146,42 @@
       "link": "https://github.com/cosm-future/a-message-of-light/raw/main/catrens-download/KATRENY--2017.pdf"
     },
 
+    {
+      "command": ["скачать катрены за 2018 год", "скачать катрены 2018", "нужно скачать катрены за 2018"],
+      "answers": ["Вот ссылка на загрузку *Катренов 2018*.", "Ссылка на *Катрены 2018*."],
+      "link": "https://github.com/cosm-future/a-message-of-light/raw/main/catrens-download/KATRENY--2018.pdf"
+    },
+
+    {
+      "command": ["скачать катрены за 2019 год", "скачать катрены 2019", "нужно скачать катрены за 2019"],
+      "answers": ["Вот ссылка на загрузку *Катренов 2019*.", "Ссылка на *Катрены 2019*."],
+      "link": "https://github.com/cosm-future/a-message-of-light/raw/main/catrens-download/KATRENY--2019.pdf"
+    },
+
+    {
+      "command": ["скачать катрены за 2020 год", "скачать катрены 2020", "нужно скачать катрены за 2020"],
+      "answers": ["Вот ссылка на загрузку *Катренов 2020*.", "Ссылка на *Катрены 2020*."],
+      "link": "https://github.com/cosm-future/a-message-of-light/raw/main/catrens-download/KATRENY--2020.pdf"
+    },
+
+    {
+      "command": ["скачать катрены за 2021 год", "скачать катрены 2021", "нужно скачать катрены за 2021"],
+      "answers": ["Вот ссылка на загрузку *Катренов 2021*.", "Ссылка на *Катрены 2021*."],
+      "link": "https://github.com/cosm-future/a-message-of-light/raw/main/catrens-download/KATRENY--2021.pdf"
+    },
+
+    {
+      "command": ["скачать катрены за 2022 год", "скачать катрены 2022", "нужно скачать катрены за 2022"],
+      "answers": ["Вот ссылка на загрузку *Катренов 2022*.", "Ссылка на *Катрены 2022*."],
+      "link": "https://github.com/cosm-future/a-message-of-light/raw/main/catrens-download/KATRENY--2022.pdf"
+    },
+
+    {
+      "command": ["скачать катрены за 2023 год", "скачать катрены 2023", "нужно скачать катрены за 2023"],
+      "answers": ["Вот ссылка на загрузку *Катренов 2023*.", "Ссылка на *Катрены 2023*."],
+      "link": "https://github.com/cosm-future/a-message-of-light/raw/main/catrens-download/KATRENY--2023.pdf"
+    },
+
 
 
 
