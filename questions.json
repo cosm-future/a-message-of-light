@@ -140,6 +140,12 @@
       "link": "https://github.com/cosm-future/a-message-of-light/raw/main/catrens-download/KATRENY--2016.pdf"
     },
 
+    {
+      "command": ["скачать катрены за 2017 год", "скачать катрены 2017", "нужно скачать катрены за 2017"],
+      "answers": ["Вот ссылка на загрузку *Катренов 2017*.", "Ссылка на *Катрены 2017*."],
+      "link": "https://github.com/cosm-future/a-message-of-light/raw/main/catrens-download/KATRENY--2017.pdf"
+    },
+
 
 
 
