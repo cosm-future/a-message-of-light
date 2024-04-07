@@ -184,8 +184,14 @@
 
     {
       "command": ["скачать доктрину", "скачай доктрину", "нужно скачать доктрину"],
-      "answers": ["Вот ссылка на загрузку *Доктрины*.", "Ссылка на *Доктрину*."],
-      "link": "https://github.com/cosm-future/a-message-of-light/raw/main/catrens-download/doktrina-sozdatelya.pdf"
+      "answers": ["Вот ссылка на загрузку *Доктрины*.", "Ссылка на *Доктрину в pdf*."],
+      "link": "https://github.com/cosm-future/a-message-of-light/raw/main/other-downloads/doktrina-sozdatelya.pdf"
+    },
+
+    {
+      "command": ["скачать святая русь", "скачай святую русь", "нужно скачать святую русь"],
+      "answers": ["Вот ссылка на загрузку *Святая Русь*.", "Ссылка на *Святую Русь*."],
+      "link": "https://github.com/cosm-future/a-message-of-light/raw/main/other-downloads/Svyataya-Rus.pdf"
     },
 
 
