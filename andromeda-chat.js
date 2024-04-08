@@ -858,29 +858,39 @@ fetch('questions.json')
             });
         
             // Если есть подходящие предложения, отображаем их как кнопки
-            if (allSuggestions.length > 0) {
-                const suggestionContainer = document.getElementById('suggestion');
-                suggestionContainer.innerHTML = ''; // Очищаем контейнер подсказок перед добавлением новых
-                allSuggestions.forEach(suggestion => {
-                    const button = document.createElement('button');
-                    button.classList.add('suggestion-button');
-                    button.textContent = suggestion;
-                    button.addEventListener('click', function() {
-                        userInput.value = suggestion + ' ';
-                        suggestionContainer.textContent = '';
-                        setSuggestionStyles(0); // Устанавливаем прозрачность 0 (скрываем элемент)
-                        suggestionContainer.style.display = 'none';
-                    });
-                    suggestionContainer.appendChild(button);
-                });
-                setSuggestionStyles(1); // Устанавливаем прозрачность 1 (показываем элемент)
-                suggestionContainer.style.display = 'block';
-            } else {
-                const suggestionContainer = document.getElementById('suggestion');
-                document.getElementById('suggestion').textContent = '';
-                setSuggestionStyles(0); // Устанавливаем прозрачность 0 (скрываем элемент)
-                suggestionContainer.style.display = 'none';
-            }
+if (allSuggestions.length > 0) {
+    const suggestionContainer = document.getElementById('suggestion');
+    suggestionContainer.innerHTML = ''; // Очищаем контейнер подсказок перед добавлением новых
+    allSuggestions.forEach(suggestion => {
+        const button = document.createElement('button');
+        button.classList.add('suggestion-button');
+        
+        // Проверяем, введен ли уже этот текст пользователем
+        const userTextLowercase = userText.toLowerCase();
+        const suggestionLowercase = suggestion.toLowerCase();
+        const highlightedText = userTextLowercase.length > 0 && suggestionLowercase.startsWith(userTextLowercase) ?
+            `<span style="color: white;">${userText}</span><span style="color: darkgrey;">${suggestion.substring(userText.length)}</span>` :
+            `<span style="color: darkgrey;">${suggestion}</span>`;
+        
+        button.innerHTML = highlightedText;
+
+        button.addEventListener('click', function() {
+            userInput.value = suggestion + ' ';
+            suggestionContainer.textContent = '';
+            setSuggestionStyles(0); // Устанавливаем прозрачность 0 (скрываем элемент)
+            suggestionContainer.style.display = 'none';
+        });
+        suggestionContainer.appendChild(button);
+    });
+    setSuggestionStyles(1); // Устанавливаем прозрачность 1 (показываем элемент)
+    suggestionContainer.style.display = 'block';
+} else {
+    const suggestionContainer = document.getElementById('suggestion');
+    document.getElementById('suggestion').textContent = '';
+    setSuggestionStyles(0); // Устанавливаем прозрачность 0 (скрываем элемент)
+    suggestionContainer.style.display = 'none';
+}
+
         }
         
         
