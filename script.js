@@ -1822,13 +1822,13 @@ document.querySelector('.menu-container').style.opacity = '1';
         textElement.style.fontSize = '12px';
     } else if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
         const textElement = document.querySelector(".text");
-        textElement.style.fontSize = '14px';
+        textElement.style.fontSize = '16px';
     } else if (window.matchMedia("(max-width: 800px) and (orientation: portrait)").matches) {
         const textElement = document.querySelector(".text");
-        textElement.style.fontSize = '16px';
+        textElement.style.fontSize = '20px';
     } else if (window.matchMedia("(max-width: 1080px) and (orientation: portrait)").matches) {
         const textElement = document.querySelector(".text");
-        textElement.style.fontSize = '18px';
+        textElement.style.fontSize = '24px';
     }
     
 
