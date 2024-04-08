@@ -400,7 +400,7 @@ const qaPairs = [
     { 
         questions: ["Открой сайт Посыла", "Открой сайт Посыло", "Аткрой сайт Посыла", "Аткрой сайт Посыло",
         "Покажи Посыл", "Покажи Посылы"], 
-        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/open_suit.mp3", 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/open_suit_messages.mp3", 
         type: "переход по ссылке на Посыл" 
     },
     { 
