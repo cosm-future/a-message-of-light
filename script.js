@@ -2888,7 +2888,9 @@ if (isPortrait) {
 let pressTimer;
 const elementToHold = document.getElementById('imageContainer');
 
-elementToHold.addEventListener('mousedown', function() {
+elementToHold.addEventListener('mousedown', function(event) {
+    // Предотвращаем встроенные действия браузера
+    event.preventDefault();
     // Запускаем таймер при начале удержания элемента
     pressTimer = setTimeout(() => {
         // Переключаемся между обычным режимом и полноэкранным
@@ -2929,6 +2931,7 @@ function toggleFullScreen() {
         console.log('Выход из полноэкранный режим');
     }
 }
+
 
 
 
