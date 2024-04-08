@@ -841,53 +841,49 @@ fetch('questions.json')
         // Сохраняем данные из файла в переменную для последующего использования
         const questions = data;
 
-        // Функция для подстановки подходящих предложений
-function suggestText() {
-    const userInput = document.getElementById('user-input');
-    const userText = userInput.value.toLowerCase();
-    const words = userText.split(' ');
-
-    // Проверяем, является ли последнее слово пустой строкой
-    if (words.length === 0 || words[words.length - 1].trim() === '') {
-        document.getElementById('suggestion').textContent = '';
-        setSuggestionStyles(0); // Устанавливаем прозрачность 0 (скрываем элемент)
-        return; // Выходим из функции, чтобы не продолжать дальше
-    }
-
-    const lastWord = words[words.length - 1];
-
-    // Поиск всех подходящих предложений из questions.json
-    const allSuggestions = questions.flatMap(question => {
-        return question.command.filter(command => command.startsWith(lastWord));
-    });
-
-    // Если есть подходящие предложения, отображаем их как кнопки
-    if (allSuggestions.length > 0) {
-        const suggestionContainer = document.getElementById('suggestion');
-        suggestionContainer.innerHTML = ''; // Очищаем контейнер подсказок перед добавлением новых
-        allSuggestions.forEach(suggestion => {
-            const button = document.createElement('button');
-            button.classList.add('suggestion-button');
-            button.textContent = suggestion;
-            button.addEventListener('click', function() {
-                const newText = userText + suggestion.substring(lastWord.length) + ' ';
-                userInput.value = newText;
-                suggestionContainer.textContent = '';
+        function suggestText() {
+            const userInput = document.getElementById('user-input');
+            const userText = userInput.value.toLowerCase();
+        
+            // Проверяем, является ли введенный текст пустым
+            if (userText.trim() === '') {
+                document.getElementById('suggestion').textContent = '';
+                setSuggestionStyles(0); // Устанавливаем прозрачность 0 (скрываем элемент)
+                return; // Выходим из функции, чтобы не продолжать дальше
+            }
+        
+            // Поиск всех подходящих предложений из questions.json
+            const allSuggestions = questions.flatMap(question => {
+                return question.command.filter(command => command.includes(userText));
+            });
+        
+            // Если есть подходящие предложения, отображаем их как кнопки
+            if (allSuggestions.length > 0) {
+                const suggestionContainer = document.getElementById('suggestion');
+                suggestionContainer.innerHTML = ''; // Очищаем контейнер подсказок перед добавлением новых
+                allSuggestions.forEach(suggestion => {
+                    const button = document.createElement('button');
+                    button.classList.add('suggestion-button');
+                    button.textContent = suggestion;
+                    button.addEventListener('click', function() {
+                        userInput.value = suggestion + ' ';
+                        suggestionContainer.textContent = '';
+                        setSuggestionStyles(0); // Устанавливаем прозрачность 0 (скрываем элемент)
+                        suggestionContainer.style.display = 'none';
+                    });
+                    suggestionContainer.appendChild(button);
+                });
+                setSuggestionStyles(1); // Устанавливаем прозрачность 1 (показываем элемент)
+                suggestionContainer.style.display = 'block';
+            } else {
+                const suggestionContainer = document.getElementById('suggestion');
+                document.getElementById('suggestion').textContent = '';
                 setSuggestionStyles(0); // Устанавливаем прозрачность 0 (скрываем элемент)
                 suggestionContainer.style.display = 'none';
-
-            });
-            suggestionContainer.appendChild(button);
-        });
-        setSuggestionStyles(1); // Устанавливаем прозрачность 1 (показываем элемент)
-        suggestionContainer.style.display = 'block';
-    } else {
-        const suggestionContainer = document.getElementById('suggestion');
-        document.getElementById('suggestion').textContent = '';
-        setSuggestionStyles(0); // Устанавливаем прозрачность 0 (скрываем элемент)
-        suggestionContainer.style.display = 'none';
-    }
-}
+            }
+        }
+        
+        
 
 
         // Функция для формирования предложенного текста
