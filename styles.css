@@ -1765,10 +1765,26 @@ content: ''; /* Обязательно для псевдоэлементов */
    border: 1px solid rgb(98, 0, 255);
 }
 
+
+
 /* Медиа-запрос для портретного режима */
 @media (orientation: portrait) {
     .image-container img {
         height: 50.5%;
+    }
+}
+
+/* Медиа-запрос для портретного режима */
+@media (orientation: portrait) {
+    .image-container:active {
+        border: 1px solid rgba(98, 0, 255, 0);
+    }
+}
+
+/* Медиа-запрос для портретного режима */
+@media (orientation: portrait) {
+    .image-container img:active {
+        border: 1px solid rgb(98, 0, 255);
     }
 }
 
