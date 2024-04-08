@@ -1529,6 +1529,7 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
         const menuContainer = document.getElementById('menu-container');
         menuContainer.style.backgroundColor = 'rgba(92, 59, 35, 0.7)';
         document.querySelector('.menu-container').style.opacity = '1';
+        
 
     }, 300); // Подождите 500 миллисекунд, чтобы анимация завершилась
         
@@ -1781,7 +1782,7 @@ document.querySelector('.menu-container').style.opacity = '1';
 
         }, 300); // Подождите 500 миллисекунд, чтобы анимация завершилась
 
-
+        
 
         
     } else {
@@ -1816,8 +1817,19 @@ document.querySelector('.menu-container').style.opacity = '1';
     }
     
 
-
-    
+    if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '12px';
+    } else if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '14px';
+    } else if (window.matchMedia("(max-width: 800px) and (orientation: portrait)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '16px';
+    } else if (window.matchMedia("(max-width: 1080px) and (orientation: portrait)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '18px';
+    }
     
 
 
