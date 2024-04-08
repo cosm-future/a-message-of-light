@@ -738,8 +738,8 @@ content: ''; /* Обязательно для псевдоэлементов */
 .line {
     position: fixed;
     bottom: 0;
-    left: 50%; /* Появление линии с середины контейнера */
-    transform: translateX(-50%); /* Центрирование линии */
+    left: 0%; /* Появление линии с середины контейнера */
+
     width: 0; /* Начальная ширина линии */
     height: 4px; /* Высота линии */
     background: linear-gradient(to left, rgba(95, 0, 163, 0.8) 0%, rgba(148, 0, 211, 0.8) 50%, rgba(95, 0, 163, 0.8) 100%); /* Градиент цвета линии */
@@ -751,9 +751,12 @@ content: ''; /* Обязательно для псевдоэлементов */
 @media only screen and (max-width: 600px) and (orientation: portrait) {
     .line {
 
-        display: none;
-        
-        
+        position: fixed;
+        display: block;
+        bottom: auto;
+        top: -4px;
+        left: 0%;
+        background: linear-gradient(to left, rgba(95, 0, 163, 0.6) 0%, rgba(148, 0, 211, 0.6) 50%, rgba(95, 0, 163, 0.6) 100%); /* Градиент цвета линии */
         
     }
 }
