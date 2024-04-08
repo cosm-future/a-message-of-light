@@ -1612,9 +1612,10 @@ if (orientation === "portrait") {
     container.appendChild(lineElement);
 } else {
     // Если устройство находится в горизонтальной ориентации, создаем линию так же, как и раньше
+    const container = document.querySelector(".container");
     lineElement = document.createElement("div");
     lineElement.classList.add("line");
-    document.body.appendChild(lineElement);
+    container.appendChild(lineElement);
 }
 
     
