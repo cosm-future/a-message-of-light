@@ -1598,46 +1598,48 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
 
          
           
-            // Скрыть элемент блока катрена
-            document.querySelector('.quatrain').style.display = 'none';
-            const intervalDuration = (interval.to.hour - hours) * 3600 + (interval.to.minute - minutes) * 60 - now.getSeconds();
-            if (!lineElement) {
-                const container = document.querySelector(".container");
-                lineElement = document.createElement("div");
-                lineElement.classList.add("line");
-                container.appendChild(lineElement);
-                
-                lineElement.style.transition = `width ${intervalDuration}s linear`;
-                setTimeout(() => {
-                    lineElement.style.width = "100%";
-                }, 100);
-                setTimeout(() => {
-                    playSoundAndVibration();
-                    if (navigator.vibrate) {
-                        navigator.vibrate(3000);
-                    } else {
-                        // console.log("Устройство не поддерживает вибрацию.");
-                    }
-                    lineElement.style.width = "0";
-                    setTimeout(() => {
-                        lineElement.remove();
-                        lineElement = null;
-                        const nextInterval = json.find(next => {
-                            const startTime = new Date();
-                            startTime.setHours(next.from.hour, next.from.minute, 0);
-                            return startTime > now;
-                        });
-                        if (!nextInterval) {
-                            setTimeout(() => {
-                                
-                            }, 3000);
-                        }
-                    }, 1000);
-                }, intervalDuration * 1000 + 100);
+    document.querySelector('.quatrain').style.display = 'none';
+    const intervalDuration = (interval.to.hour - hours) * 3600 + (interval.to.minute - minutes) * 60 - now.getSeconds();
+    if (!lineElement) {
+        const container = document.querySelector(".container");
+        lineElement = document.createElement("div");
+        lineElement.classList.add("line");
+        container.appendChild(lineElement);
+    
+        lineElement.style.transition = `width ${intervalDuration}s linear`;
+        lineElement.style.width = "0"; // Устанавливаем ширину линии в начальное состояние
+    
+        setTimeout(() => {
+            lineElement.style.width = "100%"; // Увеличиваем ширину линии до максимального значения
+        }, 100);
+    
+        setTimeout(() => {
+            playSoundAndVibration();
+            if (navigator.vibrate) {
+                navigator.vibrate(3000);
+            } else {
+                // console.log("Устройство не поддерживает вибрацию.");
             }
-            break;
-        }
+            lineElement.style.width = "0"; // Устанавливаем ширину линии обратно в 0
+            setTimeout(() => {
+                lineElement.remove();
+                lineElement = null;
+                const nextInterval = json.find(next => {
+                    const startTime = new Date();
+                    startTime.setHours(next.from.hour, next.from.minute, 0);
+                    return startTime > now;
+                });
+                if (!nextInterval) {
+                    setTimeout(() => {
+                        
+                    }, 3000);
+                }
+            }, 1000);
+        }, intervalDuration * 1000 + 100);
     }
+    break;
+            }
+        }    
 
     if (!newText) {
 
