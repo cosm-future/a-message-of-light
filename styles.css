@@ -1761,6 +1761,10 @@ content: ''; /* Обязательно для псевдоэлементов */
     object-fit: cover; /* Чтобы изображение занимало всю область */
 }
 
+.image-container:active {
+   border: 1px solid rgb(98, 0, 255);
+}
+
 /* Медиа-запрос для портретного режима */
 @media (orientation: portrait) {
     .image-container img {

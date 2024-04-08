@@ -2878,6 +2878,60 @@ if (isPortrait) {
     videoPlayer.play();
 }
           
+
+
+
+
+
+
+
+let pressTimer;
+const elementToHold = document.getElementById('imageContainer');
+
+elementToHold.addEventListener('mousedown', function() {
+    // Запускаем таймер при начале удержания элемента
+    pressTimer = setTimeout(() => {
+        // Переключаемся между обычным режимом и полноэкранным
+        toggleFullScreen();
+    }, 3000); // 3000 миллисекунд = 3 секунды
+});
+
+elementToHold.addEventListener('mouseup', function() {
+    // Очищаем таймер при завершении удержания элемента
+    clearTimeout(pressTimer);
+});
+
+// Функция для переключения между обычным режимом и полноэкранным
+function toggleFullScreen() {
+    if (!document.fullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
+        // Если нет элемента в полноэкранном режиме, то запросим развертывание сайта на весь экран
+        if (document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen();
+        } else if (document.documentElement.msRequestFullscreen) {
+            document.documentElement.msRequestFullscreen();
+        } else if (document.documentElement.mozRequestFullScreen) {
+            document.documentElement.mozRequestFullScreen();
+        } else if (document.documentElement.webkitRequestFullscreen) {
+            document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+        }
+        console.log('Переключение в полноэкранный режим');
+    } else {
+        // Если уже есть элемент в полноэкранном режиме, то выйдем из полноэкранного режима
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        }
+        console.log('Выход из полноэкранный режим');
+    }
+}
+
+
+
         
 
 
