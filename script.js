@@ -1580,7 +1580,7 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
         textElement.style.fontSize = '27px';
     }
 
-    // Адаптивный шрифт в портретном режиме
+    // Адаптивный шрифт в альбомном режиме
     if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '15px';
@@ -1861,7 +1861,7 @@ document.querySelector('.menu-container').style.opacity = '1';
         textElement.style.fontSize = '27px';
     }
 
-    // Адаптивный шрифт в портретном режиме
+    // Адаптивный шрифт в альбомном режиме
     if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '15px';
@@ -2620,7 +2620,7 @@ const qaPairs = [
     { 
         questions: ["Открой сайт Календаря", "Открой сайт Календар", "Аткрой сайт Календаря", "Аткрой сайт Календар",
         "Открой сайт Колендаря", "Открой сайт Колендаря", "Покажи Колендарь", "Покажи Календарь"], 
-        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/open_suit.mp3", 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/I_open_the_calendar.mp3", 
         type: "переход по ссылке на Календарь" 
     },
     { 
