@@ -1601,10 +1601,22 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
     document.querySelector('.quatrain').style.display = 'none';
     const intervalDuration = (interval.to.hour - hours) * 3600 + (interval.to.minute - minutes) * 60 - now.getSeconds();
     if (!lineElement) {
-        const container = document.querySelector(".container");
-        lineElement = document.createElement("div");
-        lineElement.classList.add("line");
-        container.appendChild(lineElement);
+        // Получаем ориентацию устройства
+const orientation = window.matchMedia("(orientation: portrait)").matches ? "portrait" : "landscape";
+
+// Если устройство находится в вертикальной ориентации, создаем линию в контейнере
+if (orientation === "portrait") {
+    const container = document.querySelector(".container");
+    lineElement = document.createElement("div");
+    lineElement.classList.add("line");
+    container.appendChild(lineElement);
+} else {
+    // Если устройство находится в горизонтальной ориентации, создаем линию так же, как и раньше
+    lineElement = document.createElement("div");
+    lineElement.classList.add("line");
+    document.body.appendChild(lineElement);
+}
+
     
         lineElement.style.transition = `width ${intervalDuration}s linear`;
         lineElement.style.width = "0"; // Устанавливаем ширину линии в начальное состояние
