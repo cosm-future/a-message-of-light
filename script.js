@@ -1817,18 +1817,19 @@ document.querySelector('.menu-container').style.opacity = '1';
     }
     
 
+    // Адаптивный шрифт в портретном режиме
     if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches) {
         const textElement = document.querySelector(".text");
-        textElement.style.fontSize = '12px';
+        textElement.style.fontSize = '15px';
     } else if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
         const textElement = document.querySelector(".text");
-        textElement.style.fontSize = '16px';
+        textElement.style.fontSize = '19px';
     } else if (window.matchMedia("(max-width: 800px) and (orientation: portrait)").matches) {
         const textElement = document.querySelector(".text");
-        textElement.style.fontSize = '20px';
+        textElement.style.fontSize = '23px';
     } else if (window.matchMedia("(max-width: 1080px) and (orientation: portrait)").matches) {
         const textElement = document.querySelector(".text");
-        textElement.style.fontSize = '24px';
+        textElement.style.fontSize = '27px';
     }
     
 
