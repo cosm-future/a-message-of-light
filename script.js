@@ -343,6 +343,16 @@ imageButton.addEventListener('mouseleave', function() {
 
 
 
+
+
+
+
+
+
+
+
+
+
 // Создаем элемент кнопки
 const hamburgerButton = document.createElement('button');
 hamburgerButton.id = "hamburger-button";
@@ -376,6 +386,13 @@ function toggleHamburger() {
         const newMenuContainer = document.createElement('div');
         newMenuContainer.id = 'menu-container';
         newMenuContainer.classList.add('menu-container');
+
+
+
+
+
+
+
 
         // Создаем заголовок "Ссылки на основные ресурсы"
         const title1 = document.createElement('h2');
@@ -543,6 +560,119 @@ if (hamburgerButton) {
         toggleHamburger();
     });
 }
+
+
+
+
+
+
+
+// Создаем кнопку
+const fullscreenButton = document.createElement('button');
+
+
+
+// Добавляем обработчик события при нажатии на кнопку
+fullscreenButton.addEventListener('click', function() {
+    toggleFullScreen();
+});
+
+
+
+
+const imageContainer = document.getElementById('imageContainer');
+let pressTimer;
+
+imageContainer.addEventListener('mousedown', function(event) {
+    if (event.button === 0) { // Проверяем, что это левая кнопка мыши
+        // Устанавливаем таймер при нажатии левой кнопки мыши
+        pressTimer = setTimeout(() => {
+            createButtonS();
+        }, 3000); // 3000 миллисекунд = 3 секунды
+    }
+});
+
+imageContainer.addEventListener('mouseup', function() {
+    // Очищаем таймер при отпускании кнопки мыши
+    clearTimeout(pressTimer);
+});
+
+// Функция для создания кнопки и добавления ее в body
+function createButtonS() {
+
+    fullscreenButton.id = 'fullscreenButton';
+fullscreenButton.className = 'fullScr-button';
+fullscreenButton.innerHTML = '&#x2197;'; // Используем символы Unicode для стрелок вверх и вниз
+
+    document.body.appendChild(fullscreenButton);
+
+    // Получаем ссылку на элемент кнопки изображения
+const FullScreenButton = document.getElementById('fullscreenButton');
+
+
+
+// Добавляем обработчик события нажатия на кнопку изображения
+FullScreenButton.addEventListener('click', function() {
+    toggleFullScr();
+});
+
+// Добавляем обработчик события наведения мыши на кнопку изображения
+FullScreenButton.addEventListener('mouseenter', function() {
+    // Задаем цвет фона кнопке
+    FullScreenButton.style.backgroundColor = 'rgba(128, 0, 128, 0.75)'; // Новый цвет фона кнопки
+});
+
+// Добавляем обработчик события увода мыши с кнопки изображения
+FullScreenButton.addEventListener('mouseleave', function() {
+    // Возвращаем исходный цвет фона кнопки
+    FullScreenButton.style.backgroundColor = isFullScreenActive ? 'rgba(128, 0, 128, 0.5)' : 'rgba(128, 0, 128, 0.15)';
+});
+
+
+// Функция для обновления состояния кнопки изображения и сохранения состояния в локальное хранилище
+function toggleFullScr() {
+    isFullScreenActive = !isFullScreenActive; // Инвертируем состояние кнопки изображения
+    updateFullScreenButtonState(); // Обновляем состояние кнопки изображения
+}
+
+
+// Функция для обновления внешнего вида кнопки "Гамбургер" в соответствии с состоянием
+function updateFullScreenButtonState() {
+const FullScreenButton = document.getElementById('fullscreenButton');
+if (!FullScreenButton) return;
+
+if (isFullScreenActive) {
+    FullScreenButton.style.backgroundColor = 'rgba(128, 0, 128, 0.5)';
+} else {
+    FullScreenButton.style.backgroundColor = 'rgba(128, 0, 128, 0.15)';
+}
+}
+
+    // Устанавливаем таймер для удаления кнопки через 5 секунд
+    setTimeout(() => {
+        fullscreenButton.remove();
+    }, 5000); // 5000 миллисекунд = 5 секунд
+}
+
+
+
+
+
+let isFullScreenActive = false;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2885,31 +3015,10 @@ if (isPortrait) {
 
 
 
-let pressTimer;
-const elementToHold = document.getElementById('imageContainer');
-
-elementToHold.addEventListener('mousedown', function() {
-    // Запускаем таймер при начале удержания элемента
-    pressTimer = setTimeout(() => {
-        // Переключаемся между обычным режимом и полноэкранным
-        toggleFullScreen();
-    }, 3000); // 3000 миллисекунд = 3 секунды
-});
-
-elementToHold.addEventListener('mouseup', function() {
-    // Очищаем таймер при завершении удержания элемента
-    clearTimeout(pressTimer);
-});
-
-// Запрещаем стандартное контекстное меню для элемента
-elementToHold.addEventListener('contextmenu', function(event) {
-    event.preventDefault();
-});
-
 // Функция для переключения между обычным режимом и полноэкранным
 function toggleFullScreen() {
     if (!document.fullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
-        // Если нет элемента в полноэкранном режиме, то запросим развертывание сайта на весь экран
+        // Если нет элемента в полноэкранным режиме, то запросим развертывание сайта на весь экран
         if (document.documentElement.requestFullscreen) {
             document.documentElement.requestFullscreen();
         } else if (document.documentElement.msRequestFullscreen) {
@@ -2921,7 +3030,7 @@ function toggleFullScreen() {
         }
         console.log('Переключение в полноэкранный режим');
     } else {
-        // Если уже есть элемент в полноэкранном режиме, то выйдем из полноэкранного режима
+        // Если уже есть элемент в полноэкранным режиме, то выйдем из полноэкранного режима
         if (document.exitFullscreen) {
             document.exitFullscreen();
         } else if (document.msExitFullscreen) {
@@ -2934,6 +3043,9 @@ function toggleFullScreen() {
         console.log('Выход из полноэкранный режим');
     }
 }
+
+
+
 
 
 
