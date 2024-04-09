@@ -597,6 +597,23 @@ document.body.addEventListener('mouseup', function() {
     clearTimeout(pressTimer);
 });
 
+// Обработчик события начала касания
+document.addEventListener('touchstart', function(event) {
+    // Проверяем, что касание было сделано одним пальцем
+    if (event.touches.length === 1) {
+        // Запускаем таймер при начале касания
+        pressTimer = setTimeout(() => {
+            createButton();
+        }, 3000); // 3000 миллисекунд = 3 секунды
+    }
+});
+
+// Обработчик события окончания касания
+document.addEventListener('touchend', function() {
+    // Очищаем таймер при окончании касания
+    clearTimeout(pressTimer);
+});
+
 // Функция для создания кнопки и добавления ее в body
 function createButton() {
 
