@@ -580,25 +580,25 @@ fullscreenButton.addEventListener('click', function() {
 
 
 
-const imageContainer = document.getElementById('imageContainer');
+
 let pressTimer;
 
-imageContainer.addEventListener('mousedown', function(event) {
+document.body.addEventListener('mousedown', function(event) {
     if (event.button === 0) { // Проверяем, что это левая кнопка мыши
         // Устанавливаем таймер при нажатии левой кнопки мыши
         pressTimer = setTimeout(() => {
-            createButtonS();
+            createButton();
         }, 3000); // 3000 миллисекунд = 3 секунды
     }
 });
 
-imageContainer.addEventListener('mouseup', function() {
+document.body.addEventListener('mouseup', function() {
     // Очищаем таймер при отпускании кнопки мыши
     clearTimeout(pressTimer);
 });
 
 // Функция для создания кнопки и добавления ее в body
-function createButtonS() {
+function createButton() {
 
     fullscreenButton.id = 'fullscreenButton';
 fullscreenButton.className = 'fullScr-button';
