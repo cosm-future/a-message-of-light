@@ -3114,32 +3114,4 @@ if (isOperaBrowser()) {
     
 
 
-// Функция для добавления элемента в список
-function addItemToList(listId, text) {
-    const list = document.getElementById(listId);
-    const listItem = document.createElement("li");
-    listItem.textContent = text;
-    list.appendChild(listItem);
-}
 
-// Загрузка HTML-кода страницы
-fetch("https://blagayavest.info/poems/09.04.24.html")
-    .then(response => response.text())
-    .then(html => {
-        // Создаем временный элемент для парсинга HTML
-        const tempElement = document.createElement("div");
-        tempElement.innerHTML = html;
-
-        // Извлекаем заголовки и добавляем их в список
-        const headings = tempElement.querySelectorAll("h1, h2");
-        headings.forEach(heading => {
-            addItemToList("headings", heading.textContent.trim());
-        });
-
-        // Извлекаем абзацы и добавляем их в список
-        const paragraphs = tempElement.querySelectorAll("p");
-        paragraphs.forEach(paragraph => {
-            addItemToList("paragraphs", paragraph.textContent.trim());
-        });
-    })
-    .catch(error => console.error("Ошибка загрузки страницы:", error));
