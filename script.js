@@ -579,7 +579,7 @@ fullscreenButton.addEventListener('click', function() {
 
 
 
-
+let fullScreenButtonCreated = false;
 
 let pressTimer;
 
@@ -623,13 +623,14 @@ document.addEventListener('touchend', function() {
 
 // Функция для создания кнопки и добавления ее в body
 function createButton() {
-    if(!fullscreenButton) {
+    if(!fullScreenButtonCreated) {
 
     fullscreenButton.id = 'fullscreenButton';
 fullscreenButton.className = 'fullScr-button';
 fullscreenButton.innerHTML = '&#x2197;'; // Используем символы Unicode для стрелок вверх и вниз
 
     document.body.appendChild(fullscreenButton);
+    fullScreenButtonCreated = true;
     }
 
     // Получаем ссылку на элемент кнопки изображения
@@ -677,6 +678,7 @@ if (isFullScreenActive) {
     // Устанавливаем таймер для удаления кнопки через 5 секунд
     setTimeout(() => {
         fullscreenButton.remove();
+        fullScreenButtonCreated = false;
     }, 5000); // 5000 миллисекунд = 5 секунд
 }
 
