@@ -581,9 +581,10 @@ fullscreenButton.addEventListener('click', function() {
 
 let fullScreenButtonCreated = false;
 
+const imageContainer = document.getElementById('imageContainer');
 let pressTimer;
 
-document.body.addEventListener('mousedown', function(event) {
+imageContainer.addEventListener('mousedown', function(event) {
     if (event.button === 0) { // Проверяем, что это левая кнопка мыши
         // Устанавливаем таймер при нажатии левой кнопки мыши
         pressTimer = setTimeout(() => {
@@ -592,17 +593,17 @@ document.body.addEventListener('mousedown', function(event) {
     }
 });
 
-document.body.addEventListener('mouseup', function() {
+imageContainer.addEventListener('mouseup', function() {
     // Очищаем таймер при отпускании кнопки мыши
     clearTimeout(pressTimer);
 });
 
-document.addEventListener('contextmenu', function(event) {
+imageContainer.addEventListener('contextmenu', function(event) {
     event.preventDefault(); // Отменяем стандартное действие браузера
 });
 
 // Обработчик события начала касания
-document.addEventListener('touchstart', function(event) {
+imageContainer.addEventListener('touchstart', function(event) {
     // Проверяем, что касание было сделано одним пальцем
     if (event.touches.length === 1) {
         // Запускаем таймер при начале касания
@@ -616,7 +617,7 @@ document.addEventListener('touchstart', function(event) {
 
 
 // Обработчик события окончания касания
-document.addEventListener('touchend', function() {
+imageContainer.addEventListener('touchend', function() {
     // Очищаем таймер при окончании касания
     clearTimeout(pressTimer);
 });

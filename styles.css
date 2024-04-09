@@ -1846,8 +1846,16 @@ content: ''; /* Обязательно для псевдоэлементов */
 }
 
 .image-container:active {
-   border: 1px solid rgb(98, 0, 255);
+   border-top: 1px solid rgba(226, 208, 255, 0);
+   border-left: 1px solid rgba(98, 0, 255, 0);
+   border-right: 1px solid rgba(98, 0, 255, 0);
 }
+
+.image-container img:active {
+    border-top: 1px solid rgba(98, 0, 255, 0);
+    border-left: 1px solid rgba(98, 0, 255, 0);
+    border-right: 1px solid rgba(98, 0, 255, 0);
+ }
 
 
 
@@ -1861,14 +1869,14 @@ content: ''; /* Обязательно для псевдоэлементов */
 /* Медиа-запрос для портретного режима */
 @media (orientation: portrait) {
     .image-container:active {
-        border: 1px solid rgba(98, 0, 255, 0);
+        border: 0px solid rgba(98, 0, 255, 0);
     }
 }
 
 /* Медиа-запрос для портретного режима */
 @media (orientation: portrait) {
     .image-container img:active {
-        border: 1px solid rgb(98, 0, 255);
+        border: 1px solid rgba(98, 0, 255, 0);
     }
 }
 
