@@ -623,12 +623,14 @@ document.addEventListener('touchend', function() {
 
 // Функция для создания кнопки и добавления ее в body
 function createButton() {
+    if(!fullscreenButton) {
 
     fullscreenButton.id = 'fullscreenButton';
 fullscreenButton.className = 'fullScr-button';
 fullscreenButton.innerHTML = '&#x2197;'; // Используем символы Unicode для стрелок вверх и вниз
 
     document.body.appendChild(fullscreenButton);
+    }
 
     // Получаем ссылку на элемент кнопки изображения
 const FullScreenButton = document.getElementById('fullscreenButton');
