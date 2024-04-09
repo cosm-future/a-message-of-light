@@ -719,6 +719,10 @@ content: ''; /* Обязательно для псевдоэлементов */
     transition: background 0.5s linear, height 0.5s ease, width 0.5s ease; /* Длительность и тип анимации для изменения цвета фона, высоты и ширины */
 }
 
+.container:active {
+    border: 2px solid rgb(98, 0, 255);;
+}
+
 .container::after {
     content: ''; /* Обязательно для псевдоэлементов */
     position: absolute;
