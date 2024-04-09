@@ -597,6 +597,10 @@ document.body.addEventListener('mouseup', function() {
     clearTimeout(pressTimer);
 });
 
+document.addEventListener('contextmenu', function(event) {
+    event.preventDefault(); // Отменяем стандартное действие браузера
+});
+
 // Обработчик события начала касания
 document.addEventListener('touchstart', function(event) {
     // Проверяем, что касание было сделано одним пальцем
@@ -607,6 +611,9 @@ document.addEventListener('touchstart', function(event) {
         }, 3000); // 3000 миллисекунд = 3 секунды
     }
 });
+
+
+
 
 // Обработчик события окончания касания
 document.addEventListener('touchend', function() {
