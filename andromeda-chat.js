@@ -27,6 +27,7 @@ function sendMessage() {
     // Получаем ответ от бота на основе введенного сообщения
     setTimeout(() => {
         getBotResponse(userMessage);
+        
     }, 1000);
 }
 
@@ -45,9 +46,11 @@ function getBotResponse(userMessage) {
                 if (question.link) {
                     const linkUrl = question.link;
                     appendMessage('bot', botResponse, linkUrl);
+                    
                 } else {
                     // Вызываем функцию appendMessage без анимации только для ответов от бота
                     appendMessage('bot', botResponse, null, false);
+                    
                 }
                 return;
             }
@@ -55,6 +58,7 @@ function getBotResponse(userMessage) {
         // Если вопрос не найден, выводим стандартный ответ
         const defaultResponse = "Извините, я не могу ответить на этот вопрос.";
         appendMessage('bot', defaultResponse);
+        
     });
 }
 
@@ -117,6 +121,7 @@ function appendMessage(sender, message, linkUrl = null, animateTyping = true) {
     // Добавляем класс visible через 0.5 секунды после добавления сообщения
     setTimeout(() => {
         messageElement.classList.add('visible');
+
     }, 150);
 
    // Если передан URL ссылки, добавляем ссылку в сообщение
@@ -193,6 +198,7 @@ function appendMessage(sender, message, linkUrl = null, animateTyping = true) {
             }
         } else {
             printMessage(sender, message, messageElement);
+            
         }
     } else {
         if (message.includes('^')) {
@@ -260,14 +266,18 @@ function printMessage(sender, message, messageElement) {
             if (index < message.length) {
                 messageElement.appendChild(document.createTextNode(message[index]));
                 index++;
+                // Прокрутка до нижней части окна чата
+                 chatBox.scrollTop = chatBox.scrollHeight;
                 setTimeout(printNextCharacter, delay);
             } else {
                 // По завершении печати вызываем функцию resolve для Promise
                 resolve();
+                
             }
         }
 
         printNextCharacter();
+        
     });
 }
 
@@ -815,6 +825,10 @@ function getQaByQuestion(question) {
 
 
 
+
+// Переменная для хранения уникального номера сообщения
+let messageId = 1;
+
 // Функция для отправки сообщения
 function sendsMessage() {
     const userInput = document.getElementById('user-input');
@@ -822,9 +836,20 @@ function sendsMessage() {
     if (message !== '') {
         const chatBox = document.getElementById('chat-box');
         const newMessage = document.createElement('div');
+        
+        // Присваиваем уникальный ID каждому новому сообщению
+        newMessage.id = 'message-' + messageId;
+        messageId++; // Увеличиваем счетчик для следующего сообщения
+        
         newMessage.textContent = message;
+        
+        
+        
         chatBox.appendChild(newMessage);
         userInput.value = '';
+
+        // После добавления нового сообщения, прокручиваем окно чата вниз, чтобы новое сообщение было видно
+        chatBox.scrollTop = chatBox.scrollHeight;
     }
 }
 
@@ -840,6 +865,16 @@ fetch('questions.json')
     .then(data => {
         // Сохраняем данные из файла в переменную для последующего использования
         const questions = data;
+
+        // Поиск всех подходящих предложений из questions.json
+        const allSuggestions = questions.flatMap(question => {
+            return question.command.map(command => {
+                return { id: question.id, command, answer: question.answer };
+                
+
+            });
+            
+        });
 
         function suggestText() {
             const userInput = document.getElementById('user-input');
@@ -938,6 +973,9 @@ document.getElementById('user-input').addEventListener('keydown', function(event
         // Назначение обработчика события клика на кнопку отправки сообщения
         document.querySelector('.send-button').addEventListener('click', function() {
             sendsMessage();
+
+           
+
         });
 
         // Установка стилей подсказки (начальное скрытие)

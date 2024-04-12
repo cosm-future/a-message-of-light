@@ -1,6 +1,11 @@
+
+
 function generateCalendar() {
     const month = parseInt(document.getElementById('month').value);
     const year = parseInt(document.getElementById('year').value);
+
+    // Обновляем хэш в адресной строке
+    window.location.hash = `#${year}-${month}`;
 
     const calendarWrapper = document.getElementById('calendar-wrapper');
     calendarWrapper.innerHTML = ''; // Очистить предыдущий календарь
@@ -77,6 +82,20 @@ function createCalendarCell(day, isToday) {
 
 // Вызываем функцию для генерации календаря сразу после загрузки страницы
 generateCalendar();
+
+// Обновляем календарь при изменении хэша в адресной строке
+window.addEventListener('hashchange', function() {
+    // Разбираем хэш, чтобы получить год и месяц
+    const hash = window.location.hash.substring(1); // Убираем решетку в начале
+    const [year, month] = hash.split('-').map(item => parseInt(item));
+
+    // Устанавливаем значения года и месяца в соответствующие поля на странице
+    document.getElementById('year').value = year;
+    document.getElementById('month').value = month;
+
+    // Обновляем календарь
+    generateCalendar();
+});
 
 // Добавляем обработчики событий для изменения месяца или года
 document.getElementById('month').addEventListener('change', generateCalendar);
