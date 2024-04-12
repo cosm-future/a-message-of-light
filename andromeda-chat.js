@@ -28,6 +28,7 @@ function sendMessage() {
     setTimeout(() => {
         getBotResponse(userMessage);
         
+        
     }, 1000);
 }
 
@@ -50,6 +51,7 @@ function getBotResponse(userMessage) {
                 } else {
                     // Вызываем функцию appendMessage без анимации только для ответов от бота
                     appendMessage('bot', botResponse, null, false);
+                    
                     
                 }
                 return;
@@ -180,6 +182,8 @@ function appendMessage(sender, message, linkUrl = null, animateTyping = true) {
                     const lineElement = document.createElement('div');
                     lineElement.textContent = line;
                     messageElement.appendChild(lineElement);
+                    // Прокрутка до нижней части окна чата
+                    chatBox.scrollTop = chatBox.scrollHeight;
                 }, index * 50);
             });
         } else if (message.includes('$')) { // Добавлено условие для текста, обрамленного символами доллара
@@ -198,6 +202,7 @@ function appendMessage(sender, message, linkUrl = null, animateTyping = true) {
             }
         } else {
             printMessage(sender, message, messageElement);
+            
             
         }
     } else {
@@ -234,6 +239,7 @@ function appendMessage(sender, message, linkUrl = null, animateTyping = true) {
             }
         } else {
             messageElement.appendChild(document.createTextNode(message));
+            
         }
     }
 }
