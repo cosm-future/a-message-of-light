@@ -108,16 +108,56 @@ function appendMessage(sender, message, linkUrl = null, animateTyping = true) {
     }
     const infoText = `<span style="color: ${senderColor};">${senderText}</span>  <span style="color: grey;">${timeString}</span>`;
 
-    // Устанавливаем HTML код в блок информации
+    // Add copy button
+const copyButton = document.createElement('button');
+copyButton.classList.add('copy-button'); // Add copy-button class
+copyButton.innerHTML = '&#128209;'; // Unicode for bound documents icon
+copyButton.onclick = () => {
+    let textToCopy = message;
+    // Remove '^' symbols
+    textToCopy = textToCopy.replace(/\^/g, '');
+    // Remove '*' symbols
+    textToCopy = textToCopy.replace(/\*/g, '');
+    // Remove '$' symbols
+    textToCopy = textToCopy.replace(/\$/g, '');
+
+    const tempInput = document.createElement('textarea');
+    tempInput.value = textToCopy;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+
+    const copyInfo = document.createElement('div');
+    copyInfo.classList.add('copy-info'); // Add copy-info class
+    copyInfo.style.opacity = 0;
+    copyInfo.textContent = 'Сообщение скопировано';
+    infoBlock.appendChild(copyInfo);
+    // Проявляем сообщение через 0.3 секунды
+    setTimeout(() => {
+        copyInfo.style.opacity = 1;
+        // Затеняем сообщение через 3 секунды
+        setTimeout(() => {
+            copyInfo.style.opacity = 0;
+            // Удаляем сообщение через 0.3 секунды после затухания
+            setTimeout(() => {
+                infoBlock.removeChild(copyInfo);
+            }, 300);
+        }, 3000);
+    }, 300);
+};
+
+
     infoBlock.innerHTML = infoText;
-
-    // Устанавливаем информационный блок и текст сообщения в основной блок сообщения
+    infoBlock.classList.add('infoBlock'); // Add copy-button class
+    messageElement.appendChild(copyButton); // Add the copy button
+    
     messageElement.appendChild(infoBlock);
+    
 
-    // Добавляем сообщение в окно чата
     chatBox.appendChild(messageElement);
 
-    // Прокрутка до нижней части окна чата
+
     chatBox.scrollTop = chatBox.scrollHeight;
 
     // Добавляем класс visible через 0.5 секунды после добавления сообщения

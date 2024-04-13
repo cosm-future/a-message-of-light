@@ -234,12 +234,14 @@ border-bottom-right-radius: 5px;
 
 
   .user-message, .bot-message {
+    position: relative;
     text-align: left;
     color: rgb(255, 255, 255);
     background-color: rgba(131, 131, 131, 0.112);
     padding: 5px;
     border: 1px solid rgba(138, 138, 138, 0.155);
     border-radius: 10px;
+    padding-top: -15px;
     opacity: 0; /* начальное значение непрозрачности */
     transition: opacity 0.15s ease, background-color 0.3s; /* добавляем плавность для свойства opacity */
 }
@@ -250,12 +252,15 @@ border-bottom-right-radius: 5px;
 
   .message {
     margin: 5px 0;
+    
   }
 
   .user-message:hover, .bot-message:hover {
     background-color: rgba(131, 131, 131, 0.212);
     border: 1px solid rgba(138, 138, 138, 0.555)
   }
+
+  
 
 
   
@@ -587,19 +592,48 @@ border-bottom-right-radius: 5px;
 /* Стили для всех кнопок "копировать" */
 .copy-button {
   position: relative;
-  right: 5px;
-  width: 20px;
-  height: 20px;
-  background-color: rgba(92, 92, 92, 0.568); /* Прозрачный фон */
-  border: 1px solid rgba(175, 175, 175, 0.514); /* Убираем границу */
-  border-radius: 5px;
+  top: 2px;
+  left: calc(100% - 39px);
+  background-color: rgba(92, 92, 92, 0.397); /* Прозрачный фон */
+  border: 1px solid rgba(175, 175, 175, 0.24); /* Убираем границу */
+  border-radius: 8px; /* Делаем кнопку круглой */
   cursor: pointer; /* Изменяем указатель при наведении */
-  font-size: 16px; /* Размер шрифта */
-  color: #ffffff; /* Цвет иконки */
+  font-size: 15px; /* Размер шрифта */
+  color: #ffffff86; /* Цвет иконки */
   z-index: 800; /* Опционально: настройка z-index для кнопки "копировать" */
+  justify-content: center; /* Центрируем по горизонтали */
+  align-items: center; /* Центрируем по вертикали */
+  transition: all 0.3s;
 }
 
 .copy-button:hover {
-  color: #555; /* Цвет иконки при наведении */
+  background-color: rgba(146, 146, 146, 0.568); /* Прозрачный фон */
+  color: #8d8d8d; /* Цвет иконки при наведении */
+  border: 1px solid rgba(175, 175, 175, 0.514); /* Убираем границу */
 }
+
+
+.infoBlock {
+  position: relative;
+  padding-right: 3px;
+  padding-left: 8px;
+  top: -25px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: rgba(151, 151, 151, 0.068); /* Прозрачный фон */
+  border-bottom: 1px solid rgba(76, 0, 255, 0);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.copy-info {
+  position: absolute;
+  color: gray;
+  top: 30px;
+  transition: opacity 0.3s;
+}
+
+
 
