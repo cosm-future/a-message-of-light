@@ -242,6 +242,7 @@ border-bottom-right-radius: 5px;
     border: 1px solid rgba(138, 138, 138, 0.155);
     border-radius: 10px;
     padding-top: -15px;
+    padding-left: 10px;
     opacity: 0; /* начальное значение непрозрачности */
     transition: opacity 0.15s ease, background-color 0.3s; /* добавляем плавность для свойства opacity */
 }
@@ -609,7 +610,7 @@ border-bottom-right-radius: 5px;
 @media screen and (orientation: portrait) {
   /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
   .copy-button {
-    top: 3px;
+    top: 2px;
   }
   }
 
@@ -624,6 +625,7 @@ border-bottom-right-radius: 5px;
   position: relative;
   padding-right: 3px;
   padding-left: 8px;
+  margin-left: -5px;
   top: -25px;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -639,6 +641,7 @@ border-bottom-right-radius: 5px;
   /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
   .infoBlock {
     top: -22px;
+    
   }
   }
 
