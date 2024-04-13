@@ -609,7 +609,7 @@ border-bottom-right-radius: 5px;
 @media screen and (orientation: portrait) {
   /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
   .copy-button {
-    top: 3px;
+    top: 1px;
   }
   }
 
