@@ -606,6 +606,13 @@ border-bottom-right-radius: 5px;
   transition: all 0.3s;
 }
 
+@media screen and (orientation: portrait) {
+  /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+  .copy-button {
+    top: 5px;
+  }
+  }
+
 .copy-button:hover {
   background-color: rgba(146, 146, 146, 0.568); /* Прозрачный фон */
   color: #8d8d8d; /* Цвет иконки при наведении */
@@ -628,10 +635,10 @@ border-bottom-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
-@media screen and (orientation: portrait) and (max-width: 600px) {
+@media screen and (orientation: portrait) {
   /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
   .infoBlock {
-    top: -20px;
+    top: -22px;
   }
   }
 
