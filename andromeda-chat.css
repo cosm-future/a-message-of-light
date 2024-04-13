@@ -628,6 +628,13 @@ border-bottom-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
+@media screen and (orientation: portrait) and (max-width: 600px) {
+  /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+  .infoBlock {
+    top: -20px;
+  }
+  }
+
 .copy-info {
   position: absolute;
   color: gray;
