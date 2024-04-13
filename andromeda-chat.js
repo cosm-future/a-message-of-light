@@ -148,6 +148,8 @@ copyButton.onclick = () => {
 };
 
 
+
+
     infoBlock.innerHTML = infoText;
     infoBlock.classList.add('infoBlock'); // Add copy-button class
     messageElement.appendChild(copyButton); // Add the copy button
@@ -195,7 +197,7 @@ copyButton.onclick = () => {
         messageElement.appendChild(document.createTextNode(beforeStar));
         messageElement.appendChild(link);
         messageElement.appendChild(document.createTextNode(afterStar));
-    } else if (message.includes('$')) { // Добавлено условие для текста, обрамленного символами доллара
+    }  else if (message.includes('$')) { // Добавлено условие для текста, обрамленного символами доллара
         const parts = message.split('$');
         for (let i = 0; i < parts.length; i++) {
             const part = parts[i];
@@ -244,7 +246,9 @@ copyButton.onclick = () => {
             printMessage(sender, message, messageElement);
             
             
-        }
+        } 
+
+        
     } else {
         if (message.includes('^')) {
             const lines = message.split('^');
@@ -280,8 +284,11 @@ copyButton.onclick = () => {
         } else {
             messageElement.appendChild(document.createTextNode(message));
             
-        }
-    }
+        } 
+        
+        
+    } 
+    
 }
 
 

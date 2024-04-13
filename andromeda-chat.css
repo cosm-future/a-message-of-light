@@ -220,6 +220,7 @@ border-bottom-right-radius: 5px;
   /* Стиль для .faq при режиме экрана портрет */
   @media only screen and (max-width: 600px) and (orientation: portrait) {
     .faq {
+      display: none;
       left: auto;
       right: -220px;
 
@@ -652,5 +653,24 @@ border-bottom-right-radius: 5px;
   transition: opacity 0.3s;
 }
 
+.image-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  max-width: 100px; /* Максимальная ширина миниатюры */
+  max-height: 100px; /* Максимальная высота миниатюры */
+  border-radius: 5px; /* Скругление углов */
+  margin-top: 5px; /* Отступ сверху */
+  background-color: #340f57;
+}
 
-
+/* Стили для миниатюры */
+.thumbnail {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  max-width: 100px; /* Максимальная ширина миниатюры */
+  max-height: 100px; /* Максимальная высота миниатюры */
+  border-radius: 5px; /* Скругление углов */
+  margin-top: 5px; /* Отступ сверху */
+}
