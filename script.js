@@ -910,88 +910,6 @@ for (const value in uniqueValues) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Добавляем кнопку в документ
 document.body.appendChild(openTableButton);
         
@@ -1960,6 +1878,24 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
                         buttonT.disabled = true;
                     }
                 }
+
+                // Удаляем контейнер с таблицей, если он существует и необходимо его скрыть
+    const existingContainer = document.getElementById('table-container');
+    if (existingContainer) {
+        // Удаляем класс 'show', чтобы запустить анимацию скрытия
+        existingContainer.classList.remove('show');
+        // Ждем завершения анимации, прежде чем удалять контейнер
+        setTimeout(function() {
+            existingContainer.remove();
+            container.style.overflowY = 'auto'; // Разрешаем скроллбар
+            // Сбрасываем флаг
+            tableCreated = false;
+            // Удаляем кнопку
+            openTableButton.remove();
+            isImageActive = false;
+            imageButton.style.backgroundColor = 'rgba(128, 0, 128, 0.15)';
+        }, 500); // Подождите 500 миллисекунд, чтобы анимация завершилась
+    }
             
   
             // Вызов функции каждые 1 секунд
@@ -2032,6 +1968,29 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
         isIntervalActive = false;
         
         messageRecordingPlayed = false;
+
+
+
+
+
+
+        // Удаляем контейнер с таблицей, если он существует и необходимо его скрыть
+    const existingContainer = document.getElementById('table-container');
+    if (existingContainer) {
+        // Удаляем класс 'show', чтобы запустить анимацию скрытия
+        existingContainer.classList.remove('show');
+        // Ждем завершения анимации, прежде чем удалять контейнер
+        setTimeout(function() {
+            existingContainer.remove();
+            container.style.overflowY = 'auto'; // Разрешаем скроллбар
+            // Сбрасываем флаг
+            tableCreated = false;
+            // Удаляем кнопку
+            openTableButton.remove();
+            isImageActive = false;
+            imageButton.style.backgroundColor = 'rgba(128, 0, 128, 0.15)';
+        }, 500); // Подождите 500 миллисекунд, чтобы анимация завершилась
+    }
       
 
         
