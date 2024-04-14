@@ -857,6 +857,141 @@ for (let i = 0; i < json.length; i++) {
 
 
 
+
+
+
+
+
+
+// Объект для хранения уникальных значений второго столбца и соответствующих им данных из третьего столбца
+const uniqueValues = {};
+
+// Перебираем строки таблицы, начиная со второй (первая строка — заголовок)
+for (let i = 1; i < table.rows.length; i++) {
+    const currentRow = table.rows[i];
+    const currentValue = currentRow.cells[1].textContent.trim(); // Значение во втором столбце текущей строки
+
+    // Проверяем, есть ли уже такое значение в объекте уникальных значений
+    if (uniqueValues[currentValue]) {
+        // Если есть, добавляем данные из третьего столбца текущей строки к уже существующим
+        uniqueValues[currentValue] += ' ' + currentRow.cells[2].textContent.trim();
+        // Удаляем текущую строку из таблицы, так как она не должна быть отображена
+        table.deleteRow(i);
+        // Уменьшаем счетчик, чтобы не пропустить следующую строку после удаления
+        i--;
+    } else {
+        // Если такого значения еще нет, добавляем его в объект уникальных значений
+        uniqueValues[currentValue] = currentRow.cells[2].textContent.trim();
+    }
+}
+
+// Создаем массив с цветами для интервалов времени
+const intervalColors = ['white', '#fd7dff', 'gold'];
+let colorIndex = 0; // Индекс текущего цвета
+
+// Обновляем данные в третьем столбце, оборачивая каждый интервал времени в квадратные скобки
+for (const value in uniqueValues) {
+    // Находим все строки с данным значением во втором столбце
+    const rowsToUpdate = Array.from(table.rows).filter(row => row.cells[1].textContent.trim() === value);
+    // Обновляем данные в третьем столбце для этих строк, оборачивая каждый интервал времени в квадратные скобки
+    rowsToUpdate.forEach(row => {
+        const cellValue = uniqueValues[value];
+        const bracketedIntervals = cellValue.replace(/(\d+\.\d+ - \d+\.\d+)|(\d+:\d+ - \d+:\d+)/g, match => {
+            const color = intervalColors[colorIndex]; // Берем текущий цвет из массива
+            colorIndex = (colorIndex + 1) % intervalColors.length; // Увеличиваем индекс цвета на 1 и берем остаток от деления на длину массива, чтобы цветы повторялись
+            return `<span style="color: ${color}; padding: 2px; border-radius: 4px;">[${match}]</span>`; // Обертываем интервал в квадратные скобки с указанием цвета
+        });
+        row.cells[2].innerHTML = bracketedIntervals; // Обновляем данные в ячейке третьего столбца
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Добавляем кнопку в документ
 document.body.appendChild(openTableButton);
         
@@ -3059,7 +3194,7 @@ function toggleFullScreen() {
         }
         console.log('Переключение в полноэкранный режим');
     } else {
-        // Если уже есть элемент в полноэкранным режиме, то выйдем из полноэкранного режима
+        // Если уже есть элемент в полноэкранном режиме, то выйдем из полноэкранного режима
         if (document.exitFullscreen) {
             document.exitFullscreen();
         } else if (document.msExitFullscreen) {
