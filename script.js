@@ -1982,29 +1982,7 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
 
 
 
-        // Удаляем контейнер с таблицей, если он существует и необходимо его скрыть
-    const existingContainer = document.getElementById('table-container');
-    if (existingContainer) {
-        // Удаляем класс 'show', чтобы запустить анимацию скрытия
-        existingContainer.classList.remove('show');
-        // Ждем завершения анимации, прежде чем удалять контейнер
-        setTimeout(function() {
-            existingContainer.remove();
-            container.style.overflowY = 'auto'; // Разрешаем скроллбар
-            // Сбрасываем флаг
-            tableCreated = false;
-            // Удаляем кнопку
-            // Обновляем переменную isImageActive и сохраняем ее в локальное хранилище
-            isImageActive = false;
-            localStorage.setItem('isImageActive', JSON.stringify(isImageActive));
-
-            
-
-            openTableButton.remove();
-            
-            imageButton.style.backgroundColor = 'rgba(128, 0, 128, 0.15)';
-        }, 500); // Подождите 500 миллисекунд, чтобы анимация завершилась
-    }
+        
       
 
         
@@ -2211,6 +2189,31 @@ if (!nextSending) {
         if (buttonT) {
             buttonT.disabled = true;
         }
+
+// Удаляем контейнер с таблицей, если он существует и необходимо его скрыть
+const existingContainer = document.getElementById('table-container');
+if (existingContainer) {
+    // Удаляем класс 'show', чтобы запустить анимацию скрытия
+    existingContainer.classList.remove('show');
+    // Ждем завершения анимации, прежде чем удалять контейнер
+    setTimeout(function() {
+        existingContainer.remove();
+        container.style.overflowY = 'auto'; // Разрешаем скроллбар
+        // Сбрасываем флаг
+        tableCreated = false;
+        // Удаляем кнопку
+        // Обновляем переменную isImageActive и сохраняем ее в локальное хранилище
+        isImageActive = false;
+        localStorage.setItem('isImageActive', JSON.stringify(isImageActive));
+
+        
+
+        openTableButton.remove();
+        
+        imageButton.style.backgroundColor = 'rgba(128, 0, 128, 0.15)';
+    }, 500); // Подождите 500 миллисекунд, чтобы анимация завершилась
+}
+
     }
 } else {
     // Вычисляем время до ближайшего посыл в текущем дне
@@ -2227,11 +2230,40 @@ if (!nextSending) {
         if (buttonT) {
             buttonT.disabled = false;
         }
+
+
     } else {
         const buttonT = document.getElementById('imageButton');
         if (buttonT) {
             buttonT.disabled = true;
         }
+
+
+        // Удаляем контейнер с таблицей, если он существует и необходимо его скрыть
+    const existingContainer = document.getElementById('table-container');
+    if (existingContainer) {
+        // Удаляем класс 'show', чтобы запустить анимацию скрытия
+        existingContainer.classList.remove('show');
+        // Ждем завершения анимации, прежде чем удалять контейнер
+        setTimeout(function() {
+            existingContainer.remove();
+            container.style.overflowY = 'auto'; // Разрешаем скроллбар
+            // Сбрасываем флаг
+            tableCreated = false;
+            // Удаляем кнопку
+            // Обновляем переменную isImageActive и сохраняем ее в локальное хранилище
+            isImageActive = false;
+            localStorage.setItem('isImageActive', JSON.stringify(isImageActive));
+
+            
+
+            openTableButton.remove();
+            
+            imageButton.style.backgroundColor = 'rgba(128, 0, 128, 0.15)';
+        }, 500); // Подождите 500 миллисекунд, чтобы анимация завершилась
+    }
+
+    
     }
 }
 

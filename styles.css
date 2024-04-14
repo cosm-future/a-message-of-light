@@ -1930,6 +1930,16 @@ content: ''; /* Обязательно для псевдоэлементов */
         -2px 2px 5px rgba(128, 0, 128, 0.5); /* Тень влево-вниз */
 }
 
+/* Медиа-запрос для портретного режима */
+@media (orientation: portrait) {
+    .song-info {
+        display: none;
+        bottom: auto;
+        top: 47%;
+    }
+    
+}
+
 
 @keyframes slideText {
     0% { right: -50%; } /* Начальное положение справа */
