@@ -1892,7 +1892,9 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
             tableCreated = false;
             // Удаляем кнопку
             openTableButton.remove();
+            // Обновляем переменную isImageActive и сохраняем ее в локальное хранилище
             isImageActive = false;
+            localStorage.setItem('isImageActive', JSON.stringify(isImageActive));
             imageButton.style.backgroundColor = 'rgba(128, 0, 128, 0.15)';
         }, 500); // Подождите 500 миллисекунд, чтобы анимация завершилась
     }
@@ -1944,14 +1946,20 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
           .then(data => {
               // Получение случайного объекта из массива
               const randomSong = data[Math.floor(Math.random() * data.length)];
-  
+              audioPlayer.pause();
               // Присваивание значений переменным
               name_of_the_song = randomSong.название;
               songwriter = randomSong.автор;
               song_link = randomSong.ссылка;
   
               audioSource.src = song_link;
+              
               audioPlayer.load();
+
+              // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
+    audioPlayer.addEventListener('loadedmetadata', function() {
+        audioPlayer.play();
+    });
   
               // Подставляем значения переменных в текст элементов
               songTitleElement.textContent = name_of_the_song;
@@ -1986,8 +1994,14 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
             // Сбрасываем флаг
             tableCreated = false;
             // Удаляем кнопку
-            openTableButton.remove();
+            // Обновляем переменную isImageActive и сохраняем ее в локальное хранилище
             isImageActive = false;
+            localStorage.setItem('isImageActive', JSON.stringify(isImageActive));
+
+            
+
+            openTableButton.remove();
+            
             imageButton.style.backgroundColor = 'rgba(128, 0, 128, 0.15)';
         }, 500); // Подождите 500 миллисекунд, чтобы анимация завершилась
     }
