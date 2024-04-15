@@ -1941,29 +1941,33 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
                 enableButtonAndromeda();
           }
   
-            fetch(jsonFileRandomMusic)
+          fetch(jsonFileRandomMusic)
           .then(response => response.json())
           .then(data => {
               // Получение случайного объекта из массива
               const randomSong = data[Math.floor(Math.random() * data.length)];
-              audioPlayer.pause();
+  
               // Присваивание значений переменным
               name_of_the_song = randomSong.название;
               songwriter = randomSong.автор;
               song_link = randomSong.ссылка;
   
               audioSource.src = song_link;
-              
               audioPlayer.load();
+  
+              // Подставляем значения переменных в текст элементов
+              songTitleElement.textContent = name_of_the_song;
+              artistNameElement.textContent = songwriter;
+  
+              // Здесь можно выполнить другие действия с полученными данными
+          
 
               // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
     audioPlayer.addEventListener('loadedmetadata', function() {
         audioPlayer.play();
     });
   
-              // Подставляем значения переменных в текст элементов
-              songTitleElement.textContent = name_of_the_song;
-              artistNameElement.textContent = songwriter;
+             
   
               // Здесь можно выполнить другие действия с полученными данными
           });  
@@ -1977,10 +1981,10 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
         
         messageRecordingPlayed = false;
 
+        jsonFileRandomMusic = 'free-music.json';
 
 
-
-
+  
 
         
       
