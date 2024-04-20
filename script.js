@@ -1614,14 +1614,31 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
 
     getRandomSong(); // Получаем следующую песню
 
-    audioPlayer.src = song_link; // Устанавливаем новую песню в качестве источника для аудиоплеера
-    audioPlayer.load(); // Загружаем новую песню
-    messageRecordingPlayed = true; // Запрещаем песне проигрываться снова и снова каждую секунду
+    // Загрузка файла main-music.json
+fetch('main-music.json')
+.then(response => response.json())
+.then(data => {
+  // Проверка, что массив не пустой
+  if (Array.isArray(data) && data.length > 0) {
+    // Получение первого элемента массива
+    const audioData = data[0];
 
-    // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
-    audioPlayer.addEventListener('loadedmetadata', function() {
-        audioPlayer.play();
-    });
+    // Получение ссылки на песню
+    const audioSrc = audioData.ссылка;
+
+    // Создание аудио элемента
+    const audio = new Audio(audioSrc);
+
+    audioPlayer.stop(); // Приостанавливаем воспроизведение первого аудиоплеера
+    // Воспроизведение музыки
+    audio.play();
+
+    
+  } else {
+    console.error('Нет данных о музыке в файле');
+  }
+})
+.catch(error => console.error('Ошибка загрузки файла:', error));
 }
 
 
