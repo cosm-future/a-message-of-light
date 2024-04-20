@@ -1723,6 +1723,7 @@ fetch('main-music.json')
     // Создание аудио элемента
     const audio = new Audio(audioSrc);
 
+    audioPlayer.pause(); // Приостанавливаем воспроизведение первого аудиоплеера
     // Воспроизведение музыки
     audio.play();
 
