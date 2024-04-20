@@ -1726,13 +1726,13 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
             artistNameElement.textContent = songwriter;
 
             // Здесь можно выполнить другие действия с полученными данными
-
+            audioPlayer.play();
             
         });
         // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
-    audioPlayer.addEventListener('loadedmetadata', function() {
-        audioPlayer.play();
-    });
+
+        
+
         playSoundAndVibration();
 
     };
