@@ -1447,7 +1447,8 @@ function getMoscowTimeSR() {
     updateTime();
     updateJsonFile();
     
-
+    if (isIntervalActive) {
+        jsonFileRandomMusic = 'main-music.json';
 // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
 if (audioPlayer.paused && isAudioActive) {
     audioPlayer.pause(); // Останавливаем текущее воспроизведение
@@ -1467,6 +1468,32 @@ if (audioPlayer.paused && isAudioActive) {
             // console.error('Ошибка запуска воспроизведения:', error);
         });
     });
+}
+    } else {
+
+        jsonFileRandomMusic = 'free-music.json';
+        // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
+        if (audioPlayer.paused && isAudioActive) {
+            audioPlayer.pause(); // Останавливаем текущее воспроизведение
+        
+            getRandomSong(); // Получаем следующую песню
+        
+            audioPlayer.src = song_link; // Устанавливаем новую песню в качестве источника для аудиоплеера
+            audioPlayer.load(); // Загружаем новую песню
+        
+            // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
+            audioPlayer.addEventListener('loadedmetadata', function() {
+                audioPlayer.play().then(_ => {
+                    // Обработчик успешного запуска воспроизведения
+                    // console.log('Воспроизведение начато');
+                }).catch(error => {
+                    // Обработчик ошибки запуска воспроизведения
+                    // console.error('Ошибка запуска воспроизведения:', error);
+                });
+            });
+
+
+    }
 }
 
 toggleTable();
@@ -1681,34 +1708,26 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
                 
                 disableButtonAndromeda();
 
-                fetch(jsonFileRandomMusic)
-                .then(response => response.json())
-                .then(data => {
-                    // Получение случайного объекта из массива
-                    const randomSong = data[Math.floor(Math.random() * data.length)];
-        
-                    // Присваивание значений переменным
-                    name_of_the_song = randomSong.название;
-                    songwriter = randomSong.автор;
-                    song_link = randomSong.ссылка;
-        
-                    audioSource.src = song_link;
-                    audioPlayer.pause(); // Приостанавливаем воспроизведение
-            audioPlayer.currentTime = 0; // Устанавливаем время воспроизведения в начало
-            audioPlayer.load(); // Загружаем заново аудио
-        
-                    // Подставляем значения переменных в текст элементов
-                    songTitleElement.textContent = name_of_the_song;
-                    artistNameElement.textContent = songwriter;
-        
-                    // Здесь можно выполнить другие действия с полученными данными
-        
-                    
-                });
-                // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
-            audioPlayer.addEventListener('loadedmetadata', function() {
-                audioPlayer.play();
-            });
+                // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
+if (audioPlayer.paused && isAudioActive) {
+    audioPlayer.pause(); // Останавливаем текущее воспроизведение
+
+    getRandomSong(); // Получаем следующую песню
+
+    audioPlayer.src = song_link; // Устанавливаем новую песню в качестве источника для аудиоплеера
+    audioPlayer.load(); // Загружаем новую песню
+
+    // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
+    audioPlayer.addEventListener('loadedmetadata', function() {
+        audioPlayer.play().then(_ => {
+            // Обработчик успешного запуска воспроизведения
+            // console.log('Воспроизведение начато');
+        }).catch(error => {
+            // Обработчик ошибки запуска воспроизведения
+            // console.error('Ошибка запуска воспроизведения:', error);
+        });
+    });
+}
 
         } else {
             jsonFileRandomMusic = 'free-music.json';
