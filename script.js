@@ -1608,38 +1608,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
 
 
-            // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
-if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-music.json') {
-    audioPlayer.pause(); // Останавливаем текущее воспроизведение
 
-    getRandomSong(); // Получаем следующую песню
-
-    // Загрузка файла main-music.json
-fetch('main-music.json')
-.then(response => response.json())
-.then(data => {
-  // Проверка, что массив не пустой
-  if (Array.isArray(data) && data.length > 0) {
-    // Получение первого элемента массива
-    const audioData = data[0];
-
-    // Получение ссылки на песню
-    const audioSrc = audioData.ссылка;
-
-    // Создание аудио элемента
-    const audio = new Audio(audioSrc);
-
-    audioPlayer.stop(); // Приостанавливаем воспроизведение первого аудиоплеера
-    // Воспроизведение музыки
-    audio.play();
-
-    
-  } else {
-    console.error('Нет данных о музыке в файле');
-  }
-})
-.catch(error => console.error('Ошибка загрузки файла:', error));
-}
 
 
 
