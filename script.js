@@ -1976,9 +1976,8 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
                 buttonBuild.style.display = 'block';
                 } 
                 enableButtonAndromeda();
-          }
-  
-          fetch(jsonFileRandomMusic)
+
+                fetch(jsonFileRandomMusic)
           .then(response => response.json())
           .then(data => {
               // Получение случайного объекта из массива
@@ -2011,6 +2010,9 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
   
               // Здесь можно выполнить другие действия с полученными данными
           });  
+          }
+  
+          
           };
 
         
