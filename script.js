@@ -1708,21 +1708,23 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
                 
                 disableButtonAndromeda();
 
-                // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
-if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-music.json') {
-    audioPlayer.pause(); // Останавливаем текущее воспроизведение
+                // Загрузка файла main-music.json
+fetch('main-music.json')
+.then(response => response.json())
+.then(data => {
+  // Получение ссылки на песню
+  const audioSrc = data.ссылка;
 
-    getRandomSong(); // Получаем следующую песню
+  // Создание аудио элемента
+  const audio = new Audio(audioSrc);
 
-    audioPlayer.src = song_link; // Устанавливаем новую песню в качестве источника для аудиоплеера
-    audioPlayer.load(); // Загружаем новую песню
-    messageRecordingPlayed = true; // Запрещаем песне проигрываться снова и снова каждую секунду
+  // Воспроизведение музыки
+  audio.play();
 
-    // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
-    audioPlayer.addEventListener('loadedmetadata', function() {
-        audioPlayer.play();
-    });
-}
+ 
+})
+.catch(error => console.error('Ошибка загрузки файла:', error));
+
 
         } else {
             jsonFileRandomMusic = 'free-music.json';
