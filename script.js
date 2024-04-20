@@ -1712,18 +1712,27 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
 fetch('main-music.json')
 .then(response => response.json())
 .then(data => {
-  // Получение ссылки на песню
-  const audioSrc = data.ссылка;
+  // Проверка, что массив не пустой
+  if (Array.isArray(data) && data.length > 0) {
+    // Получение первого элемента массива
+    const audioData = data[0];
 
-  // Создание аудио элемента
-  const audio = new Audio(audioSrc);
+    // Получение ссылки на песню
+    const audioSrc = audioData.ссылка;
 
-  // Воспроизведение музыки
-  audio.play();
+    // Создание аудио элемента
+    const audio = new Audio(audioSrc);
 
- 
+    // Воспроизведение музыки
+    audio.play();
+
+    
+  } else {
+    console.error('Нет данных о музыке в файле');
+  }
 })
 .catch(error => console.error('Ошибка загрузки файла:', error));
+
 
 
         } else {
