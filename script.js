@@ -1608,7 +1608,21 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
 
 
+            // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
+if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-music.json') {
+    audioPlayer.pause(); // Останавливаем текущее воспроизведение
 
+    getRandomSong(); // Получаем следующую песню
+
+    audioPlayer.src = song_link; // Устанавливаем новую песню в качестве источника для аудиоплеера
+    audioPlayer.load(); // Загружаем новую песню
+    messageRecordingPlayed = true; // Запрещаем песне проигрываться снова и снова каждую секунду
+
+    // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
+    audioPlayer.addEventListener('loadedmetadata', function() {
+        audioPlayer.play();
+    });
+}
 
 
 
@@ -1694,33 +1708,34 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
                 
                 disableButtonAndromeda();
 
-                // Загрузка файла main-music.json
-fetch('main-music.json')
-.then(response => response.json())
-.then(data => {
-  // Проверка, что массив не пустой
-  if (Array.isArray(data) && data.length > 0) {
-    // Получение первого элемента массива
-    const audioData = data[0];
-
-    // Получение ссылки на песню
-    const audioSrc = audioData.ссылка;
-
-    // Создание аудио элемента
-    const audio = new Audio(audioSrc);
-
-    audioPlayer.stop(); // Приостанавливаем воспроизведение первого аудиоплеера
-    // Воспроизведение музыки
-    audio.play();
-
-    
-  } else {
-    console.error('Нет данных о музыке в файле');
-  }
-})
-.catch(error => console.error('Ошибка загрузки файла:', error));
-
-
+                fetch(jsonFileRandomMusic)
+                .then(response => response.json())
+                .then(data => {
+                    // Получение случайного объекта из массива
+                    const randomSong = data[Math.floor(Math.random() * data.length)];
+        
+                    // Присваивание значений переменным
+                    name_of_the_song = randomSong.название;
+                    songwriter = randomSong.автор;
+                    song_link = randomSong.ссылка;
+        
+                    audioSource.src = song_link;
+                    audioPlayer.pause(); // Приостанавливаем воспроизведение
+            audioPlayer.currentTime = 0; // Устанавливаем время воспроизведения в начало
+            audioPlayer.load(); // Загружаем заново аудио
+        
+                    // Подставляем значения переменных в текст элементов
+                    songTitleElement.textContent = name_of_the_song;
+                    artistNameElement.textContent = songwriter;
+        
+                    // Здесь можно выполнить другие действия с полученными данными
+        
+                    
+                });
+                // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
+            audioPlayer.addEventListener('loadedmetadata', function() {
+                audioPlayer.play();
+            });
 
         } else {
             jsonFileRandomMusic = 'free-music.json';
