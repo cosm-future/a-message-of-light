@@ -1719,7 +1719,9 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
             song_link = randomSong.ссылка;
 
             audioSource.src = song_link;
-            audioPlayer.load();
+            audioPlayer.pause(); // Приостанавливаем воспроизведение
+    audioPlayer.currentTime = 0; // Устанавливаем время воспроизведения в начало
+    audioPlayer.load(); // Загружаем заново аудио
 
             // Подставляем значения переменных в текст элементов
             songTitleElement.textContent = name_of_the_song;
@@ -1731,7 +1733,6 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
         });
         // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
     audioPlayer.addEventListener('loadedmetadata', function() {
-        audioPlayer.pause();
         audioPlayer.play();
     });
         playSoundAndVibration();
