@@ -1681,6 +1681,35 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
                 
                 disableButtonAndromeda();
 
+                fetch(jsonFileRandomMusic)
+                .then(response => response.json())
+                .then(data => {
+                    // Получение случайного объекта из массива
+                    const randomSong = data[Math.floor(Math.random() * data.length)];
+        
+                    // Присваивание значений переменным
+                    name_of_the_song = randomSong.название;
+                    songwriter = randomSong.автор;
+                    song_link = randomSong.ссылка;
+        
+                    audioSource.src = song_link;
+                    audioPlayer.pause(); // Приостанавливаем воспроизведение
+            audioPlayer.currentTime = 0; // Устанавливаем время воспроизведения в начало
+            audioPlayer.load(); // Загружаем заново аудио
+        
+                    // Подставляем значения переменных в текст элементов
+                    songTitleElement.textContent = name_of_the_song;
+                    artistNameElement.textContent = songwriter;
+        
+                    // Здесь можно выполнить другие действия с полученными данными
+        
+                    
+                });
+                // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
+            audioPlayer.addEventListener('loadedmetadata', function() {
+                audioPlayer.play();
+            });
+
         } else {
             jsonFileRandomMusic = 'free-music.json';
             // Получаем ссылку на элемент по его id
@@ -1704,37 +1733,11 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
                 } 
                 
                 enableButtonAndromeda();
+
         }
 
 
-          fetch(jsonFileRandomMusic)
-        .then(response => response.json())
-        .then(data => {
-            // Получение случайного объекта из массива
-            const randomSong = data[Math.floor(Math.random() * data.length)];
-
-            // Присваивание значений переменным
-            name_of_the_song = randomSong.название;
-            songwriter = randomSong.автор;
-            song_link = randomSong.ссылка;
-
-            audioSource.src = song_link;
-            audioPlayer.pause(); // Приостанавливаем воспроизведение
-    audioPlayer.currentTime = 0; // Устанавливаем время воспроизведения в начало
-    audioPlayer.load(); // Загружаем заново аудио
-
-            // Подставляем значения переменных в текст элементов
-            songTitleElement.textContent = name_of_the_song;
-            artistNameElement.textContent = songwriter;
-
-            // Здесь можно выполнить другие действия с полученными данными
-
-            
-        });
-        // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
-    audioPlayer.addEventListener('loadedmetadata', function() {
-        audioPlayer.play();
-    });
+         
         playSoundAndVibration();
 
     };
@@ -1960,7 +1963,9 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
               song_link = randomSong.ссылка;
   
               audioSource.src = song_link;
-              audioPlayer.load();
+            audioPlayer.pause(); // Приостанавливаем воспроизведение
+    audioPlayer.currentTime = 0; // Устанавливаем время воспроизведения в начало
+    audioPlayer.load(); // Загружаем заново аудио
   
               // Подставляем значения переменных в текст элементов
               songTitleElement.textContent = name_of_the_song;
