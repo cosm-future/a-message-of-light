@@ -1766,3 +1766,9 @@ async function updateTime() {
 
     // Создаем массив с цветами для интервалов времени
 const intervalColors = ['white', '#fd7dff', 'gold'];
+
+
+{
+      "command": ["расскажи про канон матрицы", "канон матрицы"],
+      "answers": [""]
+    }
