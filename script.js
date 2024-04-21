@@ -126,7 +126,7 @@ function getRandomSong() {
             songwriter = randomSong.автор;
             song_link = randomSong.ссылка;
 
-            audioSource.src = song_link;
+            audioPlayer.src = song_link;
             audioPlayer.load();
 
             // Подставляем значения переменных в текст элементов
