@@ -1719,7 +1719,7 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
                     songwriter = randomSong.автор;
                     song_link = randomSong.ссылка;
         
-                    audioSource.src = song_link;
+                    audioPlayer.src = song_link;
                     audioPlayer.pause(); // Приостанавливаем воспроизведение
             audioPlayer.currentTime = 0; // Устанавливаем время воспроизведения в начало
             audioPlayer.load(); // Загружаем заново аудио
