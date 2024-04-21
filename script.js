@@ -886,7 +886,7 @@ for (let i = 1; i < table.rows.length; i++) {
 }
 
 // Создаем массив с цветами для интервалов времени
-const intervalColors = ['white', '#fd7dff', 'gold'];
+const intervalColors = ['gold', 'gold', 'gold'];
 let colorIndex = 0; // Индекс текущего цвета
 
 // Обновляем данные в третьем столбце, оборачивая каждый интервал времени в квадратные скобки
