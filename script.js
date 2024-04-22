@@ -1,3 +1,160 @@
+// Функция для определения ориентации экрана
+function getOrientation() {
+    return window.innerWidth > window.innerHeight ? 'landscape' : 'portrait';
+}
+
+// Функция для создания элементов
+function createElements() {
+    // Создаем элементы для первого блока
+    var imageContainer = document.createElement('div');
+    imageContainer.id = 'imageContainer';
+    imageContainer.className = 'image-container';
+    var dynamicImage = document.createElement('img');
+    dynamicImage.id = 'dynamic-image';
+    dynamicImage.className = 'image';
+    dynamicImage.alt = 'Описание изображения.';
+    var songInfo = document.createElement('div');
+    songInfo.id = 'songInfo';
+    songInfo.className = 'song-info';
+    var songTitle = document.createElement('span');
+    songTitle.id = 'songTitle';
+    var artistName = document.createElement('span');
+    artistName.id = 'artistName';
+    songInfo.appendChild(songTitle);
+    songInfo.appendChild(artistName);
+    imageContainer.appendChild(dynamicImage);
+    imageContainer.appendChild(songInfo);
+
+    // Создаем элементы для второго блока
+    var timeContainer = document.createElement('div');
+    timeContainer.id = 'time-container';
+    timeContainer.className = 'time-container';
+    var date = document.createElement('div');
+    date.className = 'date';
+    var time = document.createElement('div');
+    time.className = 'time';
+    var moscowTime = document.createElement('div');
+    moscowTime.className = 'moscow-time';
+    moscowTime.textContent = 'ТОЧНОЕ МОСКОВСКОЕ ВРЕМЯ';
+    timeContainer.appendChild(date);
+    timeContainer.appendChild(time);
+    timeContainer.appendChild(moscowTime);
+
+    // Создаем элементы для третьего блока
+    var container = document.createElement('div');
+    container.id = 'container';
+    container.className = 'container';
+    var text = document.createElement('div');
+    text.className = 'text';
+    container.appendChild(text);
+
+    // Проверяем ориентацию экрана и добавляем элементы в соответствующие контейнеры
+    var orientation = getOrientation();
+    if (orientation === 'portrait') {
+        var multiBox = document.createElement('div');
+        multiBox.id = 'multiBox';
+        multiBox.className = 'multi-box';
+        multiBox.appendChild(imageContainer);
+        multiBox.appendChild(timeContainer);
+        document.body.appendChild(multiBox);
+
+
+
+        
+        
+    } else {
+        document.body.appendChild(imageContainer);
+        document.body.appendChild(timeContainer);
+    }
+    document.body.appendChild(container);
+}
+
+// Вызываем функцию создания элементов
+createElements();
+
+
+
+function setNormalContainerPosition() {
+    var dynamicImage = document.getElementById('dynamic-image');
+    var container = document.getElementById('container');
+
+    // Проверяем ориентацию экрана
+    if (window.innerWidth < window.innerHeight) {
+        // Получаем вертикальную позицию нижнего края дочернего элемента имейдж контейнера
+        var imageElementBottom = dynamicImage.getBoundingClientRect().bottom;
+
+        // Задаем координаты обычному контейнеру, чтобы его нижний край совпадал с нижним краем дочернего элемента имейдж контейнера
+        container.style.bottom = (window.innerHeight - imageElementBottom + 10) + 'px';
+    }
+}
+
+// Вызываем функцию
+setNormalContainerPosition();
+
+// Добавляем обработчик события изменения размеров окна
+window.addEventListener('resize', function() {
+    setNormalContainerPosition();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+function setContainerPosition() {
+    var container = document.getElementById('container');
+    var timeContainer = document.getElementById('time-container');
+
+    // Проверяем ориентацию экрана
+    if (window.innerWidth < window.innerHeight) {
+        // Получаем вертикальную позицию обычного контейнера
+        var containerTop = container.getBoundingClientRect().top;
+
+        // Задаем координаты временному контейнеру с отступом вверх на 100 пикселей
+        timeContainer.style.top = (containerTop - 86) + 'px';
+    }
+}
+
+// Вызываем функцию
+setContainerPosition();
+
+// Добавляем обработчик события изменения размеров окна
+window.addEventListener('resize', function() {
+    setContainerPosition();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  // Клиентский ID вашего счетчика
  const clientId = 'bb4b1fa766604b568174af4df7b5f120';
@@ -1038,6 +1195,27 @@ window.addEventListener('unload', () => {
 
 
 document.addEventListener("DOMContentLoaded", function () {
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
     requestWakeLock(); // Запрещаем авто-отключение экрана пока открыт сайт.
     handleNotifications(); // Первый запрос на разрешение Уведомлений на сайте.
@@ -2170,16 +2348,16 @@ document.querySelector('.menu-container').style.opacity = '1';
 
     // Адаптивный шрифт в портретном режиме
     if (window.matchMedia("(max-height: 500px) and (orientation: portrait)").matches) {
-        container.style.top = '63vh';
+
         container.style.height = '30.5vh';
     } else if (window.matchMedia("(max-height: 600px) and (orientation: portrait)").matches) {
-        container.style.top = '62.5vh';
+
         container.style.height = '31.5vh';
     } else if (window.matchMedia("(max-height: 800px) and (orientation: portrait)").matches) {
-        container.style.top = '61.5vh';
+
         container.style.height = '34vh';
     } else if (window.matchMedia("(max-height: 1080px) and (orientation: portrait)").matches) {
-        container.style.top = '60.5vh';
+
         container.style.height = '35.5vh';
     }
     // Уменьшим высоту топ на 2 vh.

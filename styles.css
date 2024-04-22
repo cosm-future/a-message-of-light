@@ -46,6 +46,12 @@ body {
     }
   }
 
+
+
+  
+
+
+
 .buttonBuild {
     position: fixed;
     top: 100px;
@@ -719,9 +725,7 @@ content: ''; /* Обязательно для псевдоэлементов */
     transition: background 0.5s linear, height 0.5s ease, width 0.5s ease; /* Длительность и тип анимации для изменения цвета фона, высоты и ширины */
 }
 
-.container:active {
-    border: 2px solid rgb(98, 0, 255);;
-}
+
 
 .container::after {
     content: ''; /* Обязательно для псевдоэлементов */
@@ -759,10 +763,10 @@ content: ''; /* Обязательно для псевдоэлементов */
 
   @media only screen and (orientation: portrait) {
   .time-container {
-    position: fixed;
-    top: 56%;
+    position: relative;
+    top: auto;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -0%);
     width: 100%;
     max-width: 600px; /* Максимальная ширина контейнера */
     background-color: rgba(59, 37, 253, 0.103); /* Черный полупрозрачный фон */
@@ -849,12 +853,13 @@ content: ''; /* Обязательно для псевдоэлементов */
 
 @media only screen and (max-width: 600px) and (orientation: portrait) {
     .container {
-        position: fixed;
-        top: 61.1vh;
+
+
+        top: 60.5%;
         left: 0;
         transform: translateX(-5%);
         width: calc(100% - 12px);
-        height: calc(50% - 110px);
+        bottom: 0;
         max-width: none;
         text-align: center;
         padding: 20px;
@@ -959,7 +964,7 @@ content: ''; /* Обязательно для псевдоэлементов */
     top: 0%; /* Расположить подложку под элементом .container */
     left: 0;
     width: 100%;
-    height: 80vh; /* Высота подложки может быть на ваш выбор */
+    height: 120vh; /* Высота подложки может быть на ваш выбор */
     background: rgba(255, 255, 255, 0.1); /* Прозрачный фон */
     border-radius: 0px;
     backdrop-filter: blur(3px); /* Размытие подложки */
@@ -1916,11 +1921,18 @@ content: ''; /* Обязательно для псевдоэлементов */
     border-right: 1px solid rgba(98, 0, 255, 0);
  }
 
-
+/* Медиа-запрос для портретного режима */
+@media (orientation: portrait) {
+    .image-container {
+        top: auto;
+        height: calc(100% - 5px);
+    }
+}
 
 /* Медиа-запрос для портретного режима */
 @media (orientation: portrait) {
     .image-container img {
+        top: 0;
         height: 50.5%;
     }
 }
@@ -2143,3 +2155,19 @@ content: ''; /* Обязательно для псевдоэлементов */
 
     /* Добавьте еще классы для других интервалов, если это необходимо */
 
+
+
+    .multi-box {
+        width: 100vw; /* Заполнение всей ширины вьюпорта */
+        height: 100vh; /* Заполнение всей высоты вьюпорта */
+        display: flex; /* Используем flexbox */
+        flex-direction: column; /* Элементы внутри будут располагаться вертикально */
+    }
+    
+    
+    
+    
+    
+    
+    
+    
