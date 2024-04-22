@@ -1413,7 +1413,7 @@ updateText(); // После успешной загрузки вызываем �
 let messageRecordingPlayed = false;
 
 
-
+const timeContainer = document.querySelector(".time-container");
 
 
 // Глобальное объявление переменной
@@ -1774,16 +1774,19 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
  // Применение стилей из медиа-запроса
     if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
         container.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #3e2723, #3e2723)';
+        timeContainer.style.backgroundColor = 'rgba(92, 59, 35, 0.3)';
         setTimeout(function() {
         // Получаем ссылку на контейнер "меню на ресурсы"
         const menuContainer = document.getElementById('menu-container');
         menuContainer.style.backgroundColor = 'rgba(92, 59, 35, 0.7)';
+        
         document.querySelector('.menu-container').style.opacity = '1';
         
 
     }, 300); // Подождите 500 миллисекунд, чтобы анимация завершилась
         
     } else {
+        timeContainer.style.backgroundColor = 'rgba(92, 59, 35, 0.3)';
             // Ждем завершения анимации, прежде чем обновлять переливающийся фон.
         setTimeout(function() {
             document.body.style.backgroundColor = "black";
@@ -1792,6 +1795,7 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
             // Получаем ссылку на контейнер "меню на ресурсы"
         const menuContainer = document.getElementById('menu-container');
         menuContainer.style.backgroundColor = 'rgba(92, 59, 35, 0.7)';
+        
         document.querySelector('.menu-container').style.opacity = '1';
 
         }, 300); // Подождите 500 миллисекунд, чтобы анимация завершилась
@@ -1801,6 +1805,7 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
 
     // Проверяем условие для альбомного режима и высоты экрана
     if (window.matchMedia("(orientation: landscape)").matches) {
+        timeContainer.style.backgroundColor = 'rgba(92, 59, 35, 0.3)';
         // Устанавливаем фоновый цвет body в черный
         setTimeout(function() {
         document.body.style.backgroundColor = "black";
@@ -1808,6 +1813,7 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
         // Получаем ссылку на контейнер "меню на ресурсы"
         const menuContainer = document.getElementById('menu-container');
         menuContainer.style.backgroundColor = 'rgba(92, 59, 35, 0.7)';
+        
         document.querySelector('.menu-container').style.opacity = '1';
 
     }, 300); 
@@ -1852,7 +1858,7 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
     const intervalDuration = (interval.to.hour - hours) * 3600 + (interval.to.minute - minutes) * 60 - now.getSeconds();
     if (!lineElement) {
         const container = document.querySelector(".container");
-        const timeContainer = document.querySelector(".time-container");
+        
         
         lineElement = document.createElement("div");
         lineElement.classList.add("line");
@@ -2098,6 +2104,7 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
     // Применение стилей из медиа-запроса
     if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
         container.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #3500a8df, #3500a8df)'; 
+        timeContainer.style.backgroundColor = '#3500a847';
 
         setTimeout(function() {
 // Получаем ссылку на контейнер "меню на ресурсы"
@@ -2123,11 +2130,12 @@ document.querySelector('.menu-container').style.opacity = '1';
 
         }, 300); // Подождите 500 миллисекунд, чтобы анимация завершилась
         
- 
+        timeContainer.style.backgroundColor = '#3500a847';
     }
       
     // Проверяем условие для альбомного режима и высоты экрана
     if (window.matchMedia("(orientation: landscape)").matches) {
+        timeContainer.style.backgroundColor = '#3500a847';
         // Устанавливаем фоновый цвет body в черный
         setTimeout(function() {
         document.body.style.backgroundColor = "black";
