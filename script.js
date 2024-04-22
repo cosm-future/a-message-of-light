@@ -2170,17 +2170,17 @@ document.querySelector('.menu-container').style.opacity = '1';
 
     // Адаптивный шрифт в портретном режиме
     if (window.matchMedia("(max-height: 500px) and (orientation: portrait)").matches) {
-        container.style.top = '61vh';
-        container.style.height = '34.5vh';
+        container.style.top = '63vh';
+        container.style.height = '30.5vh';
     } else if (window.matchMedia("(max-height: 600px) and (orientation: portrait)").matches) {
+        container.style.top = '62.5vh';
+        container.style.height = '31.5vh';
+    } else if (window.matchMedia("(max-height: 800px) and (orientation: portrait)").matches) {
+        container.style.top = '61.5vh';
+        container.style.height = '34vh';
+    } else if (window.matchMedia("(max-height: 1080px) and (orientation: portrait)").matches) {
         container.style.top = '60.5vh';
         container.style.height = '35.5vh';
-    } else if (window.matchMedia("(max-height: 800px) and (orientation: portrait)").matches) {
-        container.style.top = '69.5vh';
-        container.style.height = '36vh';
-    } else if (window.matchMedia("(max-height: 1080px) and (orientation: portrait)").matches) {
-        container.style.top = '58.5vh';
-        container.style.height = '37.5vh';
     }
     // Уменьшим высоту топ на 2 vh.
 
