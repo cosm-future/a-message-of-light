@@ -1852,9 +1852,11 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
     const intervalDuration = (interval.to.hour - hours) * 3600 + (interval.to.minute - minutes) * 60 - now.getSeconds();
     if (!lineElement) {
         const container = document.querySelector(".container");
+        const timeContainer = document.querySelector(".time-container");
+        
         lineElement = document.createElement("div");
         lineElement.classList.add("line");
-        container.appendChild(lineElement);
+        timeContainer.appendChild(lineElement);
     
         lineElement.style.transition = `width ${intervalDuration}s linear`;
         lineElement.style.width = "0"; // Устанавливаем ширину линии в начальное состояние
