@@ -2157,12 +2157,30 @@ document.querySelector('.menu-container').style.opacity = '1';
     } else if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '19px';
+        
     } else if (window.matchMedia("(max-width: 800px) and (orientation: portrait)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '23px';
+        
     } else if (window.matchMedia("(max-width: 1080px) and (orientation: portrait)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '27px';
+        container.style.top = '61.1vh';
+    }
+
+    // Адаптивный шрифт в портретном режиме
+    if (window.matchMedia("(max-height: 500px) and (orientation: portrait)").matches) {
+        container.style.top = '63vh';
+        container.style.height = '30.5vh';
+    } else if (window.matchMedia("(max-height: 600px) and (orientation: portrait)").matches) {
+        container.style.top = '62.5vh';
+        container.style.height = '31.5vh';
+    } else if (window.matchMedia("(max-height: 800px) and (orientation: portrait)").matches) {
+        container.style.top = '61.5vh';
+        container.style.height = '34vh';
+    } else if (window.matchMedia("(max-height: 1080px) and (orientation: portrait)").matches) {
+        container.style.top = '60.5vh';
+        container.style.height = '35.5vh';
     }
 
     // Адаптивный шрифт в альбомном режиме
