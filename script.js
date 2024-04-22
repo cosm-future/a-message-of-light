@@ -1732,11 +1732,12 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
         
                     
                 });
+                if (audioPlayer.paused && isAudioActive) {
                 // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
             audioPlayer.addEventListener('loadedmetadata', function() {
                 audioPlayer.play();
             });
-
+        }
         } else {
             jsonFileRandomMusic = 'free-music.json';
             // Получаем ссылку на элемент по его id
@@ -1999,13 +2000,13 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
   
               // Здесь можно выполнить другие действия с полученными данными
           
-
+              if (audioPlayer.paused && isAudioActive) {
               // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
     audioPlayer.addEventListener('loadedmetadata', function() {
         audioPlayer.pause();
         audioPlayer.play();
     });
-  
+}
              
   
               // Здесь можно выполнить другие действия с полученными данными
