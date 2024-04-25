@@ -751,7 +751,7 @@ content: ''; /* Обязательно для псевдоэлементов */
 
     background-color: rgba(59, 37, 253, 0.164); /* Черный полупрозрачный фон */
     backdrop-filter: blur(5px); /* Блюр заднего фона */
-    z-index: 400; /* З-индекс */
+    z-index: 50; /* З-индекс */
     border-radius: 15px; /* Закругленные углы */
     display: flex;
     flex-direction: column; /* Элементы располагаются вертикально */
@@ -771,7 +771,7 @@ content: ''; /* Обязательно для псевдоэлементов */
     max-width: 600px; /* Максимальная ширина контейнера */
     background-color: rgba(59, 37, 253, 0.103); /* Черный полупрозрачный фон */
     backdrop-filter: blur(5px); /* Блюр заднего фона */
-    z-index: 400; /* З-индекс */
+    z-index: 50; /* З-индекс */
     border-radius: 0px; /* Закругленные углы */
     display: flex;
     flex-direction: column; /* Элементы располагаются вертикально */
