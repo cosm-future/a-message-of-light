@@ -221,6 +221,18 @@ body {
 }
 
 
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+    .date {
+
+        padding-left: 0px;
+
+    }
+}
+
+
+
+
+
 /* Стили для описания изменения */
 .change {
      
@@ -1108,7 +1120,7 @@ content: ''; /* Обязательно для псевдоэлементов */
     .time {
         position: relative;
         font-size: 2rem;
-        left: 12px;
+
         
     }
 }
@@ -1132,7 +1144,7 @@ content: ''; /* Обязательно для псевдоэлементов */
     .moscow-time {
         position: relative;
         font-size: 0.75rem;
-        left: 12px;
+
         
     }
 }
