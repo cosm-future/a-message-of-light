@@ -117,7 +117,7 @@ function setContainerPosition() {
         var containerTop = container.getBoundingClientRect().top;
 
         // Задаем координаты временному контейнеру с отступом вверх на 100 пикселей
-        timeContainer.style.top = (containerTop - 86) + 'px';
+        timeContainer.style.top = (containerTop - 82) + 'px';
     }
 }
 

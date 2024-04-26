@@ -797,7 +797,7 @@ content: ''; /* Обязательно для псевдоэлементов */
   @media only screen and (orientation: landscape) and (max-height: 600px) {
     .time-container {
       position: fixed;
-      top: 60px;
+      top: 58px;
       left: 75%;
       transform: translate(-50%, -50%);
       width: 47.5%;
@@ -1145,7 +1145,7 @@ content: ''; /* Обязательно для псевдоэлементов */
 @media only screen and (max-width: 600px) and (orientation: portrait) {
     .moscow-time {
         position: relative;
-        font-size: 0.75rem;
+        font-size: 0.6rem;
 
         
     }
