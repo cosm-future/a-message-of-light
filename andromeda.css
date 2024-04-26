@@ -28,9 +28,11 @@
 
 @media only screen and (max-width: 600px) and (orientation: portrait) {
     .container {
-
+        transform: translate(-50%, -0%);
         width: 97vw;
-        height: 98vh;
+        height: auto;
+        top: 7px;
+        bottom: 80px;
         
     }
 }
