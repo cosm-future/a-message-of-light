@@ -1998,36 +1998,44 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
     }, 300); 
         
     }
-
+    const dateElement = document.querySelector(".date");
 
     // Адаптивный шрифт в портретном режиме
     if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '15px';
+        dateElement.style.fontSize = '11px';
     } else if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '19px';
+        dateElement.style.fontSize = '12px';
     } else if (window.matchMedia("(max-width: 800px) and (orientation: portrait)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '23px';
+        dateElement.style.fontSize = '13px';
     } else if (window.matchMedia("(max-width: 1080px) and (orientation: portrait)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '27px';
+        dateElement.style.fontSize = '15px';
     }
 
     // Адаптивный шрифт в альбомном режиме
     if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '15px';
+        dateElement.style.fontSize = '11px';
     } else if (window.matchMedia("(max-height: 600px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '19px';
+        dateElement.style.fontSize = '12px';
     } else if (window.matchMedia("(max-height: 800px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '23px';
+        dateElement.style.fontSize = '13px';
     } else if (window.matchMedia("(max-height: 1080px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '27px';
+        dateElement.style.fontSize = '15px';
     }
 
 
@@ -2080,7 +2088,7 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
 
     if (!newText) {
 
-        
+        const dateElement = document.querySelector(".date");
        
 
             if (imageElement.src == 'https://github.com/cosm-future/a-message-of-light/raw/main/message-base-1.png') {
@@ -2333,18 +2341,20 @@ document.querySelector('.menu-container').style.opacity = '1';
     if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '15px';
+        dateElement.style.fontSize = '11px';
     } else if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '19px';
-        
+        dateElement.style.fontSize = '12px';
     } else if (window.matchMedia("(max-width: 800px) and (orientation: portrait)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '23px';
-        
+        dateElement.style.fontSize = '13px';
     } else if (window.matchMedia("(max-width: 1080px) and (orientation: portrait)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '27px';
         container.style.top = '61.1vh';
+        dateElement.style.fontSize = '15px';
     }
 
     // Адаптивный шрифт в портретном режиме
@@ -2367,15 +2377,19 @@ document.querySelector('.menu-container').style.opacity = '1';
     if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '15px';
+        dateElement.style.fontSize = '11px';
     } else if (window.matchMedia("(max-height: 600px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '19px';
+        dateElement.style.fontSize = '12px';
     } else if (window.matchMedia("(max-height: 800px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '23px';
+        dateElement.style.fontSize = '13px';
     } else if (window.matchMedia("(max-height: 1080px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '27px';
+        dateElement.style.fontSize = '15px';
     }
     
 

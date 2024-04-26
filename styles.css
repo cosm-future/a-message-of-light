@@ -235,6 +235,8 @@ body {
 
 
 
+
+
 /* Стили для описания изменения */
 .change {
      
@@ -1155,7 +1157,7 @@ content: ''; /* Обязательно для псевдоэлементов */
     .moscow-time {
         position: relative;
         font-size: 0.95rem;
-        left: 12px;
+        left: 0px;
         
     }
 }
