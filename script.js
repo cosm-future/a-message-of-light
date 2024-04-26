@@ -1218,6 +1218,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   
     requestWakeLock(); // Запрещаем авто-отключение экрана пока открыт сайт.
+    setInterval(requestWakeLock, 30000); // Запрещаем каждые 30 сек. авто-отключение экрана пока открыт сайт.
     handleNotifications(); // Первый запрос на разрешение Уведомлений на сайте.
     updateTime();
     createLocalContainer();
@@ -1284,7 +1285,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Устанавливаем позицию и отступы в медиа запросе для портретного режима
 if (window.matchMedia("(orientation: portrait)").matches) {
     dateElement.style.position = 'relative';
-    dateElement.style.left = '12px';
+    dateElement.style.left = '6px';
 }
 
 
