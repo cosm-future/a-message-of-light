@@ -20,6 +20,7 @@
     width: 55vw;
     background-color: rgba(255, 255, 255, 0.1); /* прозрачность контейнера (можете изменить цвет или прозрачность по своему вкусу) */
     padding: 20px;
+    border: 1px solid rgba(173, 173, 173, 0.808);
     border-radius: 15px;
     box-sizing: border-box; /* учитывать padding внутри размеров элемента */
     backdrop-filter: blur(15px); /* Размытие подложки */
@@ -69,7 +70,7 @@ h1 {
     
     .container::-webkit-scrollbar-thumb {
     
-    background: rgba(0, 0, 0, 0.541); /* Цвет полосы прокрутки */
+    background: rgba(124, 124, 124, 0.541); /* Цвет полосы прокрутки */
     border-radius: 15px 70px 70px 15px; /* Радиус скругления углов полосы */
     
     }
