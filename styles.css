@@ -892,12 +892,13 @@ content: ''; /* Обязательно для псевдоэлементов */
     /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
     .container{
         bottom: auto;
-        top: 125px;
+        top: 110px;
         left: 51.5%;
         transform: translateX(-0%);
         position: fixed;
         width: 46.5%; /* Занимаем всю доступную ширину */
-        height: calc(92.5% - 110px);
+        height: auto;
+        bottom: 5px;
         
         border-top-right-radius: 0px;
         border-bottom-right-radius: 0px;
@@ -1125,6 +1126,15 @@ content: ''; /* Обязательно для псевдоэлементов */
         position: relative;
         font-size: 2rem;
 
+        
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    .time {
+        position: relative;
+        font-size: 25px;
+        left: 0px;
         
     }
 }
