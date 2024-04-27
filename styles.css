@@ -799,7 +799,7 @@ content: ''; /* Обязательно для псевдоэлементов */
   @media only screen and (orientation: landscape) and (max-height: 600px) {
     .time-container {
       position: fixed;
-      top: 58px;
+      top: 44px;
       left: 75%;
       transform: translate(-50%, -50%);
       width: 47.5%;
@@ -892,7 +892,7 @@ content: ''; /* Обязательно для псевдоэлементов */
     /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
     .container{
         bottom: auto;
-        top: 110px;
+        top: 93px;
         left: 51.5%;
         transform: translateX(-0%);
         position: fixed;
