@@ -2077,7 +2077,6 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
             }
             lineElement.style.width = "0"; // Устанавливаем ширину линии обратно в 0
             
-
             setTimeout(() => {
                 lineElement.remove();
                 lineElement = null;
