@@ -1761,6 +1761,8 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             newText = interval.text;
 
             isIntervalActive = true;
+
+            container.scrollTop = 0;
             
             if (isIntervalActive) {
                 const buttonT = document.getElementById('imageButton');
