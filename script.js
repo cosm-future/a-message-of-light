@@ -2089,6 +2089,8 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
     if (!newText) {
 
         const dateElement = document.querySelector(".date");
+        // Получаем элемент по его классу
+var moscowTimeText = document.querySelector('.moscow-time');
        
 
             if (imageElement.src == 'https://github.com/cosm-future/a-message-of-light/raw/main/message-base-1.png') {
@@ -2378,18 +2380,30 @@ document.querySelector('.menu-container').style.opacity = '1';
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '15px';
         dateElement.style.fontSize = '11px';
+        moscowTimeText.style.fontSize = '10px';
+        container.style.height = 'auto';
+        container.style.bottom = '5px';
     } else if (window.matchMedia("(max-height: 600px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '19px';
         dateElement.style.fontSize = '12px';
+        moscowTimeText.style.fontSize = '11px';
+        container.style.height = 'auto';
+        container.style.bottom = '5px';
     } else if (window.matchMedia("(max-height: 800px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '23px';
         dateElement.style.fontSize = '13px';
+        moscowTimeText.style.fontSize = '12px';
+        container.style.height = 'auto';
+        container.style.bottom = '10px';
     } else if (window.matchMedia("(max-height: 1080px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '27px';
         dateElement.style.fontSize = '15px';
+        moscowTimeText.style.fontSize = '14px';
+        container.style.height = 'auto';
+        container.style.bottom = '10px';
     }
     
 
