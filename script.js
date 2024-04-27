@@ -1762,7 +1762,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
             isIntervalActive = true;
 
-            container.scrollTop = 0;
+            
             
             if (isIntervalActive) {
                 const buttonT = document.getElementById('imageButton');
@@ -1775,7 +1775,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
                     buttonT.disabled = true;
                 }
             }
-
+            
             const buttonBuild = document.getElementById('buttonBuild');
             if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
@@ -1787,7 +1787,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             jsonFileRandomMusic = 'main-music.json';
 
 
-
+            
 
             // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
 if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-music.json') {
@@ -1950,7 +1950,7 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
         playSoundAndVibration();
 
     };
-
+    
 
  // Применение стилей из медиа-запроса
     if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
@@ -1982,6 +1982,13 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
         }, 300); // Подождите 500 миллисекунд, чтобы анимация завершилась
         
     }
+
+
+
+
+    
+
+
       
 
     // Проверяем условие для альбомного режима и высоты экрана
@@ -2055,6 +2062,7 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
     
         lineElement.style.transition = `width ${intervalDuration}s linear`;
         lineElement.style.width = "0"; // Устанавливаем ширину линии в начальное состояние
+        container.scrollTop = 0;
     
         setTimeout(() => {
             lineElement.style.width = "100%"; // Увеличиваем ширину линии до максимального значения
@@ -2068,6 +2076,8 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
                 // console.log("Устройство не поддерживает вибрацию.");
             }
             lineElement.style.width = "0"; // Устанавливаем ширину линии обратно в 0
+            
+
             setTimeout(() => {
                 lineElement.remove();
                 lineElement = null;
