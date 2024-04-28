@@ -315,9 +315,9 @@ const qaPairs = [
         type: "переход по ссылке на Календарь" 
     },
     { 
-        questions: ["Открой сайт чата", "Открой сайт чат", "Аткрой сайт чата", "Аткрой сайт чат",
+        questions: ["Открой сайт чата", "Открой сайт чат", "Аткрой сайт чата", "Аткрой сайт чат", "Открой чат", "Аткрой чат",
         "Покажи чат"], 
-        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/open_suit.mp3", 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/open_chat.mp3", 
         type: "переход по ссылке на Чат" 
     }
     // Другие вопросы и ответы
