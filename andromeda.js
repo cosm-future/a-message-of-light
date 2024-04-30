@@ -326,7 +326,68 @@ const qaPairs = [
         questions: ["Как вступить в КОСМ", "Хочу вступить в КОСМ", "Как присоединиться к КОСМ" ], 
         answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/new_member.mp3",
         type: "вступление в КОСМ" 
-    }
+    },
+
+
+    { 
+        questions: ["Скачать катрены 2016"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/downloading_quatrains.mp3",
+        type: "скачать катрены за 2016 год" 
+    },
+
+    { 
+        questions: ["Скачать катрены 2017"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/downloading_quatrains.mp3",
+        type: "скачать катрены за 2017 год" 
+    },
+
+    { 
+        questions: ["Скачать катрены 2018"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/downloading_quatrains.mp3",
+        type: "скачать катрены за 2018 год" 
+    },
+
+    { 
+        questions: ["Скачать катрены 2019"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/downloading_quatrains.mp3",
+        type: "скачать катрены за 2019 год" 
+    },
+
+    { 
+        questions: ["Скачать катрены 2020"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/downloading_quatrains.mp3",
+        type: "скачать катрены за 2020 год" 
+    },
+
+    { 
+        questions: ["Скачать катрены 2021"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/downloading_quatrains.mp3",
+        type: "скачать катрены за 2021 год" 
+    },
+
+    { 
+        questions: ["Скачать катрены 2022"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/downloading_quatrains.mp3",
+        type: "скачать катрены за 2022 год" 
+    },
+
+    { 
+        questions: ["Скачать катрены 2023"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/downloading_quatrains.mp3",
+        type: "скачать катрены за 2023 год" 
+    },
+
+    { 
+        questions: ["Скачать Доктрину", "Скачай Доктрину"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/downloading_the_doctrine.mp3",
+        type: "скачать Доктрину" 
+    },
+
+    { 
+        questions: ["Скачать Святую Русь", "Скачай Святую Русь"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/downloading_holy_russ.mp3",
+        type: "скачать Святую Русь" 
+    },
     // Другие вопросы и ответы
 ];
 
@@ -435,7 +496,17 @@ function startListening() {
         qa.type === "переход по ссылке на Посыл" ||
         qa.type === "переход по ссылке на Календарь" ||
         qa.type === "переход по ссылке на Чат" ||
-        qa.type === "вступление в КОСМ") {
+        qa.type === "вступление в КОСМ" ||
+        qa.type === "скачать катрены за 2016 год" ||
+        qa.type === "скачать катрены за 2017 год" ||
+        qa.type === "скачать катрены за 2018 год" ||
+        qa.type === "скачать катрены за 2019 год" ||
+        qa.type === "скачать катрены за 2020 год" ||
+        qa.type === "скачать катрены за 2021 год" ||
+        qa.type === "скачать катрены за 2022 год" ||
+        qa.type === "скачать катрены за 2023 год" ||
+        qa.type === "скачать Доктрину" ||
+        qa.type === "скачать Святую Русь") {
             const audio = new Audio();
             audio.src = qa.answer; // Устанавливаем ссылку как источник аудиофайла 
             audio.play();
@@ -493,6 +564,66 @@ function startListening() {
                 audio.addEventListener('ended', function() {
                     // Замените на фактическую ссылку
                     window.location.href = "https://xn--c1akeeelbbx.xn--p1ai/kontakty";
+                    });
+            } else if (qa.type === "скачать катрены за 2016 год") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://github.com/cosm-future/a-message-of-light/raw/main/catrens-download/KATRENY--2016.pdf";
+                    });
+            } else if (qa.type === "скачать катрены за 2017 год") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://github.com/cosm-future/a-message-of-light/raw/main/catrens-download/KATRENY--2017.pdf";
+                    });
+            } else if (qa.type === "скачать катрены за 2018 год") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://github.com/cosm-future/a-message-of-light/raw/main/catrens-download/KATRENY--2018.pdf";
+                    });
+            } else if (qa.type === "скачать катрены за 2019 год") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://github.com/cosm-future/a-message-of-light/raw/main/catrens-download/KATRENY--2019.pdf";
+                    });
+            } else if (qa.type === "скачать катрены за 2020 год") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://github.com/cosm-future/a-message-of-light/raw/main/catrens-download/KATRENY--2020.pdf";
+                    });
+            } else if (qa.type === "скачать катрены за 2021 год") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://github.com/cosm-future/a-message-of-light/raw/main/catrens-download/KATRENY--2021.pdf";
+                    });
+            } else if (qa.type === "скачать катрены за 2022 год") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://github.com/cosm-future/a-message-of-light/raw/main/catrens-download/KATRENY--2022.pdf";
+                    });
+            } else if (qa.type === "скачать катрены за 2023 год") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://github.com/cosm-future/a-message-of-light/raw/main/catrens-download/KATRENY--2023.pdf";
+                    });
+            } else if (qa.type === "скачать Доктрину") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://github.com/cosm-future/a-message-of-light/raw/main/other-downloads/doktrina-sozdatelya.pdf";
+                    });
+            } else if (qa.type === "скачать Святую Русь") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://github.com/cosm-future/a-message-of-light/raw/main/other-downloads/Svyataya-Rus.pdf";
                     });
             }
         }
