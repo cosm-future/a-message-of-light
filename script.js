@@ -3239,7 +3239,7 @@ const qaPairs = [
     },
 
     { 
-        questions: ["Скачать катрены за 2016 год", "Скачать катрены 2016", "Нужно скачать катрены за 2016" ], 
+        questions: ["Скачать катрены за дветысячи шестнадцатый год", "Скачать катрены 2016", "Нужно скачать катрены за дветысячи шестнадцатый год" ], 
         answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/downloading_quatrains.mp3",
         type: "скачать катрены за 2016 год" 
     },
