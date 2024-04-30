@@ -3111,62 +3111,33 @@ function insertDescription(container, description) {
 
   const buttonAndromeda = document.getElementById('andromeda-button');
   let buttonAndromedaActive = false;
-  
-  // Функция для проверки состояния первого запуска Андромеды
-  function isFirstLaunch() {
-      return localStorage.getItem('firstLaunch') !== 'true'; // Если первый запуск, вернуть true
-  }
-  
-  // Функция для установки состояния первого запуска Андромеды
-  function setFirstLaunch() {
-      localStorage.setItem('firstLaunch', 'true');
-  }
-  
-  // Функция для обновления состояния кнопки изображения и сохранения состояния в локальное хранилище
-  function toggleAndromeda() {
-      if (isFirstLaunch()) {
-          const audio = new Audio("https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/andromeda_first_message.mp3");
-          audio.play();
-          setFirstLaunch(); // Устанавливаем состояние первого запуска
-      }
-      buttonAndromedaActive = true; // Инвертируем состояние кнопки Андромеды
-      updateAndromedaButtonState(); // Обновляем состояние кнопки изображения
-      startListening();
-  }
-  
-  // Функция для старта прослушивания речи пользователя
-  function startListening() {
-      const recognition = new webkitSpeechRecognition() || SpeechRecognition(); // Создаем экземпляр объекта распознавания речи
-      recognition.lang = 'ru-RU'; // Устанавливаем язык распознавания (можно изменить на нужный)
-      
-      recognition.onresult = function(event) {
-          const speechResult = event.results[0][0].transcript.trim().toLowerCase(); // Получаем текст распознанной речи
-          
-          if (speechResult === 'андромеда') { // Если распознанная речь - "Андромеда"
-              buttonAndromedaActive = true; // Делаем кнопку активной
-              updateAndromedaButtonState(); // Обновляем состояние кнопки
-              setTimeout(function() {
-                  buttonAndromedaActive = false; // Через 3 секунды делаем кнопку неактивной
-                  updateAndromedaButtonState(); // Обновляем состояние кнопки
-              }, 3000);
-          }
-      };
-      
-      recognition.start(); // Начинаем прослушивание
-  }
-  
-  // Функция для обновления состояния кнопки
-  function updateAndromedaButtonState() {
-      if (buttonAndromedaActive) {
-          buttonAndromeda.disabled = false; // Активируем кнопку
-      } else {
-          buttonAndromeda.disabled = true; // Деактивируем кнопку
-      }
-  }
-  
-  // Запускаем функцию мониторинга при загрузке страницы
-  toggleAndromeda();
-  
+
+
+
+ // Функция для проверки состояния первого запуска Андромеды
+function isFirstLaunch() {
+    return localStorage.getItem('firstLaunch') !== 'true'; // Если первый запуск, вернуть true
+}
+
+// Функция для установки состояния первого запуска Андромеды
+function setFirstLaunch() {
+    localStorage.setItem('firstLaunch', 'true');
+}
+
+// Функция для обновления состояния кнопки изображения и сохранения состояния в локальное хранилище
+function toggleAndromeda() {
+    if (isFirstLaunch()) {
+        const audio = new Audio("https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/andromeda_first_message.mp3");
+            audio.play();
+
+
+        setFirstLaunch(); // Устанавливаем состояние первого запуска
+    }
+    
+    buttonAndromedaActive = true; // Инвертируем состояние кнопки Андромеды
+    updateAndromedaButtonState(); // Обновляем состояние кнопки изображения
+    startListening();
+}
 
 
 
