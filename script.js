@@ -3237,6 +3237,12 @@ const qaPairs = [
         answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/new_member.mp3",
         type: "вступление в КОСМ" 
     },
+
+    { 
+        questions: ["Скачать катрены за 2016 год", "Скачать катрены 2016", "Нужно скачать катрены за 2016" ], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/downloading_quatrains.mp3",
+        type: "скачать катрены за 2016 год" 
+    },
     // Другие вопросы и ответы
 ];
 
@@ -3345,7 +3351,8 @@ function startListening() {
         qa.type === "переход по ссылке на Календарь" || 
         qa.type === "переход по ссылке на Чат" ||
         qa.type === "переход на эзотерические сайты" ||
-        qa.type === "вступление в КОСМ") {
+        qa.type === "вступление в КОСМ" ||
+        qa.type === "скачать катрены за 2016 год") {
             const audio = new Audio();
             audio.src = qa.answer; // Устанавливаем ссылку как источник аудиофайла 
             audio.play();
@@ -3403,10 +3410,16 @@ function startListening() {
                     // Замените на фактическую ссылку
                     window.location.href = "https://xn--c1akeeelbbx.xn--p1ai/kontakty";
                     });
+            } else if (qa.type === "скачать катрены за 2016 год") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://github.com/cosm-future/a-message-of-light/raw/main/catrens-download/KATRENY--2016.pdf";
+                    });
             }
 
 
-
+            
             
         }
         

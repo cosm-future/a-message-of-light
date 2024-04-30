@@ -682,6 +682,12 @@ const qaPairs = [
         "Открой сайт Колендаря", "Открой сайт Колендаря", "Покажи Колендарь", "Покажи Календарь"], 
         answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/I_open_the_calendar.mp3", 
         type: "переход по ссылке на Календарь" 
+    },
+
+    { 
+        questions: ["Как вступить в КОСМ", "Хочу вступить в КОСМ", "Как присоединиться к КОСМ" ], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/new_member.mp3",
+        type: "вступление в КОСМ" 
     }
     // Другие вопросы и ответы
 ];
@@ -789,7 +795,8 @@ function startListening() {
         qa.type === "переход по ссылке на вчерашний катрен" ||
         qa.type === "переход по ссылке на инструкцию" ||
         qa.type === "переход по ссылке на Посыл" ||
-        qa.type === "переход по ссылке на Календарь" ) {
+        qa.type === "переход по ссылке на Календарь" ||
+        qa.type === "вступление в КОСМ") {
             const audio = new Audio();
             audio.src = qa.answer; // Устанавливаем ссылку как источник аудиофайла 
             audio.play();
@@ -835,6 +842,12 @@ function startListening() {
                 audio.addEventListener('ended', function() {
                     // Замените на фактическую ссылку
                     window.location.href = "https://cosm-future.github.io/a-message-of-light/calendar.html";
+                    });
+            } else if (qa.type === "вступление в КОСМ") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://xn--c1akeeelbbx.xn--p1ai/kontakty";
                     });
             }
         }
