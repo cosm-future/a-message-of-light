@@ -3230,8 +3230,17 @@ const qaPairs = [
         answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/advice_on_the_right_source.mp3",
         type: "переход на эзотерические сайты" 
     },
+
+
+    { 
+        questions: ["Как вступить в КОСМ", "Хочу вступить в КОСМ", "Как присоединиться к КОСМ" ], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/new_member.mp3",
+        type: "вступление в КОСМ" 
+    },
     // Другие вопросы и ответы
 ];
+
+
 
 
 
@@ -3335,7 +3344,8 @@ function startListening() {
         qa.type === "переход по ссылке на инструкцию" ||
         qa.type === "переход по ссылке на Календарь" || 
         qa.type === "переход по ссылке на Чат" ||
-        qa.type === "переход на эзотерические сайты") {
+        qa.type === "переход на эзотерические сайты" ||
+        qa.type === "вступление в КОСМ") {
             const audio = new Audio();
             audio.src = qa.answer; // Устанавливаем ссылку как источник аудиофайла 
             audio.play();
@@ -3387,7 +3397,17 @@ function startListening() {
                 audio.addEventListener('ended', function() {
                     
                     });
+            } else if (qa.type === "вступление в КОСМ") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://xn--c1akeeelbbx.xn--p1ai/kontakty";
+                    });
             }
+
+
+
+            
         }
         
 

@@ -319,6 +319,13 @@ const qaPairs = [
         "Покажи чат"], 
         answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/open_chat.mp3", 
         type: "переход по ссылке на Чат" 
+    },
+
+
+    { 
+        questions: ["Как вступить в КОСМ", "Хочу вступить в КОСМ", "Как присоединиться к КОСМ" ], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/new_member.mp3",
+        type: "вступление в КОСМ" 
     }
     // Другие вопросы и ответы
 ];
@@ -427,7 +434,8 @@ function startListening() {
         qa.type === "переход по ссылке на инструкцию" ||
         qa.type === "переход по ссылке на Посыл" ||
         qa.type === "переход по ссылке на Календарь" ||
-        qa.type === "переход по ссылке на Чат" ) {
+        qa.type === "переход по ссылке на Чат" ||
+        qa.type === "вступление в КОСМ") {
             const audio = new Audio();
             audio.src = qa.answer; // Устанавливаем ссылку как источник аудиофайла 
             audio.play();
@@ -479,6 +487,12 @@ function startListening() {
                 audio.addEventListener('ended', function() {
                     // Замените на фактическую ссылку
                     window.location.href = "https://cosm-future.github.io/a-message-of-light/andromeda-chat.html";
+                    });
+            } else if (qa.type === "вступление в КОСМ") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://xn--c1akeeelbbx.xn--p1ai/kontakty";
                     });
             }
         }
