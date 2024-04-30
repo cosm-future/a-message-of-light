@@ -3285,6 +3285,12 @@ const qaPairs = [
         answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/downloading_quatrains.mp3",
         type: "скачать катрены за 2023 год" 
     },
+
+    { 
+        questions: ["Скачать Доктрину", "Скачай Доктрину"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/downloading_the_doctrine.mp3",
+        type: "скачать Доктрину" 
+    },
     // Другие вопросы и ответы
 ];
 
@@ -3401,7 +3407,8 @@ function startListening() {
         qa.type === "скачать катрены за 2020 год" ||
         qa.type === "скачать катрены за 2021 год" ||
         qa.type === "скачать катрены за 2022 год" ||
-        qa.type === "скачать катрены за 2023 год") {
+        qa.type === "скачать катрены за 2023 год" ||
+        qa.type === "скачать Доктрину") {
             const audio = new Audio();
             audio.src = qa.answer; // Устанавливаем ссылку как источник аудиофайла 
             audio.play();
@@ -3506,6 +3513,12 @@ function startListening() {
                 audio.addEventListener('ended', function() {
                     // Замените на фактическую ссылку
                     window.location.href = "https://github.com/cosm-future/a-message-of-light/raw/main/catrens-download/KATRENY--2023.pdf";
+                    });
+            } else if (qa.type === "скачать Доктрину") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://github.com/cosm-future/a-message-of-light/raw/main/other-downloads/doktrina-sozdatelya.pdf";
                     });
             }
 
