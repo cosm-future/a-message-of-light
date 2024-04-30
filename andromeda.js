@@ -119,7 +119,7 @@ function toggleHamburger() {
         linkButton6.innerHTML = 'Кроссворды'; // Текст кнопки
         linkButton6.addEventListener('click', function() {
             // Открываем ссылку в новой вкладке
-            window.open('https://creators-crossword-puzzle12.glitch.me/', '_blank');
+            window.open('https://creators-crossword-puzzle13.glitch.me/', '_blank');
         });
         newMenuContainer.appendChild(linkButton6);
 
