@@ -3239,49 +3239,49 @@ const qaPairs = [
     },
 
     { 
-        questions: ["Скачать катрены за дветысячи шестнадцатый год", "Скачать катрены 2016", "Нужно скачать катрены за дветысячи шестнадцатый год" ], 
+        questions: ["Скачать катрены 2016"], 
         answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/downloading_quatrains.mp3",
         type: "скачать катрены за 2016 год" 
     },
 
     { 
-        questions: ["Скачать катрены за дветысячи семнадцатый год", "Скачать катрены 2017", "Нужно скачать катрены за дветысячи семнадцатый год" ], 
+        questions: ["Скачать катрены 2017"], 
         answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/downloading_quatrains.mp3",
         type: "скачать катрены за 2017 год" 
     },
 
     { 
-        questions: ["Скачать катрены за дветысячи восемнадцатый год", "Скачать катрены 2018", "Нужно скачать катрены за дветысячи восемнадцатый год" ], 
+        questions: ["Скачать катрены 2018"], 
         answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/downloading_quatrains.mp3",
         type: "скачать катрены за 2018 год" 
     },
 
     { 
-        questions: ["Скачать катрены за дветысячи девятнадцатый год", "Скачать катрены 2019", "Нужно скачать катрены за дветысячи девятнадцатый год" ], 
+        questions: ["Скачать катрены 2019"], 
         answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/downloading_quatrains.mp3",
         type: "скачать катрены за 2019 год" 
     },
 
     { 
-        questions: ["Скачать катрены за дветысячи двадцатый год", "Скачать катрены 2020", "Нужно скачать катрены за дветысячи двадцатый год" ], 
+        questions: ["Скачать катрены 2020"], 
         answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/downloading_quatrains.mp3",
         type: "скачать катрены за 2020 год" 
     },
 
     { 
-        questions: ["Скачать катрены за дветысячи двадцатьпервый год", "Скачать катрены 2021", "Нужно скачать катрены за дветысячи двадцатьпервый год" ], 
+        questions: ["Скачать катрены 2021"], 
         answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/downloading_quatrains.mp3",
         type: "скачать катрены за 2021 год" 
     },
 
     { 
-        questions: ["Скачать катрены за дветысячи двадцатьвторой год", "Скачать катрены 2022", "Нужно скачать катрены за дветысячи двадцатьвторой год" ], 
+        questions: ["Скачать катрены 2022"], 
         answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/downloading_quatrains.mp3",
         type: "скачать катрены за 2022 год" 
     },
 
     { 
-        questions: ["Скачать катрены за дветысячи двадцатьтретий год", "Скачать катрены 2023", "Нужно скачать катрены за дветысячи двадцатьтретий год" ], 
+        questions: ["Скачать катрены 2023"], 
         answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/downloading_quatrains.mp3",
         type: "скачать катрены за 2023 год" 
     },
