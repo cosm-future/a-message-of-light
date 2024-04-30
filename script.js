@@ -3291,9 +3291,14 @@ const qaPairs = [
         answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/downloading_the_doctrine.mp3",
         type: "скачать Доктрину" 
     },
+
+    { 
+        questions: ["Скачать Святую Русь", "Скачай Святую Русь"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/downloading_holy_russ.mp3",
+        type: "скачать Святую Русь" 
+    },
     // Другие вопросы и ответы
 ];
-
 
 
 
@@ -3408,7 +3413,8 @@ function startListening() {
         qa.type === "скачать катрены за 2021 год" ||
         qa.type === "скачать катрены за 2022 год" ||
         qa.type === "скачать катрены за 2023 год" ||
-        qa.type === "скачать Доктрину") {
+        qa.type === "скачать Доктрину" ||
+        qa.type === "скачать Святую Русь") {
             const audio = new Audio();
             audio.src = qa.answer; // Устанавливаем ссылку как источник аудиофайла 
             audio.play();
@@ -3519,6 +3525,12 @@ function startListening() {
                 audio.addEventListener('ended', function() {
                     // Замените на фактическую ссылку
                     window.location.href = "https://github.com/cosm-future/a-message-of-light/raw/main/other-downloads/doktrina-sozdatelya.pdf";
+                    });
+            } else if (qa.type === "скачать Святую Русь") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    // Замените на фактическую ссылку
+                    window.location.href = "https://github.com/cosm-future/a-message-of-light/raw/main/other-downloads/Svyataya-Rus.pdf";
                     });
             }
 
