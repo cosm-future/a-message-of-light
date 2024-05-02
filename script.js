@@ -2251,7 +2251,7 @@ var moscowTimeText = document.querySelector('.moscow-time');
         jsonFileRandomMusic = 'free-music.json';
 
         // Устанавливаем прозрачность видео-плеера
-        videoPlayer.style.opacity = 1;
+        videoPlayer.style.opacity = 0.25;
   
 
         
@@ -2292,7 +2292,7 @@ var moscowTimeText = document.querySelector('.moscow-time');
             
 
             // Устанавливаем прозрачность видео-плеера
-            videoPlayer.style.opacity = 1;
+            videoPlayer.style.opacity = 0.25;
             
             // Применение стилей из медиа-запроса
            
@@ -2590,7 +2590,17 @@ if (existingContainer) {
     textElement.innerHTML = html;
 
 
-
+    if (isPortrait && !videoContainer) {
+        // Ориентация экрана портретная
+        textElement.appendChild(videoPlayer);
+        videoPlayer.classList.add('video-player');
+        videoPlayer.play();
+    } else if (!isPortrait && !videoContainer) {
+        // Ориентация экрана не портретная
+        textElement.appendChild(videoPlayer);
+        videoPlayer.classList.add('video-player');
+        videoPlayer.play();
+    }
 
 
 
@@ -3623,17 +3633,7 @@ const isPortrait = window.innerHeight > window.innerWidth;
 
 
 
-if (isPortrait) {
-    // Ориентация экрана портретная
-    document.body.appendChild(videoPlayer);
-    videoPlayer.classList.add('video-player');
-    videoPlayer.play();
-} else {
-    // Ориентация экрана не портретная
-    document.body.appendChild(videoPlayer);
-    videoPlayer.classList.add('video-player');
-    videoPlayer.play();
-}
+
 
 
 
