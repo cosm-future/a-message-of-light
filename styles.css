@@ -720,7 +720,7 @@ content: ''; /* Обязательно для псевдоэлементов */
     
     
 
-
+/* Обычный контейнер */
 .container {
     position: fixed;
     top: 125px;
@@ -749,7 +749,7 @@ content: ''; /* Обязательно для псевдоэлементов */
     top: 0%; /* Расположить подложку под элементом .container */
     left: 0;
     width: 100%;
-    height: 120%; /* Высота подложки может быть на ваш выбор */
+    height: 110%; /* Высота подложки может быть на ваш выбор */
     background: rgba(255, 255, 255, 0.1); /* Прозрачный фон */
     border-radius: 15px 0px 0px 15px;
     backdrop-filter: blur(3px); /* Размытие подложки */
@@ -1041,23 +1041,23 @@ content: ''; /* Обязательно для псевдоэлементов */
         width: 100%;
     height: 42.5%;
     object-fit: cover; /* Заполняем видео в контейнере, сохраняя пропорции */
-        top: 57%;
+        top: 60%;
+        left: 0%;
 
-
-        left: 0px;
-        opacity: 1; /* Прозрачность в 50% */
+        opacity: 0; /* Прозрачность в 50% */
         z-index: -1;
     }
 }
 
-@media screen and (orientation: landscape) and (max-height: 600px) {
+@media screen and (orientation: landscape) {
     /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
     .video-player {
         position: fixed;
-        top: 100px;
-        left: auto;
+        top: 50%;
+        left: 50%;
         right: 11.5vw;
         box-shadow: 0 0 80px 80px rgba(0, 0, 0, 0.9); /* Тень */
+        z-index: -1;
     }
 }
 

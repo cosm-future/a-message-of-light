@@ -1787,6 +1787,26 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             jsonFileRandomMusic = 'main-music.json';
 
 
+
+
+            // Добавляем обработчик события прокрутки контейнера чтобы свеча появлялась и исчезала
+container.addEventListener('scroll', function() {
+    // Вычисляем текущую вертикальную позицию прокрутки
+    var scrollPosition = container.scrollTop;
+    
+    // Определяем максимальную высоту контейнера
+    var maxScrollHeight = container.scrollHeight - container.clientHeight;
+    
+    // Вычисляем прозрачность на основе вертикальной позиции прокрутки
+var opacity = scrollPosition / maxScrollHeight;
+
+    
+    // Ограничиваем значение прозрачности от 0 до 1
+    opacity = Math.min(Math.max(opacity, 0), 1);
+    
+    // Устанавливаем прозрачность видео-плеера
+    videoPlayer.style.opacity = opacity;
+});
             
 
             // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
@@ -1816,8 +1836,8 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
             // Скрываем элемент
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
-            videoPlayer.display = 'none';
-            videoPlayer.style.opacity = '0';
+            videoPlayer.display = 'block';
+
             
             // Применение стилей из медиа-запроса
             disableButtonAndromeda();
@@ -1833,12 +1853,10 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
             titleVisitorsElement.style.display = 'block';
             videoPlayer.display = 'block';
             if (isPortrait) {
-                // Ориентация экрана портретная
-                videoPlayer.style.opacity = '1';
+
             
             } else {
-                // Ориентация экрана не портретная
-                videoPlayer.style.opacity = '0.25';
+
             }
             if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
@@ -1880,8 +1898,8 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
             // Скрываем элемент
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
-            videoPlayer.display = 'none';
-            videoPlayer.style.opacity = '0';
+            videoPlayer.display = 'block';
+
             
             if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
@@ -1930,12 +1948,10 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
             titleVisitorsElement.style.display = 'block';
             videoPlayer.display = 'block';
             if (isPortrait) {
-                // Ориентация экрана портретная
-                videoPlayer.style.opacity = '1';
+
             
             } else {
-                // Ориентация экрана не портретная
-                videoPlayer.style.opacity = '0.25';
+
             }
             if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
@@ -2156,8 +2172,8 @@ var moscowTimeText = document.querySelector('.moscow-time');
               // Скрываем элемент
               watchElement.style.display = 'none';
               titleVisitorsElement.style.display = 'none';
-              videoPlayer.display = 'none';
-              videoPlayer.style.opacity = '0';
+              videoPlayer.display = 'block';
+
               if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
                 } 
@@ -2174,12 +2190,10 @@ var moscowTimeText = document.querySelector('.moscow-time');
               titleVisitorsElement.style.display = 'block';
               videoPlayer.display = 'block';
               if (isPortrait) {
-                // Ориентация экрана портретная
-                videoPlayer.style.opacity = '1';
+
             
             } else {
-                // Ориентация экрана не портретная
-                videoPlayer.style.opacity = '0.25';
+
             }
               if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
@@ -2252,8 +2266,8 @@ var moscowTimeText = document.querySelector('.moscow-time');
             // Скрываем элемент
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
-            videoPlayer.display = 'none';
-            videoPlayer.style.opacity = '0';
+            videoPlayer.display = 'block';
+
 
             if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
@@ -2272,15 +2286,10 @@ var moscowTimeText = document.querySelector('.moscow-time');
             watchElement.style.display = 'block';
             titleVisitorsElement.style.display = 'block';
             videoPlayer.display = 'block';
-            // Устанавливаем нулевую прозрачность
-            if (isPortrait) {
-                // Ориентация экрана портретная
-                videoPlayer.style.opacity = '1';
             
-            } else {
-                // Ориентация экрана не портретная
-                videoPlayer.style.opacity = '0.25';
-            }
+
+            // Устанавливаем прозрачность видео-плеера
+            videoPlayer.style.opacity = 1;
             
             // Применение стилей из медиа-запроса
            
@@ -3607,18 +3616,33 @@ const containerMessage = document.querySelector(".container");
  // Проверяем ориентацию экрана
 const isPortrait = window.innerHeight > window.innerWidth;
 
-// Добавляем видеоплеер в контейнер или в `<body>` в зависимости от ориентации экрана
+
+
+
+
 if (isPortrait) {
     // Ориентация экрана портретная
     document.body.appendChild(videoPlayer);
     videoPlayer.classList.add('video-player');
     videoPlayer.play();
-
 } else {
     // Ориентация экрана не портретная
-    containerMessage.appendChild(videoPlayer);
+    document.body.appendChild(videoPlayer);
+    videoPlayer.classList.add('video-player');
     videoPlayer.play();
 }
+
+
+
+
+
+
+
+
+
+
+
+
           
 
 
