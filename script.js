@@ -2125,7 +2125,8 @@ var moscowTimeText = document.querySelector('.moscow-time');
             setRandomImage();
             isIntervalActive = false;
 
-            
+            // Устанавливаем прозрачность видео-плеера
+            videoPlayer.style.opacity = 1;
 
             
                 if (hoursLeft === 0 && minutesLeft <= 5) {
@@ -2248,7 +2249,8 @@ var moscowTimeText = document.querySelector('.moscow-time');
 
         jsonFileRandomMusic = 'free-music.json';
 
-
+        // Устанавливаем прозрачность видео-плеера
+        videoPlayer.style.opacity = 1;
   
 
         
