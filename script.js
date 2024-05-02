@@ -1046,6 +1046,7 @@ for (let i = 1; i < table.rows.length; i++) {
 const intervalColors = ['gold', 'gold', 'gold'];
 let colorIndex = 0; // Индекс текущего цвета
 
+/*
 // Обновляем данные в третьем столбце, оборачивая каждый интервал времени в квадратные скобки
 for (const value in uniqueValues) {
     // Находим все строки с данным значением во втором столбце
@@ -1061,7 +1062,7 @@ for (const value in uniqueValues) {
         row.cells[2].innerHTML = bracketedIntervals; // Обновляем данные в ячейке третьего столбца
     });
 }
-
+*/
 
 
 
