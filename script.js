@@ -1788,7 +1788,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             jsonFileRandomMusic = 'main-music.json';
 
 
-
+         /*   
 
             // Добавляем обработчик события прокрутки контейнера чтобы свеча появлялась и исчезала
 container.addEventListener('scroll', function() {
@@ -1808,6 +1808,7 @@ var opacity = scrollPosition / maxScrollHeight;
     // Устанавливаем прозрачность видео-плеера
     videoPlayer.style.opacity = opacity;
 });
+*/
             
 
             // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
@@ -2127,7 +2128,7 @@ var moscowTimeText = document.querySelector('.moscow-time');
             isIntervalActive = false;
 
             // Устанавливаем прозрачность видео-плеера
-            videoPlayer.style.opacity = 1;
+            videoPlayer.style.opacity = 0.25;
 
             
                 if (hoursLeft === 0 && minutesLeft <= 5) {
@@ -2589,18 +2590,24 @@ if (existingContainer) {
     const html = parts.map((part, index) => `<span${index % 2 !== 0 ? ' class="animated"' : ''}>${part}</span>`).join('');
     textElement.innerHTML = html;
 
-
-    if (isPortrait && !videoContainer) {
-        // Ориентация экрана портретная
+    if (!videoContainer) {
         textElement.appendChild(videoPlayer);
         videoPlayer.classList.add('video-player');
-        videoPlayer.play();
-    } else if (!isPortrait && !videoContainer) {
-        // Ориентация экрана не портретная
-        textElement.appendChild(videoPlayer);
-        videoPlayer.classList.add('video-player');
-        videoPlayer.play();
     }
+
+
+    if (isPortrait) {
+        // Ориентация экрана портретная
+        
+        videoPlayer.classList.add('video-player');
+        videoPlayer.play();
+    } else if (!isPortrait) {
+        // Ориентация экрана не портретная
+
+        videoPlayer.classList.add('video-player');
+        videoPlayer.play();
+    } 
+    
 
 
 
