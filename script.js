@@ -1809,7 +1809,8 @@ var opacity = scrollPosition / maxScrollHeight;
     videoPlayer.style.opacity = opacity;
 });
 */
-            
+           
+videoPlayer.style.opacity = "0.25";
 
             // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
 if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-music.json') {
@@ -1901,6 +1902,7 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
             videoPlayer.display = 'block';
+            videoPlayer.style.opacity = "0.25";
 
             
             if(xBcF == 1 || xBcF == true || xBcF){
@@ -2608,10 +2610,46 @@ if (existingContainer) {
         videoPlayer.play();
     } 
     
+    let initialFontSize = parseInt(window.getComputedStyle(textElement).fontSize);
 
+    let lastDistance = 0;
+    
+    container.addEventListener('touchstart', function(e) {
+        if (e.touches.length === 2) {
+            let touch1 = e.touches[0];
+            let touch2 = e.touches[1];
+            lastDistance = Math.hypot(touch1.clientX - touch2.clientX, touch1.clientY - touch2.clientY);
+        }
+    });
+    
+    container.addEventListener('touchmove', function(e) {
+        if (e.touches.length === 2) {
+            let touch1 = e.touches[0];
+            let touch2 = e.touches[1];
+            let currentDistance = Math.hypot(touch1.clientX - touch2.clientX, touch1.clientY - touch2.clientY);
+            let delta = currentDistance - lastDistance;
+            let fontSize = parseInt(window.getComputedStyle(textElement).fontSize);
+    
+            if (delta > 0) {
+                // Zoom in
+                textElement.style.fontSize = (fontSize + 1) + 'px';
+            } else if (delta < 0) {
+                // Zoom out
+                textElement.style.fontSize = (fontSize - 1) + 'px';
+            }
+    
+            lastDistance = currentDistance;
+        }
+    });
 
 
 }
+
+
+
+
+
+
 
 
 
