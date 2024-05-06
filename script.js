@@ -121,8 +121,8 @@ function setContainerPosition() {
     }
 }
 
-// Вызываем функцию
-setContainerPosition();
+setInterval(setContainerPosition, 100); // Вызываем функцию каждые 0.1 секунды
+ // Вызываем функцию
 
 // Добавляем обработчик события изменения размеров окна
 window.addEventListener('resize', function() {
@@ -1732,7 +1732,7 @@ window.addEventListener('orientationchange', function() {
 setInterval(checkAndShowNotification, 1000); // Вызываем функцию каждую секунду
 
 
- 
+
 
 
     json = (dayOfMonth === 1 || dayOfMonth === 8 || dayOfMonth === 17 || dayOfMonth === 26) && (

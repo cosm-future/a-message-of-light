@@ -773,6 +773,7 @@ content: ''; /* Обязательно для псевдоэлементов */
     flex-direction: column; /* Элементы располагаются вертикально */
     align-items: center; /* Центрирование по горизонтали */
     padding-bottom: 7px;
+    transition: top 0.1s;
 }
 
 
