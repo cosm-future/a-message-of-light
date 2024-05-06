@@ -2613,6 +2613,7 @@ if (existingContainer) {
 
 
     // Изменяем размер текста с помощью щипков по экрану
+    /*
     let initialFontSize = parseInt(window.getComputedStyle(textElement).fontSize);
 
     let lastDistance = 0;
@@ -2635,16 +2636,16 @@ if (existingContainer) {
     
             if (delta > 0) {
                 // Zoom in
-                textElement.style.fontSize = (fontSize + 0.2) + 'px';
+                textElement.style.fontSize = (fontSize + 1) + 'px';
             } else if (delta < 0) {
                 // Zoom out
-                textElement.style.fontSize = (fontSize - 0.2) + 'px';
+                textElement.style.fontSize = (fontSize - 1) + 'px';
             }
     
             lastDistance = currentDistance;
         }
     });
-
+*/
 
 }
 
