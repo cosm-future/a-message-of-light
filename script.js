@@ -2635,10 +2635,10 @@ if (existingContainer) {
     
             if (delta > 0) {
                 // Zoom in
-                textElement.style.fontSize = (fontSize + 0.1) + 'px';
+                textElement.style.fontSize = (fontSize + 0.2) + 'px';
             } else if (delta < 0) {
                 // Zoom out
-                textElement.style.fontSize = (fontSize - 0.1) + 'px';
+                textElement.style.fontSize = (fontSize - 0.2) + 'px';
             }
     
             lastDistance = currentDistance;
