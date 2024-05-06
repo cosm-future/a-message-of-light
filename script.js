@@ -132,7 +132,8 @@ window.addEventListener('resize', function() {
 
 
 
-let IntervalNumber = 0;
+let IntervalNumber = 0; // Переменная номера интервала.
+let ZoomOutIntroduction = false; // Переменная уменьшенного вступления: Молитвы и Покаяния. Если истина, то уменьшает текст.
 
 
 
@@ -2012,7 +2013,7 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
 
     
 
-
+    
       
 
     // Проверяем условие для альбомного режима и высоты экрана
@@ -2032,6 +2033,9 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
         
     }
     const dateElement = document.querySelector(".date");
+
+    // Адаптивные шрифты если у нас интервал 0, либо больше 1)
+    if (IntervalNumber == 0 || IntervalNumber > 1) {
 
     // Адаптивный шрифт в портретном режиме
     if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches) {
@@ -2071,7 +2075,100 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
         dateElement.style.fontSize = '15px';
     }
 
+    }
 
+
+    // Адаптивные шрифты если у нас интервал 1)
+    if (IntervalNumber == 1) {
+
+        if(!ZoomOutIntroduction) {
+            // Стандартный размер текста для адаптива
+
+        // Адаптивный шрифт в портретном режиме
+        if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches) {
+            const textElement = document.querySelector(".text");
+            textElement.style.fontSize = '15px';
+            dateElement.style.fontSize = '11px';
+        } else if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
+            const textElement = document.querySelector(".text");
+            textElement.style.fontSize = '19px';
+            dateElement.style.fontSize = '12px';
+        } else if (window.matchMedia("(max-width: 800px) and (orientation: portrait)").matches) {
+            const textElement = document.querySelector(".text");
+            textElement.style.fontSize = '23px';
+            dateElement.style.fontSize = '13px';
+        } else if (window.matchMedia("(max-width: 1080px) and (orientation: portrait)").matches) {
+            const textElement = document.querySelector(".text");
+            textElement.style.fontSize = '27px';
+            dateElement.style.fontSize = '15px';
+        }
+    
+        // Адаптивный шрифт в альбомном режиме
+        if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matches) {
+            const textElement = document.querySelector(".text");
+            textElement.style.fontSize = '15px';
+            dateElement.style.fontSize = '11px';
+        } else if (window.matchMedia("(max-height: 600px) and (orientation: landscape)").matches) {
+            const textElement = document.querySelector(".text");
+            textElement.style.fontSize = '19px';
+            dateElement.style.fontSize = '12px';
+        } else if (window.matchMedia("(max-height: 800px) and (orientation: landscape)").matches) {
+            const textElement = document.querySelector(".text");
+            textElement.style.fontSize = '23px';
+            dateElement.style.fontSize = '13px';
+        } else if (window.matchMedia("(max-height: 1080px) and (orientation: landscape)").matches) {
+            const textElement = document.querySelector(".text");
+            textElement.style.fontSize = '27px';
+            dateElement.style.fontSize = '15px';
+        }
+
+        } else {
+
+          // Компактный размер шрифта
+// Адаптивный шрифт в портретном режиме
+if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches) {
+    const textElement = document.querySelector(".text");
+    textElement.style.fontSize = '7px';
+    dateElement.style.fontSize = '11px';
+} else if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
+    const textElement = document.querySelector(".text");
+    textElement.style.fontSize = '9px';
+    dateElement.style.fontSize = '12px';
+} else if (window.matchMedia("(max-width: 800px) and (orientation: portrait)").matches) {
+    const textElement = document.querySelector(".text");
+    textElement.style.fontSize = '11px';
+    dateElement.style.fontSize = '13px';
+} else if (window.matchMedia("(max-width: 1080px) and (orientation: portrait)").matches) {
+    const textElement = document.querySelector(".text");
+    textElement.style.fontSize = '13px';
+    dateElement.style.fontSize = '15px';
+}
+
+// Адаптивный шрифт в альбомном режиме
+if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matches) {
+    const textElement = document.querySelector(".text");
+    textElement.style.fontSize = '15px';
+    dateElement.style.fontSize = '11px';
+} else if (window.matchMedia("(max-height: 600px) and (orientation: landscape)").matches) {
+    const textElement = document.querySelector(".text");
+    textElement.style.fontSize = '19px';
+    dateElement.style.fontSize = '12px';
+} else if (window.matchMedia("(max-height: 800px) and (orientation: landscape)").matches) {
+    const textElement = document.querySelector(".text");
+    textElement.style.fontSize = '23px';
+    dateElement.style.fontSize = '13px';
+} else if (window.matchMedia("(max-height: 1080px) and (orientation: landscape)").matches) {
+    const textElement = document.querySelector(".text");
+    textElement.style.fontSize = '27px';
+    dateElement.style.fontSize = '15px';
+}
+
+
+
+
+        }
+    
+        }
          
           
     document.querySelector('.quatrain').style.display = 'none';
@@ -2372,6 +2469,25 @@ document.querySelector('.menu-container').style.opacity = '1';
     
 
     // Адаптивный шрифт в портретном режиме
+    if (window.matchMedia("(max-height: 500px) and (orientation: portrait)").matches) {
+
+        container.style.height = '30.5vh';
+    } else if (window.matchMedia("(max-height: 600px) and (orientation: portrait)").matches) {
+
+        container.style.height = '31.5vh';
+    } else if (window.matchMedia("(max-height: 800px) and (orientation: portrait)").matches) {
+
+        container.style.height = '34vh';
+    } else if (window.matchMedia("(max-height: 1080px) and (orientation: portrait)").matches) {
+
+        container.style.height = '35.5vh';
+    }
+    // Уменьшим высоту топ на 2 vh.
+
+// Адаптивные шрифты если у нас интервал 0, либо больше 1)
+    if (IntervalNumber == 0 || IntervalNumber > 1) {
+
+    // Адаптивный шрифт в портретном режиме
     if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '15px';
@@ -2391,21 +2507,7 @@ document.querySelector('.menu-container').style.opacity = '1';
         dateElement.style.fontSize = '15px';
     }
 
-    // Адаптивный шрифт в портретном режиме
-    if (window.matchMedia("(max-height: 500px) and (orientation: portrait)").matches) {
-
-        container.style.height = '30.5vh';
-    } else if (window.matchMedia("(max-height: 600px) and (orientation: portrait)").matches) {
-
-        container.style.height = '31.5vh';
-    } else if (window.matchMedia("(max-height: 800px) and (orientation: portrait)").matches) {
-
-        container.style.height = '34vh';
-    } else if (window.matchMedia("(max-height: 1080px) and (orientation: portrait)").matches) {
-
-        container.style.height = '35.5vh';
-    }
-    // Уменьшим высоту топ на 2 vh.
+    
 
     // Адаптивный шрифт в альбомном режиме
     if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matches) {
@@ -2439,7 +2541,68 @@ document.querySelector('.menu-container').style.opacity = '1';
     }
     
 
+    }
 
+
+
+    // Адаптивные шрифты если у нас интервал 0, либо больше 1)
+    if (IntervalNumber == 1) {
+
+        // Адаптивный шрифт в портретном режиме
+        if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches) {
+            const textElement = document.querySelector(".text");
+            textElement.style.fontSize = '15px';
+            dateElement.style.fontSize = '11px';
+        } else if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
+            const textElement = document.querySelector(".text");
+            textElement.style.fontSize = '19px';
+            dateElement.style.fontSize = '12px';
+        } else if (window.matchMedia("(max-width: 800px) and (orientation: portrait)").matches) {
+            const textElement = document.querySelector(".text");
+            textElement.style.fontSize = '23px';
+            dateElement.style.fontSize = '13px';
+        } else if (window.matchMedia("(max-width: 1080px) and (orientation: portrait)").matches) {
+            const textElement = document.querySelector(".text");
+            textElement.style.fontSize = '27px';
+            container.style.top = '61.1vh';
+            dateElement.style.fontSize = '15px';
+        }
+    
+        
+    
+        // Адаптивный шрифт в альбомном режиме
+        if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matches) {
+            const textElement = document.querySelector(".text");
+            textElement.style.fontSize = '15px';
+            dateElement.style.fontSize = '11px';
+            moscowTimeText.style.fontSize = '10px';
+            container.style.height = 'auto';
+            container.style.bottom = '5px';
+        } else if (window.matchMedia("(max-height: 600px) and (orientation: landscape)").matches) {
+            const textElement = document.querySelector(".text");
+            textElement.style.fontSize = '19px';
+            dateElement.style.fontSize = '12px';
+            moscowTimeText.style.fontSize = '11px';
+            container.style.height = 'auto';
+            container.style.bottom = '5px';
+        } else if (window.matchMedia("(max-height: 800px) and (orientation: landscape)").matches) {
+            const textElement = document.querySelector(".text");
+            textElement.style.fontSize = '23px';
+            dateElement.style.fontSize = '13px';
+            moscowTimeText.style.fontSize = '12px';
+            container.style.height = 'auto';
+            container.style.bottom = '10px';
+        } else if (window.matchMedia("(max-height: 1080px) and (orientation: landscape)").matches) {
+            const textElement = document.querySelector(".text");
+            textElement.style.fontSize = '27px';
+            dateElement.style.fontSize = '15px';
+            moscowTimeText.style.fontSize = '14px';
+            container.style.height = 'auto';
+            container.style.bottom = '10px';
+        }
+        
+    
+        }
 
         
         // Отобразить элемент
@@ -3374,6 +3537,12 @@ const qaPairs = [
         answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/downloading_holy_russ.mp3",
         type: "скачать Святую Русь" 
     },
+
+
+
+
+
+
     // Другие вопросы и ответы
 ];
 
@@ -3608,6 +3777,14 @@ function startListening() {
                 audio.addEventListener('ended', function() {
                     // Замените на фактическую ссылку
                     window.location.href = "https://github.com/cosm-future/a-message-of-light/raw/main/other-downloads/Svyataya-Rus.pdf";
+                    });
+            } else if (qa.type === "компактное Покаяние и Молитва") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    
+                    ZoomOutIntroduction = true; // Включаем компактный текст.
+
+
                     });
             }
 
