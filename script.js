@@ -132,7 +132,7 @@ window.addEventListener('resize', function() {
 
 
 
-
+let IntervalNumber = 0;
 
 
 
@@ -1701,6 +1701,9 @@ openTableButton.addEventListener('click', function() {
 
 setContainerPosition(); // Вызываем функцию каждые 1 секунды
  // Вызываем функцию
+ // Вызываем функцию
+setNormalContainerPosition(); // Авто-подгонка контейнера по высоте в зависимости от контейнера изображения
+
 
 // Функция проверки и отображения уведомления
 function checkAndShowNotification() {
@@ -1753,7 +1756,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
 
     let newText = "";
-    
+    console.log(IntervalNumber);
   
     // console.log('Значение json:', json); // Выводим значение json в консоль
 
@@ -2084,6 +2087,7 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
         lineElement.style.transition = `width ${intervalDuration}s linear`;
         lineElement.style.width = "0"; // Устанавливаем ширину линии в начальное состояние
         container.scrollTop = 0;
+        IntervalNumber = IntervalNumber + 1;
     
         setTimeout(() => {
             lineElement.style.width = "100%"; // Увеличиваем ширину линии до максимального значения
@@ -2257,7 +2261,8 @@ var moscowTimeText = document.querySelector('.moscow-time');
         // Устанавливаем прозрачность видео-плеера
         videoPlayer.style.opacity = 0.25;
   
-
+        IntervalNumber = 0;
+        
         
       
 
