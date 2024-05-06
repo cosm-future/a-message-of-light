@@ -1699,7 +1699,8 @@ openTableButton.addEventListener('click', function() {
 });
 
 
-
+setContainerPosition(); // Вызываем функцию каждые 1 секунды
+ // Вызываем функцию
 
 // Функция проверки и отображения уведомления
 function checkAndShowNotification() {
