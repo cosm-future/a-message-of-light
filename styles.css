@@ -1048,7 +1048,7 @@ content: ''; /* Обязательно для псевдоэлементов */
     box-shadow: 0 0 180px 180px rgba(0, 0, 0, 0.9); /* Тень */
     top: -25%;
         left: 0%;
-        transform: translateX(-20%);
+        transform: translateX(-0%);
         margin-top: 10px;
         
         opacity: 0; /* Прозрачность в 50% */
