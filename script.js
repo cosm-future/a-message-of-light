@@ -133,11 +133,19 @@ window.addEventListener('resize', function() {
 
 
 let IntervalNumber = 0; // Переменная номера интервала.
-let ZoomOutIntroduction = false; // Переменная уменьшенного вступления: Молитвы и Покаяния. Если истина, то уменьшает текст.
 
 
 
 
+
+
+
+// Проверяем, есть ли сохраненное значение ZoomOutIntroduction в локальном хранилище
+var savedZoomOutIntroduction = localStorage.getItem('ZoomOutIntroduction');
+
+// Если значение сохранено, используем его; если нет, устанавливаем значение по умолчанию (false)
+var ZoomOutIntroduction = savedZoomOutIntroduction !== null ? savedZoomOutIntroduction === "true" : false;
+// Переменная уменьшенного вступления: Молитвы и Покаяния. Если истина, то уменьшает текст.
 
 
 
@@ -3873,6 +3881,8 @@ function startListening() {
                 audio.addEventListener('ended', function() {
                     
                     ZoomOutIntroduction = true; // Включаем компактный текст.
+                    // Сохраняем значение в локальное хранилище
+                    localStorage.setItem('ZoomOutIntroduction', ZoomOutIntroduction);
 
 
                     });
@@ -3881,7 +3891,8 @@ function startListening() {
                 audio.addEventListener('ended', function() {
                     
                     ZoomOutIntroduction = false; // Выключаем компактный текст.
-
+                    // Сохраняем значение в локальное хранилище
+                    localStorage.setItem('ZoomOutIntroduction', ZoomOutIntroduction);
 
                     });
             }
