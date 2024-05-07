@@ -991,6 +991,17 @@ content: ''; /* Обязательно для псевдоэлементов */
   }
 }
 
+
+@media screen and (orientation: landscape) {
+    .container::after {
+        content: ''; /* Обязательно для псевдоэлементов */
+        height: 140vh; /* Высота подложки может быть на ваш выбор */
+
+
+        
+      }
+    }
+
 @media only screen and (max-width: 800px) and (orientation: portrait) {
     .container::-webkit-scrollbar {
         width: 17px; /* Ширина полосы прокрутки */
