@@ -1830,11 +1830,11 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
 
 
-            if (isIntervalActive && hours === 21 && minutes >= 5 && minutes < 10) {
+            if (isIntervalActive && hours === 21 && minutes >= 30 && minutes < 35) {
                 IntervalNumber = 1;
             }
 
-            if (isIntervalActive && hours === 21 && minutes >= 10 && minutes < 15) {
+            if (isIntervalActive && hours === 21 && minutes >= 35 && minutes < 40) {
                 IntervalNumber = 2;
             }
 
@@ -2163,25 +2163,25 @@ if (("ontouchstart" in window)) {
         textElement.style.fontSize = '10px';
         dateElement.style.fontSize = '11px';
         // Устанавливаем отступ видеоплеера
-        videoPlayer.style.top = "-15%";
+        videoPlayer.style.top = "-25%";
     } else if (window.matchMedia("(max-height: 600px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '13px';
         dateElement.style.fontSize = '12px';
         // Устанавливаем отступ видеоплеера
-        videoPlayer.style.top = "-15%";
+        videoPlayer.style.top = "-25%";
     } else if (window.matchMedia("(max-height: 800px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '17px';
         dateElement.style.fontSize = '13px';
         // Устанавливаем отступ видеоплеера
-        videoPlayer.style.top = "-15%";
+        videoPlayer.style.top = "-25%";
     } else if (window.matchMedia("(max-height: 1080px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '21px';
         dateElement.style.fontSize = '15px';
         // Устанавливаем отступ видеоплеера
-        videoPlayer.style.top = "-15%";
+        videoPlayer.style.top = "-25%";
     } 
 }
     
@@ -2363,21 +2363,33 @@ if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matche
             const textElement = document.querySelector(".text");
             textElement.style.fontSize = '10px';
             dateElement.style.fontSize = '11px';
+            moscowTimeText.style.fontSize = '10px';
+            // Устанавливаем отступ видеоплеера
+            videoPlayer.style.top = "-25%";
             
         } else if (window.matchMedia("(max-height: 600px) and (orientation: landscape)").matches) {
             const textElement = document.querySelector(".text");
             textElement.style.fontSize = '13px';
             dateElement.style.fontSize = '12px';
+            moscowTimeText.style.fontSize = '11px';
+            // Устанавливаем отступ видеоплеера
+            videoPlayer.style.top = "-25%";
             
         } else if (window.matchMedia("(max-height: 800px) and (orientation: landscape)").matches) {
             const textElement = document.querySelector(".text");
             textElement.style.fontSize = '17px';
             dateElement.style.fontSize = '13px';
+            moscowTimeText.style.fontSize = '12px';
+            // Устанавливаем отступ видеоплеера
+            videoPlayer.style.top = "-25%";
             
         } else if (window.matchMedia("(max-height: 1080px) and (orientation: landscape)").matches) {
             const textElement = document.querySelector(".text");
             textElement.style.fontSize = '21px';
             dateElement.style.fontSize = '15px';
+            moscowTimeText.style.fontSize = '14px';
+            // Устанавливаем отступ видеоплеера
+            videoPlayer.style.top = "-25%";
             
         }
     }
@@ -2445,20 +2457,32 @@ if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matche
     const textElement = document.querySelector(".text");
     textElement.style.fontSize = '9px';
     dateElement.style.fontSize = '11px';
+    moscowTimeText.style.fontSize = '10px';
+    // Устанавливаем отступ видеоплеера
+    videoPlayer.style.top = "-25%";
     
 } else if (window.matchMedia("(max-height: 600px) and (orientation: landscape)").matches) {
     const textElement = document.querySelector(".text");
     textElement.style.fontSize = '11px';
     dateElement.style.fontSize = '12px';
+    moscowTimeText.style.fontSize = '11px';
+    // Устанавливаем отступ видеоплеера
+    videoPlayer.style.top = "-25%";
     
 } else if (window.matchMedia("(max-height: 800px) and (orientation: landscape)").matches) {
     const textElement = document.querySelector(".text");
     textElement.style.fontSize = '13px';
     dateElement.style.fontSize = '13px';
+    moscowTimeText.style.fontSize = '12px';
+    // Устанавливаем отступ видеоплеера
+    videoPlayer.style.top = "-25%";
 } else if (window.matchMedia("(max-height: 1080px) and (orientation: landscape)").matches) {
     const textElement = document.querySelector(".text");
     textElement.style.fontSize = '15px';
     dateElement.style.fontSize = '15px';
+    moscowTimeText.style.fontSize = '14px';
+    // Устанавливаем отступ видеоплеера
+    videoPlayer.style.top = "-25%";
 } 
 }
 
