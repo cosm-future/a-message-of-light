@@ -2093,7 +2093,7 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
     const dateElement = document.querySelector(".date");
 
     // Адаптивные шрифты если у нас интервал 0, либо больше 1)
-    if (IntervalNumber == 0 || IntervalNumber > 1 && IntervalNumber < 13 || IntervalNumber === 14) {
+    if (IntervalNumber == 0 || IntervalNumber > 1 && IntervalNumber < 13 || IntervalNumber == 14) {
 
     // Адаптивный шрифт в портретном режиме
     if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches) {
@@ -2154,7 +2154,7 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
 
 
     // Адаптивные шрифты если у нас интервал 0, либо больше 1)
-    if (IntervalNumber === 13) {
+    if (IntervalNumber == 13) {
 
         // Адаптивный шрифт в портретном режиме
         if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches) {
