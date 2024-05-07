@@ -1776,6 +1776,51 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
             isIntervalActive = true;
 
+            if (isIntervalActive && hours === 9 && minutes >= 35 && minutes < 40) {
+                IntervalNumber = 1;
+            }
+            
+            if (isIntervalActive && hours === 9 && minutes >= 40 && minutes < 45) {
+                IntervalNumber = 2;
+            }
+
+            if (isIntervalActive && hours === 10 && minutes >= 55) {
+                IntervalNumber = 1;
+            }
+
+            if (isIntervalActive && hours === 11 && minutes >= 0 && minutes < 5) {
+                IntervalNumber = 2;
+            } else if (isIntervalActive && hours === 11 && minutes >= 5 && minutes < 10) {
+                IntervalNumber = 3;
+            } else if (isIntervalActive && hours === 11 && minutes >= 10 && minutes < 15) {
+                IntervalNumber = 4;
+            } else if (isIntervalActive && hours === 11 && minutes >= 15 && minutes < 20) {
+                IntervalNumber = 5;
+            } else if (isIntervalActive && hours === 11 && minutes >= 20 && minutes < 25) {
+                IntervalNumber = 6;
+            } else if (isIntervalActive && hours === 11 && minutes >= 25 && minutes < 30) {
+                IntervalNumber = 7;
+            } else if (isIntervalActive && hours === 11 && minutes >= 30 && minutes < 35) {
+                IntervalNumber = 8;
+            } else if (isIntervalActive && hours === 11 && minutes >= 35 && minutes < 40) {
+                IntervalNumber = 9;
+            } else if (isIntervalActive && hours === 11 && minutes >= 40 && minutes < 45) {
+                IntervalNumber = 10;
+            } else if (isIntervalActive && hours === 11 && minutes >= 45 && minutes < 50) {
+                IntervalNumber = 11;
+            } else if (isIntervalActive && hours === 11 && minutes >= 50 && minutes < 55) {
+                IntervalNumber = 12;
+            }
+
+            if (isIntervalActive && hours === 11 && minutes >= 55) {
+                IntervalNumber = 13;
+            }
+
+            if (isIntervalActive && hours === 12 && minutes >= 0 && minutes < 5) {
+                IntervalNumber = 14;
+            }
+            
+
             
             
             if (isIntervalActive) {
@@ -2227,7 +2272,9 @@ if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matche
         lineElement.style.transition = `width ${intervalDuration}s linear`;
         lineElement.style.width = "0"; // Устанавливаем ширину линии в начальное состояние
         container.scrollTop = 0;
+        /*
         IntervalNumber = IntervalNumber + 1;
+        */
     
         setTimeout(() => {
             lineElement.style.width = "100%"; // Увеличиваем ширину линии до максимального значения
