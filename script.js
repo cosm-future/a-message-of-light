@@ -2143,6 +2143,8 @@ if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches)
     const textElement = document.querySelector(".text");
     textElement.style.fontSize = '10px';
     dateElement.style.fontSize = '11px';
+    // Устанавливаем отступ видеоплеера
+    videoPlayer.style.top = "25px";
 } else if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
     const textElement = document.querySelector(".text");
     textElement.style.fontSize = '13px';
