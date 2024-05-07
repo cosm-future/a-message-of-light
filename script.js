@@ -1830,8 +1830,12 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
 
 
-            if (isIntervalActive && hours === 20 && minutes >= 50 && minutes < 55) {
+            if (isIntervalActive && hours === 21 && minutes >= 5 && minutes < 10) {
                 IntervalNumber = 1;
+            }
+
+            if (isIntervalActive && hours === 21 && minutes >= 10 && minutes < 15) {
+                IntervalNumber = 2;
             }
 
             
@@ -2357,22 +2361,22 @@ if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches)
 
 if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matches) { // Адаптивный шрифт в альбомном режиме
             const textElement = document.querySelector(".text");
-            textElement.style.fontSize = '15px';
+            textElement.style.fontSize = '10px';
             dateElement.style.fontSize = '11px';
             
         } else if (window.matchMedia("(max-height: 600px) and (orientation: landscape)").matches) {
             const textElement = document.querySelector(".text");
-            textElement.style.fontSize = '19px';
+            textElement.style.fontSize = '13px';
             dateElement.style.fontSize = '12px';
             
         } else if (window.matchMedia("(max-height: 800px) and (orientation: landscape)").matches) {
             const textElement = document.querySelector(".text");
-            textElement.style.fontSize = '23px';
+            textElement.style.fontSize = '17px';
             dateElement.style.fontSize = '13px';
             
         } else if (window.matchMedia("(max-height: 1080px) and (orientation: landscape)").matches) {
             const textElement = document.querySelector(".text");
-            textElement.style.fontSize = '27px';
+            textElement.style.fontSize = '21px';
             dateElement.style.fontSize = '15px';
             
         }
@@ -2847,28 +2851,28 @@ if (("ontouchstart" in window)) {
     // Адаптивный шрифт в альбомном режиме
     if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
-        textElement.style.fontSize = '15px';
+        textElement.style.fontSize = '10px';
         dateElement.style.fontSize = '11px';
         moscowTimeText.style.fontSize = '10px';
         container.style.height = 'auto';
         container.style.bottom = '5px';
     } else if (window.matchMedia("(max-height: 600px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
-        textElement.style.fontSize = '19px';
+        textElement.style.fontSize = '13px';
         dateElement.style.fontSize = '12px';
         moscowTimeText.style.fontSize = '11px';
         container.style.height = 'auto';
         container.style.bottom = '5px';
     } else if (window.matchMedia("(max-height: 800px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
-        textElement.style.fontSize = '23px';
+        textElement.style.fontSize = '17px';
         dateElement.style.fontSize = '13px';
         moscowTimeText.style.fontSize = '12px';
         container.style.height = 'auto';
         container.style.bottom = '10px';
     } else if (window.matchMedia("(max-height: 1080px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
-        textElement.style.fontSize = '27px';
+        textElement.style.fontSize = '21px';
         dateElement.style.fontSize = '15px';
         moscowTimeText.style.fontSize = '14px';
         container.style.height = 'auto';
