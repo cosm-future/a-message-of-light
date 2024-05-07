@@ -1847,8 +1847,11 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
             videoPlayer.display = 'block';
 
             
+            /*
             // Применение стилей из медиа-запроса
             disableButtonAndromeda();
+            */
+
 
         } else {
             jsonFileRandomMusic = 'free-music.json';
@@ -1914,7 +1917,9 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
                 buttonBuild.style.display = 'block';
                 } 
                 
+                /*
                 disableButtonAndromeda();
+                */
 
                 fetch(jsonFileRandomMusic)
                 .then(response => response.json())
@@ -2285,7 +2290,9 @@ var moscowTimeText = document.querySelector('.moscow-time');
                 buttonBuild.style.display = 'block';
                 } 
                 
+                /*
                 disableButtonAndromeda();
+                */
           } else {
               jsonFileRandomMusic = 'free-music.json';
               // Получаем ссылку на элемент по его id
@@ -2382,7 +2389,9 @@ var moscowTimeText = document.querySelector('.moscow-time');
                 buttonBuild.style.display = 'block';
                 } 
             
+                /*
                 disableButtonAndromeda();
+                */
 
             
         } else {
