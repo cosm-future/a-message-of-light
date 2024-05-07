@@ -2133,38 +2133,38 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
 // Адаптивный шрифт в портретном режиме
 if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches) {
     const textElement = document.querySelector(".text");
-    textElement.style.fontSize = '7px';
+    textElement.style.fontSize = '10px';
     dateElement.style.fontSize = '11px';
 } else if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
     const textElement = document.querySelector(".text");
-    textElement.style.fontSize = '9px';
+    textElement.style.fontSize = '13px';
     dateElement.style.fontSize = '12px';
 } else if (window.matchMedia("(max-width: 800px) and (orientation: portrait)").matches) {
     const textElement = document.querySelector(".text");
-    textElement.style.fontSize = '11px';
+    textElement.style.fontSize = '16px';
     dateElement.style.fontSize = '13px';
 } else if (window.matchMedia("(max-width: 1080px) and (orientation: portrait)").matches) {
     const textElement = document.querySelector(".text");
-    textElement.style.fontSize = '13px';
+    textElement.style.fontSize = '19px';
     dateElement.style.fontSize = '15px';
 }
 
 // Адаптивный шрифт в альбомном режиме
 if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matches) {
     const textElement = document.querySelector(".text");
-    textElement.style.fontSize = '7px';
+    textElement.style.fontSize = '10px';
     dateElement.style.fontSize = '11px';
 } else if (window.matchMedia("(max-height: 600px) and (orientation: landscape)").matches) {
     const textElement = document.querySelector(".text");
-    textElement.style.fontSize = '9px';
+    textElement.style.fontSize = '13px';
     dateElement.style.fontSize = '12px';
 } else if (window.matchMedia("(max-height: 800px) and (orientation: landscape)").matches) {
     const textElement = document.querySelector(".text");
-    textElement.style.fontSize = '11px';
+    textElement.style.fontSize = '16px';
     dateElement.style.fontSize = '13px';
 } else if (window.matchMedia("(max-height: 1080px) and (orientation: landscape)").matches) {
     const textElement = document.querySelector(".text");
-    textElement.style.fontSize = '13px';
+    textElement.style.fontSize = '19px';
     dateElement.style.fontSize = '15px';
 }
 
@@ -2621,19 +2621,19 @@ document.querySelector('.menu-container').style.opacity = '1';
 // Адаптивный шрифт в портретном режиме
 if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches) {
     const textElement = document.querySelector(".text");
-    textElement.style.fontSize = '7px';
+    textElement.style.fontSize = '10px';
     dateElement.style.fontSize = '11px';
 } else if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
     const textElement = document.querySelector(".text");
-    textElement.style.fontSize = '9px';
+    textElement.style.fontSize = '13px';
     dateElement.style.fontSize = '12px';
 } else if (window.matchMedia("(max-width: 800px) and (orientation: portrait)").matches) {
     const textElement = document.querySelector(".text");
-    textElement.style.fontSize = '11px';
+    textElement.style.fontSize = '16px';
     dateElement.style.fontSize = '13px';
 } else if (window.matchMedia("(max-width: 1080px) and (orientation: portrait)").matches) {
     const textElement = document.querySelector(".text");
-    textElement.style.fontSize = '13px';
+    textElement.style.fontSize = '19px';
     container.style.top = '61.1vh';
     dateElement.style.fontSize = '15px';
 }
@@ -2643,28 +2643,28 @@ if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches)
 // Адаптивный шрифт в альбомном режиме
 if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matches) {
     const textElement = document.querySelector(".text");
-    textElement.style.fontSize = '7px';
+    textElement.style.fontSize = '10px';
     dateElement.style.fontSize = '11px';
     moscowTimeText.style.fontSize = '10px';
     container.style.height = 'auto';
     container.style.bottom = '5px';
 } else if (window.matchMedia("(max-height: 600px) and (orientation: landscape)").matches) {
     const textElement = document.querySelector(".text");
-    textElement.style.fontSize = '9px';
+    textElement.style.fontSize = '13px';
     dateElement.style.fontSize = '12px';
     moscowTimeText.style.fontSize = '11px';
     container.style.height = 'auto';
     container.style.bottom = '5px';
 } else if (window.matchMedia("(max-height: 800px) and (orientation: landscape)").matches) {
     const textElement = document.querySelector(".text");
-    textElement.style.fontSize = '11px';
+    textElement.style.fontSize = '16px';
     dateElement.style.fontSize = '13px';
     moscowTimeText.style.fontSize = '12px';
     container.style.height = 'auto';
     container.style.bottom = '10px';
 } else if (window.matchMedia("(max-height: 1080px) and (orientation: landscape)").matches) {
     const textElement = document.querySelector(".text");
-    textElement.style.fontSize = '13px';
+    textElement.style.fontSize = '19px';
     dateElement.style.fontSize = '15px';
     moscowTimeText.style.fontSize = '14px';
     container.style.height = 'auto';
