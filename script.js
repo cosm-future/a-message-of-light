@@ -1830,6 +1830,16 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
 
 
+            if (isIntervalActive && hours === 20 && minutes >= 30 && minutes < 40) {
+                IntervalNumber = 1;
+            }
+
+            if (isIntervalActive && hours === 20 && minutes >= 40 && minutes < 50) {
+                IntervalNumber = 2;
+            }
+
+
+
             /* Ночной посыл */
 
             if (isIntervalActive && hours === 2 && minutes >= 55) {
@@ -2115,6 +2125,9 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
     // Адаптивные шрифты если у нас интервал 0, либо больше 1)
     if (IntervalNumber == 0 || IntervalNumber > 1 && IntervalNumber < 13 || IntervalNumber == 14) {
 
+        // Проверяем, поддерживает ли устройство события сенсорного ввода
+if (("ontouchstart" in window)) {
+    // Устройство поддерживает сенсорный ввод, считаем его мобильным
     // Адаптивный шрифт в портретном режиме
     if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches) {
         const textElement = document.querySelector(".text");
@@ -2167,12 +2180,33 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
         dateElement.style.fontSize = '15px';
         // Устанавливаем отступ видеоплеера
         videoPlayer.style.top = "-15%";
+    } 
+}
+    
+    // Проверяем, поддерживает ли устройство события сенсорного ввода
+if (!("ontouchstart" in window)) {
+    // Устройство не поддерживает сенсорный ввод, считаем его десктопным
+
+    // Добавьте здесь ваш первоначальный код для десктопных устройств
+    if (window.matchMedia("(max-width: 968px) and (orientation: landscape)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '17px';
+        
+    } else if (window.matchMedia("(max-width: 1024px) and (orientation: landscape)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '18px';
+        
+    } else if (window.matchMedia("(max-width: 1280px) and (orientation: landscape)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '20px';
+        
     } else if (window.matchMedia("(max-width: 1920px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
-        textElement.style.fontSize = '27px';
-        // Устанавливаем отступ видеоплеера
-        videoPlayer.style.top = "-15%";
+        textElement.style.fontSize = '23px';
+        
     }
+}
+    
 
     
 
@@ -2183,6 +2217,9 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
     // Адаптивные шрифты если у нас интервал 0, либо больше 1)
     if (IntervalNumber == 13) {
 
+        // Проверяем, поддерживает ли устройство события сенсорного ввода
+if (("ontouchstart" in window)) {
+    // Устройство поддерживает сенсорный ввод, считаем его мобильным
         // Адаптивный шрифт в портретном режиме
         if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches) {
             const textElement = document.querySelector(".text");
@@ -2236,6 +2273,31 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
             // Устанавливаем отступ видеоплеера
             videoPlayer.style.top = "-15%";
         }
+    }
+
+        // Проверяем, поддерживает ли устройство события сенсорного ввода
+if (!("ontouchstart" in window)) {
+    // Устройство не поддерживает сенсорный ввод, считаем его десктопным
+
+    // Добавьте здесь ваш первоначальный код для десктопных устройств
+    if (window.matchMedia("(max-width: 968px) and (orientation: landscape)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '17px';
+        
+    } else if (window.matchMedia("(max-width: 1024px) and (orientation: landscape)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '18px';
+        
+    } else if (window.matchMedia("(max-width: 1280px) and (orientation: landscape)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '20px';
+        
+    } else if (window.matchMedia("(max-width: 1920px) and (orientation: landscape)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '23px';
+        
+    }
+}
     
         }
 
@@ -2264,6 +2326,9 @@ videoPlayer.style.top = "-15%";
 } 
 */
 
+// Проверяем, поддерживает ли устройство события сенсорного ввода
+if (("ontouchstart" in window)) {
+    // Устройство поддерживает сенсорный ввод, считаем его мобильным
 if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches) { // Адаптивный шрифт в портретном режиме
             const textElement = document.querySelector(".text");
             textElement.style.fontSize = '15px';
@@ -2313,11 +2378,40 @@ if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matche
             dateElement.style.fontSize = '15px';
             
         }
+    }
+
+        // Проверяем, поддерживает ли устройство события сенсорного ввода
+if (!("ontouchstart" in window)) {
+    // Устройство не поддерживает сенсорный ввод, считаем его десктопным
+
+    // Добавьте здесь ваш первоначальный код для десктопных устройств
+    if (window.matchMedia("(max-width: 968px) and (orientation: landscape)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '17px';
+        
+    } else if (window.matchMedia("(max-width: 1024px) and (orientation: landscape)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '18px';
+        
+    } else if (window.matchMedia("(max-width: 1280px) and (orientation: landscape)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '20px';
+        
+    } else if (window.matchMedia("(max-width: 1920px) and (orientation: landscape)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '23px';
+        
+    }
+}
 
         } else {
 
           // Компактный размер шрифта
 // Адаптивный шрифт в портретном режиме
+
+// Проверяем, поддерживает ли устройство события сенсорного ввода
+if (("ontouchstart" in window)) {
+    // Устройство поддерживает сенсорный ввод, считаем его мобильным
 if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches) {
     const textElement = document.querySelector(".text");
     textElement.style.fontSize = '10px';
@@ -2364,12 +2458,31 @@ if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matche
     textElement.style.fontSize = '19px';
     dateElement.style.fontSize = '15px';
 } 
+}
 
 // новые функции
-if (window.matchMedia("(max-width: 1920px) and (orientation: landscape)").matches) {
-    const textElement = document.querySelector(".text");
-    textElement.style.fontSize = '19px';
-    
+// Проверяем, поддерживает ли устройство события сенсорного ввода
+if (!("ontouchstart" in window)) {
+    // Устройство не поддерживает сенсорный ввод, считаем его десктопным
+
+    // Добавьте здесь ваш первоначальный код для десктопных устройств
+    if (window.matchMedia("(max-width: 968px) and (orientation: landscape)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '11px';
+        
+    } else if (window.matchMedia("(max-width: 1024px) and (orientation: landscape)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '12px';
+        
+    } else if (window.matchMedia("(max-width: 1280px) and (orientation: landscape)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '13px';
+        
+    } else if (window.matchMedia("(max-width: 1920px) and (orientation: landscape)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '15px';
+        
+    }
 }
 
 
@@ -2700,6 +2813,9 @@ document.querySelector('.menu-container').style.opacity = '1';
 // Адаптивные шрифты если у нас интервал 0, либо больше 1)
     if (IntervalNumber == 0 || IntervalNumber > 1) {
 
+        // Проверяем, поддерживает ли устройство события сенсорного ввода
+if (("ontouchstart" in window)) {
+    // Устройство  поддерживает сенсорный ввод, считаем его мобильным
     // Адаптивный шрифт в портретном режиме
     if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches) {
         const textElement = document.querySelector(".text");
@@ -2760,12 +2876,33 @@ document.querySelector('.menu-container').style.opacity = '1';
         container.style.height = 'auto';
         container.style.bottom = '10px';
     } 
+}
     
-    if (window.matchMedia("(max-width: 1920px) and (orientation: landscape)").matches) {
+    // Проверяем, поддерживает ли устройство события сенсорного ввода
+if (!("ontouchstart" in window)) {
+    // Устройство не поддерживает сенсорный ввод, считаем его десктопным
+
+    // Добавьте здесь ваш первоначальный код для десктопных устройств
+    if (window.matchMedia("(max-width: 968px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
-        textElement.style.fontSize = '25px';
+        textElement.style.fontSize = '17px';
+        
+    } else if (window.matchMedia("(max-width: 1024px) and (orientation: landscape)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '18px';
+        
+    } else if (window.matchMedia("(max-width: 1280px) and (orientation: landscape)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '20px';
+        
+    } else if (window.matchMedia("(max-width: 1920px) and (orientation: landscape)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '23px';
         
     }
+}
+
+
     
 
     }
@@ -2779,6 +2916,9 @@ document.querySelector('.menu-container').style.opacity = '1';
         if(!ZoomOutIntroduction) {
             // Стандартный размер текста для адаптива
 
+            // Проверяем, поддерживает ли устройство события сенсорного ввода
+if (("ontouchstart" in window)) {
+    // Устройство поддерживает сенсорный ввод, считаем его мобильным
         // Адаптивный шрифт в портретном режиме
         if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches) {
             const textElement = document.querySelector(".text");
@@ -2831,12 +2971,29 @@ document.querySelector('.menu-container').style.opacity = '1';
             container.style.height = 'auto';
             container.style.bottom = '10px';
         }
+    }
+
+        // Проверяем, поддерживает ли устройство события сенсорного ввода
+if (!("ontouchstart" in window)) {
+    // Устройство не поддерживает сенсорный ввод, считаем его десктопным
+
+    // Добавьте здесь ваш первоначальный код для десктопных устройств
+    if (window.matchMedia("(max-width: 1920px) and (orientation: landscape)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '23px';
+        // Устанавливаем отступ видеоплеера
+        videoPlayer.style.top = "-15%";
+    }
+}
         
     
         } else {
 
 // Компактный режим текста
 // Адаптивный шрифт в портретном режиме
+// Проверяем, поддерживает ли устройство события сенсорного ввода
+if (("ontouchstart" in window)) {
+    // Устройство поддерживает сенсорный ввод, считаем его мобильным
 if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches) {
     const textElement = document.querySelector(".text");
     textElement.style.fontSize = '10px';
@@ -2888,8 +3045,20 @@ if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matche
     container.style.height = 'auto';
     container.style.bottom = '10px';
 }  
+}
 
+// Проверяем, поддерживает ли устройство события сенсорного ввода
+if (!("ontouchstart" in window)) {
+    // Устройство не поддерживает сенсорный ввод, считаем его десктопным
 
+    // Добавьте здесь ваш первоначальный код для десктопных устройств
+    if (window.matchMedia("(max-width: 1920px) and (orientation: landscape)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '15px';
+        // Устанавливаем отступ видеоплеера
+        videoPlayer.style.top = "-15%";
+    }
+}
 
         }
 
