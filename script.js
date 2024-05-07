@@ -2441,21 +2441,21 @@ if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches)
 // Адаптивный шрифт в альбомном режиме
 if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matches) {
     const textElement = document.querySelector(".text");
-    textElement.style.fontSize = '10px';
+    textElement.style.fontSize = '9px';
     dateElement.style.fontSize = '11px';
     
 } else if (window.matchMedia("(max-height: 600px) and (orientation: landscape)").matches) {
     const textElement = document.querySelector(".text");
-    textElement.style.fontSize = '13px';
+    textElement.style.fontSize = '11px';
     dateElement.style.fontSize = '12px';
     
 } else if (window.matchMedia("(max-height: 800px) and (orientation: landscape)").matches) {
     const textElement = document.querySelector(".text");
-    textElement.style.fontSize = '16px';
+    textElement.style.fontSize = '13px';
     dateElement.style.fontSize = '13px';
 } else if (window.matchMedia("(max-height: 1080px) and (orientation: landscape)").matches) {
     const textElement = document.querySelector(".text");
-    textElement.style.fontSize = '19px';
+    textElement.style.fontSize = '15px';
     dateElement.style.fontSize = '15px';
 } 
 }
@@ -2468,19 +2468,19 @@ if (!("ontouchstart" in window)) {
     // Добавьте здесь ваш первоначальный код для десктопных устройств
     if (window.matchMedia("(max-width: 968px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
-        textElement.style.fontSize = '11px';
+        textElement.style.fontSize = '13px';
         
     } else if (window.matchMedia("(max-width: 1024px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
-        textElement.style.fontSize = '12px';
+        textElement.style.fontSize = '14px';
         
     } else if (window.matchMedia("(max-width: 1280px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
-        textElement.style.fontSize = '13px';
+        textElement.style.fontSize = '16px';
         
     } else if (window.matchMedia("(max-width: 1920px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
-        textElement.style.fontSize = '15px';
+        textElement.style.fontSize = '19px';
         
     }
 }
