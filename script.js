@@ -1814,6 +1814,8 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
                 IntervalNumber = 14;
             }
 
+
+            
              
 
             /* Вечерний посыл */
@@ -2165,12 +2167,14 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
         dateElement.style.fontSize = '15px';
         // Устанавливаем отступ видеоплеера
         videoPlayer.style.top = "-15%";
-    } else if (window.matchMedia("(max-height: 1920px) and (orientation: landscape)").matches) {
+    } else if (window.matchMedia("(max-width: 1920px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '27px';
         // Устанавливаем отступ видеоплеера
         videoPlayer.style.top = "-15%";
     }
+
+    
 
     }
 
@@ -2361,7 +2365,12 @@ if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matche
     dateElement.style.fontSize = '15px';
 } 
 
-
+// новые функции
+if (window.matchMedia("(max-width: 1920px) and (orientation: landscape)").matches) {
+    const textElement = document.querySelector(".text");
+    textElement.style.fontSize = '19px';
+    
+}
 
 
         }
@@ -2751,6 +2760,12 @@ document.querySelector('.menu-container').style.opacity = '1';
         container.style.height = 'auto';
         container.style.bottom = '10px';
     } 
+    
+    if (window.matchMedia("(max-width: 1920px) and (orientation: landscape)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '25px';
+        
+    }
     
 
     }
