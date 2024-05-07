@@ -1830,11 +1830,11 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
 
 
-            if (isIntervalActive && hours === 22 && minutes >= 10 && minutes < 15) {
+            if (isIntervalActive && hours === 7 && minutes >= 50 && minutes < 55) {
                 IntervalNumber = 1;
             }
 
-            if (isIntervalActive && hours === 22 && minutes >= 15 && minutes < 20) {
+            if (isIntervalActive && hours === 7 && minutes >= 55) {
                 IntervalNumber = 2;
             }
 
@@ -2123,6 +2123,7 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
         
     }
     const dateElement = document.querySelector(".date");
+    var moscowTimeText = document.querySelector('.moscow-time');
 
     // Адаптивные шрифты если у нас интервал 0, либо больше 1)
     if (IntervalNumber == 0 || IntervalNumber > 1 && IntervalNumber < 13 || IntervalNumber == 14) {
@@ -2162,24 +2163,28 @@ if (("ontouchstart" in window)) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '13px';
         dateElement.style.fontSize = '11px';
+        moscowTimeText.style.fontSize = '10px';
         // Устанавливаем отступ видеоплеера
         videoPlayer.style.top = "-30%";
     } else if (window.matchMedia("(max-height: 600px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '17px';
         dateElement.style.fontSize = '12px';
+        moscowTimeText.style.fontSize = '11px';
         // Устанавливаем отступ видеоплеера
         videoPlayer.style.top = "-30%";
     } else if (window.matchMedia("(max-height: 800px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '21px';
         dateElement.style.fontSize = '13px';
+        moscowTimeText.style.fontSize = '12px';
         // Устанавливаем отступ видеоплеера
         videoPlayer.style.top = "-30%";
     } else if (window.matchMedia("(max-height: 1080px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '25px';
         dateElement.style.fontSize = '15px';
+        moscowTimeText.style.fontSize = '14px';
         // Устанавливаем отступ видеоплеера
         videoPlayer.style.top = "-30%";
     } 
@@ -2363,7 +2368,7 @@ if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matche
             const textElement = document.querySelector(".text");
             textElement.style.fontSize = '13px';
             dateElement.style.fontSize = '11px';
-
+            moscowTimeText.style.fontSize = '10px';
             // Устанавливаем отступ видеоплеера
             videoPlayer.style.top = "-30%";
             
@@ -2371,7 +2376,7 @@ if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matche
             const textElement = document.querySelector(".text");
             textElement.style.fontSize = '17px';
             dateElement.style.fontSize = '12px';
-
+            moscowTimeText.style.fontSize = '11px';
             // Устанавливаем отступ видеоплеера
             videoPlayer.style.top = "-30%";
             
@@ -2379,7 +2384,7 @@ if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matche
             const textElement = document.querySelector(".text");
             textElement.style.fontSize = '21px';
             dateElement.style.fontSize = '13px';
-
+            moscowTimeText.style.fontSize = '12px';
             // Устанавливаем отступ видеоплеера
             videoPlayer.style.top = "-30%";
             
@@ -2387,7 +2392,7 @@ if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matche
             const textElement = document.querySelector(".text");
             textElement.style.fontSize = '25px';
             dateElement.style.fontSize = '15px';
-
+            moscowTimeText.style.fontSize = '14px';
             // Устанавливаем отступ видеоплеера
             videoPlayer.style.top = "-30%";
             
@@ -2457,7 +2462,7 @@ if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matche
     const textElement = document.querySelector(".text");
     textElement.style.fontSize = '9px';
     dateElement.style.fontSize = '11px';
-
+    moscowTimeText.style.fontSize = '10px';
     // Устанавливаем отступ видеоплеера
     videoPlayer.style.top = "-30%";
     
@@ -2465,7 +2470,7 @@ if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matche
     const textElement = document.querySelector(".text");
     textElement.style.fontSize = '11px';
     dateElement.style.fontSize = '12px';
-
+    moscowTimeText.style.fontSize = '11px';
     // Устанавливаем отступ видеоплеера
     videoPlayer.style.top = "-30%";
     
@@ -2473,14 +2478,14 @@ if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matche
     const textElement = document.querySelector(".text");
     textElement.style.fontSize = '13px';
     dateElement.style.fontSize = '13px';
-
+    moscowTimeText.style.fontSize = '12px';
     // Устанавливаем отступ видеоплеера
     videoPlayer.style.top = "-30%";
 } else if (window.matchMedia("(max-height: 1080px) and (orientation: landscape)").matches) {
     const textElement = document.querySelector(".text");
     textElement.style.fontSize = '15px';
     dateElement.style.fontSize = '15px';
-
+    moscowTimeText.style.fontSize = '14px';
     // Устанавливаем отступ видеоплеера
     videoPlayer.style.top = "-30%";
 } 
