@@ -2136,25 +2136,25 @@ if (("ontouchstart" in window)) {
         textElement.style.fontSize = '15px';
         dateElement.style.fontSize = '11px';
         // Устанавливаем отступ видеоплеера
-        videoPlayer.style.top = "-25%";
+        videoPlayer.style.top = "-15%";
     } else if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '19px';
         dateElement.style.fontSize = '12px';
         // Устанавливаем отступ видеоплеера
-        videoPlayer.style.top = "-25%";
+        videoPlayer.style.top = "-15%";
     } else if (window.matchMedia("(max-width: 800px) and (orientation: portrait)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '23px';
         dateElement.style.fontSize = '13px';
         // Устанавливаем отступ видеоплеера
-        videoPlayer.style.top = "-25%";
+        videoPlayer.style.top = "-15%";
     } else if (window.matchMedia("(max-width: 1080px) and (orientation: portrait)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '27px';
         dateElement.style.fontSize = '15px';
         // Устанавливаем отступ видеоплеера
-        videoPlayer.style.top = "-25%";
+        videoPlayer.style.top = "-15%";
     }
 
     // Адаптивный шрифт в альбомном режиме
@@ -2336,25 +2336,25 @@ if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches)
             textElement.style.fontSize = '15px';
             dateElement.style.fontSize = '11px';
             // Устанавливаем отступ видеоплеера
-            videoPlayer.style.top = "-25%";
+            videoPlayer.style.top = "-15%";
         } else if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
             const textElement = document.querySelector(".text");
             textElement.style.fontSize = '19px';
             dateElement.style.fontSize = '12px';
             // Устанавливаем отступ видеоплеера
-            videoPlayer.style.top = "-25%";
+            videoPlayer.style.top = "-15%";
         } else if (window.matchMedia("(max-width: 800px) and (orientation: portrait)").matches) {
             const textElement = document.querySelector(".text");
             textElement.style.fontSize = '23px';
             dateElement.style.fontSize = '13px';
             // Устанавливаем отступ видеоплеера
-            videoPlayer.style.top = "-25%";
+            videoPlayer.style.top = "-15%";
         } else if (window.matchMedia("(max-width: 1080px) and (orientation: portrait)").matches) {
             const textElement = document.querySelector(".text");
             textElement.style.fontSize = '27px';
             dateElement.style.fontSize = '15px';
             // Устанавливаем отступ видеоплеера
-            videoPlayer.style.top = "-25%";
+            videoPlayer.style.top = "-15%";
         }
 
         
@@ -2431,25 +2431,25 @@ if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches)
     textElement.style.fontSize = '10px';
     dateElement.style.fontSize = '11px';
     // Устанавливаем отступ видеоплеера
-    videoPlayer.style.top = "-25%";
+    videoPlayer.style.top = "-15%";
 } else if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
     const textElement = document.querySelector(".text");
     textElement.style.fontSize = '13px';
     dateElement.style.fontSize = '12px';
     // Устанавливаем отступ видеоплеера
-    videoPlayer.style.top = "-25%";
+    videoPlayer.style.top = "-15%";
 } else if (window.matchMedia("(max-width: 800px) and (orientation: portrait)").matches) {
     const textElement = document.querySelector(".text");
     textElement.style.fontSize = '16px';
     dateElement.style.fontSize = '13px';
     // Устанавливаем отступ видеоплеера
-    videoPlayer.style.top = "-25%";
+    videoPlayer.style.top = "-15%";
 } else if (window.matchMedia("(max-width: 1080px) and (orientation: portrait)").matches) {
     const textElement = document.querySelector(".text");
     textElement.style.fontSize = '19px';
     dateElement.style.fontSize = '15px';
     // Устанавливаем отступ видеоплеера
-    videoPlayer.style.top = "-25%";
+    videoPlayer.style.top = "-15%";
 }
 
 // Адаптивный шрифт в альбомном режиме
