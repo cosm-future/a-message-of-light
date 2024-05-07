@@ -1776,13 +1776,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
             isIntervalActive = true;
 
-            if (isIntervalActive && hours === 9 && minutes >= 35 && minutes < 40) {
-                IntervalNumber = 1;
-            }
-            
-            if (isIntervalActive && hours === 9 && minutes >= 40 && minutes < 45) {
-                IntervalNumber = 2;
-            }
+            /* Утренний посыл */
 
             if (isIntervalActive && hours === 10 && minutes >= 55) {
                 IntervalNumber = 1;
@@ -1818,6 +1812,30 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
             if (isIntervalActive && hours === 12 && minutes >= 0 && minutes < 5) {
                 IntervalNumber = 14;
+            }
+
+             
+
+            /* Вечерний посыл */
+
+            if (isIntervalActive && hours === 18 && minutes >= 55) {
+                IntervalNumber = 1;
+            }
+
+            if (isIntervalActive && hours === 19 && minutes >= 0 && minutes < 5) {
+                IntervalNumber = 2;
+            }
+
+
+
+            /* Ночной посыл */
+
+            if (isIntervalActive && hours === 2 && minutes >= 55) {
+                IntervalNumber = 1;
+            }
+
+            if (isIntervalActive && hours === 3 && minutes >= 0 && minutes < 5) {
+                IntervalNumber = 2;
             }
             
 
@@ -2147,6 +2165,11 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
         dateElement.style.fontSize = '15px';
         // Устанавливаем отступ видеоплеера
         videoPlayer.style.top = "-15%";
+    } else if (window.matchMedia("(max-height: 1920px) and (orientation: landscape)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '27px';
+        // Устанавливаем отступ видеоплеера
+        videoPlayer.style.top = "-15%";
     }
 
     }
@@ -2221,8 +2244,23 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
         if(!ZoomOutIntroduction) {
             // Стандартный размер текста для адаптива
 
-        // Адаптивный шрифт в портретном режиме
-        if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches) {
+
+
+/*
+            // Адаптивный шрифт в обычном режиме
+if (window.matchMedia("(max-width: 500px)").matches || 
+window.matchMedia("(max-width: 800px)").matches || 
+window.matchMedia("(max-width: 1024px)").matches ||
+window.matchMedia("(max-width: 1920px)").matches || 
+window.matchMedia("(max-width: 3840px)").matches) {
+const textElement = document.querySelector(".text");
+textElement.style.fontSize = '1rem';
+// Устанавливаем отступ видеоплеера
+videoPlayer.style.top = "-15%";
+} 
+*/
+
+if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches) { // Адаптивный шрифт в портретном режиме
             const textElement = document.querySelector(".text");
             textElement.style.fontSize = '15px';
             dateElement.style.fontSize = '11px';
@@ -2247,9 +2285,10 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
             // Устанавливаем отступ видеоплеера
             videoPlayer.style.top = "-15%";
         }
-    
-        // Адаптивный шрифт в альбомном режиме
-        if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matches) {
+
+        
+
+if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matches) { // Адаптивный шрифт в альбомном режиме
             const textElement = document.querySelector(".text");
             textElement.style.fontSize = '15px';
             dateElement.style.fontSize = '11px';
@@ -2320,7 +2359,7 @@ if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matche
     const textElement = document.querySelector(".text");
     textElement.style.fontSize = '19px';
     dateElement.style.fontSize = '15px';
-}
+} 
 
 
 
@@ -2711,7 +2750,7 @@ document.querySelector('.menu-container').style.opacity = '1';
         moscowTimeText.style.fontSize = '14px';
         container.style.height = 'auto';
         container.style.bottom = '10px';
-    }
+    } 
     
 
     }
@@ -2833,7 +2872,7 @@ if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matche
     moscowTimeText.style.fontSize = '14px';
     container.style.height = 'auto';
     container.style.bottom = '10px';
-}
+}  
 
 
 
