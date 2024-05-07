@@ -3622,6 +3622,12 @@ const qaPairs = [
         type: "компактное Покаяние и Молитва" 
     },
 
+    { 
+        questions: ["Отключи Компактное Покаяние и Молитву", "Отключи Кампактное Покаяние и Молитву", "Отключи Кампактное Пакаяние и Молитву"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/turn_off.mp3",
+        type: "запрет компактное Покаяние и Молитва" 
+    },
+
 
 
     
@@ -3743,7 +3749,8 @@ function startListening() {
         qa.type === "скачать катрены за 2023 год" ||
         qa.type === "скачать Доктрину" ||
         qa.type === "скачать Святую Русь" ||
-        qa.type === "компактное Покаяние и Молитва") {
+        qa.type === "компактное Покаяние и Молитва" ||
+        qa.type === "запрет компактное Покаяние и Молитва") {
             const audio = new Audio();
             audio.src = qa.answer; // Устанавливаем ссылку как источник аудиофайла 
             audio.play();
@@ -3866,6 +3873,14 @@ function startListening() {
                 audio.addEventListener('ended', function() {
                     
                     ZoomOutIntroduction = true; // Включаем компактный текст.
+
+
+                    });
+            } else if (qa.type === "запрет компактное Покаяние и Молитва") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    
+                    ZoomOutIntroduction = false; // Выключаем компактный текст.
 
 
                     });
