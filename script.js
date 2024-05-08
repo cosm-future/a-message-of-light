@@ -2165,28 +2165,28 @@ if (("ontouchstart" in window)) {
         dateElement.style.fontSize = '11px';
         moscowTimeText.style.fontSize = '10px';
         // Устанавливаем отступ видеоплеера
-        videoPlayer.style.top = "-33%";
+        videoPlayer.style.top = "-35%";
     } else if (window.matchMedia("(max-height: 600px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '17px';
         dateElement.style.fontSize = '12px';
         moscowTimeText.style.fontSize = '11px';
         // Устанавливаем отступ видеоплеера
-        videoPlayer.style.top = "-33%";
+        videoPlayer.style.top = "-35%";
     } else if (window.matchMedia("(max-height: 800px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '21px';
         dateElement.style.fontSize = '13px';
         moscowTimeText.style.fontSize = '12px';
         // Устанавливаем отступ видеоплеера
-        videoPlayer.style.top = "-33%";
+        videoPlayer.style.top = "-35%";
     } else if (window.matchMedia("(max-height: 1080px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '25px';
         dateElement.style.fontSize = '15px';
         moscowTimeText.style.fontSize = '14px';
         // Устанавливаем отступ видеоплеера
-        videoPlayer.style.top = "-33%";
+        videoPlayer.style.top = "-35%";
     } 
 }
     
@@ -2227,62 +2227,66 @@ if (!("ontouchstart" in window)) {
         // Проверяем, поддерживает ли устройство события сенсорного ввода
 if (("ontouchstart" in window)) {
     // Устройство поддерживает сенсорный ввод, считаем его мобильным
-        // Адаптивный шрифт в портретном режиме
-        if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches) {
-            const textElement = document.querySelector(".text");
-            textElement.style.fontSize = '15px';
-            dateElement.style.fontSize = '11px';
-            // Устанавливаем отступ видеоплеера
-            videoPlayer.style.top = "-15%";
-        } else if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
-            const textElement = document.querySelector(".text");
-            textElement.style.fontSize = '19px';
-            dateElement.style.fontSize = '12px';
-            // Устанавливаем отступ видеоплеера
-            videoPlayer.style.top = "-15%";
-        } else if (window.matchMedia("(max-width: 800px) and (orientation: portrait)").matches) {
-            const textElement = document.querySelector(".text");
-            textElement.style.fontSize = '23px';
-            dateElement.style.fontSize = '13px';
-            // Устанавливаем отступ видеоплеера
-            videoPlayer.style.top = "-15%";
-        } else if (window.matchMedia("(max-width: 1080px) and (orientation: portrait)").matches) {
-            const textElement = document.querySelector(".text");
-            textElement.style.fontSize = '27px';
-            dateElement.style.fontSize = '15px';
-            // Устанавливаем отступ видеоплеера
-            videoPlayer.style.top = "-15%";
-        }
-    
-        // Адаптивный шрифт в альбомном режиме
-        if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matches) {
-            const textElement = document.querySelector(".text");
-            textElement.style.fontSize = '15px';
-            dateElement.style.fontSize = '11px';
-            // Устанавливаем отступ видеоплеера
-            videoPlayer.style.top = "-15%";
-        } else if (window.matchMedia("(max-height: 600px) and (orientation: landscape)").matches) {
-            const textElement = document.querySelector(".text");
-            textElement.style.fontSize = '19px';
-            dateElement.style.fontSize = '12px';
-            // Устанавливаем отступ видеоплеера
-            videoPlayer.style.top = "-15%";
-        } else if (window.matchMedia("(max-height: 800px) and (orientation: landscape)").matches) {
-            const textElement = document.querySelector(".text");
-            textElement.style.fontSize = '23px';
-            dateElement.style.fontSize = '13px';
-            // Устанавливаем отступ видеоплеера
-            videoPlayer.style.top = "-15%";
-        } else if (window.matchMedia("(max-height: 1080px) and (orientation: landscape)").matches) {
-            const textElement = document.querySelector(".text");
-            textElement.style.fontSize = '27px';
-            dateElement.style.fontSize = '15px';
-            // Устанавливаем отступ видеоплеера
-            videoPlayer.style.top = "-15%";
-        }
+    // Адаптивный шрифт в портретном режиме
+    if (window.matchMedia("(max-width: 500px) and (orientation: portrait)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '15px';
+        dateElement.style.fontSize = '11px';
+        // Устанавливаем отступ видеоплеера
+        videoPlayer.style.top = "-15%";
+    } else if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '19px';
+        dateElement.style.fontSize = '12px';
+        // Устанавливаем отступ видеоплеера
+        videoPlayer.style.top = "-15%";
+    } else if (window.matchMedia("(max-width: 800px) and (orientation: portrait)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '23px';
+        dateElement.style.fontSize = '13px';
+        // Устанавливаем отступ видеоплеера
+        videoPlayer.style.top = "-15%";
+    } else if (window.matchMedia("(max-width: 1080px) and (orientation: portrait)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '27px';
+        dateElement.style.fontSize = '15px';
+        // Устанавливаем отступ видеоплеера
+        videoPlayer.style.top = "-15%";
     }
 
-        // Проверяем, поддерживает ли устройство события сенсорного ввода
+    // Адаптивный шрифт в альбомном режиме
+    if (window.matchMedia("(max-height: 500px) and (orientation: landscape)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '13px';
+        dateElement.style.fontSize = '11px';
+        moscowTimeText.style.fontSize = '10px';
+        // Устанавливаем отступ видеоплеера
+        videoPlayer.style.top = "-25%";
+    } else if (window.matchMedia("(max-height: 600px) and (orientation: landscape)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '17px';
+        dateElement.style.fontSize = '12px';
+        moscowTimeText.style.fontSize = '11px';
+        // Устанавливаем отступ видеоплеера
+        videoPlayer.style.top = "-25%";
+    } else if (window.matchMedia("(max-height: 800px) and (orientation: landscape)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '21px';
+        dateElement.style.fontSize = '13px';
+        moscowTimeText.style.fontSize = '12px';
+        // Устанавливаем отступ видеоплеера
+        videoPlayer.style.top = "-25%";
+    } else if (window.matchMedia("(max-height: 1080px) and (orientation: landscape)").matches) {
+        const textElement = document.querySelector(".text");
+        textElement.style.fontSize = '25px';
+        dateElement.style.fontSize = '15px';
+        moscowTimeText.style.fontSize = '14px';
+        // Устанавливаем отступ видеоплеера
+        videoPlayer.style.top = "-25%";
+    } 
+}
+    
+    // Проверяем, поддерживает ли устройство события сенсорного ввода
 if (!("ontouchstart" in window)) {
     // Устройство не поддерживает сенсорный ввод, считаем его десктопным
 
