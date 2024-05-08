@@ -159,12 +159,12 @@ var HideTheCandleWhileSending = savedHideTheCandleWhileSending !== null ? savedH
 // Переменная "Скрывать свечу во время посыла"
 
 
+// Проверяем, есть ли сохраненное значение VoiceTheCommandmentsDuringTheMessage в локальном хранилище
+var savedVoiceTheCommandmentsDuringTheMessage = localStorage.getItem('VoiceTheCommandmentsDuringTheMessage');
 
-
-
-
-
-
+// Если значение сохранено, используем его; если нет, устанавливаем значение по умолчанию (false)
+var VoiceTheCommandmentsDuringTheMessage = savedVoiceTheCommandmentsDuringTheMessage !== null ? savedVoiceTheCommandmentsDuringTheMessage === "true" : false;
+// Переменная "Озвучивать заповеди во время посыла"
 
 
 
@@ -4095,6 +4095,13 @@ const qaPairs = [
     },
 
 
+    { 
+        questions: ["Включи озвучку Заповедей во время Посыла"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/turn_on.mp3",
+        type: "включение озвучки Заповедей во время Посыла" 
+    },
+
+
     
     // Другие вопросы и ответы
 ];
@@ -4217,7 +4224,8 @@ function startListening() {
         qa.type === "компактное Покаяние и Молитва" ||
         qa.type === "запрет компактное Покаяние и Молитва" ||
         qa.type === "скрытие свечи во время Посыла" ||
-        qa.type === "отображение свечи во время Посыла") {
+        qa.type === "отображение свечи во время Посыла" ||
+        qa.type === "включение озвучки Заповедей во время Посыла") {
             const audio = new Audio();
             audio.src = qa.answer; // Устанавливаем ссылку как источник аудиофайла 
             audio.play();
@@ -4371,6 +4379,16 @@ function startListening() {
                     HideTheCandleWhileSending = false; // Показываем свечу во время Посыла.
                     // Сохраняем значение в локальное хранилище
                     localStorage.setItem('HideTheCandleWhileSending', HideTheCandleWhileSending);
+
+                    });
+            } else if (qa.type === "включение озвучки Заповедей во время Посыла") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    
+                    VoiceTheCommandmentsDuringTheMessage = true; // Скрываем свечу во время Посыла.
+                    // Сохраняем значение в локальное хранилище
+                    localStorage.setItem('VoiceTheCommandmentsDuringTheMessage', VoiceTheCommandmentsDuringTheMessage);
+
 
                     });
             }
