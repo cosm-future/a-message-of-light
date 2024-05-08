@@ -151,6 +151,12 @@ var ZoomOutIntroduction = savedZoomOutIntroduction !== null ? savedZoomOutIntrod
 
 
 
+// Проверяем, есть ли сохраненное значение HideTheCandleWhileSending в локальном хранилище
+var savedHideTheCandleWhileSending = localStorage.getItem('HideTheCandleWhileSending');
+
+// Если значение сохранено, используем его; если нет, устанавливаем значение по умолчанию (false)
+var HideTheCandleWhileSending = savedHideTheCandleWhileSending !== null ? savedHideTheCandleWhileSending === "true" : false;
+// Переменная "Скрывать свечу во время посыла"
 
 
 
@@ -1830,11 +1836,11 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
 
 
-            if (isIntervalActive && hours === 8 && minutes >= 30 && minutes < 35) {
+            if (isIntervalActive && hours === 21 && minutes >= 50 && minutes < 55) {
                 IntervalNumber = 1;
             }
 
-            if (isIntervalActive && hours === 8 && minutes >= 35 && minutes < 40) {
+            if (isIntervalActive && hours === 21 && minutes >= 55) {
                 IntervalNumber = 2;
             }
 
@@ -1899,8 +1905,14 @@ var opacity = scrollPosition / maxScrollHeight;
     videoPlayer.style.opacity = opacity;
 });
 */
-           
-videoPlayer.style.opacity = "0.25";
+if(!HideTheCandleWhileSending) {
+    videoPlayer.display = 'block';
+    videoPlayer.style.opacity = "0.25";
+    } else {
+        videoPlayer.display = 'none';  
+        videoPlayer.style.opacity = "0"; 
+    }           
+
 
             // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
 if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-music.json') {
@@ -1929,7 +1941,13 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
             // Скрываем элемент
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
-            videoPlayer.display = 'block';
+            if(!HideTheCandleWhileSending) {
+                videoPlayer.display = 'block';
+  
+                } else {
+                    videoPlayer.display = 'none';  
+
+                }  
 
             
             /*
@@ -1994,9 +2012,13 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
             // Скрываем элемент
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
-            videoPlayer.display = 'block';
-            videoPlayer.style.opacity = "0.25";
-
+            if(!HideTheCandleWhileSending) {
+                videoPlayer.display = 'block';
+                videoPlayer.style.opacity = "0.25";
+                } else {
+                    videoPlayer.display = 'none';  
+                    videoPlayer.style.opacity = "0"; 
+                }  
             
             if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
@@ -2636,7 +2658,12 @@ var moscowTimeText = document.querySelector('.moscow-time');
               // Скрываем элемент
               watchElement.style.display = 'none';
               titleVisitorsElement.style.display = 'none';
-              videoPlayer.display = 'block';
+              if(!HideTheCandleWhileSending) {
+                videoPlayer.display = 'block';
+                } else {
+                    videoPlayer.display = 'none';   
+                }
+              
 
               if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
@@ -2734,7 +2761,11 @@ var moscowTimeText = document.querySelector('.moscow-time');
             // Скрываем элемент
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
-            videoPlayer.display = 'block';
+            if(!HideTheCandleWhileSending) {
+                videoPlayer.display = 'block';
+                } else {
+                    videoPlayer.display = 'none';   
+                }
 
 
             if(xBcF == 1 || xBcF == true || xBcF){
@@ -4051,6 +4082,18 @@ const qaPairs = [
     },
 
 
+    { 
+        questions: ["Скрой свечу во время Посыла"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/turn_off.mp3",
+        type: "скрытие свечи во время Посыла" 
+    },
+
+    { 
+        questions: ["Покажи свечу во время Посыла"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/turn_on.mp3",
+        type: "отображение свечи во время Посыла" 
+    },
+
 
     
     // Другие вопросы и ответы
@@ -4172,7 +4215,9 @@ function startListening() {
         qa.type === "скачать Доктрину" ||
         qa.type === "скачать Святую Русь" ||
         qa.type === "компактное Покаяние и Молитва" ||
-        qa.type === "запрет компактное Покаяние и Молитва") {
+        qa.type === "запрет компактное Покаяние и Молитва" ||
+        qa.type === "скрытие свечи во время Посыла" ||
+        qa.type === "отображение свечи во время Посыла") {
             const audio = new Audio();
             audio.src = qa.answer; // Устанавливаем ссылку как источник аудиофайла 
             audio.play();
@@ -4309,9 +4354,33 @@ function startListening() {
                     localStorage.setItem('ZoomOutIntroduction', ZoomOutIntroduction);
 
                     });
+            } else if (qa.type === "скрытие свечи во время Посыла") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    
+                    HideTheCandleWhileSending = true; // Скрываем свечу во время Посыла.
+                    // Сохраняем значение в локальное хранилище
+                    localStorage.setItem('HideTheCandleWhileSending', HideTheCandleWhileSending);
+
+
+                    });
+            } else if (qa.type === "отображение свечи во время Посыла") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    
+                    HideTheCandleWhileSending = false; // Показываем свечу во время Посыла.
+                    // Сохраняем значение в локальное хранилище
+                    localStorage.setItem('HideTheCandleWhileSending', HideTheCandleWhileSending);
+
+                    });
             }
 
 
+
+
+
+            
+            
             
             
         }
