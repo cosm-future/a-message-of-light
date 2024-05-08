@@ -1830,11 +1830,11 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
 
 
-            if (isIntervalActive && hours === 8 && minutes >= 15 && minutes < 20) {
+            if (isIntervalActive && hours === 8 && minutes >= 30 && minutes < 35) {
                 IntervalNumber = 1;
             }
 
-            if (isIntervalActive && hours === 8 && minutes >= 20 && minutes < 25) {
+            if (isIntervalActive && hours === 8 && minutes >= 35 && minutes < 40) {
                 IntervalNumber = 2;
             }
 
@@ -2165,28 +2165,28 @@ if (("ontouchstart" in window)) {
         dateElement.style.fontSize = '11px';
         moscowTimeText.style.fontSize = '10px';
         // Устанавливаем отступ видеоплеера
-        videoPlayer.style.top = "-30%";
+        videoPlayer.style.top = "-33%";
     } else if (window.matchMedia("(max-height: 600px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '17px';
         dateElement.style.fontSize = '12px';
         moscowTimeText.style.fontSize = '11px';
         // Устанавливаем отступ видеоплеера
-        videoPlayer.style.top = "-30%";
+        videoPlayer.style.top = "-33%";
     } else if (window.matchMedia("(max-height: 800px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '21px';
         dateElement.style.fontSize = '13px';
         moscowTimeText.style.fontSize = '12px';
         // Устанавливаем отступ видеоплеера
-        videoPlayer.style.top = "-30%";
+        videoPlayer.style.top = "-33%";
     } else if (window.matchMedia("(max-height: 1080px) and (orientation: landscape)").matches) {
         const textElement = document.querySelector(".text");
         textElement.style.fontSize = '25px';
         dateElement.style.fontSize = '15px';
         moscowTimeText.style.fontSize = '14px';
         // Устанавливаем отступ видеоплеера
-        videoPlayer.style.top = "-30%";
+        videoPlayer.style.top = "-33%";
     } 
 }
     
