@@ -1836,11 +1836,11 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
 
 
-            if (isIntervalActive && hours === 21 && minutes >= 50 && minutes < 55) {
+            if (isIntervalActive && hours === 22 && minutes >= 10 && minutes < 15) {
                 IntervalNumber = 1;
             }
 
-            if (isIntervalActive && hours === 21 && minutes >= 55) {
+            if (isIntervalActive && hours === 22 && minutes >= 15 && minutes < 20) {
                 IntervalNumber = 2;
             }
 
