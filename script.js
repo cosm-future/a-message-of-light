@@ -2561,6 +2561,40 @@ if (!("ontouchstart" in window)) {
         lineElement.style.transition = `width ${intervalDuration}s linear`;
         lineElement.style.width = "0"; // Устанавливаем ширину линии в начальное состояние
         container.scrollTop = 0;
+
+        // Переменная для отслеживания состояния проигрывания звука
+let soundPlayedCommandmentNumber = false;
+
+// Функция для проигрывания звука озвучки номера заповеди с задержкой
+function playSoundWithDelay(audioURL) {
+    setTimeout(function() {
+        if (!soundPlayedCommandmentNumber) {
+            let audio = new Audio(audioURL);
+            audio.play();
+            soundPlayedCommandmentNumber = true;
+        }
+    }, 2000); // Задержка в 2 секунды (2000 миллисекунд)
+}
+
+// Код озвучки номера заповеди во время часового посыла
+if (VoiceTheCommandmentsDuringTheMessage) {
+
+    // 1 заповедь
+    if (IntervalNumber == 1) {
+        playSoundWithDelay('https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/sounds-commandment-number/commandment_number_1.mp3');
+    }
+
+    // 2 заповедь
+    if (IntervalNumber == 2) {
+        playSoundWithDelay('https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/sounds-commandment-number/commandment_number_2.mp3');
+    }
+}
+
+
+        
+
+
+
         /*
         IntervalNumber = IntervalNumber + 1;
         */
@@ -4101,6 +4135,12 @@ const qaPairs = [
         type: "включение озвучки Заповедей во время Посыла" 
     },
 
+    { 
+        questions: ["Отключи озвучку Заповедей во время Посыла"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/turn_off.mp3",
+        type: "отключение озвучки Заповедей во время Посыла" 
+    },
+
 
     
     // Другие вопросы и ответы
@@ -4225,7 +4265,8 @@ function startListening() {
         qa.type === "запрет компактное Покаяние и Молитва" ||
         qa.type === "скрытие свечи во время Посыла" ||
         qa.type === "отображение свечи во время Посыла" ||
-        qa.type === "включение озвучки Заповедей во время Посыла") {
+        qa.type === "включение озвучки Заповедей во время Посыла" ||
+        qa.type === "отключение озвучки Заповедей во время Посыла") {
             const audio = new Audio();
             audio.src = qa.answer; // Устанавливаем ссылку как источник аудиофайла 
             audio.play();
@@ -4385,7 +4426,17 @@ function startListening() {
                 // Слушаем событие завершения воспроизведения аудио
                 audio.addEventListener('ended', function() {
                     
-                    VoiceTheCommandmentsDuringTheMessage = true; // Скрываем свечу во время Посыла.
+                    VoiceTheCommandmentsDuringTheMessage = true; // Включаем озвучку номеров заповедей во время часового Посыла.
+                    // Сохраняем значение в локальное хранилище
+                    localStorage.setItem('VoiceTheCommandmentsDuringTheMessage', VoiceTheCommandmentsDuringTheMessage);
+
+
+                    });
+            } else if (qa.type === "отключение озвучки Заповедей во время Посыла") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    
+                    VoiceTheCommandmentsDuringTheMessage = false; // Отключаем озвучку номеров заповедей во время часового Посыла.
                     // Сохраняем значение в локальное хранилище
                     localStorage.setItem('VoiceTheCommandmentsDuringTheMessage', VoiceTheCommandmentsDuringTheMessage);
 
