@@ -2588,6 +2588,16 @@ if (VoiceTheCommandmentsDuringTheMessage) {
     if (IntervalNumber == 4) {
         playSoundWithDelay('https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/sounds-commandment-number/commandment_number_2.mp3');
     }
+
+    // 3 заповедь
+    if (IntervalNumber == 5) {
+        playSoundWithDelay('https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/sounds-commandment-number/commandment_number_3.mp3');
+    }
+
+    // 4 заповедь
+    if (IntervalNumber == 6) {
+        playSoundWithDelay('https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/sounds-commandment-number/commandment_number_4.mp3');
+    }
 }
 
 
