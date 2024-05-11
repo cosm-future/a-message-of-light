@@ -2580,12 +2580,12 @@ function playSoundWithDelay(audioURL) {
 if (VoiceTheCommandmentsDuringTheMessage) {
 
     // 1 заповедь
-    if (IntervalNumber == 1) {
+    if (IntervalNumber == 3) {
         playSoundWithDelay('https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/sounds-commandment-number/commandment_number_1.mp3');
     }
 
     // 2 заповедь
-    if (IntervalNumber == 2) {
+    if (IntervalNumber == 4) {
         playSoundWithDelay('https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/sounds-commandment-number/commandment_number_2.mp3');
     }
 }
