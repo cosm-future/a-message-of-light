@@ -2598,6 +2598,36 @@ if (VoiceTheCommandmentsDuringTheMessage) {
     if (IntervalNumber == 6) {
         playSoundWithDelay('https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/sounds-commandment-number/commandment_number_4.mp3');
     }
+
+    // 5 заповедь
+    if (IntervalNumber == 7) {
+        playSoundWithDelay('https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/sounds-commandment-number/commandment_number_5.mp3');
+    }
+
+    // 6 заповедь
+    if (IntervalNumber == 8) {
+        playSoundWithDelay('https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/sounds-commandment-number/commandment_number_6.mp3');
+    }
+
+    // 7 заповедь
+    if (IntervalNumber == 9) {
+        playSoundWithDelay('https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/sounds-commandment-number/commandment_number_7.mp3');
+    }
+
+    // 8 заповедь
+    if (IntervalNumber == 10) {
+        playSoundWithDelay('https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/sounds-commandment-number/commandment_number_8.mp3');
+    }
+
+    // 9 заповедь
+    if (IntervalNumber == 11) {
+        playSoundWithDelay('https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/sounds-commandment-number/commandment_number_9.mp3');
+    }
+
+    // 10 заповедь
+    if (IntervalNumber == 12) {
+        playSoundWithDelay('https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/sounds-commandment-number/commandment_number_10.mp3');
+    }
 }
 
 
