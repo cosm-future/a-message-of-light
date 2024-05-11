@@ -159,6 +159,9 @@ var HideTheCandleWhileSending = savedHideTheCandleWhileSending !== null ? savedH
 // Переменная "Скрывать свечу во время посыла"
 
 
+
+
+
 // Проверяем, есть ли сохраненное значение VoiceTheCommandmentsDuringTheMessage в локальном хранилище
 var savedVoiceTheCommandmentsDuringTheMessage = localStorage.getItem('VoiceTheCommandmentsDuringTheMessage');
 
@@ -166,6 +169,16 @@ var savedVoiceTheCommandmentsDuringTheMessage = localStorage.getItem('VoiceTheCo
 var VoiceTheCommandmentsDuringTheMessage = savedVoiceTheCommandmentsDuringTheMessage !== null ? savedVoiceTheCommandmentsDuringTheMessage === "true" : false;
 // Переменная "Озвучивать заповеди во время посыла"
 
+
+
+
+
+// Проверяем, есть ли сохраненное значение VoiceTheCommandmentsDuringTheMessage в локальном хранилище
+var savedBoleroIsTurnedOffDuringSending = localStorage.getItem('BoleroIsTurnedOffDuringSending');
+
+// Если значение сохранено, используем его; если нет, устанавливаем значение по умолчанию (false)
+var BoleroIsTurnedOffDuringSending = savedBoleroIsTurnedOffDuringSending !== null ? savedBoleroIsTurnedOffDuringSending === "true" : false;
+// Переменная "Болеро выключено во время Посыла"
 
 
 
@@ -1643,7 +1656,12 @@ function getMoscowTimeSR() {
     updateJsonFile();
     
     if (isIntervalActive) {
+        // Если нет и есть запрет на проигрывание Болеро
+        if (!BoleroIsTurnedOffDuringSending) {
         jsonFileRandomMusic = 'main-music.json';
+        } else {
+            jsonFileRandomMusic = 'free-music.json';    
+        }
 // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
 if (audioPlayer.paused && isAudioActive) {
     audioPlayer.pause(); // Останавливаем текущее воспроизведение
@@ -1836,11 +1854,11 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
 
 
-            if (isIntervalActive && hours === 18 && minutes >= 20 && minutes < 25) {
+            if (isIntervalActive && hours === 9 && minutes >= 0 && minutes < 5) {
                 IntervalNumber = 1;
             }
 
-            if (isIntervalActive && hours === 18 && minutes >= 25 && minutes < 30) {
+            if (isIntervalActive && hours === 9 && minutes >= 5 && minutes < 10) {
                 IntervalNumber = 2;
             }
 
@@ -1881,7 +1899,12 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             
             // Вызов функции каждые 1 секунд
           if (isIntervalActive) {
+            // Если нет и есть запрет на проигрывание Болеро
+        if (!BoleroIsTurnedOffDuringSending) {
             jsonFileRandomMusic = 'main-music.json';
+            } else {
+                jsonFileRandomMusic = 'free-music.json';    
+            }
 
 
          /*   
@@ -1915,7 +1938,7 @@ if(!HideTheCandleWhileSending) {
 
 
             // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
-if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-music.json') {
+if (!messageRecordingPlayed && isAudioActive && (jsonFileRandomMusic == 'main-music.json' || jsonFileRandomMusic == 'free-music.json')) {
     audioPlayer.pause(); // Останавливаем текущее воспроизведение
 
     getRandomSong(); // Получаем следующую песню
@@ -2004,7 +2027,12 @@ if (!messageRecordingPlayed && isAudioActive && jsonFileRandomMusic == 'main-mus
 
           // Вызов функции каждые 1 секунд
           if (isIntervalActive) {
+            // Если нет и есть запрет на проигрывание Болеро
+        if (!BoleroIsTurnedOffDuringSending) {
             jsonFileRandomMusic = 'main-music.json';
+            } else {
+                jsonFileRandomMusic = 'free-music.json';    
+            }
             // Получаем ссылку на элемент по его id
             const watchElement = document.getElementById('watch');
             const titleVisitorsElement = document.getElementById('titleVisitors');
@@ -2724,7 +2752,12 @@ var moscowTimeText = document.querySelector('.moscow-time');
   
             // Вызов функции каждые 1 секунд
             if (isIntervalActive) {
-              jsonFileRandomMusic = 'main-music.json';
+              // Если нет и есть запрет на проигрывание Болеро
+        if (!BoleroIsTurnedOffDuringSending) {
+            jsonFileRandomMusic = 'main-music.json';
+            } else {
+                jsonFileRandomMusic = 'free-music.json';    
+            }
               // Получаем ссылку на элемент по его id
               const watchElement = document.getElementById('watch');
               const titleVisitorsElement = document.getElementById('titleVisitors');
@@ -2826,7 +2859,12 @@ var moscowTimeText = document.querySelector('.moscow-time');
         
         // Вызов функции каждые 1 секунд
         if (isIntervalActive) {
+            // Если нет и есть запрет на проигрывание Болеро
+        if (!BoleroIsTurnedOffDuringSending) {
             jsonFileRandomMusic = 'main-music.json';
+            } else {
+                jsonFileRandomMusic = 'free-music.json';    
+            }
             // Получаем ссылку на элемент по его id
             const watchElement = document.getElementById('watch');
             const titleVisitorsElement = document.getElementById('titleVisitors');
@@ -3474,7 +3512,12 @@ setInterval(displayRandomQuatrain, 5 * 60 * 1000);
 function updateJsonFile() {
 
     if (isIntervalActive) {
-        jsonFileRandomMusic = 'main-music.json';
+        // Если нет и есть запрет на проигрывание Болеро
+        if (!BoleroIsTurnedOffDuringSending) {
+            jsonFileRandomMusic = 'main-music.json';
+            } else {
+                jsonFileRandomMusic = 'free-music.json';    
+            }
     } else {
         jsonFileRandomMusic = 'free-music.json';
     }
@@ -4181,7 +4224,20 @@ const qaPairs = [
         type: "отключение озвучки Заповедей во время Посыла" 
     },
 
+    
+    { 
+        questions: ["Отключи Болеро во время Посыла"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/turn_off.mp3",
+        type: "отключение Болеро во время Посыла" 
+    },
 
+    { 
+        questions: ["Включи Болеро во время Посыла"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/turn_on.mp3",
+        type: "включение Болеро во время Посыла" 
+    },
+
+    
     
     // Другие вопросы и ответы
 ];
@@ -4306,7 +4362,9 @@ function startListening() {
         qa.type === "скрытие свечи во время Посыла" ||
         qa.type === "отображение свечи во время Посыла" ||
         qa.type === "включение озвучки Заповедей во время Посыла" ||
-        qa.type === "отключение озвучки Заповедей во время Посыла") {
+        qa.type === "отключение озвучки Заповедей во время Посыла" ||
+        qa.type === "отключение Болеро во время Посыла" ||
+        qa.type === "включение Болеро во время Посыла") {
             const audio = new Audio();
             audio.src = qa.answer; // Устанавливаем ссылку как источник аудиофайла 
             audio.play();
@@ -4479,6 +4537,26 @@ function startListening() {
                     VoiceTheCommandmentsDuringTheMessage = false; // Отключаем озвучку номеров заповедей во время часового Посыла.
                     // Сохраняем значение в локальное хранилище
                     localStorage.setItem('VoiceTheCommandmentsDuringTheMessage', VoiceTheCommandmentsDuringTheMessage);
+
+
+                    });
+            } else if (qa.type === "отключение Болеро во время Посыла") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    
+                    BoleroIsTurnedOffDuringSending = true; // Отключаем Болеро во время Посыла.
+                    // Сохраняем значение в локальное хранилище
+                    localStorage.setItem('BoleroIsTurnedOffDuringSending', BoleroIsTurnedOffDuringSending);
+
+
+                    });
+            } else if (qa.type === "включение Болеро во время Посыла") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    
+                    BoleroIsTurnedOffDuringSending = false; // Включаем Болеро во время Посыла.
+                    // Сохраняем значение в локальное хранилище
+                    localStorage.setItem('BoleroIsTurnedOffDuringSending', BoleroIsTurnedOffDuringSending);
 
 
                     });
