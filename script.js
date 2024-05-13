@@ -195,6 +195,12 @@ var TheBellIsTurnedOffDuringSending = savedTheBellIsTurnedOffDuringSending !== n
 
 
 
+// Проверяем, есть ли сохраненное значение DonTShowQuadruples в локальном хранилище
+var savedDonTShowQuadruples = localStorage.getItem('DonTShowQuadruples');
+
+// Если значение сохранено, используем его; если нет, устанавливаем значение по умолчанию (false)
+var DonTShowQuadruples = savedDonTShowQuadruples !== null ? savedDonTShowQuadruples === "true" : false;
+// Переменная "Не показывать четверостишья"
 
 
  // Клиентский ID вашего счетчика
@@ -239,9 +245,17 @@ let eventType = "";
 let isIntervalActive;
 let isButtonClicked = false; // Флаг, указывающий, был ли уже выполнен клик по кнопке
 
+let quatrainsOrCommandments; // Катрены, либо Заповеди, переменная содержит ссылку на джейсон файл.
 
+// Показываем четверостишься, либо нет.
+if(!DonTShowQuadruples) {
+    quatrainsOrCommandments = 'quatrains.json';
+} else {
+    quatrainsOrCommandments = 'commandments.json';
+}
 
 let quatrains;
+
 
 fetch('quatrains.json')
   .then(response => response.json())
@@ -4271,6 +4285,20 @@ const qaPairs = [
     },
 
 
+    { 
+        questions: ["Переключись на Заповеди"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/switching.mp3",
+        type: "не показывать четверостишья" 
+    },
+
+
+    { 
+        questions: ["Переключись на Катрены"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/switching.mp3",
+        type: "показывать четверостишья" 
+    },
+
+    
     
     
     // Другие вопросы и ответы
@@ -4400,7 +4428,9 @@ function startListening() {
         qa.type === "отключение Болеро во время Посыла" ||
         qa.type === "включение Болеро во время Посыла" ||
         qa.type === "отключение колокола во время Посыла" ||
-        qa.type === "включение колокола во время Посыла") {
+        qa.type === "включение колокола во время Посыла" ||
+        qa.type === "не показывать четверостишья" ||
+        qa.type === "показывать четверостишья") {
             const audio = new Audio();
             audio.src = qa.answer; // Устанавливаем ссылку как источник аудиофайла 
             audio.play();
@@ -4617,6 +4647,24 @@ function startListening() {
                     TheBellIsTurnedOffDuringSending = false; // Отключаем запрет Колокола во время Посыла.
                     // Сохраняем значение в локальное хранилище
                     localStorage.setItem('TheBellIsTurnedOffDuringSending', TheBellIsTurnedOffDuringSending);
+
+                    });
+            } else if (qa.type === "не показывать четверостишья") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    
+                    DonTShowQuadruples = true; // Отключаем отображение четверостиший и показываем заповеди.
+                    // Сохраняем значение в локальное хранилище
+                    localStorage.setItem('DonTShowQuadruples', DonTShowQuadruples);
+
+                    });
+            } else if (qa.type === "показывать четверостишья") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    
+                    DonTShowQuadruples = false; // Включаем отображение четверостиший.
+                    // Сохраняем значение в локальное хранилище
+                    localStorage.setItem('DonTShowQuadruples', DonTShowQuadruples);
 
                     });
             }
