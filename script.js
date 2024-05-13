@@ -1664,7 +1664,7 @@ function getMoscowTimeSR() {
 
     
         } else {
-            jsonFileRandomMusic = 'free-music.json'; 
+            jsonFileRandomMusic = 'radio-music.json'; 
                
         }
 // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
@@ -1859,11 +1859,11 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
 
 
-            if (isIntervalActive && hours === 9 && minutes >= 30 && minutes < 35) {
+            if (isIntervalActive && hours === 10 && minutes >= 5 && minutes < 10) {
                 IntervalNumber = 1;
             }
 
-            if (isIntervalActive && hours === 9 && minutes >= 35 && minutes < 40) {
+            if (isIntervalActive && hours === 10 && minutes >= 10 && minutes < 15) {
                 IntervalNumber = 2;
             }
 
@@ -1908,7 +1908,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
         if (!BoleroIsTurnedOffDuringSending) {
             jsonFileRandomMusic = 'main-music.json';
             } else {
-                jsonFileRandomMusic = 'free-music.json';    
+                jsonFileRandomMusic = 'radio-music.json';    
             }
 
 
@@ -1943,7 +1943,7 @@ if(!HideTheCandleWhileSending) {
 
 
             // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
-if (!messageRecordingPlayed && isAudioActive && (jsonFileRandomMusic == 'main-music.json' || jsonFileRandomMusic == 'free-music.json')) {
+if (!messageRecordingPlayed && isAudioActive && (jsonFileRandomMusic == 'main-music.json' || jsonFileRandomMusic == 'radio-music.json')) {
     audioPlayer.pause(); // Останавливаем текущее воспроизведение
 
     getRandomSong(); // Получаем следующую песню
@@ -2036,7 +2036,7 @@ if (!messageRecordingPlayed && isAudioActive && (jsonFileRandomMusic == 'main-mu
         if (!BoleroIsTurnedOffDuringSending) {
             jsonFileRandomMusic = 'main-music.json';
             } else {
-                jsonFileRandomMusic = 'free-music.json';    
+                jsonFileRandomMusic = 'radio-music.json';    
             }
             // Получаем ссылку на элемент по его id
             const watchElement = document.getElementById('watch');
@@ -2761,7 +2761,7 @@ var moscowTimeText = document.querySelector('.moscow-time');
         if (!BoleroIsTurnedOffDuringSending) {
             jsonFileRandomMusic = 'main-music.json';
             } else {
-                jsonFileRandomMusic = 'free-music.json';    
+                jsonFileRandomMusic = 'radio-music.json';    
             }
               // Получаем ссылку на элемент по его id
               const watchElement = document.getElementById('watch');
@@ -2868,7 +2868,7 @@ var moscowTimeText = document.querySelector('.moscow-time');
         if (!BoleroIsTurnedOffDuringSending) {
             jsonFileRandomMusic = 'main-music.json';
             } else {
-                jsonFileRandomMusic = 'free-music.json';    
+                jsonFileRandomMusic = 'radio-music.json';    
             }
             // Получаем ссылку на элемент по его id
             const watchElement = document.getElementById('watch');
@@ -3521,7 +3521,7 @@ function updateJsonFile() {
         if (!BoleroIsTurnedOffDuringSending) {
             jsonFileRandomMusic = 'main-music.json';
             } else {
-                jsonFileRandomMusic = 'free-music.json';    
+                jsonFileRandomMusic = 'radio-music.json';    
             }
     } else {
         jsonFileRandomMusic = 'free-music.json';
@@ -4553,18 +4553,8 @@ function startListening() {
                     // Сохраняем значение в локальное хранилище
                     localStorage.setItem('BoleroIsTurnedOffDuringSending', BoleroIsTurnedOffDuringSending);
 
-                    audioPlayer.pause(); // Останавливаем текущее воспроизведение
-    audioPlayer.src = song_link; // Устанавливаем новую песню в качестве источника для аудиоплеера
-    audioPlayer.load(); // Загружаем новую песню
-    // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
-    audioPlayer.addEventListener('loadedmetadata', function() {
-        audioPlayer.play().then(_ => {
-            // Обработчик успешного запуска воспроизведения
-            // console.log('Воспроизведение начато');
-        }).catch(error => {
-            // Обработчик ошибки запуска воспроизведения
-            // console.error('Ошибка запуска воспроизведения:', error);
-        })});
+                    // Перезагружаем страницу
+                    location.reload();
 
 
                     });
@@ -4576,18 +4566,8 @@ function startListening() {
                     // Сохраняем значение в локальное хранилище
                     localStorage.setItem('BoleroIsTurnedOffDuringSending', BoleroIsTurnedOffDuringSending);
 
-                    audioPlayer.pause(); // Останавливаем текущее воспроизведение
-    audioPlayer.src = song_link; // Устанавливаем новую песню в качестве источника для аудиоплеера
-    audioPlayer.load(); // Загружаем новую песню
-    // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
-    audioPlayer.addEventListener('loadedmetadata', function() {
-        audioPlayer.play().then(_ => {
-            // Обработчик успешного запуска воспроизведения
-            // console.log('Воспроизведение начато');
-        }).catch(error => {
-            // Обработчик ошибки запуска воспроизведения
-            // console.error('Ошибка запуска воспроизведения:', error);
-        })});
+                    // Перезагружаем страницу
+                    location.reload();
 
                     });
             }
