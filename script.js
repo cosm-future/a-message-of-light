@@ -173,12 +173,25 @@ var VoiceTheCommandmentsDuringTheMessage = savedVoiceTheCommandmentsDuringTheMes
 
 
 
-// Проверяем, есть ли сохраненное значение VoiceTheCommandmentsDuringTheMessage в локальном хранилище
+// Проверяем, есть ли сохраненное значение BoleroIsTurnedOffDuringSending в локальном хранилище
 var savedBoleroIsTurnedOffDuringSending = localStorage.getItem('BoleroIsTurnedOffDuringSending');
 
 // Если значение сохранено, используем его; если нет, устанавливаем значение по умолчанию (false)
 var BoleroIsTurnedOffDuringSending = savedBoleroIsTurnedOffDuringSending !== null ? savedBoleroIsTurnedOffDuringSending === "true" : false;
 // Переменная "Болеро выключено во время Посыла"
+
+
+
+
+
+
+// Проверяем, есть ли сохраненное значение TheBellIsTurnedOffDuringSending в локальном хранилище
+var savedTheBellIsTurnedOffDuringSending = localStorage.getItem('TheBellIsTurnedOffDuringSending');
+
+// Если значение сохранено, используем его; если нет, устанавливаем значение по умолчанию (false)
+var TheBellIsTurnedOffDuringSending = savedTheBellIsTurnedOffDuringSending !== null ? savedTheBellIsTurnedOffDuringSending === "true" : false;
+// Переменная "Колокол выключен во время посыла"
+
 
 
 
@@ -3482,9 +3495,12 @@ function ReverseContainer(value) {
 
 
 function playSoundAndVibration() {
+
+    if (!TheBellIsTurnedOffDuringSending) {
     // Воспроизводим звук
     const audio = new Audio('https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/sound/sound_of_a_bell.mp3');
     audio.play();
+    }
 
     // Воспроизводим вибрацию
     if (navigator.vibrate) {
@@ -4242,6 +4258,19 @@ const qaPairs = [
         type: "включение Болеро во время Посыла" 
     },
 
+    { 
+        questions: ["Отключи колокол во время Посыла"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/turn_off.mp3",
+        type: "отключение колокола во время Посыла" 
+    },
+
+    { 
+        questions: ["Включи колокол во время Посыла"], 
+        answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/turn_on.mp3",
+        type: "включение колокола во время Посыла" 
+    },
+
+
     
     
     // Другие вопросы и ответы
@@ -4369,7 +4398,9 @@ function startListening() {
         qa.type === "включение озвучки Заповедей во время Посыла" ||
         qa.type === "отключение озвучки Заповедей во время Посыла" ||
         qa.type === "отключение Болеро во время Посыла" ||
-        qa.type === "включение Болеро во время Посыла") {
+        qa.type === "включение Болеро во время Посыла" ||
+        qa.type === "отключение колокола во время Посыла" ||
+        qa.type === "включение колокола во время Посыла") {
             const audio = new Audio();
             audio.src = qa.answer; // Устанавливаем ссылку как источник аудиофайла 
             audio.play();
@@ -4568,6 +4599,24 @@ function startListening() {
 
                     // Перезагружаем страницу
                     location.reload();
+
+                    });
+            } else if (qa.type === "отключение колокола во время Посыла") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    
+                    TheBellIsTurnedOffDuringSending = true; // Включаем запрет Колокола во время Посыла.
+                    // Сохраняем значение в локальное хранилище
+                    localStorage.setItem('TheBellIsTurnedOffDuringSending', TheBellIsTurnedOffDuringSending);
+
+                    });
+            } else if (qa.type === "включение колокола во время Посыла") {
+                // Слушаем событие завершения воспроизведения аудио
+                audio.addEventListener('ended', function() {
+                    
+                    TheBellIsTurnedOffDuringSending = false; // Отключаем запрет Колокола во время Посыла.
+                    // Сохраняем значение в локальное хранилище
+                    localStorage.setItem('TheBellIsTurnedOffDuringSending', TheBellIsTurnedOffDuringSending);
 
                     });
             }
