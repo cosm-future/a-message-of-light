@@ -1659,8 +1659,13 @@ function getMoscowTimeSR() {
         // Если нет и есть запрет на проигрывание Болеро
         if (!BoleroIsTurnedOffDuringSending) {
         jsonFileRandomMusic = 'main-music.json';
+
+    
+
+    
         } else {
-            jsonFileRandomMusic = 'free-music.json';    
+            jsonFileRandomMusic = 'free-music.json'; 
+               
         }
 // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
 if (audioPlayer.paused && isAudioActive) {
@@ -1854,11 +1859,11 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
 
 
-            if (isIntervalActive && hours === 9 && minutes >= 0 && minutes < 5) {
+            if (isIntervalActive && hours === 9 && minutes >= 30 && minutes < 35) {
                 IntervalNumber = 1;
             }
 
-            if (isIntervalActive && hours === 9 && minutes >= 5 && minutes < 10) {
+            if (isIntervalActive && hours === 9 && minutes >= 35 && minutes < 40) {
                 IntervalNumber = 2;
             }
 
@@ -4548,6 +4553,19 @@ function startListening() {
                     // Сохраняем значение в локальное хранилище
                     localStorage.setItem('BoleroIsTurnedOffDuringSending', BoleroIsTurnedOffDuringSending);
 
+                    audioPlayer.pause(); // Останавливаем текущее воспроизведение
+    audioPlayer.src = song_link; // Устанавливаем новую песню в качестве источника для аудиоплеера
+    audioPlayer.load(); // Загружаем новую песню
+    // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
+    audioPlayer.addEventListener('loadedmetadata', function() {
+        audioPlayer.play().then(_ => {
+            // Обработчик успешного запуска воспроизведения
+            // console.log('Воспроизведение начато');
+        }).catch(error => {
+            // Обработчик ошибки запуска воспроизведения
+            // console.error('Ошибка запуска воспроизведения:', error);
+        })});
+
 
                     });
             } else if (qa.type === "включение Болеро во время Посыла") {
@@ -4558,6 +4576,18 @@ function startListening() {
                     // Сохраняем значение в локальное хранилище
                     localStorage.setItem('BoleroIsTurnedOffDuringSending', BoleroIsTurnedOffDuringSending);
 
+                    audioPlayer.pause(); // Останавливаем текущее воспроизведение
+    audioPlayer.src = song_link; // Устанавливаем новую песню в качестве источника для аудиоплеера
+    audioPlayer.load(); // Загружаем новую песню
+    // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
+    audioPlayer.addEventListener('loadedmetadata', function() {
+        audioPlayer.play().then(_ => {
+            // Обработчик успешного запуска воспроизведения
+            // console.log('Воспроизведение начато');
+        }).catch(error => {
+            // Обработчик ошибки запуска воспроизведения
+            // console.error('Ошибка запуска воспроизведения:', error);
+        })});
 
                     });
             }
