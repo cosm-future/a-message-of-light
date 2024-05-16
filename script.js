@@ -257,7 +257,7 @@ if(!DonTShowQuadruples) {
 let quatrains;
 
 
-fetch('quatrains.json')
+fetch(quatrainsOrCommandments)
   .then(response => response.json())
   .then(data => {
     quatrains = data;
