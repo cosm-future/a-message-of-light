@@ -1856,6 +1856,9 @@ content: ''; /* Обязательно для псевдоэлементов */
   top: 1%;
   transition: background-color 0.3s, color 0.3s; /* Плавный переход цвета фона и текста при наведении */
   z-index: 99;
+
+
+
 }
 
 .quatrain::after {
@@ -1890,6 +1893,7 @@ content: ''; /* Обязательно для псевдоэлементов */
         padding: 10px;
         margin-top: 10px;
         margin-right: 10px;
+        
     }
   }
 
