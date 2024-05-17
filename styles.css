@@ -1451,7 +1451,7 @@ content: ''; /* Обязательно для псевдоэлементов */
     position: fixed;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: top;
     align-items: center;
     top: 50%;
     left: 50%;
@@ -1533,6 +1533,21 @@ content: ''; /* Обязательно для псевдоэлементов */
     border-radius: 15px 70px 70px 15px; /* Радиус скругления углов полосы */
     
 }
+
+
+
+.commandmentsClass {
+    position: relative;
+    font-family: 'Play';
+    background-color: rgba(128, 0, 128, 0.2); /* Фиолетовый полупрозрачный фон */
+    border: 1px solid rgba(211, 211, 211, 0.5); /* Светло-серая полупрозрачная рамка */
+    backdrop-filter: blur(5px); /* Блюр 5 пикселей */
+    padding: 10px; /* Отступы внутри контейнера */
+    margin-top: 15px;
+    border-radius: 10px; /* Скругленные углы */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень для объема */
+}
+
 
 
 

@@ -694,7 +694,33 @@ function toggleHamburger() {
 
 
 
-        
+        // Создаем контейнер "заповеди"
+        const commandmentsContainer = document.createElement('div');
+        commandmentsContainer.id = 'commandments-container';
+        commandmentsContainer.classList.add('commandmentsClass');
+
+        // Многострочный текст с сохранением разрывов строк
+const commandmentsContainertextContent = `
+<b><u>Заповеди Движения Творца</u></b> <br>
+1. Мы все равны перед Богом и нет среди нас Первых или Последних.<br>
+2. Мы есмь Единое духовное целое.<br>
+3. Нас объединяет \"ОДНА ЦЕЛЬ\" и принцип \"ОДИН ЗА ВСЕХ И ВСЕ ЗА ОДНОГО\".<br>
+4. Мы есмь Духовные Учителя Света для мира сего, ибо знаем \"КАК\".<br>
+5. Мы принимаем ответственность за свой промысел перед Богом и перед людьми.<br>
+6. Мы есмь в Боге, как и Бог есмь в нас.<br>
+7. Мы вечны, как и вечна Вселенная.<br>
+8. Мы едины с Богом и промысел Бога есмь наш промысел, как и наш промысел есмь промысел Бога.<br>
+9. Нет у нас иных Богов, кроме Творящего Начала Начал.<br>
+10. Наш промысел есмь промысел, подчиненный канонам Вечности и Структуре Мироздания!
+`;
+
+// Создаем элемент для текста и добавляем его в контейнер
+const commandmentsContainertextElement = document.createElement('p');
+commandmentsContainertextElement.innerHTML = commandmentsContainertextContent;
+commandmentsContainer.appendChild(commandmentsContainertextElement);
+
+// Добавляем контейнер "заповеди" в основной контейнер
+newMenuContainer.appendChild(commandmentsContainer);
         
 
         // Добавляем контейнер в тело документа
