@@ -694,6 +694,11 @@ function toggleHamburger() {
 
 
 
+        // Создаем заголовок "Ссылки на основные ресурсы"
+        const title3 = document.createElement('h2');
+        title3.textContent = 'Помощь:';
+        newMenuContainer.appendChild(title3);
+
         // Создаем контейнер "заповеди"
 const commandmentsContainer = document.createElement('div');
 commandmentsContainer.id = 'commandments-container';
@@ -721,7 +726,7 @@ commandmentsContainer.appendChild(commandmentsContainerTextElement);
 
 // Создаем кнопку для сворачивания/разворачивания
 const toggleCommandmentsButton = document.createElement('button');
-toggleCommandmentsButton.classList.add('toggleButtonClass');
+toggleCommandmentsButton.classList.add('ExitRNT2');
 
 // Функция для обновления состояния кнопки и контейнера
 function updateUI() {
