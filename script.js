@@ -695,17 +695,17 @@ function toggleHamburger() {
 
 
         // Создаем контейнер "заповеди"
-        const commandmentsContainer = document.createElement('div');
-        commandmentsContainer.id = 'commandments-container';
-        commandmentsContainer.classList.add('commandmentsClass');
+const commandmentsContainer = document.createElement('div');
+commandmentsContainer.id = 'commandments-container';
+commandmentsContainer.classList.add('commandmentsClass');
 
-        // Многострочный текст с сохранением разрывов строк
-const commandmentsContainertextContent = `
+// Многострочный текст с сохранением разрывов строк
+const commandmentsContainerTextContent = `
 <b><u>Заповеди Движения Творца</u></b> <br>
 1. Мы все равны перед Богом и нет среди нас Первых или Последних.<br>
 2. Мы есмь Единое духовное целое.<br>
-3. Нас объединяет \"ОДНА ЦЕЛЬ\" и принцип \"ОДИН ЗА ВСЕХ И ВСЕ ЗА ОДНОГО\".<br>
-4. Мы есмь Духовные Учителя Света для мира сего, ибо знаем \"КАК\".<br>
+3. Нас объединяет "ОДНА ЦЕЛЬ" и принцип "ОДИН ЗА ВСЕХ И ВСЕ ЗА ОДНОГО".<br>
+4. Мы есмь Духовные Учителя Света для мира сего, ибо знаем "КАК".<br>
 5. Мы принимаем ответственность за свой промысел перед Богом и перед людьми.<br>
 6. Мы есмь в Боге, как и Бог есмь в нас.<br>
 7. Мы вечны, как и вечна Вселенная.<br>
@@ -715,12 +715,42 @@ const commandmentsContainertextContent = `
 `;
 
 // Создаем элемент для текста и добавляем его в контейнер
-const commandmentsContainertextElement = document.createElement('p');
-commandmentsContainertextElement.innerHTML = commandmentsContainertextContent;
-commandmentsContainer.appendChild(commandmentsContainertextElement);
+const commandmentsContainerTextElement = document.createElement('p');
+commandmentsContainerTextElement.innerHTML = commandmentsContainerTextContent;
+commandmentsContainer.appendChild(commandmentsContainerTextElement);
 
-// Добавляем контейнер "заповеди" в основной контейнер
+// Создаем кнопку для сворачивания/разворачивания
+const toggleCommandmentsButton = document.createElement('button');
+toggleCommandmentsButton.classList.add('toggleButtonClass');
+
+// Функция для обновления состояния кнопки и контейнера
+function updateUI() {
+    const isHidden = localStorage.getItem('commandmentsHidden') === 'true';
+    if (isHidden) {
+        commandmentsContainer.style.display = 'none';
+        toggleCommandmentsButton.textContent = 'Показать Заповеди';
+    } else {
+        commandmentsContainer.style.display = 'block';
+        toggleCommandmentsButton.textContent = 'Скрыть Заповеди';
+    }
+}
+
+// Устанавливаем начальное состояние UI
+updateUI();
+
+// Добавляем обработчик события для кнопки
+toggleCommandmentsButton.addEventListener('click', function() {
+    const isHidden = commandmentsContainer.style.display === 'none';
+    localStorage.setItem('commandmentsHidden', isHidden ? 'false' : 'true');
+    updateUI();
+});
+
+// Добавляем кнопку и контейнер в основной контейнер
+newMenuContainer.appendChild(toggleCommandmentsButton);
 newMenuContainer.appendChild(commandmentsContainer);
+
+
+
         
 
         // Добавляем контейнер в тело документа
