@@ -598,7 +598,7 @@ function toggleHamburger() {
 
         // Создаем заголовок "Ссылки на основные ресурсы"
         const title1 = document.createElement('h2');
-        title1.textContent = 'Ссылки на основные ресурсы:';
+        title1.textContent = 'Ссылки на основные интернет ресурсы:';
         newMenuContainer.appendChild(title1);
 
         // Создаем кнопку Академия с ссылкой
@@ -637,7 +637,7 @@ function toggleHamburger() {
 
         // Создаем заголовок "Прочее"
         const title2 = document.createElement('h2');
-        title2.textContent = 'Прочее:';
+        title2.textContent = 'Прочие интернет ресурсы:';
         newMenuContainer.appendChild(title2);
 
 
@@ -696,7 +696,7 @@ function toggleHamburger() {
 
         // Создаем заголовок "Ссылки на основные ресурсы"
         const title3 = document.createElement('h2');
-        title3.textContent = 'Помощь:';
+        title3.textContent = 'Интерактивная помощь:';
         newMenuContainer.appendChild(title3);
 
         // Создаем контейнер "заповеди"
