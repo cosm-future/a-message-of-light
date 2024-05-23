@@ -3,6 +3,10 @@ function getOrientation() {
     return window.innerWidth > window.innerHeight ? 'landscape' : 'portrait';
 }
 
+// Объявляем глобальную переменную для отслеживания текущего времени интервала
+let currentIntervalTime = 0;
+let intervalTimeUpdater = null; // Переменная для хранения идентификатора интервала
+
 // Функция для создания элементов
 function createElements() {
     // Создаем элементы для первого блока
@@ -1937,11 +1941,11 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
 
 
-            if (isIntervalActive && hours === 21 && minutes >= 45 && minutes < 50) {
+            if (isIntervalActive && hours === 22 && minutes >= 20 && minutes < 25) {
                 IntervalNumber = 1;
             }
 
-            if (isIntervalActive && hours === 21 && minutes >= 50 && minutes < 55) {
+            if (isIntervalActive && hours === 22 && minutes >= 25 && minutes < 30) {
                 IntervalNumber = 2;
             }
 
@@ -2673,7 +2677,15 @@ if (!("ontouchstart" in window)) {
         lineElement.style.width = "0"; // Устанавливаем ширину линии в начальное состояние
         container.scrollTop = 0;
 
-        // Переменная для отслеживания состояния проигрывания звука
+
+
+        
+
+
+
+
+
+        // Переменная для отслеживания состояния проигрывания звука 
 let soundPlayedCommandmentNumber = false;
 
 // Функция для проигрывания звука озвучки номера заповеди с задержкой
@@ -2741,8 +2753,14 @@ if (VoiceTheCommandmentsDuringTheMessage) {
     }
 }
 
+// Сброс текущего времени интервала
+currentIntervalTime = 0;
 
-        
+        // Обновляем текущего времени интервала каждую секунду
+    intervalTimeUpdater = setInterval(() => {
+        currentIntervalTime++;
+        console.log(`Current Interval Time: ${currentIntervalTime}s`);
+    }, 1000);
 
 
 
@@ -2766,6 +2784,12 @@ if (VoiceTheCommandmentsDuringTheMessage) {
             setTimeout(() => {
                 lineElement.remove();
                 lineElement = null;
+                
+                // Очищаем интервал обновления времени
+            clearInterval(intervalTimeUpdater);
+            intervalTimeUpdater = null;
+
+
                 const nextInterval = json.find(next => {
                     const startTime = new Date();
                     startTime.setHours(next.from.hour, next.from.minute, 0);
