@@ -1941,11 +1941,11 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
 
 
-            if (isIntervalActive && hours === 22 && minutes >= 20 && minutes < 25) {
+            if (isIntervalActive && hours === 22 && minutes >= 40 && minutes < 45) {
                 IntervalNumber = 1;
             }
 
-            if (isIntervalActive && hours === 22 && minutes >= 25 && minutes < 30) {
+            if (isIntervalActive && hours === 22 && minutes >= 45 && minutes < 50) {
                 IntervalNumber = 2;
             }
 
@@ -2753,8 +2753,44 @@ if (VoiceTheCommandmentsDuringTheMessage) {
     }
 }
 
+
+
+// Время начала интервалов
+const startTimes = [
+    { hour: 2, minute: 55 },
+    { hour: 2, minute: 30 },
+    { hour: 10, minute: 55 },
+    { hour: 11, minute: 0 },
+    { hour: 22, minute: 40 },
+    { hour: 22, minute: 45 }
+];
+
+// Функция для вычисления прошедшего времени с начала интервала
+function calculateIntervalTime(startHour, startMinute) {
+    const currentTimeInMinutes = hours * 60 + minutes;
+    const startTimeInMinutes = startHour * 60 + startMinute;
+    return currentTimeInMinutes - startTimeInMinutes;
+}
+
+// Проверяем, попадает ли текущее время в один из интервалов (не более 5 минут назад)
+for (const startTime of startTimes) {
+    const elapsedMinutes = calculateIntervalTime(startTime.hour, startTime.minute);
+    if (elapsedMinutes >= 0 && elapsedMinutes <= 5) {
+        currentIntervalTime = elapsedMinutes * 60; // Переводим минуты в секунды
+        break;
+    }
+}
+
+
+
+
+
+
+
 // Сброс текущего времени интервала
+/*
 currentIntervalTime = 0;
+*/
 
         // Обновляем текущего времени интервала каждую секунду
     intervalTimeUpdater = setInterval(() => {
