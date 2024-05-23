@@ -12,8 +12,8 @@ const startTimes = [
     { hour: 2, minute: 30 },
     { hour: 10, minute: 55 },
     { hour: 11, minute: 0 },
-    { hour: 23, minute: 30 },
-    { hour: 23, minute: 35 }
+    { hour: 18, minute: 55 },
+    { hour: 19, minute: 0 }
 ];
 
 // Функция для создания элементов
@@ -1769,19 +1769,14 @@ if (audioPlayer.paused && isAudioActive) {
 
     // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
     audioPlayer.addEventListener('loadedmetadata', function() {
-        // Используем те же startTimes для вычисления прошедшего времени
-        let playbackStartTime = 0;
-        for (const startTime of startTimes) {
-            const elapsedMinutes = calculateIntervalTime(startTime.hour, startTime.minute);
-            if (elapsedMinutes >= 0 && elapsedMinutes <= 5) {
-                playbackStartTime = elapsedMinutes * 60 + now.getSeconds(); // Переводим минуты в секунды и добавляем секунды
-                break;
-            }
-        }
-        audioPlayer.currentTime = playbackStartTime; // Устанавливаем текущее время для воспроизведения
+        /*
+        audioPlayer.currentTime = currentIntervalTime; // Устанавливаем текущее время для воспроизведения
+        */
         audioPlayer.play().then(_ => {
-            console.log('Воспроизведение начато с времени:', playbackStartTime);
+            // Обработчик успешного запуска воспроизведения
+            console.log('Воспроизведение начато с времени:', currentIntervalTime);
         }).catch(error => {
+            // Обработчик ошибки запуска воспроизведения
             console.error('Ошибка запуска воспроизведения:', error);
         });
     });
@@ -1958,11 +1953,11 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
 
 
-            if (isIntervalActive && hours === 23 && minutes >= 30 && minutes < 35) {
+            if (isIntervalActive && hours === 23 && minutes >= 5 && minutes < 10) {
                 IntervalNumber = 1;
             }
 
-            if (isIntervalActive && hours === 23 && minutes >= 35 && minutes < 40) {
+            if (isIntervalActive && hours === 23 && minutes >= 10 && minutes < 15) {
                 IntervalNumber = 2;
             }
 
