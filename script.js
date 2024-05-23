@@ -7,6 +7,15 @@ function getOrientation() {
 let currentIntervalTime = 0;
 let intervalTimeUpdater = null; // Переменная для хранения идентификатора интервала
 
+const startTimes = [
+    { hour: 2, minute: 55 },
+    { hour: 2, minute: 30 },
+    { hour: 10, minute: 55 },
+    { hour: 11, minute: 0 },
+    { hour: 23, minute: 30 },
+    { hour: 23, minute: 35 }
+];
+
 // Функция для создания элементов
 function createElements() {
     // Создаем элементы для первого блока
@@ -1760,12 +1769,19 @@ if (audioPlayer.paused && isAudioActive) {
 
     // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
     audioPlayer.addEventListener('loadedmetadata', function() {
-        audioPlayer.currentTime = currentIntervalTime; // Устанавливаем текущее время для воспроизведения
+        // Используем те же startTimes для вычисления прошедшего времени
+        let playbackStartTime = 0;
+        for (const startTime of startTimes) {
+            const elapsedMinutes = calculateIntervalTime(startTime.hour, startTime.minute);
+            if (elapsedMinutes >= 0 && elapsedMinutes <= 5) {
+                playbackStartTime = elapsedMinutes * 60 + now.getSeconds(); // Переводим минуты в секунды и добавляем секунды
+                break;
+            }
+        }
+        audioPlayer.currentTime = playbackStartTime; // Устанавливаем текущее время для воспроизведения
         audioPlayer.play().then(_ => {
-            // Обработчик успешного запуска воспроизведения
-            console.log('Воспроизведение начато с времени:', currentIntervalTime);
+            console.log('Воспроизведение начато с времени:', playbackStartTime);
         }).catch(error => {
-            // Обработчик ошибки запуска воспроизведения
             console.error('Ошибка запуска воспроизведения:', error);
         });
     });
@@ -1942,11 +1958,11 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
 
 
-            if (isIntervalActive && hours === 23 && minutes >= 5 && minutes < 10) {
+            if (isIntervalActive && hours === 23 && minutes >= 30 && minutes < 35) {
                 IntervalNumber = 1;
             }
 
-            if (isIntervalActive && hours === 23 && minutes >= 10 && minutes < 15) {
+            if (isIntervalActive && hours === 23 && minutes >= 35 && minutes < 40) {
                 IntervalNumber = 2;
             }
 
@@ -2756,15 +2772,7 @@ if (VoiceTheCommandmentsDuringTheMessage) {
 
 
 
-// Время начала интервалов
-const startTimes = [
-    { hour: 2, minute: 55 },
-    { hour: 2, minute: 30 },
-    { hour: 10, minute: 55 },
-    { hour: 11, minute: 0 },
-    { hour: 23, minute: 5 },
-    { hour: 23, minute: 10 }
-];
+
 
 // Функция для вычисления прошедшего времени с начала интервала
 function calculateIntervalTime(startHour, startMinute) {
@@ -2776,7 +2784,7 @@ function calculateIntervalTime(startHour, startMinute) {
 // Проверяем, попадает ли текущее время в один из интервалов (не более 5 минут назад)
 for (const startTime of startTimes) {
     const elapsedMinutes = calculateIntervalTime(startTime.hour, startTime.minute);
-    if (elapsedMinutes >= 0 && elapsedMinutes <= 5) {
+    if (elapsedMinutes >= 0 && elapsedMinutes < 5) {
         currentIntervalTime = elapsedMinutes * 60 + now.getSeconds(); // Переводим минуты в секунды и добавляем секунды
         break;
     }
