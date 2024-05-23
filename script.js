@@ -1760,12 +1760,13 @@ if (audioPlayer.paused && isAudioActive) {
 
     // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
     audioPlayer.addEventListener('loadedmetadata', function() {
+        audioPlayer.currentTime = currentIntervalTime; // Устанавливаем текущее время для воспроизведения
         audioPlayer.play().then(_ => {
             // Обработчик успешного запуска воспроизведения
-            // console.log('Воспроизведение начато');
+            console.log('Воспроизведение начато с времени:', currentIntervalTime);
         }).catch(error => {
             // Обработчик ошибки запуска воспроизведения
-            // console.error('Ошибка запуска воспроизведения:', error);
+            console.error('Ошибка запуска воспроизведения:', error);
         });
     });
 }
@@ -1941,11 +1942,11 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
 
 
-            if (isIntervalActive && hours === 22 && minutes >= 40 && minutes < 45) {
+            if (isIntervalActive && hours === 23 && minutes >= 5 && minutes < 10) {
                 IntervalNumber = 1;
             }
 
-            if (isIntervalActive && hours === 22 && minutes >= 45 && minutes < 50) {
+            if (isIntervalActive && hours === 23 && minutes >= 10 && minutes < 15) {
                 IntervalNumber = 2;
             }
 
@@ -2678,7 +2679,7 @@ if (!("ontouchstart" in window)) {
         container.scrollTop = 0;
 
 
-
+        currentIntervalTime = 0;
         
 
 
@@ -2761,8 +2762,8 @@ const startTimes = [
     { hour: 2, minute: 30 },
     { hour: 10, minute: 55 },
     { hour: 11, minute: 0 },
-    { hour: 22, minute: 40 },
-    { hour: 22, minute: 45 }
+    { hour: 23, minute: 5 },
+    { hour: 23, minute: 10 }
 ];
 
 // Функция для вычисления прошедшего времени с начала интервала
@@ -2776,27 +2777,16 @@ function calculateIntervalTime(startHour, startMinute) {
 for (const startTime of startTimes) {
     const elapsedMinutes = calculateIntervalTime(startTime.hour, startTime.minute);
     if (elapsedMinutes >= 0 && elapsedMinutes <= 5) {
-        currentIntervalTime = elapsedMinutes * 60; // Переводим минуты в секунды
+        currentIntervalTime = elapsedMinutes * 60 + now.getSeconds(); // Переводим минуты в секунды и добавляем секунды
         break;
     }
 }
 
-
-
-
-
-
-
-// Сброс текущего времени интервала
-/*
-currentIntervalTime = 0;
-*/
-
-        // Обновляем текущего времени интервала каждую секунду
-    intervalTimeUpdater = setInterval(() => {
-        currentIntervalTime++;
-        console.log(`Current Interval Time: ${currentIntervalTime}s`);
-    }, 1000);
+// Обновляем текущее время интервала каждую секунду
+intervalTimeUpdater = setInterval(() => {
+    currentIntervalTime++;
+    console.log(`Current Interval Time: ${currentIntervalTime}s`);
+}, 1000);
 
 
 
@@ -2824,6 +2814,7 @@ currentIntervalTime = 0;
                 // Очищаем интервал обновления времени
             clearInterval(intervalTimeUpdater);
             intervalTimeUpdater = null;
+            currentIntervalTime = 0;
 
 
                 const nextInterval = json.find(next => {
