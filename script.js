@@ -1746,7 +1746,67 @@ function getMoscowTimeSR() {
     updateTime();
     updateJsonFile();
     
+    if (isIntervalActive) {
+        // Если нет и есть запрет на проигрывание Болеро
+        if (!BoleroIsTurnedOffDuringSending) {
+        jsonFileRandomMusic = 'main-music.json';
+
     
+
+    
+        } else {
+            jsonFileRandomMusic = 'radio-music.json'; 
+               
+        }
+// Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
+if (audioPlayer.paused && isAudioActive) {
+    audioPlayer.pause(); // Останавливаем текущее воспроизведение
+
+    getRandomSong(); // Получаем следующую песню
+
+    audioPlayer.src = song_link; // Устанавливаем новую песню в качестве источника для аудиоплеера
+    audioPlayer.load(); // Загружаем новую песню
+
+    // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
+    audioPlayer.addEventListener('loadedmetadata', function() {
+        /*
+        audioPlayer.currentTime = currentIntervalTime; // Устанавливаем текущее время для воспроизведения
+        */
+        audioPlayer.play().then(_ => {
+            // Обработчик успешного запуска воспроизведения
+            console.log('Воспроизведение начато с времени:', currentIntervalTime);
+        }).catch(error => {
+            // Обработчик ошибки запуска воспроизведения
+            console.error('Ошибка запуска воспроизведения:', error);
+        });
+    });
+}
+    } else {
+
+        jsonFileRandomMusic = 'free-music.json';
+        // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
+        if (audioPlayer.paused && isAudioActive) {
+            audioPlayer.pause(); // Останавливаем текущее воспроизведение
+        
+            getRandomSong(); // Получаем следующую песню
+        
+            audioPlayer.src = song_link; // Устанавливаем новую песню в качестве источника для аудиоплеера
+            audioPlayer.load(); // Загружаем новую песню
+        
+            // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
+            audioPlayer.addEventListener('loadedmetadata', function() {
+                audioPlayer.play().then(_ => {
+                    // Обработчик успешного запуска воспроизведения
+                    // console.log('Воспроизведение начато');
+                }).catch(error => {
+                    // Обработчик ошибки запуска воспроизведения
+                    // console.error('Ошибка запуска воспроизведения:', error);
+                });
+            });
+
+
+    }
+}
 
 toggleTable();
 
@@ -1893,11 +1953,11 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
 
 
-            if (isIntervalActive && hours === 21 && minutes >= 40 && minutes < 45) {
+            if (isIntervalActive && hours === 23 && minutes >= 5 && minutes < 10) {
                 IntervalNumber = 1;
             }
 
-            if (isIntervalActive && hours === 21 && minutes >= 45 && minutes < 50) {
+            if (isIntervalActive && hours === 23 && minutes >= 10 && minutes < 15) {
                 IntervalNumber = 2;
             }
 
@@ -2631,95 +2691,6 @@ if (!("ontouchstart" in window)) {
 
 
         currentIntervalTime = 0;
-
-
-
-
-
-
-        if (isIntervalActive) {
-            // Если нет и есть запрет на проигрывание Болеро
-            if (!BoleroIsTurnedOffDuringSending) {
-            jsonFileRandomMusic = 'main-music.json';
-    
-        
-    
-        
-            } else {
-                jsonFileRandomMusic = 'radio-music.json'; 
-                   
-            }
-    // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
-    if (audioPlayer.paused && isAudioActive) {
-        audioPlayer.pause(); // Останавливаем текущее воспроизведение
-    
-        getRandomSong(); // Получаем следующую песню
-    
-        audioPlayer.src = song_link; // Устанавливаем новую песню в качестве источника для аудиоплеера
-        audioPlayer.load(); // Загружаем новую песню
-    
-        // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
-        audioPlayer.addEventListener('loadedmetadata', function() {
-            /*
-            audioPlayer.currentTime = currentIntervalTime; // Устанавливаем текущее время для воспроизведения
-            */
-            audioPlayer.play().then(_ => {
-                // Обработчик успешного запуска воспроизведения
-                console.log('Воспроизведение начато с времени:', currentIntervalTime);
-            }).catch(error => {
-                // Обработчик ошибки запуска воспроизведения
-                console.error('Ошибка запуска воспроизведения:', error);
-            });
-        });
-    }
-        } else {
-    
-            jsonFileRandomMusic = 'free-music.json';
-            // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
-            if (audioPlayer.paused && isAudioActive) {
-                audioPlayer.pause(); // Останавливаем текущее воспроизведение
-            
-                getRandomSong(); // Получаем следующую песню
-            
-                audioPlayer.src = song_link; // Устанавливаем новую песню в качестве источника для аудиоплеера
-                audioPlayer.load(); // Загружаем новую песню
-            
-                // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
-                audioPlayer.addEventListener('loadedmetadata', function() {
-                    audioPlayer.play().then(_ => {
-                        // Обработчик успешного запуска воспроизведения
-                        // console.log('Воспроизведение начато');
-                    }).catch(error => {
-                        // Обработчик ошибки запуска воспроизведения
-                        // console.error('Ошибка запуска воспроизведения:', error);
-                    });
-                });
-    
-    
-        }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         
 
 
