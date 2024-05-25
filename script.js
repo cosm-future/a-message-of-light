@@ -2689,7 +2689,7 @@ if (!("ontouchstart" in window)) {
         lineElement.style.width = "0"; // Устанавливаем ширину линии в начальное состояние
         container.scrollTop = 0;
 
-
+        audioPlayer.currentTime = 0; // Устанавливаем текущее время для воспроизведения на ноль.
         currentIntervalTime = 0;
         
 
@@ -2768,7 +2768,7 @@ if (VoiceTheCommandmentsDuringTheMessage) {
 
 
 
-
+/*
 // Функция для вычисления прошедшего времени с начала интервала
 function calculateIntervalTime(startHour, startMinute) {
     const currentTimeInMinutes = hours * 60 + minutes;
@@ -2784,13 +2784,15 @@ for (const startTime of startTimes) {
         break;
     }
 }
+*/
 
 // Обновляем текущее время интервала каждую секунду
+/*
 intervalTimeUpdater = setInterval(() => {
     currentIntervalTime++;
     console.log(`Current Interval Time: ${currentIntervalTime}s`);
 }, 1000);
-
+*/
 
 
         /*
@@ -2809,15 +2811,18 @@ intervalTimeUpdater = setInterval(() => {
                 // console.log("Устройство не поддерживает вибрацию.");
             }
             lineElement.style.width = "0"; // Устанавливаем ширину линии обратно в 0
+            audioPlayer.currentTime = 0; // Устанавливаем текущее время для воспроизведения на ноль.
             
             setTimeout(() => {
                 lineElement.remove();
                 lineElement = null;
                 
+                /*
                 // Очищаем интервал обновления времени
             clearInterval(intervalTimeUpdater);
             intervalTimeUpdater = null;
             currentIntervalTime = 0;
+            */
 
 
                 const nextInterval = json.find(next => {
