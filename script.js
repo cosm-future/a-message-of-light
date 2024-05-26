@@ -1162,10 +1162,10 @@ for (let i = 1; i < table.rows.length; i++) {
 }
 
 // Создаем массив с цветами для интервалов времени
-const intervalColors = ['gold', 'gold', 'gold'];
+const intervalColors = ['rgb(194, 152, 0)', 'rgb(194, 152, 0)', 'rgb(194, 152, 0)'];
 let colorIndex = 0; // Индекс текущего цвета
 
-/*
+
 // Обновляем данные в третьем столбце, оборачивая каждый интервал времени в квадратные скобки
 for (const value in uniqueValues) {
     // Находим все строки с данным значением во втором столбце
@@ -1181,7 +1181,7 @@ for (const value in uniqueValues) {
         row.cells[2].innerHTML = bracketedIntervals; // Обновляем данные в ячейке третьего столбца
     });
 }
-*/
+
 
 
 
@@ -1953,11 +1953,11 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
 
 
-            if (isIntervalActive && hours === 23 && minutes >= 5 && minutes < 10) {
+            if (isIntervalActive && hours === 19 && minutes >= 25 && minutes < 30) {
                 IntervalNumber = 1;
             }
 
-            if (isIntervalActive && hours === 23 && minutes >= 10 && minutes < 15) {
+            if (isIntervalActive && hours === 19 && minutes >= 30 && minutes < 35) {
                 IntervalNumber = 2;
             }
 
@@ -2945,6 +2945,8 @@ var moscowTimeText = document.querySelector('.moscow-time');
                 fetch(jsonFileRandomMusic)
           .then(response => response.json())
           .then(data => {
+
+            if (audioPlayer.paused && isAudioActive) {
               // Получение случайного объекта из массива
               const randomSong = data[Math.floor(Math.random() * data.length)];
   
@@ -2964,7 +2966,7 @@ var moscowTimeText = document.querySelector('.moscow-time');
   
               // Здесь можно выполнить другие действия с полученными данными
           
-              if (audioPlayer.paused && isAudioActive) {
+              
               // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
     audioPlayer.addEventListener('loadedmetadata', function() {
         audioPlayer.play();
