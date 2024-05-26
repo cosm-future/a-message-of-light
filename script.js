@@ -2967,7 +2967,6 @@ var moscowTimeText = document.querySelector('.moscow-time');
               if (audioPlayer.paused && isAudioActive) {
               // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
     audioPlayer.addEventListener('loadedmetadata', function() {
-        audioPlayer.pause();
         audioPlayer.play();
     });
 }
