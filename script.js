@@ -4407,15 +4407,15 @@ const qaPairs = [
 
     
     { 
-        questions: ["Отключи Болеро во время Посыла"], 
+        questions: ["Отключи Рахманинова во время Посыла"], 
         answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/turn_off.mp3",
-        type: "отключение Болеро во время Посыла" 
+        type: "отключение Рахманинова во время Посыла" 
     },
 
     { 
-        questions: ["Включи Болеро во время Посыла"], 
+        questions: ["Включи Рахманинова во время Посыла"], 
         answer: "https://raw.githubusercontent.com/cosm-future/a-message-of-light/main/turn_on.mp3",
-        type: "включение Болеро во время Посыла" 
+        type: "включение Рахманинова во время Посыла" 
     },
 
     { 
@@ -4560,8 +4560,8 @@ function startListening() {
         qa.type === "отображение свечи во время Посыла" ||
         qa.type === "включение озвучки Заповедей во время Посыла" ||
         qa.type === "отключение озвучки Заповедей во время Посыла" ||
-        qa.type === "отключение Болеро во время Посыла" ||
-        qa.type === "включение Болеро во время Посыла" ||
+        qa.type === "отключение Рахманинова во время Посыла" ||
+        qa.type === "включение Рахманинова во время Посыла" ||
         qa.type === "отключение колокола во время Посыла" ||
         qa.type === "включение колокола во время Посыла") {
             const audio = new Audio();
@@ -4739,7 +4739,7 @@ function startListening() {
 
 
                     });
-            } else if (qa.type === "отключение Болеро во время Посыла") {
+            } else if (qa.type === "отключение Рахманинова во время Посыла") {
                 // Слушаем событие завершения воспроизведения аудио
                 audio.addEventListener('ended', function() {
                     
@@ -4752,7 +4752,7 @@ function startListening() {
 
 
                     });
-            } else if (qa.type === "включение Болеро во время Посыла") {
+            } else if (qa.type === "включение Рахманинова во время Посыла") {
                 // Слушаем событие завершения воспроизведения аудио
                 audio.addEventListener('ended', function() {
                     
