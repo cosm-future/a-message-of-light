@@ -2976,6 +2976,38 @@ var moscowTimeText = document.querySelector('.moscow-time');
     });  
     });
 }
+
+let musicZero = false; // переменная, которая поможет сменить источник плеера 1 раз если он выключен.
+
+if (!isAudioActive && !musicZero) {
+    fetch(jsonFileRandomMusic)
+.then(response => response.json())
+.then(data => {
+
+
+  // Получение случайного объекта из массива
+  const randomSong = data[Math.floor(Math.random() * data.length)];
+
+  // Присваивание значений переменным
+  name_of_the_song = randomSong.название;
+  songwriter = randomSong.автор;
+  song_link = randomSong.ссылка;
+
+  audioPlayer.src = song_link;
+audioPlayer.pause(); // Приостанавливаем воспроизведение
+audioPlayer.currentTime = 0; // Устанавливаем время воспроизведения в начало
+audioPlayer.load(); // Загружаем заново аудио
+
+  // Подставляем значения переменных в текст элементов
+  songTitleElement.textContent = name_of_the_song;
+  artistNameElement.textContent = songwriter;
+
+  // Здесь можно выполнить другие действия с полученными данными
+
+  musicZero = true;
+ 
+});
+}
              
   
               
@@ -3059,39 +3091,7 @@ var moscowTimeText = document.querySelector('.moscow-time');
                 enableButtonAndromeda();
 
 
-                if (audioPlayer.paused && isAudioActive) {
-                    fetch(jsonFileRandomMusic)
-              .then(response => response.json())
-              .then(data => {
-    
                 
-                  // Получение случайного объекта из массива
-                  const randomSong = data[Math.floor(Math.random() * data.length)];
-      
-                  // Присваивание значений переменным
-                  name_of_the_song = randomSong.название;
-                  songwriter = randomSong.автор;
-                  song_link = randomSong.ссылка;
-      
-                  audioPlayer.src = song_link;
-                audioPlayer.pause(); // Приостанавливаем воспроизведение
-        audioPlayer.currentTime = 0; // Устанавливаем время воспроизведения в начало
-        audioPlayer.load(); // Загружаем заново аудио
-      
-                  // Подставляем значения переменных в текст элементов
-                  songTitleElement.textContent = name_of_the_song;
-                  artistNameElement.textContent = songwriter;
-      
-                  // Здесь можно выполнить другие действия с полученными данными
-              
-                  
-                  // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
-        audioPlayer.addEventListener('loadedmetadata', function() {
-            audioPlayer.play();
-            // Здесь можно выполнить другие действия с полученными данными
-        });  
-        });
-    }
                 
     
         }
