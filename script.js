@@ -1953,11 +1953,11 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
 
 
-            if (isIntervalActive && hours === 19 && minutes >= 25 && minutes < 30) {
+            if (isIntervalActive && hours === 22 && minutes >= 55) {
                 IntervalNumber = 1;
             }
 
-            if (isIntervalActive && hours === 19 && minutes >= 30 && minutes < 35) {
+            if (isIntervalActive && hours === 23 && minutes >= 0 && minutes < 5) {
                 IntervalNumber = 2;
             }
 
@@ -2941,12 +2941,12 @@ var moscowTimeText = document.querySelector('.moscow-time');
                 buttonBuild.style.display = 'block';
                 } 
                 enableButtonAndromeda();
-
+                if (audioPlayer.paused && isAudioActive) {
                 fetch(jsonFileRandomMusic)
           .then(response => response.json())
           .then(data => {
 
-            if (audioPlayer.paused && isAudioActive) {
+            
               // Получение случайного объекта из массива
               const randomSong = data[Math.floor(Math.random() * data.length)];
   
@@ -2970,12 +2970,13 @@ var moscowTimeText = document.querySelector('.moscow-time');
               // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
     audioPlayer.addEventListener('loadedmetadata', function() {
         audioPlayer.play();
+        // Здесь можно выполнить другие действия с полученными данными
+    });  
     });
 }
              
   
-              // Здесь можно выполнить другие действия с полученными данными
-          });  
+              
           }
   
           
