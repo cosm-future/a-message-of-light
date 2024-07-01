@@ -3483,7 +3483,7 @@ if (!nextSending) {
     } else {
         const buttonT = document.getElementById('imageButton');
         if (buttonT) {
-            buttonT.disabled = false;
+            buttonT.disabled = true;
         }
 
 // Удаляем контейнер с таблицей, если он существует и необходимо его скрыть
@@ -3531,7 +3531,7 @@ if (existingContainer) {
     } else {
         const buttonT = document.getElementById('imageButton');
         if (buttonT) {
-            buttonT.disabled = false;
+            buttonT.disabled = true;
         }
 
 
